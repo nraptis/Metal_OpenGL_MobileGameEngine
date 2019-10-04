@@ -29,14 +29,15 @@ public:
 
 	//Add points to the spline.
 	void					Add(float x,float y);
-	inline void				Add(float x,int y){Add(x,(float)y);}
-	inline void				Add(int x,float y){Add((float)x,y);}
-	inline void				Add(int x,int y){Add((float)x,(float)y);}
-	inline void				AddPoint(float x,float y){Add(x,y);}
-	inline void				AddPoint(float x,int y){Add(x,(float)y);}
-	inline void				AddPoint(int x,float y){Add((float)x,y);}
-	inline void				AddPoint(int x,int y){Add((float)x,(float)y);}
-	inline void				Add(double x, double y){Add((float)x,(float)y);}
+	//inline void				Add(float x,int y){Add(x,(float)y);}
+	//inline void				Add(int x,float y){Add((float)x,y);}
+	//inline void				Add(int x,int y){Add((float)x,(float)y);}
+	//inline void				AddPoint(float x,float y){Add(x,y);}
+	//inline void				AddPoint(float x,int y){Add(x,(float)y);}
+	//inline void				AddPoint(int x,float y){Add((float)x,y);}
+	//inline void				AddPoint(int x,int y){Add((float)x,(float)y);}
+	//inline void				Add(double x, double y){Add((float)x,(float)y);}
+    
 	//Framework specific.
 	inline void				Add(FVec2 p){Add(p.mX,p.mY);}
 	inline void				AddPoint(FVec2 p){Add(p.mX,p.mY);}
@@ -56,6 +57,7 @@ public:
 	inline void				SetTangent(int theIndex,FVec2 tan){SetTangent(theIndex,tan.mX,tan.mY);}
 	//
 	
+    /*
 	//Maybe we wanna add a point AND set a tangent for it!
 	inline void				Add(float x, float y, float tanx, float tany){AddPoint(x,y);SetTangent(mPointCount-1,tanx,tany);}
 	inline void				Add(float x, float y, float tanx, int tany){AddPoint(x,y);SetTangent(mPointCount-1,tanx,tany);}
@@ -89,7 +91,7 @@ public:
 	inline void				AddPoint(int x, int y, float tanx, int tany){AddPoint(x,y);SetTangent(mPointCount-1,tanx,tany);}
 	inline void				AddPoint(int x, int y, int tanx, float tany){AddPoint(x,y);SetTangent(mPointCount-1,tanx,tany);}
 	inline void				AddPoint(int x, int y, int tanx, int tany){AddPoint(x,y);SetTangent(mPointCount-1,tanx,tany);}
-	
+	*/
     
     ////
     //
@@ -97,6 +99,7 @@ public:
     //
     ////
     
+    /*
 	inline void				Add(FVec2 p, FVec2 tan){Add(p.mX,p.mY,tan.mX,tan.mY);}
 	inline void				Add(FVec2 p, float tanx, float tany){Add(p.mX,p.mY,tanx,tany);}
 	inline void				Add(FVec2 p, int tanx, float tany){Add(p.mX,p.mY,tanx,tany);}
@@ -115,6 +118,7 @@ public:
 	inline void				AddPoint(int x, float y, FVec2 tan){AddPoint(x,y,tan.mX,tan.mY);}
 	inline void				AddPoint(float x, int y, FVec2 tan){AddPoint(x,y,tan.mX,tan.mY);}
 	inline void				AddPoint(int x, int y, FVec2 tan){AddPoint(x,y,tan.mX,tan.mY);}
+    */
 	//
 
 	//FSpline Editor functions!
@@ -123,6 +127,8 @@ public:
 	//Add a point at a given index. (later points
 	//automatically pushed back)
 	void					Insert(int theIndex,float x, float y);
+    
+    /*
 	inline void				Insert(int theIndex,float x, int y){Insert(theIndex,x,(float)y);}
 	inline void				Insert(int theIndex,int x, float y){Insert(theIndex,(float)x,y);}
 	inline void				Insert(int theIndex,int x, int y){Insert(theIndex,(float)x,(float)y);}
@@ -134,10 +140,13 @@ public:
 	//Framework specific
 	inline void				Insert(int theIndex,FVec2 p){Insert(theIndex,p.mX,p.mY);}
 	inline void				InsertPoint(int theIndex,FVec2 p){Insert(theIndex,p.mX,p.mY);}
+    */
 	//
 
 	//Change the position of a point already on the spline.
 	void					SetPoint(int theIndex,float x, float y);
+    
+    /*
 	inline void				SetPoint(int theIndex,float x, int y){SetPoint(theIndex,x,(float)y);}
 	inline void				SetPoint(int theIndex,int x, float y){SetPoint(theIndex,(float)x,y);}
 	inline void				SetPoint(int theIndex,int x, int y){SetPoint(theIndex,(float)x,(float)y);}
@@ -150,6 +159,7 @@ public:
 	//Framework specific
 	inline void				SetPoint(int theIndex,FVec2 p){SetPoint(theIndex,p.mX,p.mY);}
 	inline void				MovePoint(int theIndex,FVec2 p){SetPoint(theIndex,p.mX,p.mY);}
+    */
 	//
 
 
@@ -158,7 +168,7 @@ public:
 	inline void				SetCoefs(int theIndex, double xa, double xb, double xc, double ya, double yb, double yc){SetCoefs(theIndex,(float)xa,(float)xb,(float)xc,(float)ya,(float)yb,(float)yc);}
 
 
-	void					InvertH(float theCenter=400);
+	void					InvertH(float theCenter);
 
 
 	void					Translate(float theXDistance, float theYDistance);
@@ -182,6 +192,9 @@ public:
 	void					ImportData(char *theData);
 
     void                    Reset();
+    void                    RemoveAll();
+    
+    
     
 	//Destroy the spline and free up memory.
 	void					Clear();
@@ -304,7 +317,13 @@ public:
 	int						mSize;
 	float					*mXCoef;
 	float					*mYCoef;
-	float					*mTangent;
+	float                   *mTangent;
+    
+    float                   *mStorageDelta;
+    float                   *mStorageTemp;
+    
+    
+    
 	float					mLength;
 	unsigned int			mProperties;
     
@@ -439,6 +458,9 @@ public:
     float					*mZCoef;
     
     float					*mTangent;
+    
+    float                   *mStorageDelta;
+    float                   *mStorageTemp;
     
     float					mLength;
     unsigned int			mProperties;    

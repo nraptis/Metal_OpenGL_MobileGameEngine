@@ -165,8 +165,7 @@ void FParticle::Update()
     }
 }
 
-void FParticle::Draw()
-{
+void FParticle::Draw() {
     float aRed = mRed;
     if(aRed > 1.0f)aRed = 1.0f;
     if(aRed < 0.0f)aRed = 0.0f;
@@ -186,18 +185,13 @@ void FParticle::Draw()
     
     float aRotation = mRotation;
 
-    
-    if((mAlpha > 0.0f) && (mScale > 0.0f) && (mTimerDelay <= 0))
-    {
+    if ((mAlpha > 0.0f) && (mScale > 0.0f) && (mTimerDelay <= 0)) {
         Graphics::SetColor(aRed, aGreen, aBlue, aAlpha);
-        
-        if(mSprite)
-        {
+        if (mSprite) {
             mSprite->Draw(mX, mY, mScale, aRotation);
         }
         
-        if(mSpriteSequence)
-        {
+        if (mSpriteSequence) {
             mSpriteSequence->Draw(mFrame, mX, mY, mScale, aRotation);
         }
     }

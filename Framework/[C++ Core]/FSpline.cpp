@@ -20,6 +20,9 @@ FSpline::FSpline(void)
 	mXCoef=0;
 	mYCoef=0;
     
+    mStorageDelta = NULL;
+    mStorageTemp = NULL;
+    
 	mProperties=0;
     
 	mTangent=0;
@@ -42,39 +45,47 @@ void FSpline::Translate(float theXDistance, float theYDistance)
 	}
 }
 
-void FSpline::InvertH(float theCenter)
-{
+void FSpline::InvertH(float theCenter) {
 	for(int i=0;i<mPointCount;i++)mX[i]=theCenter+(theCenter-mX[i]);
 	int aMax=mMax*3;
 	for(int i=0;i<aMax;i++)mXCoef[i]=-mXCoef[i];
 }
 
-void FSpline::Reset()
-{
-    mPointCount=0;
-    mMax=0;
-    mProperties=0;
-    mLength=0;
-    mChanged=true;
+void FSpline::Reset() {
+    mPointCount = 0;
+    mMax = 0;
+    mProperties = 0;
+    mLength = 0;
+    mChanged = true;
+}
+
+void FSpline::RemoveAll() {
+    mPointCount = 0;
+    mMax = 0;
+    mLength = 0.0f;
+    mChanged = true;
 }
 
 
 void FSpline::Clear()
 {
-	delete[]mX;
-	delete[]mXCoef;
-	delete[]mTangent;
-	mX=0;
-	mY=0;
-	mXCoef=0;
-	mYCoef=0;
-	mTangent=0;
-	mSize=0;
-	mPointCount=0;
-	mMax=0;
-	mProperties=0;
-	mLength=0;
-	mChanged=true;
+	delete [] mX;
+	delete [] mXCoef;
+	delete [] mTangent;
+	mX = NULL;
+	mY = NULL;
+	mXCoef = NULL;
+	mYCoef = NULL;
+	mTangent = NULL;
+    mStorageDelta = NULL;
+    mStorageTemp = NULL;
+    
+	mSize = 0;
+	mPointCount = 0;
+	mMax = 0;
+	mProperties = 0;
+	mLength = 0;
+	mChanged = true;
 }
 
 void FSpline::Size(int size)
@@ -88,11 +99,26 @@ void FSpline::Size(int size)
 			float *aY;//=aX+size;
 			aX=new float[size*2];
 			aY=aX+size;
-			if(size<mPointCount)mPointCount=size;
-			for(int i=0;i<mPointCount;i++)aX[i]=mX[i];
-			for(int i=0;i<mPointCount;i++)aY[i]=mY[i];
-			if(mProperties&SPLINE_MANUAL_TANGENTS)
-			{
+            if (size < mPointCount) { mPointCount=size; }
+            for (int i=0;i<mPointCount;i++) { aX[i]=mX[i]; }
+            for (int i=0;i<mPointCount;i++) { aY[i]=mY[i]; }
+            
+            delete [] mX;
+            
+            mX = aX;
+            mY = aY;
+            
+            
+            
+            delete [] mXCoef;
+            
+            mXCoef = new float[size*8];
+            mYCoef = mXCoef+3*size;
+            
+            mStorageDelta = mYCoef+3*size;
+            mStorageTemp = mStorageDelta + size;
+            
+			if (mProperties&SPLINE_MANUAL_TANGENTS) {
 				float *aXTan=new float[size*3];
 				float *aYTan=aXTan+size;
 				float *aTan=aYTan+size;
@@ -108,15 +134,9 @@ void FSpline::Size(int size)
 				mTangent=aXTan;
 			}
             
-			delete[]mX;
-			
-            mX=aX;
-			mY=aY;
-			mSize=size;
+			mSize = size;
 		}
-	}
-	else
-	{
+	} else {
 		Clear();
 	}
 }
@@ -142,7 +162,9 @@ void FSpline::Clone(FSpline *pFSpline)
 void FSpline::Add(float x,float y)
 {
     
-	if(mSize==mPointCount)Size(mSize+mSize/2+1);
+    if (mSize >= mPointCount) {
+        Size(mPointCount + mPointCount / 2 + 1);
+    }
 	
     //if(mProperties&SPLINE_CLOSED&&mMax>0){mProperties&=~SPLINE_CLOSED;mMax--;}
 	if(mProperties&SPLINE_CLOSED&&mPointCount>0){Delete(mMax);mProperties&=~SPLINE_CLOSED;}
@@ -172,9 +194,9 @@ void FSpline::SetPoint(int theIndex,float x, float y)
         if (theIndex == mPointCount) { theIndex=0; }
 	}
     
-	mX[theIndex]=x;
-	mY[theIndex]=y;
-	mChanged=true;
+	mX[theIndex] = x;
+	mY[theIndex] = y;
+	mChanged = true;
 }
 
 int FSpline::GetClosestControlIndex(float x, float y, float &dist)
@@ -445,9 +467,11 @@ void FSpline::Solve(float *theCoordinate,float*theDelta,float*theDerivative,floa
 void FSpline::Solve(bool linear,bool circular)
 {
 	mChanged=false;
-	delete[]mXCoef;
-	mXCoef=0;
-	mYCoef=0;
+	
+    //delete[]mXCoef;
+	//mXCoef=0;
+	//mYCoef=0;
+    
 	mMax=0;
 	mProperties&=~SPLINE_CLOSED;
 	mProperties&=~SPLINE_LINEAR;
@@ -462,20 +486,14 @@ void FSpline::Solve(bool linear,bool circular)
 		Size(mPointCount);
 		if(linear)mProperties|=SPLINE_LINEAR;
 		//if(linear||(mPointCount==2&&!(mProperties&SPLINE_MANUAL_TANGENTS)))mProperties|=SPLINE_LINEAR;
-		mXCoef=new float[mMax*6];
-		mYCoef=mXCoef+3*mMax;
-		float *aStore=new float[mPointCount*2];
-		if(mProperties&SPLINE_MANUAL_TANGENTS)
-		{
-			Solve(mX,aStore,mTangent,aStore+mPointCount,mXCoef,linear,circular);
-			Solve(mY,aStore,mTangent+mSize,aStore+mPointCount,mYCoef,linear,circular);
+		
+		if(mProperties&SPLINE_MANUAL_TANGENTS) {
+			Solve(mX,mStorageDelta,mTangent,mStorageTemp,mXCoef,linear,circular);
+			Solve(mY,mStorageDelta,mTangent+mSize,mStorageTemp,mYCoef,linear,circular);
+		} else {
+			Solve(mX,mStorageDelta,mStorageTemp,mXCoef,linear,circular);
+			Solve(mY,mStorageDelta,mStorageTemp,mYCoef,linear,circular);
 		}
-		else
-		{
-			Solve(mX,aStore,aStore+mPointCount,mXCoef,linear,circular);
-			Solve(mY,aStore,aStore+mPointCount,mYCoef,linear,circular);
-		}
-		delete[]aStore;
 	}
 }
 
@@ -1191,7 +1209,7 @@ void FSpline::ImportData(char *theData)
 				{
 					float *aAry=aList[i];
 					int aCount=(int)(aAry[0]);
-					AddPoint(aAry[aCount-2],aHeight-aAry[aCount-1]);
+					Add(aAry[aCount-2], aHeight-aAry[aCount-1]);
 				}
 				mMax=mPointCount-1;
 				delete[]mXCoef;
@@ -1410,6 +1428,32 @@ void FSpline3D::Size(int size)
             for(int i=0;i<mPointCount;i++)aY[i]=mY[i];
             for(int i=0;i<mPointCount;i++)aZ[i]=mZ[i];
             
+            
+            delete[]mX;
+            
+            mX=aX;
+            mY=aY;
+            mZ=aZ;
+            
+            
+            
+            delete [] mXCoef;
+            
+            mXCoef = new float[size*11];
+            mYCoef = mXCoef+3*size;
+            mZCoef=mYCoef+3*mMax;
+            
+            mStorageDelta = mZCoef+3*size;
+            mStorageTemp = mStorageDelta + size;
+            
+            
+            //if(linear||(mPointCount==2&&!(mProperties&SPLINE_3D_MANUAL_TANGENTS)))mProperties|=SPLINE_3D_LINEAR;
+            //mXCoef=new float[mMax*9];
+            //mYCoef=mXCoef+3*mMax;
+            //mZCoef=mYCoef+3*mMax;
+            //float *aStore=new float[mPointCount*3];
+            
+            
             if(mProperties&SPLINE_3D_MANUAL_TANGENTS)
             {
                 float *aXTan=new float[size*3];
@@ -1435,11 +1479,7 @@ void FSpline3D::Size(int size)
                 mTangent=aXTan;
             }
             
-            delete[]mX;
             
-            mX=aX;
-            mY=aY;
-            mZ=aZ;
             
             mSize=size;
         }
@@ -1749,10 +1789,11 @@ void FSpline3D::Solve(float *theCoordinate,float*theDelta,float*theDerivative,fl
 void FSpline3D::Solve(bool linear,bool circular)
 {
     mChanged=false;
-    delete[]mXCoef;
-    mXCoef=0;
-    mYCoef=0;
-    mZCoef=0;
+    
+    //delete[]mXCoef;
+    //mXCoef=0;
+    //mYCoef=0;
+    //mZCoef=0;
     mMax=0;
     mProperties&=~SPLINE_3D_CLOSED;
     mProperties&=~SPLINE_3D_LINEAR;
@@ -1767,23 +1808,25 @@ void FSpline3D::Solve(bool linear,bool circular)
         Size(mPointCount);
         if(linear)mProperties|=SPLINE_3D_LINEAR;
         //if(linear||(mPointCount==2&&!(mProperties&SPLINE_3D_MANUAL_TANGENTS)))mProperties|=SPLINE_3D_LINEAR;
-        mXCoef=new float[mMax*9];
-        mYCoef=mXCoef+3*mMax;
-        mZCoef=mYCoef+3*mMax;
-        float *aStore=new float[mPointCount*3];
+        //mXCoef=new float[mMax*9];
+        //mYCoef=mXCoef+3*mMax;
+        //mZCoef=mYCoef+3*mMax;
+        //float *aStore=new float[mPointCount*3];
+        
         if(mProperties&SPLINE_3D_MANUAL_TANGENTS)
         {
-            Solve(mX,aStore,mTangent,aStore+mPointCount,mXCoef,linear,circular);
-            Solve(mY,aStore,mTangent+mSize,aStore+mPointCount,mYCoef,linear,circular);
-            Solve(mZ,aStore,mTangent+mSize,aStore+mPointCount,mZCoef,linear,circular);
+            Solve(mX,mStorageDelta,mTangent,mStorageTemp,mXCoef,linear,circular);
+            Solve(mY,mStorageDelta,mTangent+mSize,mStorageTemp,mYCoef,linear,circular);
+            Solve(mZ,mStorageDelta,mTangent+mSize,mStorageTemp,mZCoef,linear,circular);
         }
         else
         {
-            Solve(mX,aStore,aStore+mPointCount,mXCoef,linear,circular);
-            Solve(mY,aStore,aStore+mPointCount,mYCoef,linear,circular);
-            Solve(mZ,aStore,aStore+mPointCount,mZCoef,linear,circular);
+            Solve(mX,mStorageDelta,mStorageTemp,mXCoef,linear,circular);
+            Solve(mY,mStorageDelta,mStorageTemp,mYCoef,linear,circular);
+            Solve(mZ,mStorageDelta,mStorageTemp,mZCoef,linear,circular);
         }
-        delete[]aStore;
+        
+        //delete[]aStore;
     }
 }
 
