@@ -3,7 +3,7 @@
 //  SRT
 //
 //  Created by Nick Raptis on 10/8/13.
-//  Copyright (c) 2013 Chrysler Group LLC. All rights reserved.
+//  Copyright (c) 2013 Froggy Studios LLC. All rights reserved.
 //
 
 #ifndef SIZE_H
