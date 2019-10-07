@@ -212,6 +212,48 @@ void FModelDataPacked::InvertZ() {
     }
 }
 
+void FModelDataPacked::InvertNormalX() {
+    if (mDataCount <= 0) { return; }
+    if (mHasXYZ == false) { return; }
+    if (mHasNormals == false) { return; }
+    int aStride = GetStride();
+    if (aStride <= 0) { return; }
+    int aIndex = 3;
+    if (mHasUVW) { aIndex += 3; }
+    while (aIndex < mDataCount) {
+        mData[aIndex] = -mData[aIndex];
+        aIndex += aStride;
+    }
+}
+
+void FModelDataPacked::InvertNormalY() {
+    if (mDataCount <= 0) { return; }
+    if (mHasXYZ == false) { return; }
+    if (mHasNormals == false) { return; }
+    int aStride = GetStride();
+    if (aStride <= 0) { return; }
+    int aIndex = 4;
+    if (mHasUVW) { aIndex += 3; }
+    while (aIndex < mDataCount) {
+        mData[aIndex] = -mData[aIndex];
+        aIndex += aStride;
+    }
+}
+
+void FModelDataPacked::InvertNormalZ() {
+    if (mDataCount <= 0) { return; }
+    if (mHasXYZ == false) { return; }
+    if (mHasNormals == false) { return; }
+    int aStride = GetStride();
+    if (aStride <= 0) { return; }
+    int aIndex = 5;
+    if (mHasUVW) { aIndex += 3; }
+    while (aIndex < mDataCount) {
+        mData[aIndex] = -mData[aIndex];
+        aIndex += aStride;
+    }
+}
+
 void FModelDataPacked::Save(const char *pFile) {
     FFile aFile;
     Save(&aFile);

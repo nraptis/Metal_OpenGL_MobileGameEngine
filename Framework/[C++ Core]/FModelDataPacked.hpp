@@ -67,6 +67,13 @@ public:
     void                                InvertY();
     void                                InvertZ();
     
+    
+    void                                InvertNormalX();
+    void                                InvertNormalY();
+    void                                InvertNormalZ();
+    
+    
+    
     int                                 GetStride();
     
     void                                WriteBuffers();
