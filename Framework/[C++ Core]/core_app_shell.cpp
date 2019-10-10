@@ -80,7 +80,7 @@ void AppShellInitialize(int pEnvironment) {
 	EnumList(FString, aPath, aResourceList)gRes.AddResource(aPath->c());
 	FreeList(FString, aResourceList);
     
-    gGraphicsInterface = new PlatformGraphicsInterface();
+
     
     os_initialize_outlets();
     sound_initialize();
@@ -233,7 +233,38 @@ void AppShellInitialize(int pEnvironment) {
 
 }
 
+void AppShellGraphicsSetUp() {
+
+    Log("AppShellGraphicsSetUp()\n");
+
+	if (gGraphicsInterface  == NULL) {
+        gGraphicsInterface = new PlatformGraphicsInterface();
+        gGraphicsInterface->Initialize();
+    }
+    
+	Graphics::Initialize();
+	Graphics::SetUp();
+    Graphics::SetDeviceSize(gDeviceWidth, gDeviceHeight);
+}
+
+void AppShellGraphicsTearDown() {
+
+    Log("AppShellGraphicsTearDown()\n");
+	//if (gAppBase != NULL) { gAppBase->ThrottleLock(); }
+    
+    Graphics::TearDown();
+
+    if (gGraphicsInterface != NULL) {
+        delete gGraphicsInterface;
+        gGraphicsInterface = NULL;
+    }
+
+	//if (gAppBase != NULL) { gAppBase->ThrottleUnlock(); }
+    
+}
+
 void AppShellLoad() {
+    Log("AppShellLoad()\n");
     if (gAppBase) {
         gAppBase->BaseLoad();
         gAppBase->BaseLoadComplete();

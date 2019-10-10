@@ -59,6 +59,8 @@ public:
     bool                                        mAllowDuplicateKeys;
     bool                                        mAllowDuplicateFullKeys;
     
+    void                                        Clear();
+    
     void                                        Print();
     
     FFileTableNode                              **mTable;

@@ -46,7 +46,7 @@ extern "C" {
     JNIEXPORT void JNICALL Java_com_froggy_game_GL2JNILib_NativeAppShellPreinitialize(JNIEnv * env, jobject obj);
     JNIEXPORT void JNICALL Java_com_froggy_game_GL2JNILib_NativeAppShellSetAudioBufferAttributes(JNIEnv* env, jobject obj, int pSampleRate, int pBufferSize);
     JNIEXPORT void JNICALL Java_com_froggy_game_GL2JNILib_NativeAppShellInitialize(JNIEnv * env, jobject obj,  jint width, jint height);
-    JNIEXPORT void JNICALL Java_com_froggy_game_GL2JNILib_NativeAppShellGraphicsReady(JNIEnv * env, jobject obj);
+    JNIEXPORT void JNICALL Java_com_froggy_game_GL2JNILib_NativeAppShellGraphicsSetUp(JNIEnv * env, jobject obj);
     JNIEXPORT void JNICALL Java_com_froggy_game_GL2JNILib_NativeAppShellDetachRunLoop(JNIEnv * env, jobject obj);
     JNIEXPORT void JNICALL Java_com_froggy_game_GL2JNILib_NativeAppShellSetSize(JNIEnv* env, jobject obj, int pWidth, int pHeight);
     JNIEXPORT void JNICALL Java_com_froggy_game_GL2JNILib_NativeAppShellSetDirectoryBundle(JNIEnv* env, jobject obj, jstring pFilePath);
@@ -89,12 +89,16 @@ JNIEXPORT void JNICALL Java_com_froggy_game_GL2JNILib_NativeAppShellSetAudioBuff
     sound_setAudioAttributes(pSampleRate, pBufferSize);
 }
 
+static bool cDidInitialize = false;
 JNIEXPORT void JNICALL Java_com_froggy_game_GL2JNILib_NativeAppShellInitialize(JNIEnv* env, jobject obj,  jint width, jint height) {
-    LOGI("NativeAppShellInitialize = [%d x %d]\n",
-         width, height);
-    AppShellSetDeviceSize(width, height);
-    AppShellSetVirtualFrame(0, 0, width, height);
-    AppShellInitialize(ENV_ANDROID);
+    if (cDidInitialize  == false) {
+        LOGI("NativeAppShellInitialize = [%d x %d]\n",
+             width, height);
+        cDidInitialize = true;
+        AppShellSetDeviceSize(width, height);
+        AppShellSetVirtualFrame(0, 0, width, height);
+        AppShellInitialize(ENV_ANDROID);
+    }
 
 }
 
@@ -106,14 +110,22 @@ JNIEXPORT void JNICALL Java_com_froggy_game_GL2JNILib_NativeAppShellDetachRunLoo
 
 }
 
-JNIEXPORT void JNICALL Java_com_froggy_game_GL2JNILib_NativeAppShellGraphicsReady(JNIEnv * env, jobject obj) {
-    LOGI("Graphics Is Ready!!!\n");
-    if (gOpenGLEngine) {
-        gOpenGLEngine->SetUp();
-        AppShellLoad();
-    } else {
-        LOGI("Graphics Is NOT ready...!!!\n");
-    }
+
+
+static bool cDidInitializeGraphicsReady = false;
+JNIEXPORT void JNICALL Java_com_froggy_game_GL2JNILib_NativeAppShellGraphicsSetUp(JNIEnv * env, jobject obj) {
+
+    //if (cDidInitializeGraphicsReady == false) {
+        //cDidInitializeGraphicsReady = true;
+        //if (gOpenGLEngine != NULL) {
+            //gOpenGLEngine->SetUp();
+            AppShellGraphicsSetUp();
+            AppShellLoad();
+
+        //} else {
+        //    LOGI("Graphics Is NOT ready...!!!\n");
+        //}
+    //}
 }
 
 JNIEXPORT void JNICALL Java_com_froggy_game_GL2JNILib_NativeAppShellSetSize(JNIEnv* env, jobject obj, int pWidth, int pHeight) {

@@ -32,6 +32,9 @@ void AppShellSetSafeAreaInsets(int pInsetUp, int pInsetRight, int pInsetDown, in
 // THEN call THIS...
 void AppShellInitialize(int pEnvironment);
 
+//Next, consider these...
+void AppShellGraphicsSetUp();
+void AppShellGraphicsTearDown();
 
 // THEN call THIS...
 void AppShellLoad();

@@ -85,6 +85,7 @@ int kDeviceHeight = 760;
     
     [_rootViewController setup];
     
+    AppShellGraphicsSetUp();
     AppShellLoad();
 }
 

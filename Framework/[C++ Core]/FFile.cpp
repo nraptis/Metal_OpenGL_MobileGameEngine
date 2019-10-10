@@ -127,15 +127,11 @@ char FFile::ReadChar()
     return aResult;
 }
 
-short FFile::ReadShort()
-{
+short FFile::ReadShort() {
     short aResult = 0;
-    if((mCursorRead + 2) <= mLength)
-    {
+    if ((mCursorRead + 2) <= mLength) {
         aResult = *(short*)(&(mData[mCursorRead]));
         mCursorRead += 2;
-    } else {
-        printf("Snub?\n");
     }
     return aResult;
 }

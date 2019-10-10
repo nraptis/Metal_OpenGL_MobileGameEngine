@@ -53,8 +53,7 @@ static float                                cDeviceScale = 1.0f;
 static float                                cClipRectBase[4];
 static bool                                 cClipEnabled = false;
 
-static bool                                 cDidTearDown = false;
-
+//static bool                                 cDidTearDown = false;
 
 
 ShaderProgram                               *cShaderProgram = NULL;
@@ -74,8 +73,6 @@ FIndexBufferCache                           cIndexCache;
 
 static FColor                               cColor;
 static float                                cRectBuffer[12];
-
-volatile static bool                        cGraphicsThreadLocked = false;
 
 
 Graphics::Graphics() {
@@ -130,8 +127,15 @@ void Graphics::Initialize() {
 }
 
 void Graphics::SetUp() {
-    Log("Graphics::SetUp(torn:%d)\n", cDidTearDown);
+    
+    Log("Graphics::SetUp() => gOpenGLEngine->SetUp();\n");
     gOpenGLEngine->SetUp();
+    
+    
+    gTextureCache.ReloadAllTextures();
+    gBufferCache.ReloadAllBuffers();
+    
+    /*
     if (cDidTearDown) {
         cDidTearDown = false;
         gOpenGLEngine->SetUp();
@@ -149,6 +153,8 @@ void Graphics::SetUp() {
         
         
     }
+    */
+    
 }
 
 //Before we lose out content, we TEAR DOWN.
@@ -157,11 +163,11 @@ void Graphics::TearDown() {
     Log("Graphics::TearDown()\n");
     
     if (gOpenGLEngine) {
+        Log("Graphics::TearDown() => gOpenGLEngine->SetUp();\n");
         gOpenGLEngine->TearDown();
-        
     }
     
-    cDidTearDown = true;
+    //cDidTearDown = true;
     gTextureCache.UnloadAllTextures();
     gBufferCache.UnloadAllBuffers();
     
@@ -218,19 +224,6 @@ void Graphics::DrawQuad(float pX1, float pY1, float pX2, float pY2, float pX3, f
     BufferArrayWrite(aBufferPosition, cRectBuffer, 0, sizeof(float) * 8);
     ArrayBufferPositions(aBufferPosition, 0);
     
-    /*
-     cVertexCache.Get(sizeof(float) * 8);
-     if (cVertexCache.mResult.mSuccess) {
-     FBuffer *aPositionsBuffer = cVertexCache.mResult.mBuffer;
-     int aPositionsBufferOffset = cVertexCache.mResult.mBufferOffset;
-     
-     BufferArrayWrite(aPositionsBufferIndex, cRectBuffer, aPositionsBufferOffset, sizeof(float) * 8);
-     ArrayBufferPositions(aPositionsBufferIndex, aPositionsBufferOffset);
-     }
-     */
-    //
-    //
-    //
     UniformBind();
     DrawTriangleStrips(4);
     //

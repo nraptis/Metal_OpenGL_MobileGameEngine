@@ -74,8 +74,6 @@ void FBufferCache::ReloadAllBuffers() {
 }
 
 void FBufferCache::Reset() {
-    
-    
     FIntMapNode *aNode = mSliceTable.mListHead;
     while (aNode) {
         FBufferCacheSlice *aSlice = (FBufferCacheSlice *)aNode->mObject;

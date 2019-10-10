@@ -18,13 +18,11 @@ FApp::FApp() {
     gAppBase = this;
     
     mFrameCaptureUpdateCount = 0;
-    
+
+    mDidUnload = false;
     
     mFrameCaptureDrawCount = 0;
     mSelectedCanvas = NULL;
-    
-    mIsGraphicsSetUpEnqueued = false;
-    mGraphicsSetUpEnqueuedTimer = 0;
     
     mDarkMode = false;
     
@@ -32,8 +30,6 @@ FApp::FApp() {
     mDidDetachFrameController = false;
     mDidUpdate = false;
     mActive = true;
-    
-    mDidInitializeGraphicsInterface = false;
     
     mTouchX = 0.0f;
     mTouchY = 0.0f;
@@ -63,6 +59,12 @@ FApp::~FApp() {
     
 }
 
+void AppFrameThread(void *pArgs) {
+    if (gAppBase != NULL) {
+        gAppBase->MainRunLoop();
+    }
+}
+
 void FApp::BaseInitialize() {
     if (mDidInitialize == false) {
         mDidInitialize = true;
@@ -75,7 +77,13 @@ void FApp::BaseInitialize() {
         mImageLoadExtensionList += new FString("png");
         mImageLoadMutableSuffixList += new FString("");
         mImageLoadSuffixList += new FString("");
-        
+
+        /*
+        while (gGraphicsInterface == NULL) {
+            Log("BaseInitialize:: No GFX Interface...\n");
+            os_sleep(100);
+        }
+
         while (gGraphicsInterface->IsReady() == false) {
             Log("BaseInitialize:: Waiting for GFX...\n");
             os_sleep(100);
@@ -84,16 +92,23 @@ void FApp::BaseInitialize() {
         Graphics::SetDeviceSize(gDeviceWidth, gDeviceHeight);
         
         
-        //Initialize the graphics interface...
-        gGraphicsInterface->Initialize();
-        
         os_sleep(10);
+        //\
+        
         
         //Initialize the graphics engine...
-        Graphics::Initialize();
-        Graphics::SetUp();
+        //  Graphics::Initialize();
+        //  Graphics::SetUp();
+        //
+        */
         
         Initialize();
+
+        if (mDidDetachFrameController == false) {
+            Log("FApp::DetachMainRunLoop ... ...\n\n");
+            mDidDetachFrameController = true;
+            os_detach_thread(AppFrameThread, (void*)0xB00BFACE);
+        }
     }
 }
 
@@ -140,31 +155,26 @@ void FApp::BaseSetSafeAreaInsets(int pInsetUp, int pInsetRight, int pInsetDown, 
     SetSafeAreaInsets(pInsetUp, pInsetRight, pInsetDown, pInsetLeft);
 }
 
-void AppFrameThread(void *pArgs) {
-    gAppBase->MainRunLoop();
-}
+
 
 //Externally, we are getting a "frame" ...
 void FApp::BaseFrame() {
 
+    if (mActive == false) {
+        Log("Attempting to draw when APP INACTIVE...\n");
+        return;
+    }
+
+    if (gGraphicsInterface == NULL) {
+        Log("BASE FRAME... gGraphicsInterface == NULL!!!\n\n");
+    }
+
     if (mDidInitialize == false) {
+        Log("BASE FRAME... mDidInitialize == false!!!\n\n");
         BaseInitialize();
     }
     
-    if (mDidDetachFrameController == false) {
-        mDidDetachFrameController = true;
-        os_detach_thread(AppFrameThread, (void*)0xB00BFACE);
-        
-    }
-    
-    if (mIsGraphicsSetUpEnqueued) {
-        if (mGraphicsSetUpEnqueuedTimer > 0) {
-            mGraphicsSetUpEnqueuedTimer -= 1;
-        } else {
-            mIsGraphicsSetUpEnqueued = false;
-            Graphics::SetUp();
-        }
-    }
+
     
     gBufferCache.Reset();
     
@@ -172,34 +182,45 @@ void FApp::BaseFrame() {
         Log("Waiting for An Update...\n");
         os_sleep(18);
     }
-    
-    //for (int i=0;i<aUpdateCount;i++) {
-    //BaseUpdate();
-    
-        ThrottleLock();
-    
-        if (gGraphicsInterface) {
-            gGraphicsInterface->SetContext();
-        }
+
+
+    ThrottleLock();
+
+    if (gGraphicsInterface != NULL) {
+        gGraphicsInterface->SetContext();
         gGraphicsInterface->Prerender();
-        Graphics::PreRender();
-        gAppBase->Prerender();
-        //
-        ////
-        //
-        BaseDraw();
-        //
-        ////
-        //
-        
-        gAppBase->Postrender();
-        Graphics::PostRender();
-        gGraphicsInterface->Postrender();
-        
-        gGraphicsInterface->Commit();
-        
-        ThrottleUnlock();
+    }
+
+
+
     
+    Graphics::PreRender();
+    gAppBase->Prerender();
+    
+    if ((mIsLoading == true) || (mDidUnload == true) || (mIsLoadingComplete == false)) {
+        Graphics::Clear(0.66f, 0.66f, 0.66f);
+        Log("Stifle Draw [mIsLoading=%d] [mDidUnload=%d] [mIsLoadingComplete=%d]\n", mIsLoading, mDidUnload, mIsLoadingComplete);
+        BaseDrawLoading();
+    } else {
+        BaseDraw();
+    }
+    
+    
+    
+    gAppBase->Postrender();
+    Graphics::PostRender();
+    
+
+    if (gGraphicsInterface != NULL) {
+        gGraphicsInterface->Postrender();
+        gGraphicsInterface->Commit();
+    } else {
+
+    }
+
+    ThrottleUnlock();
+
+
 }
 
 void FApp::BaseUpdate() {
@@ -244,14 +265,20 @@ void FApp::BaseUpdate() {
     
 }
 
+void FApp::BaseDrawLoading() {
+    
+    if (mActive == false) { return; }
+    DrawLoading();
+}
+
+
 void FApp::BaseDraw() {
     
     if (mActive == false) { return; }
-    if (mIsGraphicsSetUpEnqueued == true) {
-        Log("BLOCKING: SETUP...\n");
-        return;
-    }
 
+
+
+    
     int aSlot = 0;
     if (mFrameCaptureDrawCount < FRAME_TIME_CAPTURE_COUNT) {
         aSlot = mFrameCaptureDrawCount;
@@ -289,17 +316,18 @@ void FApp::BaseDraw() {
     
     Draw();
     
-    mWindowMain.Draw();
-    mWindowModal.Draw();
-    mWindowTools.Draw();
+    //if ((mIsLoading == false) && (mIsLoadingComplete == true)) {
+        mWindowMain.Draw();
+        mWindowModal.Draw();
+        mWindowTools.Draw();
+    //}
     
     Graphics::MatrixProjectionSet(aOrtho);
     Graphics::MatrixModelViewReset();
     DrawOver();
     
-    if (mIsLoadingComplete && Graphics::RenderPass() == GFX_RENDER_PASS_2D_MAIN) {
+    if (Graphics::RenderPass() == GFX_RENDER_PASS_2D_MAIN) {
         
-        /*
         
         Graphics::MatrixProjectionResetOrtho();
         Graphics::MatrixModelViewReset();
@@ -314,13 +342,10 @@ void FApp::BaseDraw() {
         
         FString aScaleString = FString("SCL: ") + FString(gSpriteDrawScale) + FString(", ") + FString("REZ: ") + FString(gImageResolutionScale);
         mSysFont.Center(aScaleString, gDeviceWidth2, gDeviceHeight - 24.0f);
-         
-        */
-        
         
     }
     
-    if (mIsLoadingComplete && Graphics::RenderPass() == GFX_RENDER_PASS_2D_MAIN) {
+    if (Graphics::RenderPass() == GFX_RENDER_PASS_2D_MAIN) {
         
         /*
         Graphics::PipelineStateSetShape2DAlphaBlending();
@@ -342,7 +367,8 @@ void FApp::BaseDraw() {
     if (mDarkMode == true) {
         Graphics::PipelineStateSetShape2DAlphaBlending();
         //Graphics::SetColor(0.0075f, 0.0075f, 0.0075f, 0.93f);
-        Graphics::SetColor(0.0075f, 0.0075f, 0.0075f, 0.925f);
+        //Graphics::SetColor(0.0075f, 0.0075f, 0.0075f, 0.90f);
+        Graphics::SetColor(0.0075f, 0.0075f, 0.0075f, 0.85f);
         
         Graphics::DrawRect(0.0f, 0.0f, gDeviceWidth, gDeviceHeight);
         Graphics::SetColor();
@@ -351,31 +377,29 @@ void FApp::BaseDraw() {
 }
 
 void FApp::BaseLoad() {
+
+    Log("001\n");
+
+    if (gGraphicsInterface != NULL) {
+        gGraphicsInterface->SetContext();
+    }
+
     if (mDidInitialize == false) {
         BaseInitialize();
     }
+
+    Log("002\n");
+
+    mIsLoading = true;
+    mDidUnload = false;
     
     BaseSetDeviceSize(gDeviceWidth, gDeviceHeight);
     BaseSetVirtualFrame(gVirtualDevX, gVirtualDevY, gVirtualDevWidth, gVirtualDevHeight);
     BaseSetSafeAreaInsets(gSafeAreaInsetTop, gSafeAreaInsetRight, gSafeAreaInsetBottom, gSafeAreaInsetLeft);
-    
-    
-    mIsLoading = true;
-    
-    //os_getAssetScale()
-    
-    //bndl_sys_font_data.json
-    //bndl_sys_font_scale_1.png
-    //bndl_sys_font_scale_2.png
-    //bndl_sys_font_scale_3.png
-    //bndl_sys_font_scale_4.png
-    //sys_font.kern
-    
-    int aImageScale = (int)(gSpriteDrawScale + 0.5f);
-    int aScreenScale = os_getAssetScale();
-    if (aScreenScale == 0) { aScreenScale = 1; }
-    if (aImageScale > aScreenScale) { aScreenScale = aImageScale; }
-    AppShellSetImageFileScale(aScreenScale);
+
+    int aImageScale = 1;
+    AppShellSetImageFileScale(2.0f);
+    AppShellSetSpriteDrawScale(1.0f);
     
     
     //gImageBundler.StartBundle("bndl_roboto_bold_260");
@@ -384,14 +408,13 @@ void FApp::BaseLoad() {
     //}
     //gImageBundler.EndBundle();
     
-    
     gImageBundler.StartBundle("bndl_roboto_bold_300");
     if (gImageBundler.mBundleWidth > 32 && gImageBundler.mBundleHeight > 32) {
         mSysFontBold.LoadNew("roboto_bold_300_font.kern", "roboto_bold_300_");
     }
     gImageBundler.EndBundle();
     
-    mSysFontBold.mDataScale = 0.125f * aImageScale;
+    mSysFontBold.mDataScale = 0.125f;
     mSysFontBold.ApplyExpand(14.0f);
     mSysFontBold.SetSpaceWidth(64.0f);
     
@@ -410,48 +433,36 @@ void FApp::BaseLoad() {
     }
     gImageBundler.EndBundle();
     
-    mSysFont.mDataScale = 0.125f * aImageScale;
+    mSysFont.mDataScale = 0.125f;
     mSysFont.ApplyExpand(14.0f);
     mSysFont.SetSpaceWidth(64.0f);
     
     
     AppShellSetImageFileScale(1);
     
-    
     Load();
     
-    
-    
-    
-    /*
-    gImageBundler.mAutoBundle = true;
-    gImageBundler.StartBundle("bndl_roboto_300");
-    mFontLarge.LoadNew("roboto_300_font.kern", "roboto_300_");
-    gImageBundler.EndBundle();
-    
-    gImageBundler.StartBundle("bndl_roboto_bold_300");
-    mFontSmall.LoadNew("roboto_bold_300_font.kern", "roboto_bold_300_");
-    gImageBundler.EndBundle();
-    */
-    //
-    //
-    //
+    mWindowMain.RefreshAll();
+    mWindowModal.RefreshAll();
+    mWindowTools.RefreshAll();
 }
 
 void FApp::BaseLoadComplete() {
-    
     mIsLoading = false;
     mIsLoadingComplete = true;
-    
-    
-    
+    mDidUnload = false;
     LoadComplete();
+}
+
+void FApp::BaseUnload() {
     
-    //BaseSetDeviceSize(gDeviceWidth, gDeviceHeight);
-    //BaseSetVirtualFrame(gVirtualDevX, gVirtualDevY, gVirtualDevWidth, gVirtualDevHeight);
-    //BaseSetSafeAreaInsets(gSafeAreaInsetTop, gSafeAreaInsetRight, gSafeAreaInsetBottom, gSafeAreaInsetLeft);
+    mDidUnload = true;
+    mIsLoadingComplete = false;
     
+    mSysFont.Kill();
+    mSysFontBold.Kill();
     
+    Unload();
 }
 
 void FApp::MouseDown(float pX, float pY, int pButton) {
@@ -661,6 +672,9 @@ void FApp::ProcessKeyUp(int pKey) {
 }
 
 void FApp::BaseInactive() {
+    
+    Log("**** BaseInactive ****\n");
+    
     if (mActive == true) {
         mActive = false;
         ProcessTouchFlush();
@@ -677,11 +691,16 @@ void FApp::BaseInactive() {
         sound_stopAll();
         sound_inactive();
         music_inactive();
+
+    #if (CURRENT_ENV == ENV_ANDROID) || (CURRENT_ENV == ENV_IOS)
         
-        #if (CURRENT_ENV == ENV_ANDROID)
-        //|| (CURRENT_ENV == ENV_IOS)
-        Graphics::TearDown();
-        #endif
+        //Log("**** Teardown Graphics [Graphics::TearDown()] ****\n");
+        //ThrottleLock();
+        //BaseUnload();
+        //Graphics::TearDown();
+        //ThrottleUnlock();
+        
+    #endif
         
     }
 }
@@ -691,11 +710,12 @@ void FApp::BaseActive() {
         mActive = true;
         Active();
         
-        #if (CURRENT_ENV == ENV_ANDROID)
-        //|| (CURRENT_ENV == ENV_IOS)
-        mIsGraphicsSetUpEnqueued = true;
-        mGraphicsSetUpEnqueuedTimer = 4;
-        #endif
+        //#if (CURRENT_ENV == ENV_ANDROID) || (CURRENT_ENV == ENV_IOS)
+        //if (mDidUnload == true) {
+        //    mIsGraphicsSetUpEnqueued = true;
+        //    mGraphicsSetUpEnqueuedTimer = 1;
+        //}
+        //#endif
         
         InterfaceLock();
         gTouch.Active();
@@ -726,21 +746,15 @@ void FApp::Quit() {
     
 }
 
-bool FApp::ShouldQuit() {
-    return mQuit;
-}
-
 void FApp::BaseSetImageFileScale(int pScale) {
     mImageLoadScaleSuffix = FString("_scale_") + FString(gImageResolutionScale);
     SetImageFileScale(pScale);
 }
 
-static int clockCount = 0;
 void FApp::ThrottleLock() {
     if (os_thread_lock_exists(mThrottleLock) == false) {
         mThrottleLock = os_create_thread_lock();
     }
-    clockCount += 1;
     os_lock_thread(mThrottleLock);
 }
 
@@ -780,12 +794,12 @@ void FApp::SystemProcess() {
 
 void FApp::MainRunLoop() {
     
-     while (gGraphicsInterface->IsReady() == false) {
-         Log("Waiting for Graphics Module...\n");
-         os_sleep(18);
-     }
+     //while (gGraphicsInterface->IsReady() == false) {
+     //    Log("Waiting for Graphics Module...\n");
+     //    os_sleep(18);
+     //}
     
-     while (!ShouldQuit()) {
+     while (!mQuit) {
          FrameController();
      }
 }
@@ -822,21 +836,13 @@ void FApp::FrameController() {
         } else {
             SystemProcess();
             os_sleep(20);
+            ThrottleUnlock();
             return;
         }
     }
     
-    //
-    // Frame controller for static number of updates/sec
-    //
-    {
-        
-        /////////////////////////////////////////////////////////////////
-        //
-        // Main control loop... calls Update() appropriately
-        //
-        /////////////////////////////////////////////////////////////////
-        
+
+    
         
         mFrame.mDesiredUpdate = (float)(os_system_time() - mFrame.mBaseUpdateTime);
         mFrame.mDesiredUpdate /= 10;
@@ -857,18 +863,15 @@ void FApp::FrameController() {
                 
                 SystemProcess();
                 
-                if (ShouldQuit()) {
+                if (mQuit) {
                     break;
                 }
-                //
-                // Process the actual update
-                //
+                
                 mFrame.mCurrentUpdateNumber++;
                 
                 BaseUpdate();
             }
         }
-    }
     
     
     ThrottleUnlock();

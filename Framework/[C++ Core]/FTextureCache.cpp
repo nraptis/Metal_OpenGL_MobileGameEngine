@@ -43,15 +43,22 @@ FTexture *FTextureCache::GetTexture(const char *pFileName) {
 }
 
 void FTextureCache::UnloadAllTextures() {
+    
     EnumList(FTextureCacheNode, aNode, mNodeList) {
-        Log("--Unloading Node[%s]\n", aNode->mTexture->mFileName.c());
+        //Log("--Unloading Node[%s]\n", aNode->mTexture->mFileName.c());
+        if (aNode->mTexture->mBindIndex != -1) {
+            printf("Unloading Texture %s (Should have been unloaded before-hand!\n", aNode->mTexture->mFileName.c());
+        }
         aNode->mTexture->Unload();
     }
+    
+    //mNodeList.RemoveAll();
+    //mTableNodes.Clear();
 }
 
 void FTextureCache::ReloadAllTextures() {
     EnumList (FTextureCacheNode, aNode, mNodeList) {
-        Log("~~Reloading Node[%s] BI[%d] (%d)\n", aNode->mTexture->mFileName.c(), aNode->mTexture->mBindIndex, aNode->mBindCount);
+        //Log("~~Reloading Node[%s] BI[%d] (%d)\n", aNode->mTexture->mFileName.c(), aNode->mTexture->mBindIndex, aNode->mBindCount);
         if(aNode->mBindCount > 0) {
             aNode->mTexture->Realize();
             Log("Reloaded [%s] [%d x %d] Ind(%d)\n", aNode->mTexture->mFileName.c(), aNode->mTexture->mWidth,

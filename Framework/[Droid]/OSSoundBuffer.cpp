@@ -86,9 +86,9 @@ void OSSoundBuffer::SetUp() {
 
     SLDataFormat_PCM format_pcm = {SL_DATAFORMAT_PCM,              //formatType
                                    2,                              //numChannels
-                                   SL_SAMPLINGRATE_48,             //samplesPerSec
-                                   SL_PCMSAMPLEFORMAT_FIXED_8,    //bitsPerSample
-                                   SL_PCMSAMPLEFORMAT_FIXED_8,    //containerSize
+                                   SL_SAMPLINGRATE_44_1,             //samplesPerSec
+                                   SL_PCMSAMPLEFORMAT_FIXED_16,    //bitsPerSample
+                                   SL_PCMSAMPLEFORMAT_FIXED_16,    //containerSize
                                    SL_SPEAKER_FRONT_LEFT |
                                    SL_SPEAKER_FRONT_RIGHT,         //channelMask
                                    SL_BYTEORDER_LITTLEENDIAN};     //endianness

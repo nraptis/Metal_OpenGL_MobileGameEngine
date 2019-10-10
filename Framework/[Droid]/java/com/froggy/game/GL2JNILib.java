@@ -30,7 +30,7 @@ public class GL2JNILib {
     public static native void NativeAppShellInitialize(int pWidth, int pHeight);
 
     public static native void NativeAppShellDetachRunLoop();
-    public static native void NativeAppShellGraphicsReady();
+    public static native void NativeAppShellGraphicsSetUp();
 
     public static native void NativeAppShellFrame();
     public static native void NativeAppShellSetSize(int pWidth, int pHeight);

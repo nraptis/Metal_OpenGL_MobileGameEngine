@@ -25,8 +25,12 @@ FFileTable::FFileTable() {
 }
 
 FFileTable::~FFileTable() {
-    FFileTableNode *aNode = 0;
-    FFileTableNode *aNext = 0;
+    Clear();
+}
+
+void FFileTable::Clear() {
+    FFileTableNode *aNode = NULL;
+    FFileTableNode *aNext = NULL;
     for (int i=0;i<mTableSize;i++) {
         aNode = mTable[i];
         while (aNode) {
@@ -36,7 +40,7 @@ FFileTable::~FFileTable() {
         }
     }
     delete [] mTable;
-    mTable = 0;
+    mTable = NULL;
     mTableCount = 0;
     mTableSize = 0;
     FreeList(FFileTableNode, mQueue);

@@ -49,6 +49,9 @@ OpenGLEngine::~OpenGLEngine() {
 
 void OpenGLEngine::SetUp() {
     
+    Log("OpenGLEngine::SetUp()\n");
+    
+    
     /*
     glGenFramebuffers(1, &gFrameBuffer);
     glBindFramebuffer(GL_FRAMEBUFFER, gFrameBuffer);
@@ -63,6 +66,10 @@ void OpenGLEngine::SetUp() {
 }
 
 void OpenGLEngine::TearDown() {
+    
+    Log("OpenGLEngine::TearDown()\n");
+    
+    
     delete mShaderProgramShape2D;
     mShaderProgramShape2D = NULL;
     
@@ -279,9 +286,8 @@ void OpenGLEngine::UseProgramModelIndexedPhongOverlay() {
 
 void OpenGLEngine::UseProgramModelIndexedSimpleSpotlight() {
     
-    printf("Not Implemented:: UseProgramModelIndexedSimpleSpotlight\n");
+    Log("Not Implemented:: UseProgramModelIndexedSimpleSpotlight\n");
     exit(0);
     //UseProgram(mShaderProgramModelIndexedLightedSimpleSpotlight);
-    
 }
 

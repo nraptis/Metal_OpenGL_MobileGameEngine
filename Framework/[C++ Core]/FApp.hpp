@@ -31,12 +31,15 @@ public:
 	virtual void                                SetVirtualFrame(int pX, int pY, int pWidth, int pHeight) { }
     virtual void                                SetSafeAreaInsets(int pInsetUp, int pInsetRight, int pInsetDown, int pInsetLeft) { }
     
-    virtual void                                Load() {}
-    virtual void                                LoadComplete() {}
+    virtual void                                Load() { }
+    virtual void                                Unload() { }
+    
+    virtual void                                LoadComplete() { }
 
-    virtual void                                Update() {}
-    virtual void                                Draw() {}
-    virtual void                                DrawOver() {}
+    virtual void                                Update() { }
+    virtual void                                Draw() { }
+    virtual void                                DrawLoading() { }
+    virtual void                                DrawOver() { }
     
     virtual void                                Prerender() { }
     virtual void                                Postrender() { }
@@ -53,9 +56,9 @@ public:
     virtual void                                KeyDown(int pKey);
     virtual void                                KeyUp(int pKey);
 
-    virtual void                                Inactive(){}
-    virtual void                                Active(){}
-
+    virtual void                                Inactive() { }
+    virtual void                                Active() { }
+    
     virtual void                                MemoryWarning(bool pSevere) { }
     virtual void                                SetImageFileScale(int pScale) { }
     
@@ -94,6 +97,8 @@ public:
     void                                        ProcessKeyUp(int pKey);
 
     void                                        BaseLoad();
+    void                                        BaseUnload();
+    bool                                        mDidUnload;
     
     //mFrameController.Active();
     
@@ -102,6 +107,7 @@ public:
     
     void                                        BaseUpdate();
     void                                        BaseDraw();
+    void                                        BaseDrawLoading();
     void                                        BaseSetDeviceSize(int pWidth, int pHeight);
     void                                        BaseSetVirtualFrame(int pX, int pY, int pWidth, int pHeight);
     void                                        BaseSetSafeAreaInsets(int pInsetUp, int pInsetRight, int pInsetDown, int pInsetLeft);
@@ -132,11 +138,9 @@ public:
     
     void                                        BaseQuit();
     virtual void                                Quit();
-    bool                                        ShouldQuit();
     bool                                        mQuit;
     
     void                                        FrameController();
-    
     
     int                                         mSystemLock;
     void                                        SystemLock();
@@ -163,12 +167,6 @@ public:
     //
     // Control stuff...
     //
-    
-    bool                                        mDidInitializeGraphicsInterface;
-    
-    bool                                        mIsGraphicsSetUpEnqueued;
-    int                                         mGraphicsSetUpEnqueuedTimer;
-    
     
     float                                       mUpdatesPerSecond;
     

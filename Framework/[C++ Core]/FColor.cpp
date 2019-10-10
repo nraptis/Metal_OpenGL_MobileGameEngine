@@ -83,7 +83,7 @@ FColor::FColor(const char *pRGBAString)
 
 
 void FColor::Print(const char *pName) {
-    printf("[%s] FColor(%s, %s, %s, %s);\n", FString(pName).c(), FString(mRed).c(), FString(mGreen).c(), FString(mBlue).c(), FString(mRed).c());
+    Log("[%s] FColor(%s, %s, %s, %s);\n", FString(pName).c(), FString(mRed).c(), FString(mGreen).c(), FString(mBlue).c(), FString(mRed).c());
 }
 
 

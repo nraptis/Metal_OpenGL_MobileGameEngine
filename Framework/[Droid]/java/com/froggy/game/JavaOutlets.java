@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.locks.ReentrantLock;
+
 import java.util.concurrent.*;
 
 import android.content.Context;
@@ -20,8 +21,6 @@ import android.media.MediaPlayer;
 import android.provider.Settings;
 import android.util.Log;
 
-
-
 public class JavaOutlets
 {
 	private static Context mContext;
@@ -29,6 +28,12 @@ public class JavaOutlets
 	private static GL2JNIView mOpenGL;
 
 	private ArrayList<ReentrantLock> mLockList = new ArrayList<ReentrantLock>(100);
+	//private ArrayList<Semaphore> mLockList = new ArrayList<Semaphore>(100);
+
+
+
+
+	//
 
 	public static void setContext(Context c) {
 		mContext = c;
@@ -60,7 +65,7 @@ public class JavaOutlets
 
 		aPercent = aPercent * 100;
 
-		System.out.println("**Memory Free = [" + freeSize + " / " + totalSize
+		Log.d("java", "**Memory Free = [" + freeSize + " / " + totalSize
 				+ "] => " + (aPercent) + "% Free\n\n");
 
 	}
@@ -84,8 +89,8 @@ public class JavaOutlets
 				aResult = (int)(aDensity + 0.25);
 			}
 
-			System.out.println("Raw Scale = " + mContext.getResources().getDisplayMetrics().density);
-			System.out.println("Chosen Scale = " + aResult);
+			Log.d("java", "Raw Scale = " + mContext.getResources().getDisplayMetrics().density);
+			Log.d("java", "Chosen Scale = " + aResult);
 
 		}
 		return aResult;
@@ -97,6 +102,15 @@ public class JavaOutlets
 
 		ReentrantLock aLock = new ReentrantLock();
 		mLockList.add(aLock);
+
+		//Lock aLock = new Lock();
+		//mLockList.add(aLock);
+
+		//Semaphore aLock = new Semaphore(1);
+		//mLockList.add(aLock);
+
+
+
 
 		return aResult;
 	}
@@ -110,50 +124,77 @@ public class JavaOutlets
 
 	public void lockThread(int pLockIndex) {
 		if (pLockIndex >= 0 && pLockIndex < mLockList.size()) {
-				try {
-					mLockList.get(pLockIndex).lock();
-				} catch (IllegalMonitorStateException exc) {
-					System.out.println("*****************");
-					System.out.println("BAD LOCK!!!!!!!");
-					System.out.println(exc);
-				}
+
+
+			//
+			/*
+			try {
+				mLockList.get(pLockIndex).acquire();
+			} catch (InterruptedException exc) {
+				Log.d("java", "*****************");
+				Log.d("java", "BAD SEMAPHORE!!!!!!!");
+				System.out.println(exc);
+			}
+			*/
+
+			try {
+				mLockList.get(pLockIndex).lock();
+			} catch (IllegalMonitorStateException exc) {
+				Log.d("java", "*****************");
+				Log.d("java", "BAD LOCK!!!!!!!");
+				System.out.println(exc);
+
+			}
 		}
 	}
 
 	public void unlockThread(int pLockIndex) {
 		if (pLockIndex >= 0 && pLockIndex < mLockList.size()) {
+
+			//mLockList.get(pLockIndex).release();
+
 			try {
 				mLockList.get(pLockIndex).unlock();
 			} catch (IllegalMonitorStateException exc) {
-				System.out.println("*****************");
-				System.out.println("BAD UN-LOCK!!!!!!!");
+				Log.d("java", "*****************");
+				Log.d("java", "BAD UN-LOCK!!!!!!!");
 				System.out.println(exc);
 			}
+
 		}
 	}
 
 	public void deleteThreadLock(int pLockIndex) {
 		if (pLockIndex >= 0 && pLockIndex < mLockList.size()) {
+
+			//mLockList.get(pLockIndex).release();
+
 			try {
 				mLockList.get(pLockIndex).unlock();
 			} catch (IllegalMonitorStateException exc) {
-				System.out.println("*****************");
-				System.out.println("BAD UN-LOCK!!!!!!!");
+				Log.d("java", "*****************");
+				Log.d("java", "BAD UN-LOCK!!!!!!!");
 				System.out.println(exc);
 			}
+
+
 			mLockList.remove(pLockIndex);
 		}
 	}
 
 	public void deleteAllThreadLocks() {
 		for (int i=0;i<mLockList.size();i++) {
+
+			//mLockList.get(i).release();
+
 			try {
 				mLockList.get(i).unlock();
 			} catch (IllegalMonitorStateException exc) {
-				System.out.println("*****************");
-				System.out.println("BAD UN-LOCK!!!!!!!");
+				Log.d("java", "*****************");
+				Log.d("java", "BAD UN-LOCK!!!!!!!");
 				System.out.println(exc);
 			}
+
 		}
 		mLockList.clear();
 	}
@@ -161,7 +202,7 @@ public class JavaOutlets
 	public void JavaLog(String pText) {
 		if (pText.length() <= 0)
 			pText = " ";
-		Log.i("c++", pText);
+		Log.d("c++", pText);
 	}
 
 	public boolean fileExists(String pPath) {
@@ -254,7 +295,7 @@ public class JavaOutlets
 		}
 		catch (Exception e)
 		{
-			System.out.println("Save File Exception!" + e);
+			Log.d("java", "Save File Exception!" + e);
 		}
 		return aReturn;
 	}
@@ -390,7 +431,7 @@ public class JavaOutlets
 	{
 		int aReturn = 0;
 
-		System.out.println("LOADING SOUND [" + pPath + "]" + "Inst["
+		Log.d("java", "LOADING SOUND [" + pPath + "]" + "Inst["
 				+ pInstanceCount + "]");
 
 		AssetManager aAssetManager = context.getResources().getAssets();
@@ -400,7 +441,7 @@ public class JavaOutlets
 
 			int aLength = is.available();
 			if (aLength > 0) {
-				System.out.println("Loaded Sound! [" + pPath + "]" + "("
+				Log.d("java", "Loaded Sound! [" + pPath + "]" + "("
 						+ aLength + ")");
 				aReturn = 1;
 			}

@@ -22,6 +22,8 @@ PlatformGraphicsInterface::~PlatformGraphicsInterface()
 }
 
 void PlatformGraphicsInterface::Initialize() {
+    Log("PlatformGraphicsInterface::Initialize()");
+    
     //mLastTime = gOpenGLView.displayLink.timestamp;
     mLastTime = CACurrentMediaTime();
 }
@@ -39,6 +41,10 @@ bool PlatformGraphicsInterface::IsReady() {
 
 
 void PlatformGraphicsInterface::Kill() {
+    
+    Log("PlatformGraphicsInterface::Kill()");
+    
+    
     //[CCDirectorCaller destroy];
     // destroy EAGLView
     //CCEAGLView *eaglview = (CCEAGLView*) _eaglview;

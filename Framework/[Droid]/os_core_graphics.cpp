@@ -53,8 +53,7 @@ static float                                cDeviceScale = 1.0f;
 static float                                cClipRectBase[4];
 static bool                                 cClipEnabled = false;
 
-static bool                                 cDidTearDown = false;
-
+//static bool                                 cDidTearDown = false;
 
 
 ShaderProgram                               *cShaderProgram = NULL;
@@ -74,8 +73,6 @@ FIndexBufferCache                           cIndexCache;
 
 static FColor                               cColor;
 static float                                cRectBuffer[12];
-
-volatile static bool                        cGraphicsThreadLocked = false;
 
 
 Graphics::Graphics() {
@@ -130,8 +127,15 @@ void Graphics::Initialize() {
 }
 
 void Graphics::SetUp() {
-    Log("Graphics::SetUp(torn:%d)\n", cDidTearDown);
+    
+    Log("Graphics::SetUp() => gOpenGLEngine->SetUp();\n");
     gOpenGLEngine->SetUp();
+    
+    
+    gTextureCache.ReloadAllTextures();
+    gBufferCache.ReloadAllBuffers();
+    
+    /*
     if (cDidTearDown) {
         cDidTearDown = false;
         gOpenGLEngine->SetUp();
@@ -140,14 +144,17 @@ void Graphics::SetUp() {
         
         EnumList(FSprite, aSprite, gSpriteList) {
             aSprite->WriteBuffers();
-            printf("Sprite Name: %s\n", aSprite->mFileName.c());
+            Log("Sprite Name: %s\n", aSprite->mFileName.c());
         }
         
-        EnumList(FModelDataPacked, aModel, gPackedModelList) {
-            aModel->WriteBuffers();
-        }
+        //EnumList(FModelDataPacked, aModel, gPackedModelList) {
+        //    aModel->WriteBuffers();
+        //}
+        
         
     }
+    */
+    
 }
 
 //Before we lose out content, we TEAR DOWN.
@@ -156,11 +163,11 @@ void Graphics::TearDown() {
     Log("Graphics::TearDown()\n");
     
     if (gOpenGLEngine) {
+        Log("Graphics::TearDown() => gOpenGLEngine->Teardown();\n");
         gOpenGLEngine->TearDown();
-        
     }
     
-    cDidTearDown = true;
+    //cDidTearDown = true;
     gTextureCache.UnloadAllTextures();
     gBufferCache.UnloadAllBuffers();
     
@@ -217,19 +224,6 @@ void Graphics::DrawQuad(float pX1, float pY1, float pX2, float pY2, float pX3, f
     BufferArrayWrite(aBufferPosition, cRectBuffer, 0, sizeof(float) * 8);
     ArrayBufferPositions(aBufferPosition, 0);
     
-    /*
-     cVertexCache.Get(sizeof(float) * 8);
-     if (cVertexCache.mResult.mSuccess) {
-     FBuffer *aPositionsBuffer = cVertexCache.mResult.mBuffer;
-     int aPositionsBufferOffset = cVertexCache.mResult.mBufferOffset;
-     
-     BufferArrayWrite(aPositionsBufferIndex, cRectBuffer, aPositionsBufferOffset, sizeof(float) * 8);
-     ArrayBufferPositions(aPositionsBufferIndex, aPositionsBufferOffset);
-     }
-     */
-    //
-    //
-    //
     UniformBind();
     DrawTriangleStrips(4);
     //
@@ -667,7 +661,7 @@ void Graphics::ArrayBufferTangents(FBuffer *pBuffer) {
 
 void Graphics::ArrayBufferTangents(FBuffer *pBuffer, int pOffset) {
     //ShaderProgram->ArrayBufferTangents(<#int pIndex#>, <#int pOffset#>)
-    Log("BAD BAD BAD\n");
+    Log("ArrayBufferTangents - NOT IMPLEMENTED - EXITING...\n");
     exit(0);
 }
 
@@ -1760,7 +1754,9 @@ void Graphics::RenderPassBegin(int pRenderPass, bool pClearColor, bool pClearDep
         Graphics::DepthClear();
     }
     if (pClearColor) {
-        Graphics::Clear(0.025f, 0.025f, 0.065f);
+        //Graphics::Clear(0.025f, 0.025f, 0.065f);
+        Graphics::Clear(0.65f, 0.675f, 0.965f);
+        
     }
     
     //[gMetalEngine startRenderPass:pRenderPass clearingColor: pClearColor clearingDepth: pClearDepth];

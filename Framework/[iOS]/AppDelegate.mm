@@ -22,6 +22,7 @@
 
 int kDeviceWidth = 320;
 int kDeviceHeight = 320;
+bool kDeviceActive = false;
 
 @interface AppDelegate ()
 
@@ -134,6 +135,9 @@ int kDeviceHeight = 320;
     
     [_rootViewController setup];
     
+    
+    kDeviceActive = true;
+    AppShellGraphicsSetUp();
     AppShellLoad();
     
     return YES;
@@ -145,6 +149,8 @@ int kDeviceHeight = 320;
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
     [_rootViewController inactive];
     AppShellPause();
+    
+    kDeviceActive = false;
 }
 
 
@@ -153,6 +159,8 @@ int kDeviceHeight = 320;
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     [_rootViewController inactive];
     AppShellPause();
+    
+    kDeviceActive = false;
 }
 
 
@@ -160,7 +168,11 @@ int kDeviceHeight = 320;
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     AppShellResume();
     
+    
+    
+    
     [_rootViewController active];
+    
 }
 
 
@@ -169,6 +181,15 @@ int kDeviceHeight = 320;
     AppShellResume();
     
     [_rootViewController active];
+    
+    /*
+    if (kDeviceActive == false) {
+        //TODO: This is ONLY for TESTING UNLOAD / RELOAD!!!
+        kDeviceActive = true;
+        AppShellGraphicsSetUp();
+        AppShellLoad();
+    }
+    */
 }
 
 
