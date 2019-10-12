@@ -122,8 +122,8 @@ NSMutableSet *gLockStrongReferenceSet = [[NSMutableSet alloc] init];
 int os_create_thread_lock() {
     RecursiveLockWrapper *aContainer = [[RecursiveLockWrapper alloc] init];
     [gLockStrongReferenceSet addObject: aContainer];
-    //aContainer.lock = [[NSRecursiveLock alloc] init];
-    aContainer.lock = [[NSLock alloc] init];
+    aContainer.lock = [[NSRecursiveLock alloc] init];
+    //aContainer.lock = [[NSLock alloc] init];
     
     int aResult = gThreadLockList.mCount;
     gThreadLockList.Add((__bridge void *)aContainer);
