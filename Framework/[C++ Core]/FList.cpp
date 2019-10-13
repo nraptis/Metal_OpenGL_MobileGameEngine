@@ -144,7 +144,9 @@ void *FList::FetchCircular(int pIndex) {
     if (mCount > 0) {
         if (pIndex < 0 || pIndex >= mCount) {
             pIndex = pIndex % mCount;
-            if (pIndex < 0)pIndex += mCount;
+            if (pIndex < 0) {
+                pIndex += mCount;
+            }
         }
         return mData[pIndex];
     }

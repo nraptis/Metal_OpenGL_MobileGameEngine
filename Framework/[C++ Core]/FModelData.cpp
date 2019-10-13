@@ -554,22 +554,18 @@ void FModelData::LoadOBJ(FFile *pFile)
     bool aContinue;
     int aLine=1;
     
-	while((aLineStart<aEnd)&&(aError==0))
-	{
-		while(*aLineStart <= 32 && aLineStart < aEnd)
-		{
+	while((aLineStart<aEnd)&&(aError==0)) {
+		while((aLineStart < aEnd) && (*aLineStart <= 32)) {
 			aLineStart++;
 		}
         
 		aLineEnd=aLineStart;
         
-		while(*aLineEnd >= 32 && aLineEnd < aEnd)
-		{
+		while ((aLineEnd < aEnd) && (*aLineEnd >= 32)) {
 			aLineEnd++;
 		}
         
-		if((aLineEnd>aLineStart)&&(aError==0))
-		{
+		if ((aLineEnd > aLineStart) && (aError == 0)) {
             aLineLength = (int)(aLineEnd - aLineStart);
             if(aLineLength > 1)
             {
