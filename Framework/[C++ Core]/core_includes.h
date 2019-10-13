@@ -1,5 +1,3 @@
-
-
 #ifndef CORE_INC_H
 #define CORE_INC_H
 
@@ -19,12 +17,6 @@
 #ifndef _abs
 #define _abs(x) ((x) > 0) ? (x) : -(x)
 #endif
-
-#define LANDSCAPE_MODE 1
-//#undef LANDSCAPE_MODE
-
-//#include "os_core_includes.h"
-//#include "app_global.h"
 
 #include "os_core_includes.h"
 #include "os_core_outlets.h"
@@ -57,6 +49,9 @@
 #include "FRect.hpp"
 #include "FSprite.hpp"
 #include "FSpriteSequence.h"
+#include "FModelDataPacked.hpp"
+#include "FModelDataPackedSequence.hpp"
+#include "FFont.hpp"
 #include "FString.hpp"
 #include "FVec2.hpp"
 #include "FVec3.hpp"
@@ -66,7 +61,6 @@
 #include "FTexture.hpp"
 #include "FTextureCache.hpp"
 #include "FBufferCache.hpp"
-
 #include "FButton.hpp"
 #include "FMatrix.hpp"
 #include "FMath.hpp"
@@ -304,179 +298,8 @@ static FList sSpriteList;
 #define __KEY__DOWNARROW       __KEY__DOWN            /* DownArrow on arrow keypad */
 #define __KEY__PGDN            __KEY__NEXT            /* PgDn on arrow keypad */
 
-/*
-enum FKeys
-{
-	mKey0 = __KEY__0,
-	m1 = __KEY__1,
-	m2 = __KEY__2,
-	m3 = __KEY__3,
-	m4 = __KEY__4,
-	m5 = __KEY__5,
-	m6 = __KEY__6,
-	m7 = __KEY__7,
-	m8 = __KEY__8,
-	m9 = __KEY__9,
-
-	mA = __KEY__A,
-	mB = __KEY__B,
-	mC = __KEY__C,
-	mD = __KEY__D,
-	mE = __KEY__E,
-	mF = __KEY__F,
-	mG = __KEY__G,
-	mH = __KEY__H,
-	mI = __KEY__I,
-	mJ = __KEY__J,
-	mK = __KEY__K,
-	mL = __KEY__L,
-	mM = __KEY__M,
-	mN = __KEY__N,
-	mO = __KEY__O,
-	mP = __KEY__P,
-	mQ = __KEY__Q,
-	mR = __KEY__R,
-	mS = __KEY__S,
-	mT = __KEY__T,
-	mU = __KEY__U,
-	mV = __KEY__V,
-	mW = __KEY__W,
-	mX = __KEY__X,
-	mY = __KEY__Y,
-	mZ = __KEY__Z,
-	mLeftShift = __KEY__LSHIFT,
-	mLShift = __KEY__LSHIFT,
-	mRightShift = __KEY__RSHIFT,
-	mRShift = __KEY__RSHIFT,
-	mLeftControl = __KEY__LCONTROL,
-	mRightControl = __KEY__RCONTROL,
-	mLeftCTRL = __KEY__LCONTROL,
-	mRightCTRL = __KEY__RCONTROL,
-	mLControl = __KEY__LCONTROL,
-	mRControl = __KEY__RCONTROL,
-	mLCTRL = __KEY__LCONTROL,
-	mRCTRL = __KEY__RCONTROL,
-	mApostrophe = __KEY__APOSTROPHE,
-	mApplication = __KEY__APPS,
-	mBack = __KEY__BACK,
-	mBackspace = __KEY__BACKSPACE,
-	mBackSpace = __KEY__BACKSPACE,
-	mBackSlash = __KEY__BACKSLASH,
-	mBackslash = __KEY__BACKSLASH,
-	mCalculator = __KEY__CALCULATOR,
-	mCapsLock = __KEY__CAPITAL,
-	mCapital = __KEY__CAPITAL,
-	mComma = __KEY__COMMA,
-	mDelete = __KEY__DELETE,
-	mSlash_Keypad = __KEY__DIVIDE,
-	mDivide_Keypad = __KEY__DIVIDE,
-	mDown = __KEY__DOWN,
-	mDownArrow = __KEY__DOWN,
-	mUp = __KEY__UP,
-	mUpArrow = __KEY__UP,
-	mLeft = __KEY__LEFT,
-	mLeftArrow = __KEY__LEFT,
-	mRight = __KEY__RIGHT,
-	mRightArrow = __KEY__RIGHT,
-	mEnd = __KEY__END,
-	mEquals = __KEY__EQUALS,
-	mPlus = __KEY__EQUALS,
-	mEqualSign = __KEY__EQUALS,
-	mEsc = __KEY__ESCAPE,
-	mEscape = __KEY__ESCAPE,
-	mF1 = __KEY__F1,
-	mF2 = __KEY__F2,
-	mF3 = __KEY__F3,
-	mF4 = __KEY__F4,
-	mF5 = __KEY__F5,
-	mF6 = __KEY__F6,
-	mF7 = __KEY__F7,
-	mF8 = __KEY__F8,
-	mF9 = __KEY__F9,
-	mF10 = __KEY__F10,
-	mF11 = __KEY__F11,
-	mF12 = __KEY__F12,
-	mTilde = __KEY__GRAVE,
-	mHome = __KEY__HOME,
-	mInsert = __KEY__INSERT,
-	mLeftAlt = __KEY__LALT,
-	mLAlt = __KEY__LALT,
-	mRightAlt = __KEY__RALT,
-	mRAlt = __KEY__RALT,
-	mLeftBracket = __KEY__LBRACKET,
-	mLBracket = __KEY__LBRACKET,
-	mRightBracket = __KEY__RBRACKET,
-	mRBracket = __KEY__RBRACKET,
-	mLeftWindows = __KEY__LWIN,
-	mLWindows = __KEY__LWIN,
-	mRightWindows = __KEY__RWIN,
-	mRWindows = __KEY__RWIN,
-	mMail = __KEY__MAIL,
-	mMediaSelect = __KEY__MEDIASELECT,
-	mMediaStop = __KEY__MEDIASTOP,
-	mMinus = __KEY__MINUS,
-	mUnderscore = __KEY__MINUS,
-	mMultiply_Keypad = __KEY__MULTIPLY,
-	mStar_Keypad = __KEY__MULTIPLY,
-	mStar = __KEY__MULTIPLY,
-	mAsterisk = __KEY__MULTIPLY,
-	mMute = __KEY__MUTE,
-	mMyComputer = __KEY__MYCOMPUTER,
-	mNext = __KEY__NEXTTRACK,
-	mNumLock = __KEY__NUMLOCK,
-	m1_Keypad = __KEY__NUMPAD1,
-	m2_Keypad = __KEY__NUMPAD2,
-	m3_Keypad = __KEY__NUMPAD3,
-	m4_Keypad = __KEY__NUMPAD4,
-	m5_Keypad = __KEY__NUMPAD5,
-	m6_Keypad = __KEY__NUMPAD6,
-	m7_Keypad = __KEY__NUMPAD7,
-	m8_Keypad = __KEY__NUMPAD8,
-	m9_Keypad = __KEY__NUMPAD9,
-	m0_Keypad = __KEY__NUMPAD0,
-	mComma_Keypad = __KEY__NUMPADCOMMA,
-	mEnter_Keypad = __KEY__NUMPADENTER,
-	mEquals_Keypad = __KEY__NUMPADENTER,
-	mMinus_Keypad = __KEY__NUMPADMINUS,
-	mPeriod_Keypad = __KEY__DECIMAL,
-	mPlus_Keypad = __KEY__NUMPADPLUS,
-	mPeriod = __KEY__PERIOD,
-	mPageDown = __KEY__PGDN,
-	mPgDn = __KEY__PGDN,
-	mPGDN = __KEY__PGDN,
-	mPageUp = __KEY__PGUP,
-	mPgUp = __KEY__PGUP,
-	mPGUP = __KEY__PGUP,
-	mPause = __KEY__PAUSE,
-	mPlayPause = __KEY__PLAYPAUSE,
-	mPower = __KEY__POWER,
-	mPreviousTrack = __KEY__PREVTRACK,
-	mEnter = __KEY__RETURN,
-	mReturn = __KEY__RETURN,
-	mScrollLock = __KEY__SCROLL,
-	mSemiColor = __KEY__SEMICOLON,
-	mSlash = __KEY__SLASH,
-	mSleep = __KEY__SLEEP,
-	mSpace = __KEY__SPACE,
-	mTab = __KEY__TAB,
-	mVolumeDown = __KEY__VOLUMEDOWN,
-	mVolumeUp = __KEY__VOLUMEUP,
-	mWake = __KEY__WAKE,
-	mWebBack = __KEY__WEBBACK,
-	mWebFavorites = __KEY__WEBFAVORITES,
-	mWebForward = __KEY__WEBFORWARD,
-	mWebHome = __KEY__WEBHOME,
-	mWebRefresh = __KEY__WEBREFRESH,
-	mWebSearch = __KEY__WEBSEARCH,
-	mWebStop = __KEY__WEBSTOP,
-
-	mNullKey
-};
-*/
-
 extern const char           *gKeyName[256];
 extern bool 				gKeyPressed[256];
-
 
 extern bool gKeyDownCtrl;
 extern bool gKeyDownShift;

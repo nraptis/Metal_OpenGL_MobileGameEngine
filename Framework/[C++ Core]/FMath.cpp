@@ -234,40 +234,8 @@ FVec3 Rotate3D(FVec3 pPoint, FVec3 pAxis, float pDegrees) {
 
 FMatrix cVector3DRotationMatrix;
 FVec3 Rotate3DNormalized(FVec3 pPoint, FVec3 pAxis, float pDegrees) {
-    
     cVector3DRotationMatrix.ResetRotationNormalized(pDegrees, pAxis.mX, pAxis.mY, pAxis.mZ);
     return cVector3DRotationMatrix.ProcessVec3RotationOnly(pPoint);
-    
-    //float aX = m[0] * pVec.mX + m[4] * pVec.mY + m[8 ] * pVec.mZ + m[12];
-    //float aY = m[1] * pVec.mX + m[5] * pVec.mY + m[9 ] * pVec.mZ + m[13];
-    //float aZ = m[2] * pVec.mX + m[6] * pVec.mY + m[10] * pVec.mZ + m[14];
-    //float aW = m[3] * pVec.mX + m[7] * pVec.mY + m[11] * pVec.mZ + m[15];
-    
-    /*
-    FVec3 aResult = pPoint;
-    float aDirX = pAxis.mX; float aDirY = pAxis.mY; float aDirZ = pAxis.mZ;
-    float aX = aResult.mX; float aY = aResult.mY; float aZ = aResult.mZ;
-    
-    float aCos = Cos(pDegrees);
-    float aSin = Sin(pDegrees);
-    float aCosInv = 1 - aCos;
-    
-    float aCosInvXY = aDirX * aDirY * aCosInv;
-    float aCosInvXZ = aDirX * aDirZ * aCosInv;
-    float aCosInvYZ = aDirY * aDirZ * aCosInv;
-    
-    float aSinX = aDirX * aSin;
-    float aSinY = aDirY * aSin;
-    float aSinZ = aDirZ * aSin;
-    
-    aResult.mX = (aDirX * aDirX * aCosInv + aCos) * aX + (aCosInvXY - aSinZ) * aY + (aCosInvXZ + aSinY) * aZ;
-    aResult.mY = (aCosInvXY + aSinZ) * aX + (aDirY * aDirY * aCosInv + aCos) * aY + (aCosInvYZ - aSinX) * aZ;
-    aResult.mZ = (aSinZ + aSinY) * aX + (aCosInvYZ - aSinX) * aY + (aDirZ * aDirZ * aCosInv + aCos) * aZ;
-    
-    return aResult;
-    */
-    
-    
 }
 
 float TriangleArea(float x1, float y1, float x2, float y2, float x3, float y3) {

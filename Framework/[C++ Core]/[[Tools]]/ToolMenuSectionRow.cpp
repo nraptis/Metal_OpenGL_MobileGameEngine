@@ -24,7 +24,7 @@ ToolMenuSectionRow::ToolMenuSectionRow() {
 }
 
 ToolMenuSectionRow::~ToolMenuSectionRow() {
-
+    FreeList(UIElement, mElementList);
 }
 
 float ToolMenuSectionRow::RowHeight() {

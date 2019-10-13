@@ -586,15 +586,13 @@ float FAnimation::EaseOutInQuart(float pPercent)
     return EaseInQuart(2*pPercent-1)/2 + 0.5;
 }
 
-float FAnimation::EaseInQuint(float pPercent)
-{
-    return pPercent*pPercent*pPercent*pPercent*pPercent;
+float FAnimation::EaseInQuint(float pPercent) {
+    return pPercent * pPercent * pPercent * pPercent * pPercent;
 }
 
-float FAnimation::EaseOutQuint(float pPercent)
-{
-    pPercent-=1.0;
-    return pPercent*pPercent*pPercent*pPercent*pPercent + 1;
+float FAnimation::EaseOutQuint(float pPercent) {
+    pPercent -= 1.0f;
+    return pPercent*pPercent*pPercent*pPercent*pPercent + 1.0f;
 }
 
 float FAnimation::EaseInOutQuint(float pPercent)

@@ -24,7 +24,9 @@ FDrawQuad::FDrawQuad() {
     }
 }
 
-FDrawQuad::~FDrawQuad() { }
+FDrawQuad::~FDrawQuad() {
+    
+}
 
 static GFX_MODEL_INDEX_TYPE cQuadIndex[6] = { 0, 1, 2, 1, 3, 2 };
 void FDrawQuad::Draw(FSprite *pSprite) {
@@ -844,13 +846,23 @@ void FDrawQuadGrid::Reset() {
 }
 
 void FDrawQuadGrid::Clear() {
+    
     delete [] mXYZ;
     delete [] mUVW;
     delete [] mRGBA;
     
-    mXYZ = 0;
-    mUVW = 0;
-    mRGBA = 0;
+    mXYZ = NULL;
+    mUVW = NULL;
+    mRGBA = NULL;
+    
+    
+    delete [] mXYZBase;
+    delete [] mUVWBase;
+    delete [] mRGBABase;
+    
+    mXYZBase = NULL;
+    mUVWBase = NULL;
+    mRGBABase = NULL;
     
     mWidth = 0;
     mHeight = 0;

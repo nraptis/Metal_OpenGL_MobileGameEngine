@@ -30,7 +30,7 @@ public:
     
     void                                    Free();
     void                                    KillAll();
-
+    
     FList                                   mObjectList;
     FList                                   mObjectListTemp;
     FList                                   mObjectListKill;

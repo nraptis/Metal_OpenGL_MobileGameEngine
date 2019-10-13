@@ -1256,56 +1256,7 @@ FMatrix FMatrixInvert(FMatrix pMatrix, bool *pInvertable) {
     return m;
 }
 
-FMatrix FMatrixMultiply(FMatrix pMatrixLeft, FMatrix pMatrixRight)
-{
-    
-    /*
-     #if defined(__ARM_NEON__)
-     
-     float32x4x4_t iMatrixRight =
-     {{
-     {pMatrixRight.m[0], pMatrixRight.m[1], pMatrixRight.m[2], pMatrixRight.m[3]},
-     {pMatrixRight.m[4], pMatrixRight.m[5], pMatrixRight.m[6], pMatrixRight.m[7]},
-     {pMatrixRight.m[8], pMatrixRight.m[9], pMatrixRight.m[10], pMatrixRight.m[11]},
-     {pMatrixRight.m[12], pMatrixRight.m[13], pMatrixRight.m[14], pMatrixRight.m[15]}
-     }};
-     
-     float32x4x4_t iMatrixLeft =
-     {{
-     {pMatrixLeft.m[0], pMatrixLeft.m[1], pMatrixLeft.m[2], pMatrixLeft.m[3]},
-     {pMatrixLeft.m[4], pMatrixLeft.m[5], pMatrixLeft.m[6], pMatrixLeft.m[7]},
-     {pMatrixLeft.m[8], pMatrixLeft.m[9], pMatrixLeft.m[10], pMatrixLeft.m[11]},
-     {pMatrixLeft.m[12], pMatrixLeft.m[13], pMatrixLeft.m[14], pMatrixLeft.m[15]}
-     }};
-     
-     float32x4x4_t m;
-     
-     m.val[0] = vmulq_n_f32(iMatrixLeft.val[0], vgetq_lane_f32(iMatrixRight.val[0], 0));
-     m.val[1] = vmulq_n_f32(iMatrixLeft.val[0], vgetq_lane_f32(iMatrixRight.val[1], 0));
-     m.val[2] = vmulq_n_f32(iMatrixLeft.val[0], vgetq_lane_f32(iMatrixRight.val[2], 0));
-     m.val[3] = vmulq_n_f32(iMatrixLeft.val[0], vgetq_lane_f32(iMatrixRight.val[3], 0));
-     
-     m.val[0] = vmlaq_n_f32(m.val[0], iMatrixLeft.val[1], vgetq_lane_f32(iMatrixRight.val[0], 1));
-     m.val[1] = vmlaq_n_f32(m.val[1], iMatrixLeft.val[1], vgetq_lane_f32(iMatrixRight.val[1], 1));
-     m.val[2] = vmlaq_n_f32(m.val[2], iMatrixLeft.val[1], vgetq_lane_f32(iMatrixRight.val[2], 1));
-     m.val[3] = vmlaq_n_f32(m.val[3], iMatrixLeft.val[1], vgetq_lane_f32(iMatrixRight.val[3], 1));
-     
-     m.val[0] = vmlaq_n_f32(m.val[0], iMatrixLeft.val[2], vgetq_lane_f32(iMatrixRight.val[0], 2));
-     m.val[1] = vmlaq_n_f32(m.val[1], iMatrixLeft.val[2], vgetq_lane_f32(iMatrixRight.val[1], 2));
-     m.val[2] = vmlaq_n_f32(m.val[2], iMatrixLeft.val[2], vgetq_lane_f32(iMatrixRight.val[2], 2));
-     m.val[3] = vmlaq_n_f32(m.val[3], iMatrixLeft.val[2], vgetq_lane_f32(iMatrixRight.val[3], 2));
-     
-     m.val[0] = vmlaq_n_f32(m.val[0], iMatrixLeft.val[3], vgetq_lane_f32(iMatrixRight.val[0], 3));
-     m.val[1] = vmlaq_n_f32(m.val[1], iMatrixLeft.val[3], vgetq_lane_f32(iMatrixRight.val[1], 3));
-     m.val[2] = vmlaq_n_f32(m.val[2], iMatrixLeft.val[3], vgetq_lane_f32(iMatrixRight.val[2], 3));
-     m.val[3] = vmlaq_n_f32(m.val[3], iMatrixLeft.val[3], vgetq_lane_f32(iMatrixRight.val[3], 3));
-     
-     return *(FMatrix *)&(m);
-     
-     #else
-     */
-    
-    
+FMatrix FMatrixMultiply(FMatrix pMatrixLeft, FMatrix pMatrixRight) {
     FMatrix aMatrix;
     
     aMatrix.m[0]  = pMatrixLeft.m[0] * pMatrixRight.m[0]  + pMatrixLeft.m[4] * pMatrixRight.m[1]  + pMatrixLeft.m[8] * pMatrixRight.m[2]   + pMatrixLeft.m[12] * pMatrixRight.m[3];

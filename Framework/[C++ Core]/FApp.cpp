@@ -326,9 +326,9 @@ void FApp::BaseDraw() {
     Graphics::MatrixModelViewReset();
     DrawOver();
     
+    /*
+    
     if (Graphics::RenderPass() == GFX_RENDER_PASS_2D_MAIN) {
-        
-        
         Graphics::MatrixProjectionResetOrtho();
         Graphics::MatrixModelViewReset();
         Graphics::SetColor();
@@ -345,24 +345,7 @@ void FApp::BaseDraw() {
         
     }
     
-    if (Graphics::RenderPass() == GFX_RENDER_PASS_2D_MAIN) {
-        
-        /*
-        Graphics::PipelineStateSetShape2DAlphaBlending();
-        Graphics::SetColor(0.55f, 0.55f, 0.55f, 0.5f);
-        Graphics::DrawLine(gVirtualDevX + gSafeAreaInsetLeft, gVirtualDevY, gVirtualDevX + gSafeAreaInsetLeft, gVirtualDevY + gVirtualDevHeight, 2.0f);
-        Graphics::DrawLine(gVirtualDevX + gVirtualDevWidth - gSafeAreaInsetRight, gVirtualDevY, gVirtualDevX + gVirtualDevWidth - gSafeAreaInsetRight, gVirtualDevY + gVirtualDevHeight, 2.0f);
-        Graphics::DrawLine(gVirtualDevX, gVirtualDevY + gSafeAreaInsetTop, gVirtualDevX + gVirtualDevWidth, gVirtualDevY + gSafeAreaInsetTop, 2.0f);
-        Graphics::DrawLine(gVirtualDevX, gVirtualDevY + gVirtualDevHeight - gSafeAreaInsetBottom, gVirtualDevX + gVirtualDevWidth, gVirtualDevY + gVirtualDevHeight - gSafeAreaInsetBottom, 2.0f);
-        
-        
-        Graphics::SetColor(0.11f, 0.11f, 0.11f, 0.5f);
-        Graphics::DrawLine(gVirtualDevX + gSafeAreaInsetLeft, gVirtualDevY, gVirtualDevX + gSafeAreaInsetLeft, gVirtualDevY + gVirtualDevHeight);
-        Graphics::DrawLine(gVirtualDevX + gVirtualDevWidth - gSafeAreaInsetRight, gVirtualDevY, gVirtualDevX + gVirtualDevWidth - gSafeAreaInsetRight, gVirtualDevY + gVirtualDevHeight);
-        Graphics::DrawLine(gVirtualDevX, gVirtualDevY + gSafeAreaInsetTop, gVirtualDevX + gVirtualDevWidth, gVirtualDevY + gSafeAreaInsetTop, 1.0f);
-        Graphics::DrawLine(gVirtualDevX, gVirtualDevY + gVirtualDevHeight - gSafeAreaInsetBottom, gVirtualDevX + gVirtualDevWidth, gVirtualDevY + gVirtualDevHeight - gSafeAreaInsetBottom, 1.0f);
-        */
-    }
+    */
     
     if (mDarkMode == true) {
         Graphics::PipelineStateSetShape2DAlphaBlending();
@@ -373,13 +356,9 @@ void FApp::BaseDraw() {
         Graphics::DrawRect(0.0f, 0.0f, gDeviceWidth, gDeviceHeight);
         Graphics::SetColor();
     }
-    
 }
 
 void FApp::BaseLoad() {
-
-    Log("001\n");
-
     if (gGraphicsInterface != NULL) {
         gGraphicsInterface->SetContext();
     }
@@ -388,16 +367,13 @@ void FApp::BaseLoad() {
         BaseInitialize();
     }
 
-    Log("002\n");
-
     mIsLoading = true;
     mDidUnload = false;
     
     BaseSetDeviceSize(gDeviceWidth, gDeviceHeight);
     BaseSetVirtualFrame(gVirtualDevX, gVirtualDevY, gVirtualDevWidth, gVirtualDevHeight);
     BaseSetSafeAreaInsets(gSafeAreaInsetTop, gSafeAreaInsetRight, gSafeAreaInsetBottom, gSafeAreaInsetLeft);
-
-    int aImageScale = 1;
+    
     AppShellSetImageFileScale(2.0f);
     AppShellSetSpriteDrawScale(1.0f);
     

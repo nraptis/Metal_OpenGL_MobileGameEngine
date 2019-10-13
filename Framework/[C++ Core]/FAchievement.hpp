@@ -5,6 +5,9 @@
 #include "FFile.hpp"
 #include "FList.hpp"
 
+//TODO: This is extremely old, it should be re-written.
+//Look-up for an achievement should be linear O(N) run-time complexity.
+
 class FAchievement {
 public:
     FAchievement(const char *pName, int pProgressMax);

@@ -108,6 +108,7 @@ void FCanvas::KeyDown(int pKey) { }
 void FCanvas::KeyUp(int pKey) { }
 void FCanvas::Notify(void *pSender, const char *pNotification) { }
 
+
 void FCanvas::DrawManual() {
     if (mDidUpdate == true && mHidden == false && mKill == 0) {
         DrawTransform();
