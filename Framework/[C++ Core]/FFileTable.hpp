@@ -49,7 +49,8 @@ public:
     FFileTableNode                              *GetNode(char *pKey){return GetNode((const char *)(pKey));}
     FFileTableNode                              *GetNode(FString pKey){return GetNode((const char *)(pKey.c()));}
     
-    void                                        GetAllNodes(const char *pKey, FList &pList);
+    void                                        GetAllNodes(const char *pKey, FList *pList);
+    void                                        GetAllNodes(FList *pList);
 
     static unsigned int                         Hash(const char *pString);
     

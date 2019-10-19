@@ -190,37 +190,27 @@ void FApp::BaseFrame() {
         gGraphicsInterface->SetContext();
         gGraphicsInterface->Prerender();
     }
-
-
-
     
     Graphics::PreRender();
     gAppBase->Prerender();
     
     if ((mIsLoading == true) || (mDidUnload == true) || (mIsLoadingComplete == false)) {
         Graphics::Clear(0.66f, 0.66f, 0.66f);
-        Log("Stifle Draw [mIsLoading=%d] [mDidUnload=%d] [mIsLoadingComplete=%d]\n", mIsLoading, mDidUnload, mIsLoadingComplete);
         BaseDrawLoading();
     } else {
         BaseDraw();
     }
     
-    
-    
     gAppBase->Postrender();
     Graphics::PostRender();
     
-
     if (gGraphicsInterface != NULL) {
         gGraphicsInterface->Postrender();
         gGraphicsInterface->Commit();
-    } else {
-
     }
-
+    
     ThrottleUnlock();
-
-
+    
 }
 
 void FApp::BaseUpdate() {

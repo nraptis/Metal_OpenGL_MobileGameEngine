@@ -10,10 +10,7 @@
 #include "core_includes.h"
 
 FResourceManager gRes;
-
-
-FResource::FResource()
-{
+FResource::FResource() {
     //mPath;
     //mName;
     
@@ -45,8 +42,7 @@ FResource *FResourceManager::AddResource(const char *pResourcePath, bool pPrint)
 	FString aName = ResourceName(pResourcePath);
     FString aFullPath = FString(pResourcePath);
 	FString aExtension = aFullPath.GetExtension();
-
-    aExtension = aExtension.ToLower();
+    aExtension.Lowercase();
     
     if ((aName.mLength > 0) && (aFullPath.mLength > 0) && (aExtension.mLength > 0)) {
         aResult = new FResource();
@@ -76,8 +72,7 @@ FResource *FResourceManager::AddResource(const char *pResourcePath, bool pPrint)
         mTable.Add(aName.c(), pResourcePath, aResult);
         mResourceList.Add(aResult);
 
-        if (pPrint)
-        {
+        if (pPrint) {
             FString aTypeString = "";
             //Log("+++[New Recource]+++ (%s) [%s]", aName.c(), aExtension.c());
             
@@ -129,11 +124,8 @@ FResource *FResourceManager::AddResource(const char *pResourcePath, bool pPrint)
             }
             else Log("\n");
         }
-    }
-    else
-    {
-        if(pPrint)
-        {
+    } else {
+        if (pPrint) {
             Log("--[[Already Had Resource]] -- (%s)\n", aName.c());
         }
     }
@@ -143,7 +135,7 @@ FResource *FResourceManager::AddResource(const char *pResourcePath, bool pPrint)
 
 FString FResourceManager::ResourceName(const char *pFilePath) {
     FString aFullPath = FString(pFilePath);
-    FString aName;// = aFullPath;
+    FString aName;
     int aPathIndex = aFullPath.GetPathIndex();
     if ((aPathIndex >= 0) && (aPathIndex < aFullPath.mLength)) {
         aName = aFullPath.GetSubString(aPathIndex, ((aFullPath.mLength - aPathIndex) + 1));
@@ -152,40 +144,29 @@ FString FResourceManager::ResourceName(const char *pFilePath) {
     return aName;
 }
 
-const char *FResourceManager::GetResourcePath(const char *pFileName)
-{
+const char *FResourceManager::GetResourcePath(const char *pFileName) {
 	const char *aResult = 0;
     FString aName = ResourceName(pFileName);
     mSearchResults.RemoveAll();
-    mTable.GetAllNodes(aName.c(), mSearchResults);
+    mTable.GetAllNodes(aName.c(), &mSearchResults);
     FFileTableNode *aNode = (FFileTableNode *)(mSearchResults.Fetch(0));
-    if(aNode)
-    {
+    if (aNode != NULL) {
         mSearchIndex = 1;
         aResult = aNode->mKeyFull.c();
-    }
-    else
-    {
+    } else {
         mSearchIndex = 0;
     }
 	return aResult;
 }
 
-const char *FResourceManager::GetResourcePathOfType(const char *pFileName, int pType)
-{
+const char *FResourceManager::GetResourcePathOfType(const char *pFileName, int pType) {
     const char *aResult = 0;
-    
     GetResourcePath(pFileName);
-    
     mSearchResultsFilter.RemoveAll();
-    
-    EnumList(FFileTableNode, aNode, mSearchResults)
-    {
+    EnumList(FFileTableNode, aNode, mSearchResults) {
         FResource *aResource = ((FResource *)(aNode->mObject));
-        if(aResource)
-        {
-            if(((aResource->mResourceType) & pType) != 0)
-            {
+        if (aResource) {
+            if (((aResource->mResourceType) & pType) != 0) {
                 mSearchResultsFilter.Add(aNode);
             }
         }
@@ -197,13 +178,10 @@ const char *FResourceManager::GetResourcePathOfType(const char *pFileName, int p
     mSearchResultsFilter.RemoveAll();
 
     FFileTableNode *aNode = (FFileTableNode *)(mSearchResults.Fetch(0));
-    if(aNode)
-    {
+    if (aNode != NULL) {
         mSearchIndex = 1;
         aResult = aNode->mKeyFull.c();
-    }
-    else
-    {
+    } else {
         mSearchIndex = 0;
     }
     
@@ -231,7 +209,7 @@ const char *FResourceManager::GetResourcePathFile(const char *pFileName) {
     
     EnumList(FFileTableNode, aNode, mSearchResults) {
         FResource *aResource = ((FResource *)(aNode->mObject));
-        if (aResource) {
+        if (aResource != NULL) {
             if (((aResource->mResourceType) & RESOURCE_TYPE_IMAGE) == 0) {
                 mSearchResultsFilter.Add(aNode);
             }
@@ -258,20 +236,82 @@ const char *FResourceManager::GetResourcePathFile(const char *pFileName) {
 
 const char *FResourceManager::GetNextResourcePath() {
     const char *aResult = 0;
-    
     FFileTableNode *aNode = (FFileTableNode *)(mSearchResults.Fetch(mSearchIndex));
-    
     if (aNode) {
         aResult = aNode->mKeyFull.c();
         mSearchIndex++;
     }
-    
     return aResult;
 }
 
+void FResourceManager::GetAllFiles(FList *pList) {
+    
+    if (pList == NULL) { return; }
+    
+    mSearchResults.RemoveAll();
+    mTable.GetAllNodes(&mSearchResults);
+    EnumList(FFileTableNode, aNode, mSearchResults) {
+        pList->Add(aNode);
+    }
+}
 
-void FResourceManager::Print()
-{
+void FResourceManager::GetAllFilesWithExtension(FList *pList, const char *pExtension) {
+    if (pList == NULL) { return; }
+    
+    FString aExtension = pExtension;
+    aExtension.Lowercase();
+    
+    mSearchResults.RemoveAll();
+    mTable.GetAllNodes(&mSearchResults);
+    EnumList(FFileTableNode, aNode, mSearchResults) {
+        FResource *aResource = ((FResource *)(aNode->mObject));
+        if (aResource != NULL) {
+            if (aResource->mExtension.Compare(aExtension.c()) == 0) {
+                pList->Add(aNode);
+            }
+        }
+    }
+}
+
+void FResourceManager::GetAllFilesContainingText(FList *pList, const char *pText) {
+    if (pList == NULL) { return; }
+    
+    FString aSearchText = pText;
+    aSearchText.Lowercase();
+    
+    mSearchResults.RemoveAll();
+    mTable.GetAllNodes(&mSearchResults);
+    EnumList(FFileTableNode, aNode, mSearchResults) {
+        if (aNode->mKeyFull.FindI(aSearchText.c()) != -1) {
+            pList->Add(aNode);
+        }
+    }
+}
+
+void FResourceManager::GetAllFilesContainingTextWithExtension(FList *pList, const char *pText, const char *pExtension) {
+    if (pList == NULL) { return; }
+    
+    FString aSearchText = pText;
+    aSearchText.Lowercase();
+    
+    FString aExtension = pExtension;
+    aExtension.Lowercase();
+    
+    mSearchResults.RemoveAll();
+    mTable.GetAllNodes(&mSearchResults);
+    EnumList(FFileTableNode, aNode, mSearchResults) {
+        if (aNode->mKeyFull.FindI(aSearchText.c()) != -1) {
+            FResource *aResource = ((FResource *)(aNode->mObject));
+            if (aResource != NULL) {
+                if (aResource->mExtension.Compare(aExtension.c()) == 0) {
+                    pList->Add(aNode);
+                }
+            }
+        }
+    }
+}
+
+void FResourceManager::Print() {
     mTable.Print();
 }
 

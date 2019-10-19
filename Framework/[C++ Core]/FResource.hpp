@@ -41,14 +41,12 @@ public:
     FResource();
     virtual ~FResource();
     
-    //FString                                     mPath;
     FString                                     mName;
     FString                                     mExtension;
     
-    //int                                         mInstanceCount;
     int                                         mResourceType;
 
-    FResource                                   *mNext;
+    //FResource                                   *mNext;
 };
 
 class FResourceManager
@@ -61,16 +59,25 @@ public:
     inline FResource                            *AddResource(char *pResourcePath, bool pPrint=false){return AddResource((const char *)pResourcePath, pPrint);}
     inline FResource                            *AddResource(FString pResourcePath, bool pPrint=false){return AddResource((const char *)(pResourcePath.c()), pPrint);}
 
-	const char									*GetResourcePath(const char *pFileName);
+	const char                                  *GetResourcePath(const char *pFileName);
     const char									*GetResourcePathOfType(const char *pFileName, int pType);
     const char									*GetResourcePathImage(const char *pFileName);
     const char									*GetResourcePathSound(const char *pFileName);
     const char									*GetResourcePathMusic(const char *pFileName);
 	const char									*GetResourcePathFile(const char *pFileName);
-
+    
 	const char									*GetNextResourcePath();
     
     static FString                              ResourceName(const char *pFilePath);
+    
+    void                                        GetAllFiles(FList *pList); //List of FFileTableNode...
+    void                                        GetAllFilesWithExtension(FList *pList, const char *pExtension); //List of FFileTableNode...
+    void                                        GetAllFilesContainingText(FList *pList, const char *pText); //List of FFileTableNode...
+    void                                        GetAllFilesContainingTextWithExtension(FList *pList, const char *pText, const char *pExtension); //List of FFileTableNode...
+    
+    
+    
+    
     
 	FList										mMatchingResourceList;
 	int											mMatchingResourceIndex;

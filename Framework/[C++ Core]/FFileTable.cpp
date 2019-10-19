@@ -179,14 +179,26 @@ FFileTableNode *FFileTable::GetNode(const char *pKey) {
     return 0;
 }
 
-void FFileTable::GetAllNodes(const char *pKey, FList &pList) {
+void FFileTable::GetAllNodes(const char *pKey, FList *pList) {
+    if (pList == NULL) { return; }
     if (mTableSize > 0) {
         unsigned int aHash = (FFileTable::Hash(pKey) % mTableSize);
         FFileTableNode *aNode = mTable[aHash];
-        while (aNode) {
+        while (aNode != NULL) {
             if (aNode->mKey == pKey) {
-                pList.Add(aNode);
+                pList->Add(aNode);
             }
+            aNode = (aNode->mNext);
+        }
+    }
+}
+
+void FFileTable::GetAllNodes(FList *pList) {
+    if (pList == NULL) { return; }
+    for (int i=0;i<mTableSize;i++) {
+        FFileTableNode *aNode = mTable[i];
+        while (aNode != NULL) {
+            pList->Add(aNode);
             aNode = (aNode->mNext);
         }
     }
