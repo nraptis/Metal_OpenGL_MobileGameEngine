@@ -759,15 +759,9 @@ void FApp::SystemProcess() {
 }
 
 void FApp::MainRunLoop() {
-    
-     //while (gGraphicsInterface->IsReady() == false) {
-     //    Log("Waiting for Graphics Module...\n");
-     //    os_sleep(18);
-     //}
-    
-     while (!mQuit) {
-         FrameController();
-     }
+    while (mQuit == false) {
+        FrameController();
+    }
 }
 
 void FApp::RecoverTime() {
@@ -810,46 +804,43 @@ void FApp::FrameController() {
 
     
         
-        mFrame.mDesiredUpdate = (float)(os_system_time() - mFrame.mBaseUpdateTime);
-        mFrame.mDesiredUpdate /= 10;
-        mFrame.mDesiredUpdate *= (float)mUpdatesPerSecond / 100.0f;
+    mFrame.mDesiredUpdate = (float)(os_system_time() - mFrame.mBaseUpdateTime);
+    mFrame.mDesiredUpdate /= 10;
+    mFrame.mDesiredUpdate *= (float)mUpdatesPerSecond / 100.0f;
+    
+    if (mFrame.mDesiredUpdate < mFrame.mCurrentUpdateNumber) {
+        RecoverTime();
+    }
+    
+    mFrame.mBreakUpdate = false;
+    bool aShouldDraw = false;
+    int aUpdateCheck = (int)mFrame.mDesiredUpdate - mFrame.mCurrentUpdateNumber;
+    
+    if (aUpdateCheck > 0) {
         
-        if (mFrame.mDesiredUpdate < mFrame.mCurrentUpdateNumber) {
-            RecoverTime();
-        }
-        
-        mFrame.mBreakUpdate=false;
-        bool aShouldDraw = false;
-        int aUpdateCheck = (int)mFrame.mDesiredUpdate - mFrame.mCurrentUpdateNumber;
-        
-        if (aUpdateCheck > 0) {
+        if (aUpdateCheck > 32) {
+            Log("aUpdateCheck > 32, assumed break-point?\n");
             
+            if (!mFrame.mBreakUpdate) {
+                aShouldDraw = true;
+                SystemProcess();
+                if (!mQuit) {
+                    mFrame.mCurrentUpdateNumber = mFrame.mDesiredUpdate;
+                    BaseUpdate();
+                }
+            }
+        } else {
             while (mFrame.mCurrentUpdateNumber < (int)mFrame.mDesiredUpdate && !mFrame.mBreakUpdate) {
                 aShouldDraw = true;
-                
                 SystemProcess();
-                
-                if (mQuit) {
-                    break;
-                }
-                
+                if (mQuit) { break; }
                 mFrame.mCurrentUpdateNumber++;
-                
                 BaseUpdate();
             }
         }
-    
+    }
     
     ThrottleUnlock();
-    
-    
-    
-    //if ((mActive == false) && (true)) {
-    //    RecoverTime();
-    //}
-    
-    //if (mInBackground && mIdleWhenInBackground) RecoverTime();
-    
 }
 
 
