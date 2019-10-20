@@ -70,6 +70,10 @@ public:
     void                            LeftCenter(const char *pText, float pX, float pY, float pScale);
     void                            LeftCenter(FString pText, float pX, float pY, float pScale) { LeftCenter((const char *)pText.c(), pX, pY, pScale); }
     
+    
+    void                            WrapLeft(const char *pText, float pX, float pY, float pAreaWidth, float pLineHeight, float pScale);
+    
+    
 
     void                            Center(const char *pText, float pX, float pY);
     void                            Center(const char *pText, float pX, float pY, float pScale);
@@ -86,16 +90,10 @@ public:
     
     float                           PointSize(){return (mPointSize * mDataScale);}
     
-
-
-
-    
     float                           Width(const char *pText, float pScale);
     float                           Width(const char *pText);
-
-
+    
     float                           ScaleForWidth(const char *pText, float pLabelWidth, float pLabelPadding=0.0);
-
     float                           ScaleForWidth(FString pText, float pLabelWidth, float pLabelPadding=0.0) { return ScaleForWidth((const char *)pText.c(), pLabelWidth, pLabelPadding); }
 
 

@@ -147,6 +147,83 @@ void FFont::Draw(const char *pText, float pX, float pY, float pScale) {
     }
 }
 
+void FFont::WrapLeft(const char *pText, float pX, float pY, float pAreaWidth, float pLineHeight, float pScale) {
+    
+    unsigned char aChar = 0;
+    float aDrawX = pX;
+    float aDrawY = pY;
+    int aCharIndex = -1;
+    int aCharIndexPrev = -1;
+    float aKern = 0.0f;
+    float aScale = (mDataScale * pScale);
+    float aPointSize = mPointSize * mDataScale * pScale;
+    float aSpriteScale = mSpriteScale * pScale;
+    
+    int aLength = FString::Length(pText);
+    if (aLength > 0) {
+        
+        
+        
+        int aIndex = 0;
+        
+        
+        while (aIndex < aLength) {
+            
+            int aStartIndex = aIndex;
+            float aWidth = 0.0f;
+            
+            
+            int aCheckIndex = aStartIndex;
+            aCharIndex = -1;
+            aCharIndexPrev = -1;
+            
+            while ((aCheckIndex < aLength) && (aWidth < pAreaWidth)) {
+                aKern = 0.0f;
+                aCharIndexPrev = aCharIndex;
+                aChar = pText[aCheckIndex];
+                aCharIndex = aChar;
+                if (aCharIndexPrev != -1) { aKern = mKern[aCharIndexPrev][aCharIndex]; }
+                //float aSpriteWidth = mCharacterSprite[aCharIndex].mWidth * aSpriteScale;
+                //mCharacterSprite[aCharIndex].Draw(aDrawX + ((mCharacterOffsetX[aCharIndex] + aKern) * aScale) + aSpriteWidth  * 0.5f, aDrawY + aPointSize / 2.0f, aSpriteScale, 0.0f);
+                
+                aWidth += (mCharacterStrideX[aCharIndex] + aKern) * aScale;
+                aCheckIndex += 1;
+            }
+            
+            aCharIndex = -1;
+            aCharIndexPrev = -1;
+            
+            if (aCheckIndex != (aIndex + 1) && (aCheckIndex != aLength)) {
+                //We could fit > 1 character...
+                aCheckIndex--;
+            }
+            
+            
+            
+            while (aIndex < aCheckIndex) {
+                aKern = 0.0f;
+                aCharIndexPrev = aCharIndex;
+                aChar = pText[aIndex];
+                aCharIndex = aChar;
+                if (aCharIndexPrev != -1) { aKern = mKern[aCharIndexPrev][aCharIndex]; }
+                float aSpriteWidth = mCharacterSprite[aCharIndex].mWidth * aSpriteScale;
+                mCharacterSprite[aCharIndex].Draw(aDrawX + ((mCharacterOffsetX[aCharIndex] + aKern) * aScale) + aSpriteWidth  * 0.5f, aDrawY + aPointSize / 2.0f, aSpriteScale, 0.0f);
+                
+                aDrawX += (mCharacterStrideX[aCharIndex] + aKern) * aScale;
+                aIndex += 1;
+            }
+            
+            aWidth = 0.0f;
+            aIndex = aCheckIndex;
+            aDrawY += pLineHeight;
+            aDrawX = pX;
+        }
+    }
+    
+    
+}
+
+
 void FFont::SetSpaceWidth(float pSpaceWidth) {
     mCharacterStrideX[32] = pSpaceWidth;
 }
