@@ -777,22 +777,7 @@ void FApp::FrameController() {
     
     if (mActive == false) {
         if (os_updates_in_background()) {
-            
-            /*
-             if (mIdleWhenInBackground) {
-             #ifndef AppRunsInThread
-             OS_Core::Pump();
-             #endif
-             System_Process();
-             if (mNeedBackgroundDraw)
-             {
-             ThrottleDraw();
-             mNeedBackgroundDraw=false;
-             }
-             else OS_Core::Sleep(200);
-             }
-             */
-            
+            os_sleep(200);
         } else {
             SystemProcess();
             os_sleep(20);
@@ -813,16 +798,13 @@ void FApp::FrameController() {
     }
     
     mFrame.mBreakUpdate = false;
-    bool aShouldDraw = false;
     int aUpdateCheck = (int)mFrame.mDesiredUpdate - mFrame.mCurrentUpdateNumber;
     
     if (aUpdateCheck > 0) {
-        
-        if (aUpdateCheck > 32) {
+        if ((aUpdateCheck > 40) || (mActive == false)) {
             Log("aUpdateCheck > 32, assumed break-point?\n");
             
             if (!mFrame.mBreakUpdate) {
-                aShouldDraw = true;
                 SystemProcess();
                 if (!mQuit) {
                     mFrame.mCurrentUpdateNumber = mFrame.mDesiredUpdate;
@@ -831,7 +813,6 @@ void FApp::FrameController() {
             }
         } else {
             while (mFrame.mCurrentUpdateNumber < (int)mFrame.mDesiredUpdate && !mFrame.mBreakUpdate) {
-                aShouldDraw = true;
                 SystemProcess();
                 if (mQuit) { break; }
                 mFrame.mCurrentUpdateNumber++;
@@ -842,10 +823,6 @@ void FApp::FrameController() {
     
     ThrottleUnlock();
 }
-
-
-
-
 
 int FApp::GetUPS() {
     int aResult = 100;

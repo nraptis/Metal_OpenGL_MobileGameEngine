@@ -100,8 +100,6 @@ public:
     void                                        BaseUnload();
     bool                                        mDidUnload;
     
-    //mFrameController.Active();
-    
     //Externally, we are getting a "frame" ...
     void                                        BaseFrame();
     
@@ -161,8 +159,6 @@ public:
     bool                                        mIsLoadingComplete;
     
     bool                                        mDarkMode;
-    
-    //void os_execute_on_main_thread(void (*pFunc)());
     
     //
     // Control stuff...
