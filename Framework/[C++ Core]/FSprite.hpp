@@ -96,7 +96,12 @@ public:
 
     void                                    DrawTripletH(float pX, float pY, float pInsetLeft, float pInsetRight, float pLength, bool pDrawLeft=true, bool pDrawMiddle=true, bool pDrawRight=true);
     
-    void                            Draw9x9(float pX, float pY, float pWidth, float pHeight, float pScale, float pRotation, float pInsetTop, float pInsetRight, float pInsetBottom, float pInsetLeft);
+    void                                    DrawTripletHProgress(float pX, float pY, float pInsetLeft, float pInsetRight, float pLength,
+    float pProgressInsetLeft, float pProgressInsetRight, float pProgress);
+    
+    
+    
+    void                                    Draw9x9(float pX, float pY, float pWidth, float pHeight, float pScale, float pRotation, float pInsetTop, float pInsetRight, float pInsetBottom, float pInsetLeft);
 	
 	void                                    DrawFlippedH(float pX, float pY);
 	void                                    DrawFlippedH(float pX, float pY, float pScale, float pRotationDegrees=0);

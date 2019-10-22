@@ -478,6 +478,10 @@ void FSprite::DrawQuadRectOffset(float pX, float pY, float pWidth, float pHeight
 }
 
 void FSprite::DrawTripletH(float pX, float pY, float pInsetLeft, float pInsetRight, float pLength, bool pDrawLeft, bool pDrawMiddle, bool pDrawRight) {
+    
+    if (mWidth <= 2.0f) { return; }
+    if (pLength <= 2.0f) { return; }
+    
     float aStartU = mTextureRect.GetStartU();
     float aStartV = mTextureRect.GetStartV();
     float aEndU = mTextureRect.GetEndU();
@@ -492,18 +496,13 @@ void FSprite::DrawTripletH(float pX, float pY, float pInsetLeft, float pInsetRig
     
     float aTripletCenterU1 = aStartU;
     float aTripletCenterU2 = aEndU;
-    //float aTripletRightU = aEndU;
     
-    if (mWidth > 0.0f) {
-        //aTripletLeftU = 0.0f;
-        aTripletCenterU1 = pInsetLeft / mWidth;
-        aTripletCenterU2 = (mWidth - pInsetRight) / mWidth;
-        //aTripletRightU
-        
-        aTripletCenterU1 = (aStartU + ((aEndU - aStartU) * aTripletCenterU1));
-        aTripletCenterU2 = (aStartU + ((aEndU - aStartU) * aTripletCenterU2));
-    }
     
+    aTripletCenterU1 = pInsetLeft / mWidth;
+    aTripletCenterU2 = (mWidth - pInsetRight) / mWidth;
+    
+    aTripletCenterU1 = (aStartU + ((aEndU - aStartU) * aTripletCenterU1));
+    aTripletCenterU2 = (aStartU + ((aEndU - aStartU) * aTripletCenterU2));
     
     float aX1 = aTripletLeftX;
     float aX2 = aTripletCenterX1;
@@ -538,6 +537,117 @@ void FSprite::DrawTripletH(float pX, float pY, float pInsetLeft, float pInsetRig
     aX4 = aX2;
     
     if (pDrawRight) {
+        cSliceTextureRect.SetUVQuad(aTripletCenterU2, aStartV, aEndU, aEndV);
+        cSliceTextureRect.SetQuad(aX1, aY1, aX2, aY2, aX3, aY3, aX4, aY4);
+        Graphics::DrawSprite(cSliceTextureRect.mPositions, cSliceTextureRect.mTextureCoords, mTexture);
+    }
+}
+
+void FSprite::DrawTripletHProgress(float pX, float pY, float pInsetLeft, float pInsetRight, float pLength,
+                                   float pProgressInsetLeft, float pProgressInsetRight, float pProgress) {
+    
+    if (mWidth <= 2.0f) { return; }
+    if (pLength <= 2.0f) { return; }
+    
+    if (pProgress < 0.0f) { pProgress = 0.0f; }
+    if (pProgress > 1.0f) { pProgress = 1.0f; }
+    
+    float aStartU = mTextureRect.GetStartU();
+    float aStartV = mTextureRect.GetStartV();
+    float aEndU = mTextureRect.GetEndU();
+    float aEndV = mTextureRect.GetEndV();
+    
+    float aStartX = pX + pProgressInsetLeft;
+    float aEndX = pX + pLength - (pProgressInsetRight);
+    float aBarLength = (aEndX - aStartX);
+    
+    if (aBarLength <= 0.0f) { return; }
+    
+    float aInnerEndU;
+    
+    float aProgressLength = aBarLength * pProgress;
+    float aProgressX = aStartX + aProgressLength;
+    float aLengthCenter = (pLength - (pInsetLeft + pInsetRight));
+    
+    float aPercentU = 0.0f;
+    
+    float aTripletLeftX = pX;
+    float aTripletCenterX1 = pX + pInsetLeft;
+    float aTripletCenterX2 = aTripletCenterX1 + aLengthCenter;
+    float aTripletRightX = pX + pLength;
+    
+    float aTripletCenterU1 = aStartU;
+    float aTripletCenterU2 = aEndU;
+    
+    aTripletCenterU1 = pInsetLeft / mWidth;
+    aTripletCenterU2 = (mWidth - pInsetRight) / mWidth;
+    aTripletCenterU1 = (aStartU + ((aEndU - aStartU) * aTripletCenterU1));
+    aTripletCenterU2 = (aStartU + ((aEndU - aStartU) * aTripletCenterU2));
+    
+    float aX1 = aTripletLeftX;
+    float aX2 = aTripletCenterX1;
+    float aX3 = aX1;
+    float aX4 = aX2;
+    
+    float aY1 = pY;
+    float aY2 = aY1;
+    float aY3 = pY + mHeight;
+    float aY4 = aY3;
+    
+    if (aProgressX <= aTripletCenterX1) {
+        aX2 = aProgressX;
+        aX4 = aX2;
+        aTripletCenterU1 = (aProgressX - pX) / mWidth;
+        aTripletCenterU1 = (aStartU + ((aEndU - aStartU) * aTripletCenterU1));
+        cSliceTextureRect.SetUVQuad(aStartU, aStartV, aTripletCenterU1, aEndV);
+        cSliceTextureRect.SetQuad(aX1, aY1, aX2, aY2, aX3, aY3, aX4, aY4);
+        Graphics::DrawSprite(cSliceTextureRect.mPositions, cSliceTextureRect.mTextureCoords, mTexture);
+        return;
+    } else {
+        cSliceTextureRect.SetUVQuad(aStartU, aStartV, aTripletCenterU1, aEndV);
+        cSliceTextureRect.SetQuad(aX1, aY1, aX2, aY2, aX3, aY3, aX4, aY4);
+        Graphics::DrawSprite(cSliceTextureRect.mPositions, cSliceTextureRect.mTextureCoords, mTexture);
+    }
+    
+    
+    aX1 = aTripletCenterX1;
+    aX2 = aTripletCenterX2;
+    aX3 = aX1;
+    aX4 = aX2;
+    
+    if (aProgressX <= aTripletCenterX2) {
+        aX2 = aProgressX;
+        aX4 = aX2;
+        aPercentU = (aProgressX - aTripletCenterX1) / (aTripletCenterX2 - aTripletCenterX1);
+        aTripletCenterU2 = (aTripletCenterU1 + ((aTripletCenterU2 - aTripletCenterU1) * aPercentU));
+        cSliceTextureRect.SetUVQuad(aTripletCenterU1, aStartV, aTripletCenterU2, aEndV);
+        cSliceTextureRect.SetQuad(aX1, aY1, aX2, aY2, aX3, aY3, aX4, aY4);
+        Graphics::DrawSprite(cSliceTextureRect.mPositions, cSliceTextureRect.mTextureCoords, mTexture);
+        return;
+    } else {
+        cSliceTextureRect.SetUVQuad(aTripletCenterU1, aStartV, aTripletCenterU2, aEndV);
+        cSliceTextureRect.SetQuad(aX1, aY1, aX2, aY2, aX3, aY3, aX4, aY4);
+        Graphics::DrawSprite(cSliceTextureRect.mPositions, cSliceTextureRect.mTextureCoords, mTexture);
+    }
+    
+    aX1 = aTripletCenterX2;
+    aX2 = aTripletRightX;
+    aX3 = aX1;
+    aX4 = aX2;
+    
+    if (aProgressX < aEndX) {
+        
+        aX2 = aProgressX;
+        aX4 = aX2;
+        
+        aPercentU = (aProgressX - aTripletCenterX2) / (aEndX - aTripletCenterX2);
+        aInnerEndU = (mWidth - pProgressInsetRight) / mWidth;
+        aEndU = (aTripletCenterU2 + ((aInnerEndU - aTripletCenterU2) * aPercentU));
+        
+        cSliceTextureRect.SetUVQuad(aTripletCenterU2, aStartV, aEndU, aEndV);
+        cSliceTextureRect.SetQuad(aX1, aY1, aX2, aY2, aX3, aY3, aX4, aY4);
+        Graphics::DrawSprite(cSliceTextureRect.mPositions, cSliceTextureRect.mTextureCoords, mTexture);
+    } else {
         cSliceTextureRect.SetUVQuad(aTripletCenterU2, aStartV, aEndU, aEndV);
         cSliceTextureRect.SetQuad(aX1, aY1, aX2, aY2, aX3, aY3, aX4, aY4);
         Graphics::DrawSprite(cSliceTextureRect.mPositions, cSliceTextureRect.mTextureCoords, mTexture);
@@ -868,12 +978,10 @@ void FSprite::DrawAngleRange(float pX, float pY, float pScale, float pRotation, 
             cRadialTriangle.SetUVTriangle(aCenterU, aCenterV, aEdgeU1, aEdgeV1, aOctantU[aDrawOctant2], aOctantV[aDrawOctant2]);
             Graphics::DrawSpriteTriangle(pX, pY, pScale, pScale, pScale, pRotation, cRadialTriangle.mPositions, cRadialTriangle.mTextureCoords, mTexture);
             
-            
             aDrawOctant1 = aOctantEnd;
             cRadialTriangle.SetXYTriangle(0.0f, 0.0f, aOctantX[aDrawOctant1], aOctantY[aDrawOctant1], aEdgeX2, aEdgeY2);
             cRadialTriangle.SetUVTriangle(aCenterU, aCenterV, aOctantU[aDrawOctant1], aOctantV[aDrawOctant1], aEdgeU2, aEdgeV2);
             Graphics::DrawSpriteTriangle(pX, pY, pScale, pScale, pScale, pRotation, cRadialTriangle.mPositions, cRadialTriangle.mTextureCoords, mTexture);
-            
             
             for (int i=0;i<8;i++) {
                 if (i != aOctantStart) {

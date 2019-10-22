@@ -1486,7 +1486,6 @@ void Graphics::DrawSprite(float pX, float pY, float pScaleX, float pScaleY, floa
 }
 
 void Graphics::DrawSpriteTriangle(float pX, float pY, float pScaleX, float pScaleY, float pScaleZ, float pRotation, float *pPositions, float *pTextureCoords, FTexture *pTexture) {
-    
     FMatrix aHold = cMatrixModelView;
     FMatrix aModelView = cMatrixModelView;
     aModelView.Translate(pX, pY);
