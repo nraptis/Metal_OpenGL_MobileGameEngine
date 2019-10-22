@@ -17,8 +17,7 @@
 class FFile;
 class FSprite;
 
-struct FDrawNode
-{
+struct FDrawNode {
     float							mX;
     float							mY;
     float							mZ;
@@ -33,8 +32,7 @@ struct FDrawNode
     float							mA;
 };
 
-class FDrawNodeList
-{
+class FDrawNodeList {
 public:
     FDrawNodeList();
     virtual ~FDrawNodeList();
@@ -122,50 +120,6 @@ public:
     inline float                    GetB(int pIndex){return ((pIndex>=0)&&(pIndex<mCountNodes))?(mData[pIndex].mB):(0.0f);}
     inline float                    GetA(int pIndex){return ((pIndex>=0)&&(pIndex<mCountNodes))?(mData[pIndex].mA):(0.0f);}
 };
-
-
-class FDrawNodeMesh : public FDrawNodeList
-{
-public:
-    
-    FDrawNodeMesh();
-    virtual ~FDrawNodeMesh();
-    
-    virtual void                    Reset();
-    virtual void                    Clear();
-    
-    void                            AddConnection(int pStartIndex, int pEndIndex);
-    
-    void                            Generate();
-    FDrawNodeList                   mRenderNodes;
-    
-    void                            Print(float pCenterX=0.0f, float pCenterY=0.0f);
-    
-    short                           *mConLink1;
-    short                           *mConLink2;
-    int                             mConLinkSize;
-    int                             mConLinkCount;
-
-    void                            AddTriangle(short pIndex1, short pIndex2, short pIndex3);
-    
-    short                           *mTriList1;
-    short                           *mTriList2;
-    short                           *mTriList3;
-    
-    int                             mTriListSize;
-    int                             mTriListCount;
-    
-    void                            DrawConnections();
-};
-
-
-
-
-
-
-
-
-
 
 #endif
 
