@@ -380,79 +380,11 @@ void FMatrix::Transpose() {
 
 
 void FMatrix::Invert() {
-    
     bool aInvertable = false;
     FMatrix aInvertedMatrix = FMatrixInvert(*this, &aInvertable);
     if (aInvertable) {
         *this = aInvertedMatrix;
     }
-    
-    /*
-    float b00 = pMatrix.m[0] * pMatrix.m[5] - pMatrix.m[1] * pMatrix.m[4];
-    float b01 = pMatrix.m[0] * pMatrix.m[6] - pMatrix.m[2] * pMatrix.m[4];
-    float b02 = pMatrix.m[0] * pMatrix.m[7] - pMatrix.m[3] * pMatrix.m[4];
-    float b03 = pMatrix.m[1] * pMatrix.m[6] - pMatrix.m[2] * pMatrix.m[5];
-    float b04 = pMatrix.m[1] * pMatrix.m[7] - pMatrix.m[3] * pMatrix.m[5];
-    float b05 = pMatrix.m[2] * pMatrix.m[7] - pMatrix.m[3] * pMatrix.m[6];
-    float b06 = pMatrix.m[8] * pMatrix.m[13] - pMatrix.m[9] * pMatrix.m[12];
-    float b07 = pMatrix.m[8] * pMatrix.m[14] - pMatrix.m[10] * pMatrix.m[12];
-    float b08 = pMatrix.m[8] * pMatrix.m[15] - pMatrix.m[11] * pMatrix.m[12];
-    float b09 = pMatrix.m[9] * pMatrix.m[14] - pMatrix.m[10] * pMatrix.m[13];
-    float b10 = pMatrix.m[9] * pMatrix.m[15] - pMatrix.m[11] * pMatrix.m[13];
-    float b11 = pMatrix.m[10] * pMatrix.m[15] - pMatrix.m[11] * pMatrix.m[14];
-    
-    // Calculate the determinant (inlined to avoid double-caching)
-    float determinant = b00 * b11 - b01 * b10 + b02 * b09 + b03 * b08 - b04 * b07 + b05 * b06;
-    if (isInvertable != NULL) {
-        *isInvertable = determinant != 0;
-    }
-    
-    if (determinant == 0) {
-        return GLKMatrix4Identity;
-    }
-    
-    float invDet = 1.0f / determinant;
-    GLKMatrix4 m;
-    
-    m.m[0] = (pMatrix.m[5] * b11 - pMatrix.m[6] * b10 + pMatrix.m[7] * b09) * invDet;
-    m.m[1] = (-pMatrix.m[1] * b11 + pMatrix.m[2] * b10 - pMatrix.m[3] * b09) * invDet;
-    m.m[2] = (pMatrix.m[13] * b05 - pMatrix.m[14] * b04 + pMatrix.m[15] * b03) * invDet;
-    m.m[3] = (-pMatrix.m[9] * b05 + pMatrix.m[10] * b04 - pMatrix.m[11] * b03) * invDet;
-    m.m[4] = (-pMatrix.m[4] * b11 + pMatrix.m[6] * b08 - pMatrix.m[7] * b07) * invDet;
-    m.m[5] = (pMatrix.m[0] * b11 - pMatrix.m[2] * b08 + pMatrix.m[3] * b07) * invDet;
-    m.m[6] = (-pMatrix.m[12] * b05 + pMatrix.m[14] * b02 - pMatrix.m[15] * b01) * invDet;
-    m.m[7] = (pMatrix.m[8] * b05 - pMatrix.m[10] * b02 + pMatrix.m[11] * b01) * invDet;
-    m.m[8] = (pMatrix.m[4] * b10 - pMatrix.m[5] * b08 + pMatrix.m[7] * b06) * invDet;
-    m.m[9] = (-pMatrix.m[0] * b10 + pMatrix.m[1] * b08 - pMatrix.m[3] * b06) * invDet;
-    m.m[10] = (pMatrix.m[12] * b04 - pMatrix.m[13] * b02 + pMatrix.m[15] * b00) * invDet;
-    m.m[11] = (-pMatrix.m[8] * b04 + pMatrix.m[9] * b02 - pMatrix.m[11] * b00) * invDet;
-    m.m[12] = (-pMatrix.m[4] * b09 + pMatrix.m[5] * b07 - pMatrix.m[6] * b06) * invDet;
-    m.m[13] = (pMatrix.m[0] * b09 - pMatrix.m[1] * b07 + pMatrix.m[2] * b06) * invDet;
-    m.m[14] = (-pMatrix.m[12] * b03 + pMatrix.m[13] * b01 - pMatrix.m[14] * b00) * invDet;
-    m.m[15] = (pMatrix.m[8] * b03 - pMatrix.m[9] * b01 + pMatrix.m[10] * b00) * invDet;
-    
-    return m;
-    */
-    
-    /*
-    m[0]=m[6]*m[11]*m[13]-m[7]*m[10]*m[13]+m[7]*m[9]*m[14]-m[5]*m[11]*m[14]-m[6]*m[9]*m[15]+m[5]*m[10]*m[15];
-    m[1]=m[3]*m[10]*m[13]-m[2]*m[11]*m[13]-m[3]*m[9]*m[14]+m[1]*m[11]*m[14]+m[2]*m[9]*m[15]-m[1]*m[10]*m[15];
-    m[2]=m[2]*m[7]*m[13]-m[3]*m[6]*m[13]+m[3]*m[5]*m[14]-m[1]*m[7]*m[14]-m[2]*m[5]*m[15]+m[1]*m[6]*m[15];
-    m[3]=m[3]*m[6]*m[9]-m[2]*m[7]*m[9]-m[3]*m[5]*m[10]+m[1]*m[7]*m[10]+m[2]*m[5]*m[11]-m[1]*m[6]*m[11];
-    m[4]=m[7]*m[10]*m[12]-m[6]*m[11]*m[12]-m[7]*m[8]*m[14]+m[4]*m[11]*m[14]+m[6]*m[8]*m[15]-m[4]*m[10]*m[15];
-    m[5]=m[2]*m[11]*m[12]-m[3]*m[10]*m[12]+m[3]*m[8]*m[14]-m[0]*m[11]*m[14]-m[2]*m[8]*m[15]+m[0]*m[10]*m[15];
-    m[6]=m[3]*m[6]*m[12]-m[2]*m[7]*m[12]-m[3]*m[4]*m[14]+m[0]*m[7]*m[14]+m[2]*m[4]*m[15]-m[0]*m[6]*m[15];
-    m[7]=m[2]*m[7]*m[8]-m[3]*m[6]*m[8]+m[3]*m[4]*m[10]-m[0]*m[7]*m[10]-m[2]*m[4]*m[11]+m[0]*m[6]*m[11];
-    m[8]=m[5]*m[11]*m[12]-m[7]*m[9]*m[12]+m[7]*m[8]*m[13]-m[4]*m[11]*m[13]-m[5]*m[8]*m[15]+m[4]*m[9]*m[15];
-    m[9]=m[3]*m[9]*m[12]-m[1]*m[11]*m[12]-m[3]*m[8]*m[13]+m[0]*m[11]*m[13]+m[1]*m[8]*m[15]-m[0]*m[9]*m[15];
-    m[10]=m[1]*m[7]*m[12]-m[3]*m[5]*m[12]+m[3]*m[4]*m[13]-m[0]*m[7]*m[13]-m[1]*m[4]*m[15]+m[0]*m[5]*m[15];
-    m[11]=m[3]*m[5]*m[8]-m[1]*m[7]*m[8]-m[3]*m[4]*m[9]+m[0]*m[7]*m[9]+m[1]*m[4]*m[11]-m[0]*m[5]*m[11];
-    m[12]=m[6]*m[9]*m[12]-m[5]*m[10]*m[12]-m[6]*m[8]*m[13]+m[4]*m[10]*m[13]+m[5]*m[8]*m[14]-m[4]*m[9]*m[14];
-    m[13]=m[1]*m[10]*m[12]-m[2]*m[9]*m[12]+m[2]*m[8]*m[13]-m[0]*m[10]*m[13]-m[1]*m[8]*m[14]+m[0]*m[9]*m[14];
-    m[14]=m[2]*m[5]*m[12]-m[1]*m[6]*m[12]-m[2]*m[4]*m[13]+m[0]*m[6]*m[13]+m[1]*m[4]*m[14]-m[0]*m[5]*m[14];
-    m[15]=m[1]*m[6]*m[8]-m[2]*m[5]*m[8]+m[2]*m[4]*m[9]-m[0]*m[6]*m[9]-m[1]*m[4]*m[10]+m[0]*m[5]*m[10];
-    Scale(1/Determinant());
-    */
 }
 
 void FMatrix::InvertAndTranspose() {
@@ -492,430 +424,28 @@ void FMatrix::Print() {
     }
 }
 
-/*
- 
- FMatrix FMatrixCreate(float m00, float m01, float m02, float m03,
- float m10, float m11, float m12, float m13,
- float m20, float m21, float m22, float m23,
- float m30, float m31, float m32, float m33)
- {
- FMatrix m = { m00, m01, m02, m03,
- m10, m11, m12, m13,
- m20, m21, m22, m23,
- m30, m31, m32, m33 };
- return m;
- }
- 
- FMatrix FMatrixCreateAndTranspose(float m00, float m01, float m02, float m03,
- float m10, float m11, float m12, float m13,
- float m20, float m21, float m22, float m23,
- float m30, float m31, float m32, float m33)
- {
- FMatrix m = { m00, m10, m20, m30,
- m01, m11, m21, m31,
- m02, m12, m22, m32,
- m03, m13, m23, m33 };
- return m;
- }
- 
- FMatrix FMatrixCreateWithArray(float values[16])
- {
- FMatrix m = { values[0], values[1], values[2], values[3],
- values[4], values[5], values[6], values[7],
- values[8], values[9], values[10], values[11],
- values[12], values[13], values[14], values[15] };
- return m;
- }
- 
- FMatrix FMatrixCreateTranslation(float tx, float ty, float tz)
- {
- FMatrix m;
- m.m[12] = tx;
- m.m[13] = ty;
- m.m[14] = tz;
- return m;
- }
- 
- FMatrix FMatrixCreateScale(float sx, float sy, float sz)
- {
- FMatrix m;
- m.m[0] = sx;
- m.m[5] = sy;
- m.m[10] = sz;
- return m;
- }
- 
- FMatrix FMatrixCreateRotation(float pRadians, float x, float y, float z)
- {
- float cos = cosf(pRadians);
- float cosp = 1.0f - cos;
- float sin = sinf(pRadians);
- 
- float aDist = x * x + y * y + z * z;
- 
- if(aDist > 0.01f)
- {
- aDist = sqrtf(aDist);
- x /= aDist;
- y /= aDist;
- z /= aDist;
- }
- 
- FMatrix m = { cos + cosp * x * x,
- cosp * x * y + z * sin,
- cosp * x * z - y * sin,
- 0.0f,
- cosp * x * y - z * sin,
- cos + cosp * y * y,
- cosp * y * z + x * sin,
- 0.0f,
- cosp * x * z + y * sin,
- cosp * y * z - x * sin,
- cos + cosp * z * z,
- 0.0f,
- 0.0f,
- 0.0f,
- 0.0f,
- 1.0f };
- 
- return m;
- }
- 
- FMatrix FMatrixCreateXRotation(float pRadians)
- {
- float cos = cosf(pRadians);
- float sin = sinf(pRadians);
- 
- FMatrix m = { 1.0f, 0.0f, 0.0f, 0.0f,
- 0.0f, cos, sin, 0.0f,
- 0.0f, -sin, cos, 0.0f,
- 0.0f, 0.0f, 0.0f, 1.0f };
- 
- return m;
- }
- 
- FMatrix FMatrixCreateYRotation(float pRadians)
- {
- float cos = cosf(pRadians);
- float sin = sinf(pRadians);
- 
- FMatrix m = { cos, 0.0f, -sin, 0.0f,
- 0.0f, 1.0f, 0.0f, 0.0f,
- sin, 0.0f, cos, 0.0f,
- 0.0f, 0.0f, 0.0f, 1.0f };
- 
- return m;
- }
- 
- FMatrix FMatrixCreateZRotation(float pRadians)
- {
- float cos = cosf(pRadians);
- float sin = sinf(pRadians);
- 
- FMatrix m = { cos, sin, 0.0f, 0.0f,
- -sin, cos, 0.0f, 0.0f,
- 0.0f, 0.0f, 1.0f, 0.0f,
- 0.0f, 0.0f, 0.0f, 1.0f };
- 
- return m;
- }
- 
- FMatrix FMatrixCreatePerspective(float fovyRadians, float aspect, float nearZ, float farZ)
- {
- float cotan = 1.0f / tanf(fovyRadians / 2.0f);
- 
- FMatrix m = { cotan / aspect, 0.0f, 0.0f, 0.0f,
- 0.0f, cotan, 0.0f, 0.0f,
- 0.0f, 0.0f, (farZ + nearZ) / (nearZ - farZ), -1.0f,
- 0.0f, 0.0f, (2.0f * farZ * nearZ) / (nearZ - farZ), 0.0f };
- 
- return m;
- }
- 
- FMatrix FMatrixCreateFrustum(float left, float right, float bottom, float top, float nearZ, float farZ)
- {
- float ral = right + left;
- float rsl = right - left;
- float tsb = top - bottom;
- float tab = top + bottom;
- float fan = farZ + nearZ;
- float fsn = farZ - nearZ;
- 
- FMatrix m = { 2.0f * nearZ / rsl, 0.0f, 0.0f, 0.0f,
- 0.0f, 2.0f * nearZ / tsb, 0.0f, 0.0f,
- ral / rsl, tab / tsb, -fan / fsn, -1.0f,
- 0.0f, 0.0f, (-2.0f * farZ * nearZ) / fsn, 0.0f };
- 
- return m;
- }
- 
- FMatrix FMatrixCreateOrtho(float left, float right, float bottom, float top, float nearZ, float farZ)
- {
- float ral = right + left;
- float rsl = right - left;
- float tab = top + bottom;
- float tsb = top - bottom;
- float fan = farZ + nearZ;
- float fsn = farZ - nearZ;
- 
- FMatrix m = { 2.0f / rsl, 0.0f, 0.0f, 0.0f,
- 0.0f, 2.0f / tsb, 0.0f, 0.0f,
- 0.0f, 0.0f, -2.0f / fsn, 0.0f,
- -ral / rsl, -tab / tsb, -fan / fsn, 1.0f };
- 
- return m;
- }
- 
- FMatrix FMatrixCreateLookAt(float eyeX, float eyeY, float eyeZ, float centerX, float centerY, float centerZ, float upX, float upY, float upZ)
- {
- float aNX = eyeX - centerX;
- float aNY = eyeY - centerY;
- float aNZ = eyeZ - centerZ;
- 
- float aDist = aNX * aNX + aNY * aNY + aNZ * aNZ;
- 
- if(aDist > 0.01f)
- {
- aDist = sqrtf(aDist);
- aNX /= aDist;
- aNY /= aDist;
- aNZ /= aDist;
- }
- 
- float aUX = upY * aNZ - upZ * aNY;
- float aUY = upZ * aNX - upX * aNZ;
- float aUZ = upX * aNY - upY * aNX;
- 
- aDist = aUX * aUX + aUY * aUY + aUZ * aUZ;
- if(aDist > 0.01f)
- {
- aDist = sqrtf(aDist);
- aUX /= aDist;
- aUY /= aDist;
- aUZ /= aDist;
- }
- 
- float aVX = aNY * aUZ - aNZ * aUY;
- float aVY = aNZ * aUX - aNX * aUZ;
- float aVZ = aNX * aUY - aNY * aUX;
- 
- FMatrix m = {aUX, aVX, aNX, 0.0f,
- aUY, aVY, aNY, 0.0f,
- aUZ, aVZ, aNZ, 0.0f,
- -aUX * eyeX + -aUY * eyeY + -aUZ * eyeZ,
- -aVX * eyeX + -aVY * eyeY + -aVZ * eyeZ,
- -aNX * eyeX + -aNY * eyeY + -aNZ * eyeZ,
- 1.0f };
- 
- return m;
- }
- 
- FMatrix FMatrixTranspose(FMatrix pMatrix)
- {
- FMatrix m = { pMatrix.m[0], pMatrix.m[4], pMatrix.m[8], pMatrix.m[12],
- pMatrix.m[1], pMatrix.m[5], pMatrix.m[9], pMatrix.m[13],
- pMatrix.m[2], pMatrix.m[6], pMatrix.m[10], pMatrix.m[14],
- pMatrix.m[3], pMatrix.m[7], pMatrix.m[11], pMatrix.m[15] };
- return m;
- }
- 
- FMatrix FMatrixMultiply(FMatrix pMatrixLeft, FMatrix pMatrixRight)
- {
- FMatrix m;
- 
- m.m[0]  = pMatrixLeft.m[0] * pMatrixRight.m[0]  + pMatrixLeft.m[4] * pMatrixRight.m[1]  + pMatrixLeft.m[8] * pMatrixRight.m[2]   + pMatrixLeft.m[12] * pMatrixRight.m[3];
- m.m[4]  = pMatrixLeft.m[0] * pMatrixRight.m[4]  + pMatrixLeft.m[4] * pMatrixRight.m[5]  + pMatrixLeft.m[8] * pMatrixRight.m[6]   + pMatrixLeft.m[12] * pMatrixRight.m[7];
- m.m[8]  = pMatrixLeft.m[0] * pMatrixRight.m[8]  + pMatrixLeft.m[4] * pMatrixRight.m[9]  + pMatrixLeft.m[8] * pMatrixRight.m[10]  + pMatrixLeft.m[12] * pMatrixRight.m[11];
- m.m[12] = pMatrixLeft.m[0] * pMatrixRight.m[12] + pMatrixLeft.m[4] * pMatrixRight.m[13] + pMatrixLeft.m[8] * pMatrixRight.m[14]  + pMatrixLeft.m[12] * pMatrixRight.m[15];
- 
- m.m[1]  = pMatrixLeft.m[1] * pMatrixRight.m[0]  + pMatrixLeft.m[5] * pMatrixRight.m[1]  + pMatrixLeft.m[9] * pMatrixRight.m[2]   + pMatrixLeft.m[13] * pMatrixRight.m[3];
- m.m[5]  = pMatrixLeft.m[1] * pMatrixRight.m[4]  + pMatrixLeft.m[5] * pMatrixRight.m[5]  + pMatrixLeft.m[9] * pMatrixRight.m[6]   + pMatrixLeft.m[13] * pMatrixRight.m[7];
- m.m[9]  = pMatrixLeft.m[1] * pMatrixRight.m[8]  + pMatrixLeft.m[5] * pMatrixRight.m[9]  + pMatrixLeft.m[9] * pMatrixRight.m[10]  + pMatrixLeft.m[13] * pMatrixRight.m[11];
- m.m[13] = pMatrixLeft.m[1] * pMatrixRight.m[12] + pMatrixLeft.m[5] * pMatrixRight.m[13] + pMatrixLeft.m[9] * pMatrixRight.m[14]  + pMatrixLeft.m[13] * pMatrixRight.m[15];
- 
- m.m[2]  = pMatrixLeft.m[2] * pMatrixRight.m[0]  + pMatrixLeft.m[6] * pMatrixRight.m[1]  + pMatrixLeft.m[10] * pMatrixRight.m[2]  + pMatrixLeft.m[14] * pMatrixRight.m[3];
- m.m[6]  = pMatrixLeft.m[2] * pMatrixRight.m[4]  + pMatrixLeft.m[6] * pMatrixRight.m[5]  + pMatrixLeft.m[10] * pMatrixRight.m[6]  + pMatrixLeft.m[14] * pMatrixRight.m[7];
- m.m[10] = pMatrixLeft.m[2] * pMatrixRight.m[8]  + pMatrixLeft.m[6] * pMatrixRight.m[9]  + pMatrixLeft.m[10] * pMatrixRight.m[10] + pMatrixLeft.m[14] * pMatrixRight.m[11];
- m.m[14] = pMatrixLeft.m[2] * pMatrixRight.m[12] + pMatrixLeft.m[6] * pMatrixRight.m[13] + pMatrixLeft.m[10] * pMatrixRight.m[14] + pMatrixLeft.m[14] * pMatrixRight.m[15];
- 
- m.m[3]  = pMatrixLeft.m[3] * pMatrixRight.m[0]  + pMatrixLeft.m[7] * pMatrixRight.m[1]  + pMatrixLeft.m[11] * pMatrixRight.m[2]  + pMatrixLeft.m[15] * pMatrixRight.m[3];
- m.m[7]  = pMatrixLeft.m[3] * pMatrixRight.m[4]  + pMatrixLeft.m[7] * pMatrixRight.m[5]  + pMatrixLeft.m[11] * pMatrixRight.m[6]  + pMatrixLeft.m[15] * pMatrixRight.m[7];
- m.m[11] = pMatrixLeft.m[3] * pMatrixRight.m[8]  + pMatrixLeft.m[7] * pMatrixRight.m[9]  + pMatrixLeft.m[11] * pMatrixRight.m[10] + pMatrixLeft.m[15] * pMatrixRight.m[11];
- m.m[15] = pMatrixLeft.m[3] * pMatrixRight.m[12] + pMatrixLeft.m[7] * pMatrixRight.m[13] + pMatrixLeft.m[11] * pMatrixRight.m[14] + pMatrixLeft.m[15] * pMatrixRight.m[15];
- 
- return m;
- }
- 
- FMatrix FMatrixAdd(FMatrix pMatrixLeft, FMatrix pMatrixRight)
- {
- FMatrix m;
- 
- m.m[0] = pMatrixLeft.m[0] + pMatrixRight.m[0];
- m.m[1] = pMatrixLeft.m[1] + pMatrixRight.m[1];
- m.m[2] = pMatrixLeft.m[2] + pMatrixRight.m[2];
- m.m[3] = pMatrixLeft.m[3] + pMatrixRight.m[3];
- 
- m.m[4] = pMatrixLeft.m[4] + pMatrixRight.m[4];
- m.m[5] = pMatrixLeft.m[5] + pMatrixRight.m[5];
- m.m[6] = pMatrixLeft.m[6] + pMatrixRight.m[6];
- m.m[7] = pMatrixLeft.m[7] + pMatrixRight.m[7];
- 
- m.m[8] = pMatrixLeft.m[8] + pMatrixRight.m[8];
- m.m[9] = pMatrixLeft.m[9] + pMatrixRight.m[9];
- m.m[10] = pMatrixLeft.m[10] + pMatrixRight.m[10];
- m.m[11] = pMatrixLeft.m[11] + pMatrixRight.m[11];
- 
- m.m[12] = pMatrixLeft.m[12] + pMatrixRight.m[12];
- m.m[13] = pMatrixLeft.m[13] + pMatrixRight.m[13];
- m.m[14] = pMatrixLeft.m[14] + pMatrixRight.m[14];
- m.m[15] = pMatrixLeft.m[15] + pMatrixRight.m[15];
- 
- return m;
- }
- 
- FMatrix FMatrixSubtract(FMatrix pMatrixLeft, FMatrix pMatrixRight)
- {
- FMatrix m;
- 
- m.m[0] = pMatrixLeft.m[0] - pMatrixRight.m[0];
- m.m[1] = pMatrixLeft.m[1] - pMatrixRight.m[1];
- m.m[2] = pMatrixLeft.m[2] - pMatrixRight.m[2];
- m.m[3] = pMatrixLeft.m[3] - pMatrixRight.m[3];
- 
- m.m[4] = pMatrixLeft.m[4] - pMatrixRight.m[4];
- m.m[5] = pMatrixLeft.m[5] - pMatrixRight.m[5];
- m.m[6] = pMatrixLeft.m[6] - pMatrixRight.m[6];
- m.m[7] = pMatrixLeft.m[7] - pMatrixRight.m[7];
- 
- m.m[8] = pMatrixLeft.m[8] - pMatrixRight.m[8];
- m.m[9] = pMatrixLeft.m[9] - pMatrixRight.m[9];
- m.m[10] = pMatrixLeft.m[10] - pMatrixRight.m[10];
- m.m[11] = pMatrixLeft.m[11] - pMatrixRight.m[11];
- 
- m.m[12] = pMatrixLeft.m[12] - pMatrixRight.m[12];
- m.m[13] = pMatrixLeft.m[13] - pMatrixRight.m[13];
- m.m[14] = pMatrixLeft.m[14] - pMatrixRight.m[14];
- m.m[15] = pMatrixLeft.m[15] - pMatrixRight.m[15];
- 
- return m;
- }
- 
- FMatrix FMatrixTranslate(FMatrix pMatrix, float tx, float ty, float tz)
- {
- FMatrix m = { pMatrix.m[0], pMatrix.m[1], pMatrix.m[2], pMatrix.m[3],
- pMatrix.m[4], pMatrix.m[5], pMatrix.m[6], pMatrix.m[7],
- pMatrix.m[8], pMatrix.m[9], pMatrix.m[10], pMatrix.m[11],
- pMatrix.m[0] * tx + pMatrix.m[4] * ty + pMatrix.m[8] * tz + pMatrix.m[12],
- pMatrix.m[1] * tx + pMatrix.m[5] * ty + pMatrix.m[9] * tz + pMatrix.m[13],
- pMatrix.m[2] * tx + pMatrix.m[6] * ty + pMatrix.m[10] * tz + pMatrix.m[14],
- pMatrix.m[15] };
- return m;
- }
- 
- FMatrix FMatrixScale(FMatrix pMatrix, float sx, float sy, float sz)
- {
- FMatrix m = { pMatrix.m[0] * sx, pMatrix.m[1] * sx, pMatrix.m[2] * sx, pMatrix.m[3] * sx,
- pMatrix.m[4] * sy, pMatrix.m[5] * sy, pMatrix.m[6] * sy, pMatrix.m[7] * sy,
- pMatrix.m[8] * sz, pMatrix.m[9] * sz, pMatrix.m[10] * sz, pMatrix.m[11] * sz,
- pMatrix.m[12], pMatrix.m[13], pMatrix.m[14], pMatrix.m[15] };
- return m;
- }
- 
- FMatrix FMatrixRotate(FMatrix pMatrix, float pRadians, float x, float y, float z)
- {
- FMatrix rm = FMatrixCreateRotation(pRadians, x, y, z);
- return FMatrixMultiply(pMatrix, rm);
- }
- 
- FMatrix FMatrixRotateX(FMatrix pMatrix, float pRadians)
- {
- FMatrix rm = FMatrixCreateXRotation(pRadians);
- return FMatrixMultiply(pMatrix, rm);
- }
- 
- FMatrix FMatrixRotateY(FMatrix pMatrix, float pRadians)
- {
- FMatrix rm = FMatrixCreateYRotation(pRadians);
- return FMatrixMultiply(pMatrix, rm);
- }
- 
- FMatrix FMatrixRotateZ(FMatrix pMatrix, float pRadians)
- {
- FMatrix rm = FMatrixCreateZRotation(pRadians);
- return FMatrixMultiply(pMatrix, rm);
- }
- 
- */
-
-
-
-
-
-
-
-
-
-
-
 FMatrix FMatrixCreate(float m00, float m01, float m02, float m03,
                       float m10, float m11, float m12, float m13,
                       float m20, float m21, float m22, float m23,
-                      float m30, float m31, float m32, float m33)
-{
-    FMatrix m;
-    
-    
-    m.m[0 ] = m00;
-    m.m[1 ] = m01;
-    m.m[2 ] = m02;
-    m.m[3 ] = m03;
-    
-    m.m[4 ] = m10;
-    m.m[5 ] = m11;
-    m.m[6 ] = m12;
-    m.m[7 ] = m13;
-    
-    m.m[8 ] = m20;
-    m.m[9 ] = m21;
-    m.m[10] = m22;
-    m.m[11] = m23;
-    
-    m.m[12] = m30;
-    m.m[13] = m31;
-    m.m[14] = m32;
-    m.m[15] = m33;
-    
-    return m;
+                      float m30, float m31, float m32, float m33) {
+    FMatrix aResult;
+    aResult.m[0 ] = m00; aResult.m[1 ] = m01; aResult.m[2 ] = m02; aResult.m[3 ] = m03;
+    aResult.m[4 ] = m10; aResult.m[5 ] = m11; aResult.m[6 ] = m12; aResult.m[7 ] = m13;
+    aResult.m[8 ] = m20; aResult.m[9 ] = m21; aResult.m[10] = m22; aResult.m[11] = m23;
+    aResult.m[12] = m30; aResult.m[13] = m31; aResult.m[14] = m32; aResult.m[15] = m33;
+    return aResult;
 }
 
 FMatrix FMatrixCreateAndTranspose(float m00, float m01, float m02, float m03,
                                   float m10, float m11, float m12, float m13,
                                   float m20, float m21, float m22, float m23,
-                                  float m30, float m31, float m32, float m33)
-{
-    FMatrix m;
-    
-    m.m[0 ] = m00;
-    m.m[1 ] = m10;
-    m.m[2 ] = m20;
-    m.m[3 ] = m30;
-    
-    m.m[4 ] = m01;
-    m.m[5 ] = m11;
-    m.m[6 ] = m21;
-    m.m[7 ] = m31;
-    
-    m.m[8 ] = m02;
-    m.m[9 ] = m12;
-    m.m[10] = m22;
-    m.m[11] = m32;
-    
-    m.m[12] = m03;
-    m.m[13] = m13;
-    m.m[14] = m23;
-    m.m[15] = m33;
-    
-    return m;
+                                  float m30, float m31, float m32, float m33) {
+    FMatrix aResult;
+    aResult.m[0 ] = m00; aResult.m[1 ] = m10; aResult.m[2 ] = m20; aResult.m[3 ] = m30;
+    aResult.m[4 ] = m01; aResult.m[5 ] = m11; aResult.m[6 ] = m21; aResult.m[7 ] = m31;
+    aResult.m[8 ] = m02; aResult.m[9 ] = m12; aResult.m[10] = m22; aResult.m[11] = m32;
+    aResult.m[12] = m03; aResult.m[13] = m13; aResult.m[14] = m23; aResult.m[15] = m33;
+    return aResult;
 }
 
 
@@ -946,22 +476,20 @@ FMatrix FMatrixCreateWithArray(float values[16])
     return m;
 }
 
-FMatrix FMatrixCreateTranslation(float tx, float ty, float tz)
-{
-    FMatrix m;
-    m.m[12] = tx;
-    m.m[13] = ty;
-    m.m[14] = tz;
-    return m;
+FMatrix FMatrixCreateTranslation(float tx, float ty, float tz) {
+    FMatrix aResult;
+    aResult.m[12] = tx;
+    aResult.m[13] = ty;
+    aResult.m[14] = tz;
+    return aResult;
 }
 
-FMatrix FMatrixCreateScale(float sx, float sy, float sz)
-{
-    FMatrix m;
-    m.m[0] = sx;
-    m.m[5] = sy;
-    m.m[10] = sz;
-    return m;
+FMatrix FMatrixCreateScale(float sx, float sy, float sz) {
+    FMatrix aResult;
+    aResult.m[0] = sx;
+    aResult.m[5] = sy;
+    aResult.m[10] = sz;
+    return aResult;
 }
 
 FMatrix FMatrixCreateRotation(float pRadians, float pX, float pY, float pZ) {
@@ -988,7 +516,7 @@ FMatrix FMatrixCreateRotation(float pRadians, float pX, float pY, float pZ) {
     float aSinY = pY * aSin;
     float aSinZ = pZ * aSin;
     
-    FMatrix m = FMatrixCreate(aCos + aCosInvX * pX,
+    FMatrix aResult = FMatrixCreate(aCos + aCosInvX * pX,
                                 aCosInvXY + aSinZ,
                                 aCosInvXZ - aSinY,
                                 0.0f,
@@ -1004,28 +532,22 @@ FMatrix FMatrixCreateRotation(float pRadians, float pX, float pY, float pZ) {
                                 0.0f,
                                 0.0f,
                                 1.0f );
-    
-    return m;
+    return aResult;
 }
 
 FMatrix FMatrixCreateXRotation(float pRadians) {
-    
     float aCos = cosf(pRadians);
     float aSin = sinf(pRadians);
-    
     FMatrix aResult = FMatrixCreate(1.0f, 0.0f, 0.0f, 0.0f,
                               0.0f, aCos, aSin, 0.0f,
                               0.0f, -aSin, aCos, 0.0f,
                               0.0f, 0.0f, 0.0f, 1.0f );
-    
     return aResult;
 }
 
 FMatrix FMatrixCreateYRotation(float pRadians) {
-    
     float aCos = cosf(pRadians);
     float aSin = sinf(pRadians);
-    
     FMatrix aResult = FMatrixCreate(aCos, 0.0f, -aSin, 0.0f,
                               0.0f, 1.0f, 0.0f, 0.0f,
                               aSin, 0.0f, aCos, 0.0f,
@@ -1035,47 +557,36 @@ FMatrix FMatrixCreateYRotation(float pRadians) {
 }
 
 FMatrix FMatrixCreateZRotation(float pRadians) {
-    
     float aCos = cosf(pRadians);
     float aSin = sinf(pRadians);
-    
     FMatrix aResult = FMatrixCreate(aCos, aSin, 0.0f, 0.0f,
                               -aSin, aCos, 0.0f, 0.0f,
                               0.0f, 0.0f, 1.0f, 0.0f,
                               0.0f, 0.0f, 0.0f, 1.0f);
-    
     return aResult;
 }
 
-FMatrix FMatrixCreatePerspective(float fovyRadians, float aspect, float nearZ, float farZ)
-{
+FMatrix FMatrixCreatePerspective(float fovyRadians, float aspect, float nearZ, float farZ) {
     float cotan = 1.0f / tanf(fovyRadians / 2.0f);
-    
-    FMatrix m = FMatrixCreate(cotan / aspect, 0.0f, 0.0f, 0.0f,
+    FMatrix aResult = FMatrixCreate(cotan / aspect, 0.0f, 0.0f, 0.0f,
                               0.0f, cotan, 0.0f, 0.0f,
                               0.0f, 0.0f, (farZ + nearZ) / (nearZ - farZ), -1.0f,
                               0.0f, 0.0f, (2.0f * farZ * nearZ) / (nearZ - farZ), 0.0f );
-    
-    
-    return m;
+    return aResult;
 }
 
-FMatrix FMatrixCreateFrustum(float left, float right, float bottom, float top, float nearZ, float farZ)
-{
+FMatrix FMatrixCreateFrustum(float left, float right, float bottom, float top, float nearZ, float farZ) {
     float ral = right + left;
     float rsl = right - left;
     float tsb = top - bottom;
     float tab = top + bottom;
     float fan = farZ + nearZ;
     float fsn = farZ - nearZ;
-    
-    FMatrix m = FMatrixCreate(2.0f * nearZ / rsl, 0.0f, 0.0f, 0.0f,
+    FMatrix aResult = FMatrixCreate(2.0f * nearZ / rsl, 0.0f, 0.0f, 0.0f,
                               0.0f, 2.0f * nearZ / tsb, 0.0f, 0.0f,
                               ral / rsl, tab / tsb, -fan / fsn, -1.0f,
                               0.0f, 0.0f, (-2.0f * farZ * nearZ) / fsn, 0.0f);
-    
-    
-    return m;
+    return aResult;
 }
 
 FMatrix FMatrixCreateOrtho(float left, float right, float bottom, float top, float nearZ, float farZ) {
@@ -1085,11 +596,11 @@ FMatrix FMatrixCreateOrtho(float left, float right, float bottom, float top, flo
     float tsb = top - bottom;
     float fan = farZ + nearZ;
     float fsn = farZ - nearZ;
-    FMatrix m = FMatrixCreate(2.0f / rsl, 0.0f, 0.0f, 0.0f,
+    FMatrix aResult = FMatrixCreate(2.0f / rsl, 0.0f, 0.0f, 0.0f,
                               0.0f, 2.0f / tsb, 0.0f, 0.0f,
                               0.0f, 0.0f, -2.0f / fsn, 0.0f,
                               -ral / rsl, -tab / tsb, -fan / fsn, 1.0f);
-    return m;
+    return aResult;
 }
 
 FMatrix FMatrixCreateLookAt(float eyeX, float eyeY, float eyeZ, float centerX, float centerY, float aCenterZ, float pUpX, float pUpY, float pUpZ) {
@@ -1164,25 +675,22 @@ FMatrix FMatrixCreateLookAt(float eyeX, float eyeY, float eyeZ, float centerX, f
      */
     
     
-    FMatrix m = FMatrixCreate(aUX, aVX, aNX, 0.0f,
+    FMatrix aResult = FMatrixCreate(aUX, aVX, aNX, 0.0f,
                               aUY, aVY, aNY, 0.0f,
                               aUZ, aVZ, aNZ, 0.0f,
                               -aUX * eyeX + -aUY * eyeY + -aUZ * eyeZ,
                               -aVX * eyeX + -aVY * eyeY + -aVZ * eyeZ,
                               -aNX * eyeX + -aNY * eyeY + -aNZ * eyeZ,
                               1.0f );
-    
-    return m;
+    return aResult;
 }
 
-FMatrix FMatrixTranspose(FMatrix pMatrix)
-{
-    
-    FMatrix m = FMatrixCreate(pMatrix.m[0], pMatrix.m[4], pMatrix.m[8], pMatrix.m[12],
+FMatrix FMatrixTranspose(FMatrix pMatrix) {
+    FMatrix aResult = FMatrixCreate(pMatrix.m[0], pMatrix.m[4], pMatrix.m[8], pMatrix.m[12],
                               pMatrix.m[1], pMatrix.m[5], pMatrix.m[9], pMatrix.m[13],
                               pMatrix.m[2], pMatrix.m[6], pMatrix.m[10], pMatrix.m[14],
                               pMatrix.m[3], pMatrix.m[7], pMatrix.m[11], pMatrix.m[15]);
-    return m;
+    return aResult;
 }
 
 FMatrix FMatrixInvert(FMatrix pMatrix, bool *pInvertable) {
@@ -1194,7 +702,7 @@ FMatrix FMatrixInvert(FMatrix pMatrix, bool *pInvertable) {
     float c06110710 = pMatrix.m[6] * pMatrix.m[11] - pMatrix.m[7] * pMatrix.m[10];
     float c06150714 = pMatrix.m[6] * pMatrix.m[15] - pMatrix.m[7] * pMatrix.m[14];
     float c10151114 = pMatrix.m[10] * pMatrix.m[15] - pMatrix.m[11] * pMatrix.m[14];
-    FMatrix m = FMatrixCreate(
+    FMatrix aResult = FMatrixCreate(
         pMatrix.m[5] * c10151114 + pMatrix.m[9] * -c06150714 + pMatrix.m[13] * c06110710, // c0
         -pMatrix.m[1] * c10151114 + pMatrix.m[9] * c02150314 - pMatrix.m[13] * c02110310, // c4
         pMatrix.m[1] * c06150714 - pMatrix.m[5] * c02150314 + pMatrix.m[13] * c02070306, // c8
@@ -1213,15 +721,19 @@ FMatrix FMatrixInvert(FMatrix pMatrix, bool *pInvertable) {
         0.0f // c15
     );
     // d = pMatrix determinant
-    float d = m.m[0] * pMatrix.m[0] + m.m[1] * pMatrix.m[4] + m.m[2] * pMatrix.m[8] + m.m[3] * pMatrix.m[12];
-    if (fabsf(d) < FLOAT_EPSILON) {
-        if (pInvertable) *pInvertable = false;
-        FMatrix aResult;
-        return aResult;
+    float aDeterminant = aResult.m[0] * pMatrix.m[0] + aResult.m[1] * pMatrix.m[4] + aResult.m[2] * pMatrix.m[8] + aResult.m[3] * pMatrix.m[12];
+    if (fabsf(aDeterminant) < FLOAT_EPSILON) {
+        if (pInvertable != NULL) {
+            *pInvertable = false;
+        }
+        FMatrix aDummy;
+        return aDummy;
     }
-    if (pInvertable) *pInvertable = true;
+    if (pInvertable != NULL) {
+        *pInvertable = true;
+    }
     // d = 1 / pMatrix determinant
-    d = 1.0f / d;
+    aDeterminant = 1.0f / aDeterminant;
     // m = transposed inverse pMatrix = transposed cofactor pMatrix * d
     float c01070305 = pMatrix.m[1] * pMatrix.m[7] - pMatrix.m[3] * pMatrix.m[5];
     float c01110309 = pMatrix.m[1] * pMatrix.m[11] - pMatrix.m[3] * pMatrix.m[9];
@@ -1237,56 +749,47 @@ FMatrix FMatrixInvert(FMatrix pMatrix, bool *pInvertable) {
     float c05140613 = pMatrix.m[5] * pMatrix.m[14] - pMatrix.m[6] * pMatrix.m[13];
     float c09141013 = pMatrix.m[9] * pMatrix.m[14] - pMatrix.m[10] * pMatrix.m[13];
     
-    m.m[0] *= d; // c0
-    m.m[1] *= d; // c4
-    m.m[2] *= d; // c8
-    m.m[3] *= d; // c12
-    m.m[4] = (-pMatrix.m[4] * c10151114 + pMatrix.m[8] * c06150714 - pMatrix.m[12] * c06110710) * d; // c1
-    m.m[5] = (pMatrix.m[0] * c10151114 - pMatrix.m[8] * c02150314 + pMatrix.m[12] * c02110310) * d; // c5
-    m.m[6] = (-pMatrix.m[0] * c06150714 + pMatrix.m[4] * c02150314 - pMatrix.m[12] * c02070306) * d; // c9
-    m.m[7] = (pMatrix.m[0] * c06110710 - pMatrix.m[4] * c02110310 + pMatrix.m[8] * c02070306) * d; // c13
-    m.m[8] = (pMatrix.m[4] * c09151113 - pMatrix.m[8] * c05150713 + pMatrix.m[12] * c05110709) * d; // c2
-    m.m[9] = (-pMatrix.m[0] * c09151113 + pMatrix.m[8] * c01150313 - pMatrix.m[12] * c01110309) * d; // c6
-    m.m[10] = (pMatrix.m[0] * c05150713 - pMatrix.m[4] * c01150313 + pMatrix.m[12] * c01070305) * d; // c10
-    m.m[11] = (-pMatrix.m[0] * c05110709 + pMatrix.m[4] * c01110309 - pMatrix.m[8] * c01070305) * d; // c14
-    m.m[12] = (-pMatrix.m[4] * c09141013 + pMatrix.m[8] * c05140613 - pMatrix.m[12] * c05100609) * d; // c3
-    m.m[13] = (pMatrix.m[0] * c09141013 - pMatrix.m[8] * c01140213 + pMatrix.m[12] * c01100209) * d; // c7
-    m.m[14] = (-pMatrix.m[0] * c05140613 + pMatrix.m[4] * c01140213 - pMatrix.m[12] * c01060205) * d; // c11
-    m.m[15] = (pMatrix.m[0] * c05100609 - pMatrix.m[4] * c01100209 + pMatrix.m[8] * c01060205) * d; // c15
-    return m;
+    aResult.m[0] *= aDeterminant; // c0
+    aResult.m[1] *= aDeterminant; // c4
+    aResult.m[2] *= aDeterminant; // c8
+    aResult.m[3] *= aDeterminant; // c12
+    aResult.m[4] = (-pMatrix.m[4] * c10151114 + pMatrix.m[8] * c06150714 - pMatrix.m[12] * c06110710) * aDeterminant; // c1
+    aResult.m[5] = (pMatrix.m[0] * c10151114 - pMatrix.m[8] * c02150314 + pMatrix.m[12] * c02110310) * aDeterminant; // c5
+    aResult.m[6] = (-pMatrix.m[0] * c06150714 + pMatrix.m[4] * c02150314 - pMatrix.m[12] * c02070306) * aDeterminant; // c9
+    aResult.m[7] = (pMatrix.m[0] * c06110710 - pMatrix.m[4] * c02110310 + pMatrix.m[8] * c02070306) * aDeterminant; // c13
+    aResult.m[8] = (pMatrix.m[4] * c09151113 - pMatrix.m[8] * c05150713 + pMatrix.m[12] * c05110709) * aDeterminant; // c2
+    aResult.m[9] = (-pMatrix.m[0] * c09151113 + pMatrix.m[8] * c01150313 - pMatrix.m[12] * c01110309) * aDeterminant; // c6
+    aResult.m[10] = (pMatrix.m[0] * c05150713 - pMatrix.m[4] * c01150313 + pMatrix.m[12] * c01070305) * aDeterminant; // c10
+    aResult.m[11] = (-pMatrix.m[0] * c05110709 + pMatrix.m[4] * c01110309 - pMatrix.m[8] * c01070305) * aDeterminant; // c14
+    aResult.m[12] = (-pMatrix.m[4] * c09141013 + pMatrix.m[8] * c05140613 - pMatrix.m[12] * c05100609) * aDeterminant; // c3
+    aResult.m[13] = (pMatrix.m[0] * c09141013 - pMatrix.m[8] * c01140213 + pMatrix.m[12] * c01100209) * aDeterminant; // c7
+    aResult.m[14] = (-pMatrix.m[0] * c05140613 + pMatrix.m[4] * c01140213 - pMatrix.m[12] * c01060205) * aDeterminant; // c11
+    aResult.m[15] = (pMatrix.m[0] * c05100609 - pMatrix.m[4] * c01100209 + pMatrix.m[8] * c01060205) * aDeterminant; // c15
+    return aResult;
 }
 
 FMatrix FMatrixMultiply(FMatrix pMatrixLeft, FMatrix pMatrixRight) {
     FMatrix aMatrix;
-    
     aMatrix.m[0]  = pMatrixLeft.m[0] * pMatrixRight.m[0]  + pMatrixLeft.m[4] * pMatrixRight.m[1]  + pMatrixLeft.m[8] * pMatrixRight.m[2]   + pMatrixLeft.m[12] * pMatrixRight.m[3];
     aMatrix.m[4]  = pMatrixLeft.m[0] * pMatrixRight.m[4]  + pMatrixLeft.m[4] * pMatrixRight.m[5]  + pMatrixLeft.m[8] * pMatrixRight.m[6]   + pMatrixLeft.m[12] * pMatrixRight.m[7];
     aMatrix.m[8]  = pMatrixLeft.m[0] * pMatrixRight.m[8]  + pMatrixLeft.m[4] * pMatrixRight.m[9]  + pMatrixLeft.m[8] * pMatrixRight.m[10]  + pMatrixLeft.m[12] * pMatrixRight.m[11];
     aMatrix.m[12] = pMatrixLeft.m[0] * pMatrixRight.m[12] + pMatrixLeft.m[4] * pMatrixRight.m[13] + pMatrixLeft.m[8] * pMatrixRight.m[14]  + pMatrixLeft.m[12] * pMatrixRight.m[15];
-    
     aMatrix.m[1]  = pMatrixLeft.m[1] * pMatrixRight.m[0]  + pMatrixLeft.m[5] * pMatrixRight.m[1]  + pMatrixLeft.m[9] * pMatrixRight.m[2]   + pMatrixLeft.m[13] * pMatrixRight.m[3];
     aMatrix.m[5]  = pMatrixLeft.m[1] * pMatrixRight.m[4]  + pMatrixLeft.m[5] * pMatrixRight.m[5]  + pMatrixLeft.m[9] * pMatrixRight.m[6]   + pMatrixLeft.m[13] * pMatrixRight.m[7];
     aMatrix.m[9]  = pMatrixLeft.m[1] * pMatrixRight.m[8]  + pMatrixLeft.m[5] * pMatrixRight.m[9]  + pMatrixLeft.m[9] * pMatrixRight.m[10]  + pMatrixLeft.m[13] * pMatrixRight.m[11];
     aMatrix.m[13] = pMatrixLeft.m[1] * pMatrixRight.m[12] + pMatrixLeft.m[5] * pMatrixRight.m[13] + pMatrixLeft.m[9] * pMatrixRight.m[14]  + pMatrixLeft.m[13] * pMatrixRight.m[15];
-    
     aMatrix.m[2]  = pMatrixLeft.m[2] * pMatrixRight.m[0]  + pMatrixLeft.m[6] * pMatrixRight.m[1]  + pMatrixLeft.m[10] * pMatrixRight.m[2]  + pMatrixLeft.m[14] * pMatrixRight.m[3];
     aMatrix.m[6]  = pMatrixLeft.m[2] * pMatrixRight.m[4]  + pMatrixLeft.m[6] * pMatrixRight.m[5]  + pMatrixLeft.m[10] * pMatrixRight.m[6]  + pMatrixLeft.m[14] * pMatrixRight.m[7];
     aMatrix.m[10] = pMatrixLeft.m[2] * pMatrixRight.m[8]  + pMatrixLeft.m[6] * pMatrixRight.m[9]  + pMatrixLeft.m[10] * pMatrixRight.m[10] + pMatrixLeft.m[14] * pMatrixRight.m[11];
     aMatrix.m[14] = pMatrixLeft.m[2] * pMatrixRight.m[12] + pMatrixLeft.m[6] * pMatrixRight.m[13] + pMatrixLeft.m[10] * pMatrixRight.m[14] + pMatrixLeft.m[14] * pMatrixRight.m[15];
-    
     aMatrix.m[3]  = pMatrixLeft.m[3] * pMatrixRight.m[0]  + pMatrixLeft.m[7] * pMatrixRight.m[1]  + pMatrixLeft.m[11] * pMatrixRight.m[2]  + pMatrixLeft.m[15] * pMatrixRight.m[3];
     aMatrix.m[7]  = pMatrixLeft.m[3] * pMatrixRight.m[4]  + pMatrixLeft.m[7] * pMatrixRight.m[5]  + pMatrixLeft.m[11] * pMatrixRight.m[6]  + pMatrixLeft.m[15] * pMatrixRight.m[7];
     aMatrix.m[11] = pMatrixLeft.m[3] * pMatrixRight.m[8]  + pMatrixLeft.m[7] * pMatrixRight.m[9]  + pMatrixLeft.m[11] * pMatrixRight.m[10] + pMatrixLeft.m[15] * pMatrixRight.m[11];
     aMatrix.m[15] = pMatrixLeft.m[3] * pMatrixRight.m[12] + pMatrixLeft.m[7] * pMatrixRight.m[13] + pMatrixLeft.m[11] * pMatrixRight.m[14] + pMatrixLeft.m[15] * pMatrixRight.m[15];
-    
     return aMatrix;
-    
-    //#endif
-    
 }
 
-FMatrix FMatrixAdd(FMatrix pMatrixLeft, FMatrix pMatrixRight)
-{
+FMatrix FMatrixAdd(FMatrix pMatrixLeft, FMatrix pMatrixRight) {
     FMatrix m;
     
     m.m[0] = pMatrixLeft.m[0] + pMatrixRight.m[0];
@@ -1312,8 +815,7 @@ FMatrix FMatrixAdd(FMatrix pMatrixLeft, FMatrix pMatrixRight)
     return m;
 }
 
-FMatrix FMatrixSubtract(FMatrix pMatrixLeft, FMatrix pMatrixRight)
-{
+FMatrix FMatrixSubtract(FMatrix pMatrixLeft, FMatrix pMatrixRight) {
     FMatrix m;
     
     m.m[0] = pMatrixLeft.m[0] - pMatrixRight.m[0];
@@ -1339,8 +841,7 @@ FMatrix FMatrixSubtract(FMatrix pMatrixLeft, FMatrix pMatrixRight)
     return m;
 }
 
-FMatrix FMatrixTranslate(FMatrix pMatrix, float tx, float ty, float tz)
-{
+FMatrix FMatrixTranslate(FMatrix pMatrix, float tx, float ty, float tz) {
     FMatrix m = FMatrixCreate(pMatrix.m[0], pMatrix.m[1], pMatrix.m[2], pMatrix.m[3],
                               pMatrix.m[4], pMatrix.m[5], pMatrix.m[6], pMatrix.m[7],
                               pMatrix.m[8], pMatrix.m[9], pMatrix.m[10], pMatrix.m[11],
@@ -1379,6 +880,3 @@ FMatrix FMatrixRotateZ(FMatrix pMatrix, float pRadians) {
     FMatrix aRotationMatrix = FMatrixCreateZRotation(pRadians);
     return FMatrixMultiply(pMatrix, aRotationMatrix);
 }
-
-
-
