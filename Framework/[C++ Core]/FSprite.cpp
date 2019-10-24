@@ -588,12 +588,10 @@ void FSprite::DrawTripletHProgress(float pX, float pY, float pInsetLeft, float p
     float aX2 = aTripletCenterX1;
     float aX3 = aX1;
     float aX4 = aX2;
-    
     float aY1 = pY;
     float aY2 = aY1;
     float aY3 = pY + mHeight;
     float aY4 = aY3;
-    
     if (aProgressX <= aTripletCenterX1) {
         aX2 = aProgressX;
         aX4 = aX2;
@@ -609,12 +607,10 @@ void FSprite::DrawTripletHProgress(float pX, float pY, float pInsetLeft, float p
         Graphics::DrawSprite(cSliceTextureRect.mPositions, cSliceTextureRect.mTextureCoords, mTexture);
     }
     
-    
     aX1 = aTripletCenterX1;
     aX2 = aTripletCenterX2;
     aX3 = aX1;
     aX4 = aX2;
-    
     if (aProgressX <= aTripletCenterX2) {
         aX2 = aProgressX;
         aX4 = aX2;
@@ -634,16 +630,12 @@ void FSprite::DrawTripletHProgress(float pX, float pY, float pInsetLeft, float p
     aX2 = aTripletRightX;
     aX3 = aX1;
     aX4 = aX2;
-    
     if (aProgressX < aEndX) {
-        
         aX2 = aProgressX;
         aX4 = aX2;
-        
         aPercentU = (aProgressX - aTripletCenterX2) / (aEndX - aTripletCenterX2);
-        aInnerEndU = (mWidth - pProgressInsetRight) / mWidth;
+        aInnerEndU = aStartU + (aEndU - aStartU) * ((mWidth - pProgressInsetRight) / mWidth);
         aEndU = (aTripletCenterU2 + ((aInnerEndU - aTripletCenterU2) * aPercentU));
-        
         cSliceTextureRect.SetUVQuad(aTripletCenterU2, aStartV, aEndU, aEndV);
         cSliceTextureRect.SetQuad(aX1, aY1, aX2, aY2, aX3, aY3, aX4, aY4);
         Graphics::DrawSprite(cSliceTextureRect.mPositions, cSliceTextureRect.mTextureCoords, mTexture);
