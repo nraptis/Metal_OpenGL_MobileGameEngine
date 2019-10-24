@@ -802,7 +802,10 @@ void FApp::FrameController() {
     
     if (aUpdateCheck > 0) {
         if ((aUpdateCheck > 40) || (mActive == false)) {
-            Log("aUpdateCheck > 32, assumed break-point?\n");
+            
+            if (aUpdateCheck > 40) {
+                Log("aUpdateCheck > 40, assumed break-point?\n");
+            }
             
             if (!mFrame.mBreakUpdate) {
                 SystemProcess();

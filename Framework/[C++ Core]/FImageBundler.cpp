@@ -16,21 +16,19 @@
 FImageBundler gImageBundler;
 
 FImageBundler::FImageBundler() {
-    mEdgeBorder=2;
-    mBorder=2;
-    mInset=0;
-
-    mMultiRez=false;
-    
-    mAutoBundle=false;
-
+    mEdgeBorder = 2;
+    mBorder = 2;
+    mInset = 0;
+    mMultiRez = false;
+    mAutoBundle = false;
     mKeepAllAlpha = false;
     mBundleWidth = 0;
     mBundleHeight = 0;
     mBundleScale = 1.0f;
     mSplatArea = 0;
-    mSuccess=false;
+    mSuccess = false;
     mDidLoad = false;
+    mRepeatH = false;
 }
 
 FImageBundler::~FImageBundler() {
@@ -156,13 +154,42 @@ void FImageBundler::AddImage(const char*pImagePath) {
     AddNode(aNode);
     
     aNode->mName = aPath;
+    aNode->mX = 0;
+    aNode->mY = 0;
     
-    aNode->mX=0;
-    aNode->mY=0;
-    
-    aNode->mOriginalWidth=aImage.mWidth;
-    aNode->mOriginalHeight=aImage.mHeight;
+    aNode->mOriginalWidth = aImage.mWidth;
+    aNode->mOriginalHeight = aImage.mHeight;
 
+    
+    if (mRepeatH == true) {
+        aNode->mRepeatH = true;
+        aNode->mImage = aImage.Clone();
+        aNode->mInset = 0;
+        aNode->mOffsetX = 0;
+        aNode->mOffsetY = 0;
+        aNode->mWidth = aNode->mImage->mWidth;
+        aNode->mHeight = aNode->mImage->mHeight;
+        aNode->mArea = aNode->mWidth * aNode->mHeight;
+        if (aDoubleRez.mWidth > 0) {
+            aNode->mImageRez2X = aDoubleRez.Clone();
+            aNode->mImageRez2X->BufferEdges(mInset * 2);
+            aDoubleRez.Kill();
+        }
+        if (aTripleRez.mWidth > 0) {
+            aNode->mImageRez3X = aTripleRez.Clone();
+            aNode->mImageRez3X->BufferEdges(mInset * 3);
+            aTripleRez.Kill();
+        }
+        if (aQuadrupleRez.mWidth > 0) {
+            aNode->mImageRez4X = aQuadrupleRez.Clone();
+            aNode->mImageRez4X->BufferEdges(mInset * 4);
+            aQuadrupleRez.Kill();
+        }
+        return;
+    }
+    
+    
+    
     if (mInset > 0) {
         aNode->mImage = aImage.Clone();
         aNode->mImage->BufferEdges(mInset);
@@ -340,24 +367,41 @@ void FImageBundler::Save(char *pName) {
 
         for (int i=0;i<aNodeCount;i++) {
             aArray[i]->mPlaced=false;
+            if (aArray[i]->mRepeatH == true) {
+                aArray[i]->mWidth = mBundleWidth;
+            }
         }
 
         for (int i=0;i<aNodeCount;i++) {
-            aNode=aArray[i];
-            aNodePlaced=false;
+            aNode = aArray[i];
+            aNodePlaced = false;
+            aNodeWidth = aNode->mWidth;
+            aNodeHeight = aNode->mHeight;
             
-
-            //Old rotation loop, we don't use for now..
-            //for (int q=0;q<2&&(aNodePlaced==false);q++) {
-
-                aNodeWidth=aNode->mWidth;
-                aNodeHeight=aNode->mHeight;
+            if (aArray[i]->mRepeatH == true) {
+                for (int aY=0;aNodePlaced==false && aY<=mBundleHeight-aNodeHeight;aY+=4) {
+                    aIntersects = false;
+                    for (int aCheckIndex=i-1;aCheckIndex>=0;aCheckIndex--) {
+                        aCheckNode = aArray[aCheckIndex];
+                        if (!((aY+aNodeHeight<=(aCheckNode->mY-mBorder))
+                              || (aY>=(aCheckNode->mY+aCheckNode->mHeight+mBorder)))) {
+                            aIntersects=true;
+                        }
+                    }
+                    if (aIntersects == false) {
+                        aNode->mX=0;
+                        aNode->mY=aY;
+                        aNodePlaced=true;
+                    }
+                }
+            } else {
                 for (int aY=0;aNodePlaced==false && aY<=mBundleHeight-aNodeHeight;aY+=4) {
                     for (int aX=0;aNodePlaced==false && aX <= mBundleWidth - aNodeWidth;aX+=4) {
                         aEdgeIntersect = ((aX+aNodeWidth >(mBundleWidth-mEdgeBorder))
                                           || (aY+aNodeHeight>(mBundleHeight-mEdgeBorder))
                                           || (aX<mEdgeBorder)
                                           || (aY<mEdgeBorder));
+                        
                         if (aEdgeIntersect == false) {
                             aIntersects = false;
                             for (int aCheckIndex=i-1;aCheckIndex>=0;aCheckIndex--) {
@@ -377,13 +421,12 @@ void FImageBundler::Save(char *pName) {
                         }
                     }
                 }
-
-            //}
-
-            if (aNodePlaced==false) {
+            }
+            
+            if (aNodePlaced == false) {
                 break;
             } else {
-                aNode->mPlaced=true;
+                aNode->mPlaced = true;
             }
         }
         
@@ -417,7 +460,9 @@ void FImageBundler::Save(char *pName) {
 
             for (int i=0;i<aNodeCount;i++) {
                 aNode = aArray[i];
-                mImage.Stamp(aNode->mImage,aNode->mX,aNode->mY);
+                if (true) {
+                    mImage.Stamp(aNode->mImage, aNode->mX, aNode->mY);
+                }
                 if (aNode->mImageRez2X) {
                     aImage2X.Stamp(aNode->mImageRez2X, aNode->mX*2, aNode->mY*2);
                 }
@@ -427,8 +472,50 @@ void FImageBundler::Save(char *pName) {
                 if (aNode->mImageRez4X) {
                     aImage4X.Stamp(aNode->mImageRez4X, aNode->mX*4, aNode->mY*4);
                 }
+                
+                if ((aNode->mRepeatH == true) && (aNode->mImage != NULL)) {
+                    
+                    aNode->mWidth = aNode->mImage->mWidth;
+                    aNode->mHeight = aNode->mImage->mHeight;
+                    
+                    int aMoveH = aNode->mImage->mWidth;
+                    int aNodeX = aNode->mX;
+                    
+                    if (aMoveH > 0) {
+                        aNodeX = aNode->mX;
+                        if (aNode->mImage != NULL) {
+                            while (aNodeX < (mImage.mWidth)) {
+                                mImage.Stamp(aNode->mImage, aNodeX, aNode->mY);
+                                aNodeX += aMoveH;
+                            }
+                        }
+                        
+                        aNodeX = aNode->mX * 2;
+                        if (aNode->mImageRez2X != NULL) {
+                            while (aNodeX < (aImage2X.mWidth)) {
+                                aImage2X.Stamp(aNode->mImageRez2X, aNodeX, aNode->mY * 2);
+                                aNodeX += aMoveH * 2;
+                            }
+                        }
+                        
+                        aNodeX = aNode->mX * 3;
+                        if (aNode->mImageRez3X != NULL) {
+                            while (aNodeX < (aImage3X.mWidth)) {
+                                aImage3X.Stamp(aNode->mImageRez3X, aNodeX, aNode->mY * 3);
+                                aNodeX += aMoveH * 3;
+                            }
+                        }
+                        
+                        aNodeX = aNode->mX * 4;
+                        if (aNode->mImageRez4X != NULL) {
+                            while (aNodeX < (aImage4X.mWidth)) {
+                                aImage4X.Stamp(aNode->mImageRez4X, aNodeX, aNode->mY * 4);
+                                aNodeX += aMoveH * 4;
+                            }
+                        }
+                    }
+                }
             }
-            
             
             FJSON aJSON;
             
@@ -583,27 +670,14 @@ void FImageBundler::LoadBundle(const char *pFile) {
             mLoadNodeList += aNode;
             
             aNode->mName = aNodeNode->GetString("name", "");
-            
             aNode->mOriginalWidth = aNodeNode->GetInt("image_width", 0) * mBundleScale;
             aNode->mOriginalHeight = aNodeNode->GetInt("image_height", 0) * mBundleScale;
-            
             aNode->mOffsetX = aNodeNode->GetInt("offset_x", 0) * mBundleScale;
             aNode->mOffsetY = aNodeNode->GetInt("offset_y", 0) * mBundleScale;
-            
             aNode->mX = aNodeNode->GetInt("rect_x", 0) * mBundleScale;
             aNode->mY = aNodeNode->GetInt("rect_y", 0) * mBundleScale;
-            
             aNode->mWidth = aNodeNode->GetInt("rect_width", 0) * mBundleScale;
             aNode->mHeight = aNodeNode->GetInt("rect_height", 0) * mBundleScale;
-            
-            //aNode->mX *= mBundleScale;
-            //aNode->mY *= mBundleScale;
-            //aNode->mWidth *= mBundleScale;
-            //aNode->mHeight *= mBundleScale;
-            //aNode->mOffsetX *= mBundleScale;
-            //aNode->mOffsetY *= mBundleScale;
-            //aNode->mOriginalWidth *= mBundleScale;
-            //aNode->mOriginalHeight *= mBundleScale;
             
             aNode->mSpriteUStart = (float)(aNode->mX) / (float)mBundleWidth;
             aNode->mSpriteVStart = (float)(aNode->mY) / (float)mBundleHeight;
@@ -826,7 +900,6 @@ bool FImageBundler::FindSequenceCrop(FList *pFileList, int &pCropX, int &pCropY,
     return aResult;
 }
 
-
 FImageBundlerLoadNode *FImageBundler::FetchNode(char *pName) {
     FImageBundlerLoadNode *aResult = 0;
         EnumList(FImageBundlerLoadNode, aNode, mLoadNodeList) {
@@ -887,6 +960,7 @@ FImageBundlerSaveNode::FImageBundlerSaveNode() {
     mArea = 0;
     mInset = 0;
     mImage = 0;
+    mRepeatH = false;
     mImageRez2X = 0;
     mImageRez3X = 0;
     mImageRez4X = 0;

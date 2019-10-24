@@ -19,31 +19,33 @@ public:
 	FImageBundlerSaveNode();
 	~FImageBundlerSaveNode();
     
-	int					mX;
-	int					mY;
+	int					            mX;
+	int					            mY;
 	
-	int					mWidth;
-	int					mHeight;
+	int					            mWidth;
+	int					            mHeight;
 	
-    int					mOffsetX;
-	int					mOffsetY;
+    int					            mOffsetX;
+	int					            mOffsetY;
 	
-	int					mOriginalWidth;
-	int					mOriginalHeight;
+	int					            mOriginalWidth;
+	int					            mOriginalHeight;
     
-	int					mArea;
+	int					            mArea;
     
-    int                 mInset;
+    int                             mInset;
 
-    bool                mPlaced;
+    bool                            mRepeatH;
+    
+    bool                            mPlaced;
     
     //TODO:
-    FImage              *mImage;
-    FImage              *mImageRez2X;
-    FImage              *mImageRez3X;
-    FImage              *mImageRez4X;
-
-	FString				mName;
+    FImage                          *mImage;
+    FImage                          *mImageRez2X;
+    FImage                          *mImageRez3X;
+    FImage                          *mImageRez4X;
+    
+	FString				            mName;
 };
 
 class FImageBundlerLoadNode {
@@ -121,6 +123,7 @@ public:
     bool                            mMultiRez;
 
     bool                            mKeepAllAlpha;
+    bool                            mRepeatH;
 	
     //int                             mImageWidth;
     //int                             mImageHeight;
