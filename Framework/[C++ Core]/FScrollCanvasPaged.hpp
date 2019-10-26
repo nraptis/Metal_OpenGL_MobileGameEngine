@@ -10,7 +10,6 @@
 #define FScrollCanvasPaged_hpp
 
 #include "FGestureCanvas.hpp"
-//#include "FSpline.hpp"
 
 class FScrollCanvasPaged : public FGestureCanvas {
 public:
@@ -24,6 +23,8 @@ public:
     void                                    SetPageCountVertical(int pCount);
     void                                    SetPageCount(int pCountHorizontal, int pCountVertical){SetPageCountHorizontal(pCountHorizontal);SetPageCountVertical(pCountVertical);}
     
+    void                                    SnapToPage(int pPageH, int pPageV);
+    
     int                                     mScrollPageCountH;
     int                                     mScrollPageCountV;
     
@@ -35,6 +36,9 @@ public:
     virtual void                            Pan(float pX, float pY);
     virtual void                            PanEnd(float pX, float pY, float pSpeedX, float pSpeedY);
     
+    //virtual bool                            Allow();
+    
+    
     int                                     mScrollCurrentPageH;
     int                                     mScrollCurrentPageV;
     
@@ -44,7 +48,6 @@ public:
     bool                                    mScrollAnimating;
     
     float                                   mSpeedThresholdFlingTo;
-    float                                   mSpeedThresholdNudgeBack;
     
     float                                   mScrollOffset[2];
     float                                   mScrollOffsetPanShift[2];

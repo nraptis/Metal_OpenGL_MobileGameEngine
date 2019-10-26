@@ -7,7 +7,6 @@
 //
 
 #include "FScrollCanvasPaged.hpp"
-
 #include "core_includes.h"
 
 FScrollCanvasPaged::FScrollCanvasPaged() {
@@ -32,20 +31,16 @@ FScrollCanvasPaged::FScrollCanvasPaged() {
     mScrollAnimationTimeTotal = 0;
     mScrollAnimationTimer = 0;
     
-    mSpeedThresholdFlingTo = 20.0f;
-    mSpeedThresholdNudgeBack = 6.0f;
+    mSpeedThresholdFlingTo = 7.5f;
     
     mScrollPageCountH = 1;
     mScrollPageCountV = 1;
     
-    if((gDeviceWidth < 700) || (gDeviceHeight < 500))
-    {
-        mSpeedThresholdFlingTo *= 0.85f;
-        mSpeedThresholdNudgeBack *= 0.85f;
+    if ((gDeviceWidth < 700) || (gDeviceHeight < 500)) {
+        mSpeedThresholdFlingTo *= 0.75f;
     }
     
-    for(int i=0;i<2;i++)
-    {
+    for (int i=0;i<2;i++) {
         mScrollOffset[i] = 0.0f;
         mScrollOffsetPanShift[i] = 0.0f;
         mScrollOffsetPanStart[i] = 0.0f;
@@ -58,26 +53,37 @@ FScrollCanvasPaged::FScrollCanvasPaged() {
     mScrollAnimationPercentTarget = 0.0f;
 }
 
-FScrollCanvasPaged::~FScrollCanvasPaged()
-{
+FScrollCanvasPaged::~FScrollCanvasPaged() {
     
 }
 
-void FScrollCanvasPaged::SetPageCountHorizontal(int pCount)
-{
+void FScrollCanvasPaged::SetPageCountHorizontal(int pCount) {
     mScrollPageCountH = pCount;
 }
 
-void FScrollCanvasPaged::SetPageCountVertical(int pCount)
-{
+void FScrollCanvasPaged::SetPageCountVertical(int pCount) {
     mScrollPageCountV = pCount;
 }
 
+void FScrollCanvasPaged::SnapToPage(int pPageH, int pPageV) {
+    
+    Log("FScrollCanvasPaged::SnapToPage(%d, %d)\n", pPageH, pPageV);
+    
+    mScrollCurrentPageH = pPageH;
+    mScrollCurrentPageV = pPageV;
+    
+    ClearGestures(true);
+    
+    mScrollOffset[0] = ((float)mScrollCurrentPageH) * (-mWidth);
+    mScrollOffset[1] = ((float)mScrollCurrentPageV) * (-mHeight);
+    
+    BaseUpdate();
+}
 
 void FScrollCanvasPaged::BaseUpdate() {
     FGestureCanvas::BaseUpdate();
     
-    if (mScrollAnimating) {
+    if (mScrollAnimating == true) {
         if (mFinishAnimation) {
             mScrollAnimationPercent = 0.0f;
             mScrollAnimating = false;
@@ -87,7 +93,7 @@ void FScrollCanvasPaged::BaseUpdate() {
             int aPreviousPageH = mScrollCurrentPageH;
             int aPreviousPageV = mScrollCurrentPageV;
             
-            if (mScrollHorizontal) {
+            if (mScrollHorizontal == true) {
                 mScrollCurrentPageH += aDir;
                 mScrollOffset[0] = ((float)(-mScrollCurrentPageH)) * mWidth;
             } else {
@@ -98,26 +104,36 @@ void FScrollCanvasPaged::BaseUpdate() {
             
             ScrollFinished();
             
-            if(mScrollHorizontal)ScrollFinishedHorizontal(aPreviousPageH, mScrollCurrentPageH);
-            else ScrollFinishedVertical(aPreviousPageV, mScrollCurrentPageV);
+            if (mScrollHorizontal) {
+                ScrollFinishedHorizontal(aPreviousPageH, mScrollCurrentPageH);
+            } else {
+                ScrollFinishedVertical(aPreviousPageV, mScrollCurrentPageV);
+            }
         } else {
             mFinishAnimationDirection = 0;
             if (mAnimationDirection == 1) {
-                if(mScrollAnimationPercentTarget > mScrollAnimationPercent)mScrollAnimationPercent += (mScrollAnimationPercentTarget - mScrollAnimationPercent) / 16.0f;
+                if (mScrollAnimationPercentTarget > mScrollAnimationPercent) {
+                    mScrollAnimationPercent += (mScrollAnimationPercentTarget - mScrollAnimationPercent) / 16.0f;
+                }
                 mScrollAnimationPercent += 0.025f;
-                if(mScrollAnimationPercent >= mScrollAnimationPercentTarget)
-                {
+                if (mScrollAnimationPercent >= mScrollAnimationPercentTarget) {
                     mScrollAnimationPercent = mScrollAnimationPercentTarget;
                     mFinishAnimation = true;
-                    if(mScrollAnimationPercentTarget > (0.5f))mFinishAnimationDirection = -1;
+                    if (mScrollAnimationPercentTarget > (0.5f)) {
+                        mFinishAnimationDirection = -1;
+                    }
                 }
             } else {
-                if(mScrollAnimationPercent > mScrollAnimationPercentTarget)mScrollAnimationPercent -= (mScrollAnimationPercent - mScrollAnimationPercentTarget) / 16.0f;
+                if (mScrollAnimationPercent > mScrollAnimationPercentTarget) {
+                    mScrollAnimationPercent -= (mScrollAnimationPercent - mScrollAnimationPercentTarget) / 16.0f;
+                }
                 mScrollAnimationPercent -= 0.025f;
                 if (mScrollAnimationPercent <= mScrollAnimationPercentTarget) {
                     mScrollAnimationPercent = mScrollAnimationPercentTarget;
                     mFinishAnimation = true;
-                    if(mScrollAnimationPercentTarget < (-0.5f))mFinishAnimationDirection = 1;
+                    if (mScrollAnimationPercentTarget < (-0.5f)) {
+                        mFinishAnimationDirection = 1;
+                    }
                 }
             }
             
@@ -165,43 +181,30 @@ void FScrollCanvasPaged::Pan(float pX, float pY) {
         float aManhattanDistanceY = fabsf(mScrollOffsetPanShift[1]);
         float aMaximumManhattanDistance = aManhattanDistanceX;
         
-        if(mScrollEnabledVertical)
-        {
-            if(mScrollEnabledHorizontal)
-            {
-                if(aManhattanDistanceY > aMaximumManhattanDistance)aMaximumManhattanDistance = aManhattanDistanceY;
-            }
-            else
-            {
+        if (mScrollEnabledVertical == true) {
+            if (mScrollEnabledHorizontal == true) {
+                if (aManhattanDistanceY > aMaximumManhattanDistance) {
+                    aMaximumManhattanDistance = aManhattanDistanceY;
+                }
+            } else {
                 aMaximumManhattanDistance = aManhattanDistanceY;
             }
         }
         
-        if(aMaximumManhattanDistance < mScrollPanSwitchDirectionThreshold)
-        {
-            if(mScrollPanDirectionPicked == false)
-            {
-                if((aManhattanDistanceX > aManhattanDistanceY) || (mScrollEnabledVertical == false))
-                {
-                    if(mScrollEnabledHorizontal)
-                    {
-                        if(aManhattanDistanceX > mScrollPanStartThreshold)
-                        {
+        if (aMaximumManhattanDistance < mScrollPanSwitchDirectionThreshold) {
+            if (mScrollPanDirectionPicked == false) {
+                if ((aManhattanDistanceX > aManhattanDistanceY) || (mScrollEnabledVertical == false)) {
+                    if (mScrollEnabledHorizontal == true) {
+                        if (aManhattanDistanceX > mScrollPanStartThreshold) {
                             //Log("Picked X!\n");
                             
                             mScrollPanDirectionPicked = true;
                             mScrollHorizontal = true;
                         }
                     }
-                }
-                else
-                {
-                    if(mScrollEnabledVertical)
-                    {
-                        if(aManhattanDistanceY > mScrollPanStartThreshold)
-                        {
-                            //Log("Picked Y!\n");
-                            
+                } else {
+                    if (mScrollEnabledVertical == true) {
+                        if (aManhattanDistanceY > mScrollPanStartThreshold) {
                             mScrollPanDirectionPicked = true;
                             mScrollHorizontal = false;
                         }
@@ -210,38 +213,38 @@ void FScrollCanvasPaged::Pan(float pX, float pY) {
             }
         }
         
-        if(mScrollPanDirectionPicked)
-        {
+        if (mScrollPanDirectionPicked == true) {
             bool aEdge = false;
             
-            if(mScrollHorizontal)
-            {
-                if(mScrollOffsetPanShift[0] > 0.0f)
-                {
-                    if(mScrollCurrentPageH <= 0)aEdge = true;
-                }
-                else
-                {
-                    if(mScrollCurrentPageH >= (mScrollPageCountH - 1))aEdge = true;
+            if (mScrollHorizontal == true) {
+                if (mScrollOffsetPanShift[0] > 0.0f) {
+                    if (mScrollCurrentPageH <= 0) {
+                        aEdge = true;
+                    }
+                } else {
+                    if (mScrollCurrentPageH >= (mScrollPageCountH - 1)) {
+                        aEdge = true;
+                    }
                 }
                 
                 float aOffset = mScrollOffsetPanShift[0];
-                if(aEdge)aOffset = ScrollGetBounceDragShift(aOffset);
+                if (aEdge == true) {
+                    aOffset = ScrollGetBounceDragShift(aOffset);
+                }
                 
                 mScrollOffset[0] = (mScrollOffsetPanStart[0] + aOffset);
                 mScrollOffset[1] = mScrollOffsetPanStart[1];
                 
                 mScrollAnimationPercent = (aOffset / mWidth);
-            }
-            else
-            {
-                if(mScrollOffsetPanShift[1] > 0.0f)
-                {
-                    if(mScrollCurrentPageV <= 0)aEdge = true;
-                }
-                else
-                {
-                    if(mScrollCurrentPageV >= (mScrollPageCountV - 1))aEdge = true;
+            } else {
+                if (mScrollOffsetPanShift[1] > 0.0f) {
+                    if (mScrollCurrentPageV <= 0) {
+                        aEdge = true;
+                    }
+                } else {
+                    if (mScrollCurrentPageV >= (mScrollPageCountV - 1)) {
+                        aEdge = true;
+                    }
                 }
                 
                 float aOffset = mScrollOffsetPanShift[1];
@@ -258,113 +261,87 @@ void FScrollCanvasPaged::Pan(float pX, float pY) {
 }
 
 void FScrollCanvasPaged::PanEnd(float pX, float pY, float pSpeedX, float pSpeedY) {
-    if(pSpeedX > 80)pSpeedX = 80.0f;
-    if(pSpeedX < -80)pSpeedX = -80.0f;
-    if(pSpeedY > 80)pSpeedY = 80.0f;
-    if(pSpeedY < -80)pSpeedY = -80.0f;
+    if(pSpeedX > 80) { pSpeedX = 80.0f; }
+    if(pSpeedX < -80) { pSpeedX = -80.0f; }
+    if(pSpeedY > 80) { pSpeedY = 80.0f; }
+    if(pSpeedY < -80) { pSpeedY = -80.0f; }
     
-    if (mScrollPanning) {
+    if (mScrollPanning == true) {
         mScrollPanning = false;
         
         float aVelocity = pSpeedY;
-        if(mScrollHorizontal)aVelocity = pSpeedX;
+        if (mScrollHorizontal) {
+            aVelocity = pSpeedX;
+        }
         
         float aMinimumScrollPercent = 0.25f;
         
         mAnimationDirection = -1;
         mFinishAnimation = false;
         
-        if(fabsf(aVelocity) >= mSpeedThresholdFlingTo)
-        {
-            if(aVelocity >= 0)
-            {
+        printf("aVelocity: %f  Thresh: %f\n", aVelocity, mSpeedThresholdFlingTo);
+        if (fabsf(aVelocity) >= mSpeedThresholdFlingTo) {
+            if (aVelocity >= 0) {
                 mAnimationDirection = 1;
-                if(mScrollAnimationPercent < 0)mScrollAnimationPercentTarget = 0.0f;
-                else mScrollAnimationPercentTarget = 1.0f;
-            }
-            else
-            {
-                mAnimationDirection = -1;
-                if(mScrollAnimationPercent > 0)mScrollAnimationPercentTarget = 0.0f;
-                else mScrollAnimationPercentTarget = -1.0f;
-            }
-        }
-        else
-        {
-            if(mScrollAnimationPercent >= 0)
-            {
-                if(mScrollAnimationPercent > aMinimumScrollPercent)
-                {
-                    mAnimationDirection = 1;
+                if (mScrollAnimationPercent < 0) {
+                    mScrollAnimationPercentTarget = 0.0f;
+                } else {
                     mScrollAnimationPercentTarget = 1.0f;
                 }
-                else
-                {
+            } else {
+                mAnimationDirection = -1;
+                if (mScrollAnimationPercent > 0) {
                     mScrollAnimationPercentTarget = 0.0f;
-                }
-            }
-            else
-            {
-                if(mScrollAnimationPercent < (-aMinimumScrollPercent))
-                {
-                    mAnimationDirection = -1;
+                } else {
                     mScrollAnimationPercentTarget = -1.0f;
                 }
-                else
-                {
+            }
+        } else {
+            if (mScrollAnimationPercent >= 0) {
+                if (mScrollAnimationPercent > aMinimumScrollPercent) {
+                    mAnimationDirection = 1;
+                    mScrollAnimationPercentTarget = 1.0f;
+                } else {
+                    mScrollAnimationPercentTarget = 0.0f;
+                }
+            } else {
+                if (mScrollAnimationPercent < (-aMinimumScrollPercent)) {
+                    mAnimationDirection = -1;
+                    mScrollAnimationPercentTarget = -1.0f;
+                } else {
                     mAnimationDirection = 1;
                     mScrollAnimationPercentTarget = 0.0f;
                 }
             }
         }
         
-        if(mAnimationDirection < 0)
-        {
-            if(mScrollHorizontal)
-            {
-                //if(CanScrollRight() == false)
-                if(mScrollCurrentPageH >= (mScrollPageCountH - 1))
-                {
-                    if(mScrollAnimationPercent <= 0)
-                    {
+        if (mAnimationDirection < 0) {
+            if (mScrollHorizontal) {
+                if (mScrollCurrentPageH >= (mScrollPageCountH - 1)) {
+                    if (mScrollAnimationPercent <= 0) {
+                        mAnimationDirection = 1;
+                        mScrollAnimationPercentTarget = 0.0f;
+                    }
+                }
+            } else {
+                if (mScrollCurrentPageV >= (mScrollPageCountV - 1)) {
+                    if (mScrollAnimationPercent <= 0) {
                         mAnimationDirection = 1;
                         mScrollAnimationPercentTarget = 0.0f;
                     }
                 }
             }
-            else
-            {
-                //if(CanScrollDown() == false)
-                if(mScrollCurrentPageV >= (mScrollPageCountV - 1))
-                {
-                    if(mScrollAnimationPercent <= 0)
-                    {
-                        mAnimationDirection = 1;
-                        mScrollAnimationPercentTarget = 0.0f;
-                    }
-                }
-            }
-        }
-        else
-        {
-            if(mScrollHorizontal)
-            {
-                //if(CanScrollLeft() == false)
-                if(mScrollCurrentPageH <= 0)
-                {
-                    if(mScrollAnimationPercent >= 0)
-                    {
+        } else {
+            if (mScrollHorizontal) {
+                if (mScrollCurrentPageH <= 0) {
+                    if (mScrollAnimationPercent >= 0) {
                         mAnimationDirection = -1;
                         mScrollAnimationPercentTarget = 0.0f;
                     }
                 }
-            }
-            else
-            {
-                if(mScrollCurrentPageV <= 0)
-                {
-                    if(mScrollAnimationPercent >= 0)
-                    {
+            } else {
+                if (mScrollCurrentPageV <= 0) {
+                    if (mScrollAnimationPercent >= 0) {
                         mAnimationDirection = -1;
                         mScrollAnimationPercentTarget = 0.0f;
                     }
