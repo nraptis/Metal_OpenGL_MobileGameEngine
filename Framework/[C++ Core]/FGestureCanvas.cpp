@@ -13,7 +13,10 @@ FTrackedTouch::FTrackedTouch() {
     Reset(0.0f, 0.0f, 0);
     mHistoryMoveCount = 0;
 }
-FTrackedTouch::~FTrackedTouch() { }
+
+FTrackedTouch::~FTrackedTouch() {
+    
+}
 
 void FTrackedTouch::Reset(float pX, float pY, void *pData) {
     mX = pX;
@@ -150,6 +153,14 @@ void FGestureCanvas::BaseUpdate() {
 FCanvas *FGestureCanvas::BaseTouchDown(float pX, float pY, float pOriginalX, float pOriginalY, void *pData, bool pOutsideParent, bool &pConsumed) {
     FCanvas *aChild = FCanvas::BaseTouchDown(pX, pY, pOriginalX, pOriginalY, pData, pOutsideParent, pConsumed);
 
+    if (AllowGestures() == false) {
+        if ((mIsPanning == true) || (mIsPanning == true) || (mIsRotating == true)) {
+            ClearGestures(false);
+        }
+        BaseTouchFlush();
+        return aChild;
+    }
+    
     bool aContainsPoint = mTransformAbsolute.ContainsPoint(pX, pY);
     bool aTrack = false;
     bool aIsChild = (aChild == this);
@@ -208,7 +219,14 @@ void FGestureCanvas::BaseTouchMove(float pX, float pY, float pOriginalX, float p
 
     FCanvas::BaseTouchMove(pX, pY, pOriginalX, pOriginalY, pData, pOutsideParent);
 
-
+    if (AllowGestures() == false) {
+        if ((mIsPanning == true) || (mIsPanning == true) || (mIsRotating == true)) {
+            ClearGestures(false);
+        }
+        BaseTouchFlush();
+        return;
+    }
+    
     int aTouchIndex = -1;
     for (int i=0;i<mTouchCount;i++) {
         if (mTouch[i]->mData == pData) {
@@ -332,6 +350,14 @@ void FGestureCanvas::BaseTouchMove(float pX, float pY, float pOriginalX, float p
 void FGestureCanvas::BaseTouchUp(float pX, float pY, float pOriginalX, float pOriginalY, void *pData, bool pOutsideParent) {
     FCanvas::BaseTouchUp(pX, pY, pOriginalX, pOriginalY, pData, pOutsideParent);
 
+    if (AllowGestures() == false) {
+        if ((mIsPanning == true) || (mIsPanning == true) || (mIsRotating == true)) {
+            ClearGestures(false);
+        }
+        BaseTouchFlush();
+        return;
+    }
+    
     int aTouchIndex = -1;
 
     for (int i=0;i<mTouchCount;i++) {
@@ -399,6 +425,7 @@ void FGestureCanvas::BaseTouchUp(float pX, float pY, float pOriginalX, float pOr
                 //starting a new pan gesture through continuous flow.
             //    PanBegin(0.0f, 0.0f);
             //}
+            
         } else {
             if (mTouchCount == 0) {
                 
@@ -431,18 +458,16 @@ void FGestureCanvas::BaseTouchUp(float pX, float pY, float pOriginalX, float pOr
 
 void FGestureCanvas::BaseTouchFlush() {
     FCanvas::BaseTouchFlush();
-
-
-
+    
+    
+    
 }
 
-void FGestureCanvas::GestureComputeCenter()
-{
+void FGestureCanvas::GestureComputeCenter() {
     mGestureTouchCenterX = 0.0f;
     mGestureTouchCenterY = 0.0f;
-
-    for(int i=0;i<mTouchCount;i++)
-    {
+    
+    for (int i=0;i<mTouchCount;i++) {
         mGestureTouchCenterX += mTouch[i]->mX;
         mGestureTouchCenterY += mTouch[i]->mY;
     }
@@ -451,87 +476,63 @@ void FGestureCanvas::GestureComputeCenter()
     mGestureTouchCenterY /= ((float)mTouchCount);
 }
 
-void FGestureCanvas::PanBegin(float pX, float pY)
-{
-
+void FGestureCanvas::PanBegin(float pX, float pY) {
+    
 }
 
-void FGestureCanvas::Pan(float pX, float pY)
-{
-
+void FGestureCanvas::Pan(float pX, float pY) {
+    
 }
 
-void FGestureCanvas::PanEnd(float pX, float pY, float pSpeedX, float pSpeedY)
-{
+void FGestureCanvas::PanEnd(float pX, float pY, float pSpeedX, float pSpeedY) {
 
 }
 
 
-void FGestureCanvas::PinchBegin(float pScale)
-{
+void FGestureCanvas::PinchBegin(float pScale) {
 
 }
 
-void FGestureCanvas::Pinch(float pScale)
-{
+void FGestureCanvas::Pinch(float pScale) {
 
 }
 
-void FGestureCanvas::PinchEnd(float pScale)
-{
+void FGestureCanvas::PinchEnd(float pScale) {
 
 }
 
-void FGestureCanvas::TapSingle(float pX, float pY)
-{
-    //Log("FGestureCanvas::TapSingle(%f, %f)\n", pX, pY);
-
+void FGestureCanvas::TapSingle(float pX, float pY) {
+    
 }
 
-void FGestureCanvas::TapDouble(float pX, float pY)
-{
-    //Log("FGestureCanvas::TapDouble(%f, %f)\n", pX, pY);
+void FGestureCanvas::TapDouble(float pX, float pY) {
+    
 }
 
-void FGestureCanvas::RotateStart(float pRotation)
-{
-    //Log("FGestureCanvas::RotateStart(%f)\n", pRotation);
+void FGestureCanvas::RotateStart(float pRotation) {
+    
 }
 
-void FGestureCanvas::Rotate(float pRotation)
-{
-    //Log("FGestureCanvas::Rotate(%f)\n", pRotation);
-
+void FGestureCanvas::Rotate(float pRotation) {
+    
 }
 
-void FGestureCanvas::RotateEnd(float pRotation)
-{
-    //Log("FGestureCanvas::RotateEnd(%f)\n", pRotation);
-
+void FGestureCanvas::RotateEnd(float pRotation) {
+    
 }
 
-void FGestureCanvas::ClearGestures(bool pEndActive)
-{
-    if(pEndActive)
-    {
-        if(mIsPanning)
-        {
+void FGestureCanvas::ClearGestures(bool pEndActive) {
+    if (pEndActive == true) {
+        if (mIsPanning == true) {
             mIsPanning = false;
             PanEnd(mGesturePanDistX, mGesturePanDistY, 0.0f, 0.0f);
         }
-
-        if(mIsPinching)
-        {
+        if (mIsPinching == true) {
             mIsPinching = false;
             PinchEnd(mGesturePinchScale);
         }
-    }
-    else
-    {
+    } else {
         mIsPanning = false;
         mIsPinching = false;
     }
 }
-
-
-

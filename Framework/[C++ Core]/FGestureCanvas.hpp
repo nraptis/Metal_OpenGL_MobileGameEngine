@@ -65,6 +65,10 @@ public:
     virtual void                                    RotateEnd(float pRotation);
 
     virtual void                                    BaseUpdate();
+    
+    // Basically, this can be used to prevent new gestures from coming in and cancel existing gestures...
+    virtual bool                                    AllowGestures() { return true; }
+    
 
     FTrackedTouch                                   *mTouch[MAX_GESTURE_TOUCHES];
     int                                             mTouchCount;
