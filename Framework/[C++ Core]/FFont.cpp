@@ -861,21 +861,6 @@ FFontImportData *FFont::BitmapDataImport(const char *pDataPath, const char *pIma
                                 
                                 aGlyph->mImageOffsetY = 0;
                                 
-                                bool aOdd = false;
-                                
-                                //Note: If we want to revert to use padding radix, this will achieve the task.
-                                //However, the render logic needs to be rewritten to handle the case where padding
-                                //is non ubiquitous across all glyphs.
-                                /*
-                                if ((pPaddingRadix > 1) && (pPaddingRadix < 512)) {
-                                    for (int aRadixLoop=0;aRadixLoop<=pPaddingRadix;aRadixLoop++) {
-                                        if((aFixedWidth % pPaddingRadix) != 0){aFixedWidth++;if(aOdd == true)aFixedX++;}
-                                        if((aFixedHeight % pPaddingRadix) != 0){aFixedHeight++;if(aOdd == true)aFixedY++;}
-                                        aOdd = (!aOdd);
-                                    }
-                                }
-                                */
-                                
                                 FImage *aImageAdjusted = new FImage();
                                 //aImageAdjusted->Make (aFixedWidth, aFixedHeight, IMAGE_RGBA(gRand.Get(200), gRand.Get(200), gRand.Get(220), 30 + gRand.Get(70)));
                                 //aImageAdjusted->StampBlend(aImageBase, aFixedX, aFixedY, 0, 0, aImageBase->mWidth, aImageBase->mHeight);
