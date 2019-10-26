@@ -48,24 +48,15 @@
     //
     //
     
-    //TODO: Make Screen Scale Right...
-    
     _screenScale = (int)([UIScreen mainScreen].scale + 0.5f);
-    //_screenScale = 1;
-    
     
     Graphics::SetDeviceScale(_screenScale);
-    Log("SCREEN SCALE: [[%d]]\n", _screenScale);
-    
-    //
     
     self.multipleTouchEnabled = YES;
     self.contentScaleFactor = _screenScale;
     
     _eaglLayer = (CAEAGLLayer*) self.layer;
     _eaglLayer.opaque = YES;
-    
-    NSLog(@"EAGLE Scale: %f\n", _eaglLayer.contentsScale);
     
     gOpenGLLayer = _eaglLayer;
     
@@ -181,11 +172,6 @@
     return success;
 }
 
-//- (void)layoutSubviews {
-//    [self deleteFramebuffer];
-//}
-
-
 - (void)commit {
     if (context != NULL) {
         [context presentRenderbuffer: GL_RENDERBUFFER];
@@ -212,7 +198,7 @@
     }
 }
 
-- (void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event {
+- (void) touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event {
     for (int i=0;i<[touches count];i++) {
         UITouch *aTouch = [[touches allObjects] objectAtIndex: i];
         if ([aTouch phase] == UITouchPhaseEnded) {
@@ -222,7 +208,7 @@
     }
 }
 
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
     for (int i=0;i<[touches count];i++) {
         UITouch *aTouch = [[touches allObjects] objectAtIndex: i];
         if ([aTouch phase]  == UITouchPhaseCancelled) {

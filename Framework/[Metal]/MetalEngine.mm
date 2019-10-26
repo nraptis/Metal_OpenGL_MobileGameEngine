@@ -11,6 +11,7 @@
 #import "os_core_graphics.h"
 #import "MetalEngine.h"
 #import "MetalViewController.h"
+#import "FApp.hpp"
 
 @interface MetalEngine() {
     id <MTLTexture> _resolveTextureMSAA;
@@ -93,6 +94,7 @@
 - (void)prerender {
     
     dispatch_semaphore_wait(_semaphore, DISPATCH_TIME_FOREVER);
+    
     
     _renderPass = -1;
     _renderCommandEncoder = NULL;
