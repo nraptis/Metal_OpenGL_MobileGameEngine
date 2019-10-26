@@ -10,6 +10,7 @@
 #include "core_includes.h"
 #include "core_app_shell.hpp"
 #include "PlatformGraphicsInterface.hpp"
+#include "FAssetResolutionConfigurator.hpp"
 
 FApp *gAppBase = NULL;
 PlatformGraphicsInterface *gGraphicsInterface = NULL;
@@ -25,6 +26,11 @@ FApp::FApp() {
     mSelectedCanvas = NULL;
     
     mDarkMode = false;
+    
+    
+    mAssetResolutionConfigurator = NULL;
+    mWadReloadIsEnqueued = false;
+    mWadReloadOnNextFrame = false;
     
     mDidInitialize = false;
     mDidDetachFrameController = false;
@@ -131,6 +137,8 @@ void FApp::BaseSetDeviceSize(int pWidth, int pHeight) {
     mWindowTools.SetDeviceSize(gDeviceWidth, gDeviceHeight);
     mWindowModal.SetDeviceSize(gDeviceWidth, gDeviceHeight);
     mWindowMain.SetDeviceSize(gDeviceWidth, gDeviceHeight);
+    
+    ReevaluateScreenResolution();
 }
 
 void FApp::BaseSetVirtualFrame(int pX, int pY, int pWidth, int pHeight) {
@@ -141,8 +149,9 @@ void FApp::BaseSetVirtualFrame(int pX, int pY, int pWidth, int pHeight) {
     mWindowModal.SetVirtualFrame(gVirtualDevX, gVirtualDevY, gVirtualDevWidth, gVirtualDevHeight);
     mWindowTools.SetVirtualFrame(0.0f, 0.0f, gDeviceWidth, gDeviceHeight);
     
-    
     SetVirtualFrame(pX, pY, pWidth, pHeight);
+    
+    ReevaluateScreenResolution();
 }
 
 void FApp::BaseSetSafeAreaInsets(int pInsetUp, int pInsetRight, int pInsetDown, int pInsetLeft) {
@@ -152,7 +161,10 @@ void FApp::BaseSetSafeAreaInsets(int pInsetUp, int pInsetRight, int pInsetDown, 
     mWindowMain.SetSafeAreaInsets(gSafeAreaInsetTop + 0.5f, gSafeAreaInsetRight + 0.5f, gSafeAreaInsetBottom + 0.5f, gSafeAreaInsetLeft + 0.5f);
     mWindowModal.SetSafeAreaInsets(gSafeAreaInsetTop + 0.5f, gSafeAreaInsetRight + 0.5f, gSafeAreaInsetBottom + 0.5f, gSafeAreaInsetLeft + 0.5f);
     mWindowTools.SetSafeAreaInsets(gSafeAreaInsetTop + 0.5f, gSafeAreaInsetRight + 0.5f, gSafeAreaInsetBottom + 0.5f, gSafeAreaInsetLeft + 0.5f);
+    
     SetSafeAreaInsets(pInsetUp, pInsetRight, pInsetDown, pInsetLeft);
+    
+    ReevaluateScreenResolution();
 }
 
 
@@ -194,6 +206,20 @@ void FApp::BaseFrame() {
     Graphics::PreRender();
     gAppBase->Prerender();
     
+    
+    if (mWadReloadIsEnqueued) {
+        if (mWadReloadOnNextFrame) {
+            mWadReloadIsEnqueued = false;
+            mWadReloadOnNextFrame = false;
+            
+            BaseExecuteWadReload();
+            
+            mWindowMain.RefreshAll();
+            mWindowModal.RefreshAll();
+            mWindowTools.RefreshAll();
+        }
+    }
+    
     if ((mIsLoading == true) || (mDidUnload == true) || (mIsLoadingComplete == false)) {
         Graphics::Clear(0.66f, 0.66f, 0.66f);
         BaseDrawLoading();
@@ -214,10 +240,10 @@ void FApp::BaseFrame() {
 }
 
 void FApp::BaseUpdate() {
+    
     if (mDidInitialize == false) {
         BaseInitialize();
     }
-    
     
     int aSlot = 0;
     if (mFrameCaptureUpdateCount < FRAME_TIME_CAPTURE_COUNT) {
@@ -316,7 +342,6 @@ void FApp::BaseDraw() {
     Graphics::MatrixModelViewReset();
     DrawOver();
     
-    /*
     
     if (Graphics::RenderPass() == GFX_RENDER_PASS_2D_MAIN) {
         Graphics::MatrixProjectionResetOrtho();
@@ -335,7 +360,6 @@ void FApp::BaseDraw() {
         
     }
     
-    */
     
     if (mDarkMode == true) {
         Graphics::PipelineStateSetShape2DAlphaBlending();
@@ -349,6 +373,9 @@ void FApp::BaseDraw() {
 }
 
 void FApp::BaseLoad() {
+    
+    
+    
     if (gGraphicsInterface != NULL) {
         gGraphicsInterface->SetContext();
     }
@@ -407,6 +434,14 @@ void FApp::BaseLoad() {
     AppShellSetImageFileScale(1);
     
     Load();
+    
+    if (mAssetResolutionConfigurator == NULL) {
+        mAssetResolutionConfigurator = GetAssetResolutionConfigurator();
+    }
+    
+    mAssetResolutionConfigurator->Invalidate();
+    BaseExecuteWadReload();
+    
     
     mWindowMain.RefreshAll();
     mWindowModal.RefreshAll();
@@ -710,6 +745,62 @@ void FApp::BaseQuit() {
 
 void FApp::Quit() {
     
+}
+
+void FApp::BaseExecuteWadReload() {
+    
+    DequeueWadReload();
+    
+    if (mAssetResolutionConfigurator == NULL) {
+        mAssetResolutionConfigurator = GetAssetResolutionConfigurator();
+    }
+    
+    if ((mIsLoading == false) && (mIsLoadingComplete == false)) {
+        //We haven't loaded, we haven't started loading...
+        Log("BaseExecuteWadReload [Not Loading or Loaded, Preventing Further Logic]\n");
+        mAssetResolutionConfigurator->Invalidate();
+        return;
+    }
+    
+    if (mAssetResolutionConfigurator->ShouldReload() == false) {
+        Log("BaseExecuteWadReload [No Need to Reload]!!!\n");
+        return;
+    }
+    
+    //We pick these scales...
+    AppShellSetImageFileScale(mAssetResolutionConfigurator->mAssetScale);
+    AppShellSetSpriteDrawScale(mAssetResolutionConfigurator->mSpriteScale);
+    
+    //Talk to the configurator...
+    mAssetResolutionConfigurator->NotifyReload();
+    
+    ExecuteWadReload();
+    
+}
+
+void FApp::EnqueueWadReload() {
+    mWadReloadIsEnqueued = true;
+    mWadReloadOnNextFrame = true;
+}
+
+void FApp::DequeueWadReload() {
+    mWadReloadIsEnqueued = false;
+    mWadReloadOnNextFrame = false;
+}
+
+void FApp::ReevaluateScreenResolution() {
+    if (mAssetResolutionConfigurator == NULL) {
+        mAssetResolutionConfigurator = GetAssetResolutionConfigurator();
+    }
+    if (mIsLoadingComplete) {
+        mAssetResolutionConfigurator->NotifyScreenPropertiesChanged();
+        EnqueueWadReload();
+    }
+}
+
+FAssetResolutionConfigurator *FApp::GetAssetResolutionConfigurator() {
+    FAssetResolutionConfigurator *aResult = new FAssetResolutionConfigurator();
+    return aResult;
 }
 
 void FApp::BaseSetImageFileScale(int pScale) {

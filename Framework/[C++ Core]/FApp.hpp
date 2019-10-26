@@ -7,7 +7,7 @@
 #define FRAME_TIME_CAPTURE_COUNT 200
 
 class PlatformGraphicsInterface;
-
+class FAssetResolutionConfigurator;
 
 class FApp
 {
@@ -61,6 +61,21 @@ public:
     
     virtual void                                MemoryWarning(bool pSevere) { }
     virtual void                                SetImageFileScale(int pScale) { }
+    
+    //This is called one time to spawn a resolution configurator. Based on your game, you will need to decide how you want to handle scaling...
+    virtual                                     FAssetResolutionConfigurator *GetAssetResolutionConfigurator();
+    FAssetResolutionConfigurator                *mAssetResolutionConfigurator;
+    
+    
+    void                                        EnqueueWadReload();
+    void                                        DequeueWadReload();
+    bool                                        mWadReloadIsEnqueued;
+    bool                                        mWadReloadOnNextFrame;
+    
+    void                                        BaseExecuteWadReload();
+    virtual void                                ExecuteWadReload() { }
+    void                                        ReevaluateScreenResolution();
+    
     
     bool                                        mActive;
     
