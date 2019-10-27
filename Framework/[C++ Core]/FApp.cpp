@@ -349,15 +349,14 @@ void FApp::BaseDraw() {
         Graphics::SetColor();
         Graphics::PipelineStateSetSpritePremultipliedBlending();
         
-        FString aResString = FString("HW: ") + FString(gDeviceWidth, 2) + FString(" x ") + FString(gDeviceHeight, 2) + FString(", VD: ") + FString(gVirtualDevWidth, 2) + FString(" x ") + FString(gVirtualDevHeight, 2);
-        mSysFont.Center(aResString, gDeviceWidth2, gDeviceHeight - 80.0f);
+        FString aResString = FString("HW: ") + FString(gDeviceWidth, 1) + FString("x") + FString(gDeviceHeight, 1) + FString(", VD: ") + FString(gVirtualDevWidth, 1) + FString("x") + FString(gVirtualDevHeight, 1);
+        mSysFont.Center(aResString, gDeviceWidth2, gDeviceHeight - 80.0f - 20.0f);
         
         FString aFPSString = FString("FPS: ") + FString(GetFPS()) + FString(", ") + FString("UPS: ") + FString(GetUPS());
-        mSysFont.Center(aFPSString, gDeviceWidth2, gDeviceHeight - 52.0f);
+        mSysFont.Center(aFPSString, gDeviceWidth2, gDeviceHeight - 52.0f - 20.0f);
         
         FString aScaleString = FString("SCL: ") + FString(gSpriteDrawScale) + FString(", ") + FString("REZ: ") + FString(gImageResolutionScale);
-        mSysFont.Center(aScaleString, gDeviceWidth2, gDeviceHeight - 24.0f);
-        
+        mSysFont.Center(aScaleString, gDeviceWidth2, gDeviceHeight - 24.0f - 20.0f);
     }
     
     

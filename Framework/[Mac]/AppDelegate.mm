@@ -47,16 +47,20 @@ int kDeviceHeight = 760;
     getcwd(aBundlePath, sizeof(aBundlePath));
     strcat(aBundlePath, "/Assets/");
     AppShellSetDirectoryBundle(aBundlePath);
+    Log("Bundle Path: %s\n", aBundlePath);
     
     char aDocPath[2048];
     getcwd(aDocPath, sizeof(aDocPath));
     strcat(aDocPath, "/Documents/");
     AppShellSetDirectoryDocuments(aDocPath);
+    Log("Document Path: %s\n", aDocPath);
     
     char aExportPath[2048];
     getcwd(aExportPath, sizeof(aExportPath));
     strcat(aExportPath, "/Exports/");
     AppShellSetDirectoryExport(aExportPath);
+    Log("Export Path: %s\n", aExportPath);
+    
     
     AppShellInitialize(ENV_MAC);
     AppShellSetDeviceSize(kDeviceWidth, kDeviceHeight);
