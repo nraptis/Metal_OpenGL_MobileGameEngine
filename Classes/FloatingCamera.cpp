@@ -20,24 +20,13 @@ FloatingCamera::FloatingCamera() {
     
     mCenterOffset = FVec2(0.0f, 0.0f);
     
-    mDistance = 24.0f;
+    mDistance = 8.0f;
     mRotationPrimary = 0.0f;
     mRotationSecondary = 0.0f;
 }
 
 FloatingCamera::~FloatingCamera() {
     
-}
-
-void FloatingCamera::Print() {
-    Log("*** BEGIN FloatingCamera ***\n");
-    Log("mFOV = %f;\n", mFOV);
-    Log("mTarget = FVec3(%f, %f, %f);\n", mTarget.mX, mTarget.mY, mTarget.mZ);
-    Log("mDirection = FVec3(%f, %f, %f);\n", mDirection.mX, mDirection.mY, mDirection.mZ);
-    Log("mDistance = %f;\n", mDistance);
-    Log("mRotationPrimary = %f;\n", mRotationPrimary);
-    Log("mRotationSecondary = %f;\n", mRotationSecondary);
-    Log("*** END FloatingCamera ***\n");
 }
 
 FMatrix FloatingCamera::GetProjection() {

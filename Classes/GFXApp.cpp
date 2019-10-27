@@ -33,12 +33,18 @@ void GFXApp::Load() {
     
     Log("GFXApp::Load()\n");
     
-    
+    mButterflyBodySequence.LoadOBJSequence("butterfly_body_", 0, 19);
+    mButterflyWingSequence.LoadOBJSequence("butterfly_wings_", 0, 19);
+    mButterflyMap.Load("butterfly_map");
     
 }
 
 void GFXApp::Unload() {
     
+    mButterflyBodySequence.Free();
+    mButterflyWingSequence.Free();
+    
+    mButterflyMap.Kill();
     
 }
 

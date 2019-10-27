@@ -45,6 +45,14 @@ public:
     
     LandingScene                            *mLandingScene;
     Util_ScreenFrame                        *mScreenTool;
+    
+    
+    
+    FModelDataPackedSequence                mButterflyBodySequence;
+    FModelDataPackedSequence                mButterflyWingSequence;
+    FSprite                                 mButterflyMap;
+    
+    
 };
 
 extern GFXApp *gApp;

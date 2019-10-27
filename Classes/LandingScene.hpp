@@ -10,6 +10,7 @@
 #define LandingScene_hpp
 
 #include "GFXApp.hpp"
+#include "FloatingCamera.hpp"
 
 class LandingScene : public FCanvas {
 public:
@@ -17,6 +18,8 @@ public:
     virtual ~LandingScene();
     
     virtual void                                Layout() override;
+    virtual void                                LayoutTransform() override;
+    
     virtual void                                Update() override;
     virtual void                                Draw() override;
     void                                        Draw3D();
@@ -30,6 +33,15 @@ public:
     virtual void                                KeyUp(int pKey) override;
     
     virtual void                                Notify(void *pSender, const char *pNotification) override;
+    
+    
+    FUniformsLightDiffuse                       mUniformButterflyBody;
+    FloatingCamera                              mCamera;
+    
+    float                                       mButterflyFrame;
+    
+    float                                       mButterflyRotation;
+    
     
 };
 

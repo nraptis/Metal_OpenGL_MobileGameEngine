@@ -17,8 +17,6 @@ public:
     FloatingCamera();
     ~FloatingCamera();
     
-    void                                        Print();
-    
     FMatrix                                     GetProjection();
     
     float                                       mFOV;
