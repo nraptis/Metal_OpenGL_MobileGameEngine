@@ -9,6 +9,13 @@
 #include "FMatrix.hpp"
 #include "core_includes.h"
 
+
+#if (CURRENT_ENV != ENV_ANDROID)
+#include <arm_neon.h>
+#endif
+
+
+
 FMatrix::FMatrix() {
     m[0] = 1.0f;m[1] = 0.0f;m[2] = 0.0f;m[3] = 0.0f;
     m[4] = 0.0f;m[5] = 1.0f;m[6] = 0.0f;m[7] = 0.0f;
@@ -20,22 +27,21 @@ FMatrix::FMatrix(float m00, float m01, float m02, float m03,
                  float m10, float m11, float m12, float m13,
                  float m20, float m21, float m22, float m23,
                  float m30, float m31, float m32, float m33) {
-    m[0]=m00;m[1]=m01;m[2]=m02;m[3]=m03;
-    m[4]=m10;m[5]=m11;m[6]=m12;m[7]=m13;
-    m[8]=m20;m[9]=m21;m[10]=m22;m[11]=m23;
-    m[12]=m30;m[13]=m31;m[14]=m32;m[15]=m33;
+    m[0]  = m00; m[1]  = m01;m[2]  = m02;m[3]  = m03;
+    m[4]  = m10; m[5]  = m11;m[6]  = m12;m[7]  = m13;
+    m[8]  = m20; m[9]  = m21;m[10] = m22;m[11] = m23;
+    m[12] = m30; m[13] = m31;m[14] = m32;m[15] = m33;
 }
 
-FMatrix::~FMatrix()
-{
+FMatrix::~FMatrix() {
     
 }
 
 void FMatrix::Reset() {
-    m[0] = 1.0f;m[1] = 0.0f;m[2] = 0.0f;m[3] = 0.0f;
-    m[4] = 0.0f;m[5] = 1.0f;m[6] = 0.0f;m[7] = 0.0f;
-    m[8] = 0.0f;m[9] = 0.0f;m[10]= 1.0f;m[11]= 0.0f;
-    m[12]= 0.0f;m[13]= 0.0f;m[14]= 0.0f;m[15]= 1.0f;
+    m[0] = 1.0f; m[1] = 0.0f; m[2] = 0.0f; m[3] = 0.0f;
+    m[4] = 0.0f; m[5] = 1.0f; m[6] = 0.0f; m[7] = 0.0f;
+    m[8] = 0.0f; m[9] = 0.0f; m[10]= 1.0f; m[11]= 0.0f;
+    m[12]= 0.0f; m[13]= 0.0f; m[14]= 0.0f; m[15]= 1.0f;
 }
 
 void FMatrix::Set(FMatrix &pMatrix) {
@@ -47,16 +53,9 @@ void FMatrix::Set(FMatrix &pMatrix) {
 }
 
 void FMatrix::SetNormalMatrix(FMatrix &pModelView) {
-    
     Set(pModelView);
     InvertAndTranspose();
-    
-    //FMatrix aMatrix;
-    //aMatrix.Set(pModelView);
-    //aMatrix.InvertAndTranspose();
-    //Set(aMatrix);
 }
-
 
 void FMatrix::Set(int pRow, int pCol, float pValue) {
     int aIndex = pCol * 4 + pRow;
@@ -377,8 +376,6 @@ void FMatrix::Transpose() {
     *this = FMatrixTranspose(*this);
 }
 
-
-
 void FMatrix::Invert() {
     bool aInvertable = false;
     FMatrix aInvertedMatrix = FMatrixInvert(*this, &aInvertable);
@@ -400,14 +397,13 @@ void FMatrix::InvertAndTranspose() {
 }
 
 float FMatrix::Determinant() {
-    float aValue;
-    aValue =
-    m[3] * m[6] * m[9] * m[12]-m[2] * m[7] * m[9] * m[12]-m[3] * m[5] * m[10] * m[12]+m[1] * m[7] * m[10] * m[12]+
-    m[2] * m[5] * m[11] * m[12]-m[1] * m[6] * m[11] * m[12]-m[3] * m[6] * m[8] * m[13]+m[2] * m[7] * m[8] * m[13]+
-    m[3] * m[4] * m[10] * m[13]-m[0] * m[7] * m[10] * m[13]-m[2] * m[4] * m[11] * m[13]+m[0] * m[6] * m[11] * m[13]+
-    m[3] * m[5] * m[8] * m[14]-m[1] * m[7] * m[8] * m[14]-m[3] * m[4] * m[9] * m[14]+m[0] * m[7] * m[9] * m[14]+
-    m[1] * m[4] * m[11] * m[14]-m[0] * m[5] * m[11] * m[14]-m[2] * m[5] * m[8] * m[15]+m[1] * m[6] * m[8] * m[15]+
-    m[2] * m[4] * m[9] * m[15]-m[0] * m[6] * m[9] * m[15]-m[1] * m[4] * m[10] * m[15]+m[0] * m[5] * m[10] * m[15];
+    float aValue =
+    m[3] * m[6] * m[9 ] * m[12] - m[2] * m[7] * m[9 ] * m[12] - m[3] * m[5] * m[10] * m[12] + m[1] * m[7] * m[10] * m[12] +
+    m[2] * m[5] * m[11] * m[12] - m[1] * m[6] * m[11] * m[12] - m[3] * m[6] * m[8 ] * m[13] + m[2] * m[7] * m[8 ] * m[13] +
+    m[3] * m[4] * m[10] * m[13] - m[0] * m[7] * m[10] * m[13] - m[2] * m[4] * m[11] * m[13] + m[0] * m[6] * m[11] * m[13] +
+    m[3] * m[5] * m[8 ] * m[14] - m[1] * m[7] * m[8 ] * m[14] - m[3] * m[4] * m[9 ] * m[14] + m[0] * m[7] * m[9 ] * m[14] +
+    m[1] * m[4] * m[11] * m[14] - m[0] * m[5] * m[11] * m[14] - m[2] * m[5] * m[8 ] * m[15] + m[1] * m[6] * m[8 ] * m[15] +
+    m[2] * m[4] * m[9 ] * m[15] - m[0] * m[6] * m[9 ] * m[15] - m[1] * m[4] * m[10] * m[15] + m[0] * m[5] * m[10] * m[15];
     return aValue;
 }
 
@@ -769,24 +765,98 @@ FMatrix FMatrixInvert(FMatrix pMatrix, bool *pInvertable) {
 }
 
 FMatrix FMatrixMultiply(FMatrix pMatrixLeft, FMatrix pMatrixRight) {
-    FMatrix aMatrix;
-    aMatrix.m[0]  = pMatrixLeft.m[0] * pMatrixRight.m[0]  + pMatrixLeft.m[4] * pMatrixRight.m[1]  + pMatrixLeft.m[8] * pMatrixRight.m[2]   + pMatrixLeft.m[12] * pMatrixRight.m[3];
-    aMatrix.m[4]  = pMatrixLeft.m[0] * pMatrixRight.m[4]  + pMatrixLeft.m[4] * pMatrixRight.m[5]  + pMatrixLeft.m[8] * pMatrixRight.m[6]   + pMatrixLeft.m[12] * pMatrixRight.m[7];
-    aMatrix.m[8]  = pMatrixLeft.m[0] * pMatrixRight.m[8]  + pMatrixLeft.m[4] * pMatrixRight.m[9]  + pMatrixLeft.m[8] * pMatrixRight.m[10]  + pMatrixLeft.m[12] * pMatrixRight.m[11];
-    aMatrix.m[12] = pMatrixLeft.m[0] * pMatrixRight.m[12] + pMatrixLeft.m[4] * pMatrixRight.m[13] + pMatrixLeft.m[8] * pMatrixRight.m[14]  + pMatrixLeft.m[12] * pMatrixRight.m[15];
-    aMatrix.m[1]  = pMatrixLeft.m[1] * pMatrixRight.m[0]  + pMatrixLeft.m[5] * pMatrixRight.m[1]  + pMatrixLeft.m[9] * pMatrixRight.m[2]   + pMatrixLeft.m[13] * pMatrixRight.m[3];
-    aMatrix.m[5]  = pMatrixLeft.m[1] * pMatrixRight.m[4]  + pMatrixLeft.m[5] * pMatrixRight.m[5]  + pMatrixLeft.m[9] * pMatrixRight.m[6]   + pMatrixLeft.m[13] * pMatrixRight.m[7];
-    aMatrix.m[9]  = pMatrixLeft.m[1] * pMatrixRight.m[8]  + pMatrixLeft.m[5] * pMatrixRight.m[9]  + pMatrixLeft.m[9] * pMatrixRight.m[10]  + pMatrixLeft.m[13] * pMatrixRight.m[11];
-    aMatrix.m[13] = pMatrixLeft.m[1] * pMatrixRight.m[12] + pMatrixLeft.m[5] * pMatrixRight.m[13] + pMatrixLeft.m[9] * pMatrixRight.m[14]  + pMatrixLeft.m[13] * pMatrixRight.m[15];
-    aMatrix.m[2]  = pMatrixLeft.m[2] * pMatrixRight.m[0]  + pMatrixLeft.m[6] * pMatrixRight.m[1]  + pMatrixLeft.m[10] * pMatrixRight.m[2]  + pMatrixLeft.m[14] * pMatrixRight.m[3];
-    aMatrix.m[6]  = pMatrixLeft.m[2] * pMatrixRight.m[4]  + pMatrixLeft.m[6] * pMatrixRight.m[5]  + pMatrixLeft.m[10] * pMatrixRight.m[6]  + pMatrixLeft.m[14] * pMatrixRight.m[7];
-    aMatrix.m[10] = pMatrixLeft.m[2] * pMatrixRight.m[8]  + pMatrixLeft.m[6] * pMatrixRight.m[9]  + pMatrixLeft.m[10] * pMatrixRight.m[10] + pMatrixLeft.m[14] * pMatrixRight.m[11];
-    aMatrix.m[14] = pMatrixLeft.m[2] * pMatrixRight.m[12] + pMatrixLeft.m[6] * pMatrixRight.m[13] + pMatrixLeft.m[10] * pMatrixRight.m[14] + pMatrixLeft.m[14] * pMatrixRight.m[15];
-    aMatrix.m[3]  = pMatrixLeft.m[3] * pMatrixRight.m[0]  + pMatrixLeft.m[7] * pMatrixRight.m[1]  + pMatrixLeft.m[11] * pMatrixRight.m[2]  + pMatrixLeft.m[15] * pMatrixRight.m[3];
-    aMatrix.m[7]  = pMatrixLeft.m[3] * pMatrixRight.m[4]  + pMatrixLeft.m[7] * pMatrixRight.m[5]  + pMatrixLeft.m[11] * pMatrixRight.m[6]  + pMatrixLeft.m[15] * pMatrixRight.m[7];
-    aMatrix.m[11] = pMatrixLeft.m[3] * pMatrixRight.m[8]  + pMatrixLeft.m[7] * pMatrixRight.m[9]  + pMatrixLeft.m[11] * pMatrixRight.m[10] + pMatrixLeft.m[15] * pMatrixRight.m[11];
-    aMatrix.m[15] = pMatrixLeft.m[3] * pMatrixRight.m[12] + pMatrixLeft.m[7] * pMatrixRight.m[13] + pMatrixLeft.m[11] * pMatrixRight.m[14] + pMatrixLeft.m[15] * pMatrixRight.m[15];
-    return aMatrix;
+    
+    #if (CURRENT_ENV != ENV_ANDROID)
+    
+    #if defined(__ARM_NEON__)
+        
+        float32x4x4_t iMatrixRight =
+        {{
+        {pMatrixRight.m[0], pMatrixRight.m[1], pMatrixRight.m[2], pMatrixRight.m[3]},
+        {pMatrixRight.m[4], pMatrixRight.m[5], pMatrixRight.m[6], pMatrixRight.m[7]},
+        {pMatrixRight.m[8], pMatrixRight.m[9], pMatrixRight.m[10], pMatrixRight.m[11]},
+        {pMatrixRight.m[12], pMatrixRight.m[13], pMatrixRight.m[14], pMatrixRight.m[15]}
+        }};
+        
+        float32x4x4_t iMatrixLeft =
+        {{
+        {pMatrixLeft.m[0], pMatrixLeft.m[1], pMatrixLeft.m[2], pMatrixLeft.m[3]},
+        {pMatrixLeft.m[4], pMatrixLeft.m[5], pMatrixLeft.m[6], pMatrixLeft.m[7]},
+        {pMatrixLeft.m[8], pMatrixLeft.m[9], pMatrixLeft.m[10], pMatrixLeft.m[11]},
+        {pMatrixLeft.m[12], pMatrixLeft.m[13], pMatrixLeft.m[14], pMatrixLeft.m[15]}
+        }};
+        
+        float32x4x4_t aMatrix;
+        
+        aMatrix.val[0] = vmulq_n_f32(iMatrixLeft.val[0], vgetq_lane_f32(iMatrixRight.val[0], 0));
+        aMatrix.val[1] = vmulq_n_f32(iMatrixLeft.val[0], vgetq_lane_f32(iMatrixRight.val[1], 0));
+        aMatrix.val[2] = vmulq_n_f32(iMatrixLeft.val[0], vgetq_lane_f32(iMatrixRight.val[2], 0));
+        aMatrix.val[3] = vmulq_n_f32(iMatrixLeft.val[0], vgetq_lane_f32(iMatrixRight.val[3], 0));
+        
+        aMatrix.val[0] = vmlaq_n_f32(aMatrix.val[0], iMatrixLeft.val[1], vgetq_lane_f32(iMatrixRight.val[0], 1));
+        aMatrix.val[1] = vmlaq_n_f32(aMatrix.val[1], iMatrixLeft.val[1], vgetq_lane_f32(iMatrixRight.val[1], 1));
+        aMatrix.val[2] = vmlaq_n_f32(aMatrix.val[2], iMatrixLeft.val[1], vgetq_lane_f32(iMatrixRight.val[2], 1));
+        aMatrix.val[3] = vmlaq_n_f32(aMatrix.val[3], iMatrixLeft.val[1], vgetq_lane_f32(iMatrixRight.val[3], 1));
+        
+        aMatrix.val[0] = vmlaq_n_f32(aMatrix.val[0], iMatrixLeft.val[2], vgetq_lane_f32(iMatrixRight.val[0], 2));
+        aMatrix.val[1] = vmlaq_n_f32(aMatrix.val[1], iMatrixLeft.val[2], vgetq_lane_f32(iMatrixRight.val[1], 2));
+        aMatrix.val[2] = vmlaq_n_f32(aMatrix.val[2], iMatrixLeft.val[2], vgetq_lane_f32(iMatrixRight.val[2], 2));
+        aMatrix.val[3] = vmlaq_n_f32(aMatrix.val[3], iMatrixLeft.val[2], vgetq_lane_f32(iMatrixRight.val[3], 2));
+        
+        aMatrix.val[0] = vmlaq_n_f32(aMatrix.val[0], iMatrixLeft.val[3], vgetq_lane_f32(iMatrixRight.val[0], 3));
+        aMatrix.val[1] = vmlaq_n_f32(aMatrix.val[1], iMatrixLeft.val[3], vgetq_lane_f32(iMatrixRight.val[1], 3));
+        aMatrix.val[2] = vmlaq_n_f32(aMatrix.val[2], iMatrixLeft.val[3], vgetq_lane_f32(iMatrixRight.val[2], 3));
+        aMatrix.val[3] = vmlaq_n_f32(aMatrix.val[3], iMatrixLeft.val[3], vgetq_lane_f32(iMatrixRight.val[3], 3));
+        
+        return *(FMatrix *)&(aMatrix);
+        
+    #else
+        
+        FMatrix aResult;
+        aResult.m[0]  = pMatrixLeft.m[0] * pMatrixRight.m[0]  + pMatrixLeft.m[4] * pMatrixRight.m[1]  + pMatrixLeft.m[8] * pMatrixRight.m[2]   + pMatrixLeft.m[12] * pMatrixRight.m[3];
+        aResult.m[4]  = pMatrixLeft.m[0] * pMatrixRight.m[4]  + pMatrixLeft.m[4] * pMatrixRight.m[5]  + pMatrixLeft.m[8] * pMatrixRight.m[6]   + pMatrixLeft.m[12] * pMatrixRight.m[7];
+        aResult.m[8]  = pMatrixLeft.m[0] * pMatrixRight.m[8]  + pMatrixLeft.m[4] * pMatrixRight.m[9]  + pMatrixLeft.m[8] * pMatrixRight.m[10]  + pMatrixLeft.m[12] * pMatrixRight.m[11];
+        aResult.m[12] = pMatrixLeft.m[0] * pMatrixRight.m[12] + pMatrixLeft.m[4] * pMatrixRight.m[13] + pMatrixLeft.m[8] * pMatrixRight.m[14]  + pMatrixLeft.m[12] * pMatrixRight.m[15];
+        aResult.m[1]  = pMatrixLeft.m[1] * pMatrixRight.m[0]  + pMatrixLeft.m[5] * pMatrixRight.m[1]  + pMatrixLeft.m[9] * pMatrixRight.m[2]   + pMatrixLeft.m[13] * pMatrixRight.m[3];
+        aResult.m[5]  = pMatrixLeft.m[1] * pMatrixRight.m[4]  + pMatrixLeft.m[5] * pMatrixRight.m[5]  + pMatrixLeft.m[9] * pMatrixRight.m[6]   + pMatrixLeft.m[13] * pMatrixRight.m[7];
+        aResult.m[9]  = pMatrixLeft.m[1] * pMatrixRight.m[8]  + pMatrixLeft.m[5] * pMatrixRight.m[9]  + pMatrixLeft.m[9] * pMatrixRight.m[10]  + pMatrixLeft.m[13] * pMatrixRight.m[11];
+        aResult.m[13] = pMatrixLeft.m[1] * pMatrixRight.m[12] + pMatrixLeft.m[5] * pMatrixRight.m[13] + pMatrixLeft.m[9] * pMatrixRight.m[14]  + pMatrixLeft.m[13] * pMatrixRight.m[15];
+        aResult.m[2]  = pMatrixLeft.m[2] * pMatrixRight.m[0]  + pMatrixLeft.m[6] * pMatrixRight.m[1]  + pMatrixLeft.m[10] * pMatrixRight.m[2]  + pMatrixLeft.m[14] * pMatrixRight.m[3];
+        aResult.m[6]  = pMatrixLeft.m[2] * pMatrixRight.m[4]  + pMatrixLeft.m[6] * pMatrixRight.m[5]  + pMatrixLeft.m[10] * pMatrixRight.m[6]  + pMatrixLeft.m[14] * pMatrixRight.m[7];
+        aResult.m[10] = pMatrixLeft.m[2] * pMatrixRight.m[8]  + pMatrixLeft.m[6] * pMatrixRight.m[9]  + pMatrixLeft.m[10] * pMatrixRight.m[10] + pMatrixLeft.m[14] * pMatrixRight.m[11];
+        aResult.m[14] = pMatrixLeft.m[2] * pMatrixRight.m[12] + pMatrixLeft.m[6] * pMatrixRight.m[13] + pMatrixLeft.m[10] * pMatrixRight.m[14] + pMatrixLeft.m[14] * pMatrixRight.m[15];
+        aResult.m[3]  = pMatrixLeft.m[3] * pMatrixRight.m[0]  + pMatrixLeft.m[7] * pMatrixRight.m[1]  + pMatrixLeft.m[11] * pMatrixRight.m[2]  + pMatrixLeft.m[15] * pMatrixRight.m[3];
+        aResult.m[7]  = pMatrixLeft.m[3] * pMatrixRight.m[4]  + pMatrixLeft.m[7] * pMatrixRight.m[5]  + pMatrixLeft.m[11] * pMatrixRight.m[6]  + pMatrixLeft.m[15] * pMatrixRight.m[7];
+        aResult.m[11] = pMatrixLeft.m[3] * pMatrixRight.m[8]  + pMatrixLeft.m[7] * pMatrixRight.m[9]  + pMatrixLeft.m[11] * pMatrixRight.m[10] + pMatrixLeft.m[15] * pMatrixRight.m[11];
+        aResult.m[15] = pMatrixLeft.m[3] * pMatrixRight.m[12] + pMatrixLeft.m[7] * pMatrixRight.m[13] + pMatrixLeft.m[11] * pMatrixRight.m[14] + pMatrixLeft.m[15] * pMatrixRight.m[15];
+        return aResult;
+        
+    #endif
+    
+    
+    #else
+    
+    FMatrix aResult;
+    aResult.m[0]  = pMatrixLeft.m[0] * pMatrixRight.m[0]  + pMatrixLeft.m[4] * pMatrixRight.m[1]  + pMatrixLeft.m[8] * pMatrixRight.m[2]   + pMatrixLeft.m[12] * pMatrixRight.m[3];
+    aResult.m[4]  = pMatrixLeft.m[0] * pMatrixRight.m[4]  + pMatrixLeft.m[4] * pMatrixRight.m[5]  + pMatrixLeft.m[8] * pMatrixRight.m[6]   + pMatrixLeft.m[12] * pMatrixRight.m[7];
+    aResult.m[8]  = pMatrixLeft.m[0] * pMatrixRight.m[8]  + pMatrixLeft.m[4] * pMatrixRight.m[9]  + pMatrixLeft.m[8] * pMatrixRight.m[10]  + pMatrixLeft.m[12] * pMatrixRight.m[11];
+    aResult.m[12] = pMatrixLeft.m[0] * pMatrixRight.m[12] + pMatrixLeft.m[4] * pMatrixRight.m[13] + pMatrixLeft.m[8] * pMatrixRight.m[14]  + pMatrixLeft.m[12] * pMatrixRight.m[15];
+    aResult.m[1]  = pMatrixLeft.m[1] * pMatrixRight.m[0]  + pMatrixLeft.m[5] * pMatrixRight.m[1]  + pMatrixLeft.m[9] * pMatrixRight.m[2]   + pMatrixLeft.m[13] * pMatrixRight.m[3];
+    aResult.m[5]  = pMatrixLeft.m[1] * pMatrixRight.m[4]  + pMatrixLeft.m[5] * pMatrixRight.m[5]  + pMatrixLeft.m[9] * pMatrixRight.m[6]   + pMatrixLeft.m[13] * pMatrixRight.m[7];
+    aResult.m[9]  = pMatrixLeft.m[1] * pMatrixRight.m[8]  + pMatrixLeft.m[5] * pMatrixRight.m[9]  + pMatrixLeft.m[9] * pMatrixRight.m[10]  + pMatrixLeft.m[13] * pMatrixRight.m[11];
+    aResult.m[13] = pMatrixLeft.m[1] * pMatrixRight.m[12] + pMatrixLeft.m[5] * pMatrixRight.m[13] + pMatrixLeft.m[9] * pMatrixRight.m[14]  + pMatrixLeft.m[13] * pMatrixRight.m[15];
+    aResult.m[2]  = pMatrixLeft.m[2] * pMatrixRight.m[0]  + pMatrixLeft.m[6] * pMatrixRight.m[1]  + pMatrixLeft.m[10] * pMatrixRight.m[2]  + pMatrixLeft.m[14] * pMatrixRight.m[3];
+    aResult.m[6]  = pMatrixLeft.m[2] * pMatrixRight.m[4]  + pMatrixLeft.m[6] * pMatrixRight.m[5]  + pMatrixLeft.m[10] * pMatrixRight.m[6]  + pMatrixLeft.m[14] * pMatrixRight.m[7];
+    aResult.m[10] = pMatrixLeft.m[2] * pMatrixRight.m[8]  + pMatrixLeft.m[6] * pMatrixRight.m[9]  + pMatrixLeft.m[10] * pMatrixRight.m[10] + pMatrixLeft.m[14] * pMatrixRight.m[11];
+    aResult.m[14] = pMatrixLeft.m[2] * pMatrixRight.m[12] + pMatrixLeft.m[6] * pMatrixRight.m[13] + pMatrixLeft.m[10] * pMatrixRight.m[14] + pMatrixLeft.m[14] * pMatrixRight.m[15];
+    aResult.m[3]  = pMatrixLeft.m[3] * pMatrixRight.m[0]  + pMatrixLeft.m[7] * pMatrixRight.m[1]  + pMatrixLeft.m[11] * pMatrixRight.m[2]  + pMatrixLeft.m[15] * pMatrixRight.m[3];
+    aResult.m[7]  = pMatrixLeft.m[3] * pMatrixRight.m[4]  + pMatrixLeft.m[7] * pMatrixRight.m[5]  + pMatrixLeft.m[11] * pMatrixRight.m[6]  + pMatrixLeft.m[15] * pMatrixRight.m[7];
+    aResult.m[11] = pMatrixLeft.m[3] * pMatrixRight.m[8]  + pMatrixLeft.m[7] * pMatrixRight.m[9]  + pMatrixLeft.m[11] * pMatrixRight.m[10] + pMatrixLeft.m[15] * pMatrixRight.m[11];
+    aResult.m[15] = pMatrixLeft.m[3] * pMatrixRight.m[12] + pMatrixLeft.m[7] * pMatrixRight.m[13] + pMatrixLeft.m[11] * pMatrixRight.m[14] + pMatrixLeft.m[15] * pMatrixRight.m[15];
+    return aResult;
+    
+    #endif
+    
 }
 
 FMatrix FMatrixAdd(FMatrix pMatrixLeft, FMatrix pMatrixRight) {

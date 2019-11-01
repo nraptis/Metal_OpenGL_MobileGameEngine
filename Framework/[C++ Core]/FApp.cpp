@@ -83,30 +83,6 @@ void FApp::BaseInitialize() {
         mImageLoadExtensionList += new FString("png");
         mImageLoadMutableSuffixList += new FString("");
         mImageLoadSuffixList += new FString("");
-
-        /*
-        while (gGraphicsInterface == NULL) {
-            Log("BaseInitialize:: No GFX Interface...\n");
-            os_sleep(100);
-        }
-
-        while (gGraphicsInterface->IsReady() == false) {
-            Log("BaseInitialize:: Waiting for GFX...\n");
-            os_sleep(100);
-        }
-        
-        Graphics::SetDeviceSize(gDeviceWidth, gDeviceHeight);
-        
-        
-        os_sleep(10);
-        //\
-        
-        
-        //Initialize the graphics engine...
-        //  Graphics::Initialize();
-        //  Graphics::SetUp();
-        //
-        */
         
         Initialize();
 
@@ -186,8 +162,6 @@ void FApp::BaseFrame() {
         BaseInitialize();
     }
     
-
-    
     gBufferCache.Reset();
     
     while (mDidUpdate == false) {
@@ -205,7 +179,6 @@ void FApp::BaseFrame() {
     
     Graphics::PreRender();
     gAppBase->Prerender();
-    
     
     if (mWadReloadIsEnqueued) {
         if (mWadReloadOnNextFrame) {
@@ -256,12 +229,6 @@ void FApp::BaseUpdate() {
         aSlot = FRAME_TIME_CAPTURE_COUNT - 1;
     }
     mFrameCaptureUpdateTime[aSlot] = os_system_time();
-    
-    
-    //if (mLo == false) {
-    //    gTouch.Reset();
-    //    return;
-    //}
     
     mDidUpdate = true;
     
@@ -333,16 +300,16 @@ void FApp::BaseDraw() {
     Draw();
     
     //if ((mIsLoading == false) && (mIsLoadingComplete == true)) {
-        mWindowMain.Draw();
-        mWindowModal.Draw();
-        mWindowTools.Draw();
+    mWindowMain.Draw();
+    mWindowModal.Draw();
+    mWindowTools.Draw();
     //}
     
     Graphics::MatrixProjectionSet(aOrtho);
     Graphics::MatrixModelViewReset();
     DrawOver();
     
-    
+    /*
     if (Graphics::RenderPass() == GFX_RENDER_PASS_2D_MAIN) {
         Graphics::MatrixProjectionResetOrtho();
         Graphics::MatrixModelViewReset();
@@ -358,7 +325,7 @@ void FApp::BaseDraw() {
         FString aScaleString = FString("SCL: ") + FString(gSpriteDrawScale) + FString(", ") + FString("REZ: ") + FString(gImageResolutionScale);
         mSysFont.Center(aScaleString, gDeviceWidth2, gDeviceHeight - 24.0f - 20.0f);
     }
-    
+    */
     
     if (mDarkMode == true) {
         Graphics::PipelineStateSetShape2DAlphaBlending();
@@ -372,8 +339,6 @@ void FApp::BaseDraw() {
 }
 
 void FApp::BaseLoad() {
-    
-    
     
     if (gGraphicsInterface != NULL) {
         gGraphicsInterface->SetContext();
@@ -429,8 +394,9 @@ void FApp::BaseLoad() {
     mSysFont.ApplyExpand(14.0f);
     mSysFont.SetSpaceWidth(64.0f);
     
+    //TODO: Is this still necessary? Should not be. Only on wad execution...
+    //AppShellSetImageFileScale(1);
     
-    AppShellSetImageFileScale(1);
     
     Load();
     
@@ -692,7 +658,8 @@ void FApp::BaseInactive() {
         sound_inactive();
         music_inactive();
 
-    #if (CURRENT_ENV == ENV_ANDROID) || (CURRENT_ENV == ENV_IOS)
+        //TODO: Remove, once verified on old Android.
+    #if (CURRENT_ENV == ENV_ANDROID)
         
         //Log("**** Teardown Graphics [Graphics::TearDown()] ****\n");
         //ThrottleLock();
@@ -710,6 +677,7 @@ void FApp::BaseActive() {
         mActive = true;
         Active();
         
+        //TODO: Remove, once verified on old Android.
         //#if (CURRENT_ENV == ENV_ANDROID) || (CURRENT_ENV == ENV_IOS)
         //if (mDidUnload == true) {
         //    mIsGraphicsSetUpEnqueued = true;
@@ -891,10 +859,10 @@ void FApp::FrameController() {
     int aUpdateCheck = (int)mFrame.mDesiredUpdate - mFrame.mCurrentUpdateNumber;
     
     if (aUpdateCheck > 0) {
-        if ((aUpdateCheck > 40) || (mActive == false)) {
+        if ((aUpdateCheck > 80) || (mActive == false)) {
             
-            if (aUpdateCheck > 40) {
-                Log("aUpdateCheck > 40, assumed break-point?\n");
+            if (aUpdateCheck > 80) {
+                Log("aUpdateCheck > 80, assumed break-point?\n");
             }
             
             if (!mFrame.mBreakUpdate) {
@@ -919,14 +887,15 @@ void FApp::FrameController() {
 
 int FApp::GetUPS() {
     int aResult = 100;
+    
     if (mFrameCaptureUpdateCount > 2) {
         int aTimeDiff = (int)(mFrameCaptureUpdateTime[mFrameCaptureUpdateCount - 1] - mFrameCaptureUpdateTime[0]);
         float aSecondsEllapsed = ((float)aTimeDiff) / 1000.0f;
         if (aTimeDiff > 0) {
             aResult = (int)(((float)mFrameCaptureUpdateCount) / aSecondsEllapsed);
-            
         }
     }
+    
     return aResult;
 }
 

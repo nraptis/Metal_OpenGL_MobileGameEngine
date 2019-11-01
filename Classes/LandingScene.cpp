@@ -82,12 +82,7 @@ void LandingScene::Draw3D() {
     
     FMatrix aProjection = mCamera.GetProjection();
     
-    
-    Graphics::MatrixProjectionSet(aProjection);
-    Graphics::MatrixModelViewReset();
-    
     Graphics::PipelineStateSetModelIndexedAlphaBlending();
-    
     
     FModelDataPacked *aModelBody = gApp->mButterflyBodySequence.GetModel(mButterflyFrame);
     if (aModelBody != NULL) {
@@ -124,8 +119,9 @@ void LandingScene::Draw3D() {
         aModelView.RotateY(180.0f);
         aModelView.RotateZ(mButterflyRotation);
         
-        
+        Graphics::MatrixProjectionSet(aProjection);
         Graphics::MatrixModelViewSet(aModelView);
+        
         Graphics::UniformBind();
         Graphics::DrawTrianglesIndexedWithPackedBuffers(aModelWings->mBuffer, 0,
                                                         gApp->mButterflyWingSequence.mIndex, gApp->mButterflyWingSequence.mIndexCount,
