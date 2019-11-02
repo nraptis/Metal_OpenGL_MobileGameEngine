@@ -394,19 +394,15 @@ void FApp::BaseLoad() {
     mSysFont.ApplyExpand(14.0f);
     mSysFont.SetSpaceWidth(64.0f);
     
-    //TODO: Is this still necessary? Should not be. Only on wad execution...
-    //AppShellSetImageFileScale(1);
-    
-    
-    Load();
-    
-    if (mAssetResolutionConfigurator == NULL) {
-        mAssetResolutionConfigurator = GetAssetResolutionConfigurator();
-    }
+    if (mAssetResolutionConfigurator == NULL) { mAssetResolutionConfigurator = GetAssetResolutionConfigurator(); }
     
     mAssetResolutionConfigurator->Invalidate();
+    
+    //Seems odd.. We want to FORCE the re-check of changing screen size. This is mainly to accomodate dynamic screen sizing...
+    mAssetResolutionConfigurator->NotifyScreenPropertiesChanged();
     BaseExecuteWadReload();
     
+    Load();
     
     mWindowMain.RefreshAll();
     mWindowModal.RefreshAll();
