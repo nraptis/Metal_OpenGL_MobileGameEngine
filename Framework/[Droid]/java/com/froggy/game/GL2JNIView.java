@@ -266,12 +266,12 @@ class GL2JNIView extends GLSurfaceView {
 
         public void onSurfaceChanged(GL10 gl, int width, int height) {
             Log.d("java", "onSurfaceChanged()!!!!!!!\n");
+
             if (mDidInitialize  == false) {
                 mDidInitialize = true;
-                Log.d("java", "onSurfaceChanged() 1st -- GL2JNILib.NativeAppShellInitialize(width, height);\n");
+                Log.d("java", "onSurfaceChanged() 1st -- GL2JNILib.NativeAppShellInitialize(w:" + width + ", h:" + height + ");\n");
                 GL2JNILib.NativeAppShellInitialize(width, height);
             }
-
         }
 
         public void onSurfaceCreated(GL10 gl, EGLConfig config) {

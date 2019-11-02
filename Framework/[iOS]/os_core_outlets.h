@@ -14,8 +14,6 @@ void os_sleep(int pTime);
 
 unsigned int os_system_time();
 
-void os_execute_on_main_thread(void (*pFunc)());
-
 void os_detach_thread(void (*pFunction)(void *pArg), void *pArg);
 
 bool os_updates_in_background();
