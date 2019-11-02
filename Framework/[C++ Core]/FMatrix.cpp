@@ -9,12 +9,9 @@
 #include "FMatrix.hpp"
 #include "core_includes.h"
 
-
-#if (CURRENT_ENV != ENV_ANDROID)
+#if (CURRENT_ENV == ENV_IOS)
 #include <arm_neon.h>
 #endif
-
-
 
 FMatrix::FMatrix() {
     m[0] = 1.0f;m[1] = 0.0f;m[2] = 0.0f;m[3] = 0.0f;
@@ -766,7 +763,7 @@ FMatrix FMatrixInvert(FMatrix pMatrix, bool *pInvertable) {
 
 FMatrix FMatrixMultiply(FMatrix pMatrixLeft, FMatrix pMatrixRight) {
     
-    #if (CURRENT_ENV != ENV_ANDROID)
+    #if (CURRENT_ENV == ENV_IOS)
     
     #if defined(__ARM_NEON__)
         
