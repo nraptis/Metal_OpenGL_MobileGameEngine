@@ -27,6 +27,7 @@ FApp::FApp() {
     
     mDarkMode = false;
     
+    mThrottleMode = -1;
     
     mAssetResolutionConfigurator = NULL;
     mWadReloadIsEnqueued = false;
@@ -166,10 +167,16 @@ void FApp::BaseFrame() {
     
     while (mDidUpdate == false) {
         Log("Waiting for An Update...\n");
-        os_sleep(18);
+        os_sleep(40);
     }
 
+    while (mThrottleMode != 0) {
+        //Don't draw again until we pass through the update cycle...
+        //Log("Throttle_Sleeping(%d)\n", ((int)(os_system_time() % 100000)));
+        os_sleep(5);
+    }
 
+    mThrottleMode = 1;
     ThrottleLock();
 
     if (gGraphicsInterface != NULL) {
@@ -210,7 +217,7 @@ void FApp::BaseFrame() {
     
     ThrottleUnlock();
     
-    os_sleep(18);
+    //os_sleep(18);
     
 }
 
@@ -313,7 +320,7 @@ void FApp::BaseDraw() {
     Graphics::MatrixModelViewReset();
     DrawOver();
     
-    /*
+    
     if (Graphics::RenderPass() == GFX_RENDER_PASS_2D_MAIN) {
         Graphics::MatrixProjectionResetOrtho();
         Graphics::MatrixModelViewReset();
@@ -329,7 +336,7 @@ void FApp::BaseDraw() {
         FString aScaleString = FString("SCL: ") + FString(gSpriteDrawScale) + FString(", ") + FString("REZ: ") + FString(gImageResolutionScale);
         mSysFont.Center(aScaleString, gDeviceWidth2, gDeviceHeight - 24.0f - 20.0f);
     }
-    */
+    
     
     if (mDarkMode == true) {
         Graphics::PipelineStateSetShape2DAlphaBlending();
@@ -833,6 +840,8 @@ void FApp::RecoverTime() {
 
 void FApp::FrameController() {
 
+    mThrottleMode = 0;
+    
     ThrottleLock();
     
     if (mActive == false) {
@@ -888,7 +897,8 @@ void FApp::FrameController() {
         }
     }
     ThrottleUnlock();
-    os_sleep(18);
+    //os_sleep(18);
+    
     
 }
 

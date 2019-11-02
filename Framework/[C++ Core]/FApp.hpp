@@ -166,6 +166,7 @@ public:
     void                                        InterfaceUnlock();
     
     
+    int                                         mThrottleMode;
     int                                         mThrottleLock;
     void                                        ThrottleLock();
     void                                        ThrottleUnlock();
