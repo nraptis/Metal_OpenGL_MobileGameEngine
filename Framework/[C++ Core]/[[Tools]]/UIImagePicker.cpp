@@ -118,24 +118,25 @@ void UIImagePicker::Layout() {
 }
 
 void UIImagePicker::FillWithAny() {
-    EnumList(FSprite, aSprite, gSpriteList) {
-        AddSprite(aSprite);
-    }
-    EnumList(FSpriteSequence, aSequence, gSpriteSequenceList) {
-        AddSpriteSequence(aSequence);
-    }
+    
+    //EnumList(FSprite, aSprite, gSpriteList) {
+    //    AddSprite(aSprite);
+    //}
+    //EnumList(FSpriteSequence, aSequence, gSpriteSequenceList) {
+    //    AddSpriteSequence(aSequence);
+    //}
 }
 
 void UIImagePicker::FillWithImages() {
-    EnumList(FSprite, aSprite, gSpriteList) {
-        AddSprite(aSprite);
-    }
+    //EnumList(FSprite, aSprite, gSpriteList) {
+    //    AddSprite(aSprite);
+    //}
 }
 
 void UIImagePicker::FillWithImageSequences() {
-    EnumList(FSpriteSequence, aSequence, gSpriteSequenceList) {
-        AddSpriteSequence(aSequence);
-    }
+    //EnumList(FSpriteSequence, aSequence, gSpriteSequenceList) {
+    //    AddSpriteSequence(aSequence);
+    //}
 }
 
 

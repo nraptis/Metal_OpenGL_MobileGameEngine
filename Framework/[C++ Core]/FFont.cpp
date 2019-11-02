@@ -625,7 +625,7 @@ void FFont::LoadNew(const char *pDataFile, const char *pImagePrefix, const char 
     }
     
     
-    gSpriteListEnabled = false;
+    //gSpriteListEnabled = false;
     
     unsigned char aScanChar = 0;
     int aReadIndex = -1;
@@ -700,7 +700,7 @@ void FFont::LoadNew(const char *pDataFile, const char *pImagePrefix, const char 
         }
     }
     
-    gSpriteListEnabled = true;
+    //gSpriteListEnabled = true;
     
 }
 

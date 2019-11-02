@@ -7,10 +7,9 @@
 //
 
 #include "FFloatList.hpp"
+#include "core_includes.h"
 
-
-FFloatList::FFloatList()
-{
+FFloatList::FFloatList() {
     mCount = 0;
     mSize = 0;
     mData = 0;

@@ -426,7 +426,7 @@ void Graphics::DrawBox(float x1, float y1, float z1, float x2, float y2, float z
     static float aCornerY2[4];
     static float aCornerZ2[4];
     
-    //printf("Dir[%.2f, %.2f, %.2f] Perp1[%.2f, %.2f, %.2f]\nPerp2[%.2f, %.2f, %.2f]\nPerp3[%.2f, %.2f, %.2f]\nPerp4[%.2f, %.2f, %.2f]\n", aAxis.mX, aAxis.mY, aAxis.mZ, aPerp1.mX, aPerp1.mY, aPerp1.mZ, aPerp2.mX, aPerp2.mY, aPerp2.mZ, aPerp3.mX, aPerp3.mY, aPerp3.mZ, aPerp4.mX, aPerp4.mY, aPerp4.mZ);
+    //Log("Dir[%.2f, %.2f, %.2f] Perp1[%.2f, %.2f, %.2f]\nPerp2[%.2f, %.2f, %.2f]\nPerp3[%.2f, %.2f, %.2f]\nPerp4[%.2f, %.2f, %.2f]\n", aAxis.mX, aAxis.mY, aAxis.mZ, aPerp1.mX, aPerp1.mY, aPerp1.mZ, aPerp2.mX, aPerp2.mY, aPerp2.mZ, aPerp3.mX, aPerp3.mY, aPerp3.mZ, aPerp4.mX, aPerp4.mY, aPerp4.mZ);
     
     float aSize = (pSize / 2.0f);
     aPerp1 *= aSize; aPerp2 *= aSize; aPerp3 *= aSize; aPerp4 *= aSize;
@@ -681,7 +681,7 @@ int Graphics::TextureGenerate(unsigned int *pData, int pWidth, int pHeight) {
         if (++cTextureBindCreateIndex < 0) { cTextureBindCreateIndex = 0; }
         
     } else {
-        printf("Metal Texture DOESN'T Exists!\n");
+        Log("Metal Texture DOESN'T Exists!\n");
         
     }
     
@@ -758,7 +758,7 @@ void Graphics::BufferArrayWrite(FBuffer *pBuffer, void *pData, int pOffset, int 
             memcpy(aAddress, pData, pLength);
         }
     } else {
-        printf("Missed Bind: %d\n", pBuffer->mBindIndex);
+        Log("Missed Bind: %d\n", pBuffer->mBindIndex);
     }
 }
 
@@ -1537,7 +1537,7 @@ void Graphics::DrawSpriteTriangle(float *pPositions, float *pTextureCoords, FTex
         BufferWrite(aPositionsBufferIndex, pPositions, aPositionsBufferOffset, sizeof(float) * 6);
         ArrayBufferPositions(aPositionsBufferIndex);
     } else {
-        printf("TRIANGLE - HARD-FAILURE on POSITION BUFFER FETCH...\n");
+        Log("TRIANGLE - HARD-FAILURE on POSITION BUFFER FETCH...\n");
     }
     
     
@@ -1548,7 +1548,7 @@ void Graphics::DrawSpriteTriangle(float *pPositions, float *pTextureCoords, FTex
         BufferWrite(aTextureCoordsBufferIndex, pTextureCoords, aTextureCoordsBufferOffset, sizeof(float) * 6);
         ArrayBufferTextureCoords(aTextureCoordsBufferIndex);
     } else {
-        printf("TRIANGLE - HARD-FAILURE on TEX-COORD BUFFER FETCH...\n");
+        Log("TRIANGLE - HARD-FAILURE on TEX-COORD BUFFER FETCH...\n");
     }
     */
     

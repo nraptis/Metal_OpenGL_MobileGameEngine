@@ -162,17 +162,18 @@ public:
 };
 
 
-extern bool gSpriteListEnabled;
-extern FList gSpriteList;
-extern FList gSpriteSequenceList;
+//extern bool gSpriteListEnabled;
+//extern FList gSpriteList;
+//extern FList gSpriteSequenceList;
 //extern FList gPackedModelList;
 
-#ifdef SETUP_MODE
+//#ifdef SETUP_MODE
 
-extern int gTestSpriteIndex;
-extern int gTestSpriteSequenceIndex;
+//extern int gTestSpriteIndex;
+//extern int gTestSpriteSequenceIndex;
 
-#endif
+//#endif
+
 
 
 #endif

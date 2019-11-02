@@ -279,7 +279,7 @@ void FScrollCanvasPaged::PanEnd(float pX, float pY, float pSpeedX, float pSpeedY
         mAnimationDirection = -1;
         mFinishAnimation = false;
         
-        printf("aVelocity: %f  Thresh: %f\n", aVelocity, mSpeedThresholdFlingTo);
+        Log("aVelocity: %f  Thresh: %f\n", aVelocity, mSpeedThresholdFlingTo);
         if (fabsf(aVelocity) >= mSpeedThresholdFlingTo) {
             if (aVelocity >= 0) {
                 mAnimationDirection = 1;

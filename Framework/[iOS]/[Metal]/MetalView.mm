@@ -48,7 +48,7 @@
     
     //
     _screenScale = (int)([UIScreen mainScreen].scale + 0.5f);
-    printf("SCREEN SCALE: [[%d]]\n", _screenScale);
+    Log("SCREEN SCALE: [[%d]]\n", _screenScale);
     //
     //
     //

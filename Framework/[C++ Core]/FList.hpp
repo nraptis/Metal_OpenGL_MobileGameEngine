@@ -2,7 +2,6 @@
 #define LIST_H
 
 #include <vector>
-
 using namespace std;
 
 #define EnumList(__TYPE__,__NAME__,__LIST__)for(__TYPE__ **__ENUM_START__=(__TYPE__**)(__LIST__).mData,**__ENUM_END__=(__TYPE__**)(__ENUM_START__+(__LIST__).mCount),*__NAME__=(__TYPE__*)(((__LIST__).mCount)?*__ENUM_START__:0);__NAME__!=0;__NAME__=(++__ENUM_START__<__ENUM_END__)?*__ENUM_START__:0)

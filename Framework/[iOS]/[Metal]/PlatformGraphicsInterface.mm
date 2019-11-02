@@ -75,15 +75,15 @@ bool PlatformGraphicsInterface::IsVSyncReady() {
     aOutOut++;
     if (aOutOut >= 60) {
         aOutOut = 0;
-        printf("aFrameTime = %f\n", aFrameTime);
+        Log("aFrameTime = %f\n", aFrameTime);
     }
     
     if (aFrameTime > 16.7) {
-        //printf("VSync is redy\n");
+        //Log("VSync is redy\n");
         mLastTime = gMetalView.displayLink.timestamp;
         return true;
     } else {
-        //printf("VSync is NOT redy\n");
+        //Log("VSync is NOT redy\n");
     }
 
     

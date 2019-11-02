@@ -22,20 +22,19 @@ FSpriteSequence::~FSpriteSequence() {
 
 void FSpriteSequence::Kill() {
     
-    gSpriteSequenceList.Remove(this);
+    //gSpriteSequenceList.Remove(this);
     EnumList (FSprite, aSprite, mList) {
-        gSpriteList.Remove(aSprite);
+    //    gSpriteList.Remove(aSprite);
         delete aSprite;
     }
-    
-    mList.Clear();
+    mList.RemoveAll();
     
     mWidth = 0.0f;
     mHeight = 0.0f;
 }
 
 void FSpriteSequence::LoadBundle(const char *pBundleName) {
-    gSpriteListEnabled = false;
+    //gSpriteListEnabled = false;
     
     mFilePrefix = pBundleName;
     
@@ -48,17 +47,18 @@ void FSpriteSequence::LoadBundle(const char *pBundleName) {
         mList.Add(aSprite);
     }
     
-    if (mList.mCount > 0) {
-        if (gSpriteSequenceList.Exists(this) == false) {
-            gSpriteSequenceList.Add(this);
-        }
-    }
-    gSpriteListEnabled = true;
+    //if (mList.mCount > 0) {
+    //    if (gSpriteSequenceList.Exists(this) == false) {
+    //        gSpriteSequenceList.Add(this);
+    //    }
+    //}
+    //gSpriteListEnabled = true;
+    
     ComputeBounds();
 }
 
 void FSpriteSequence::Load(const char *pFilePrefix) {
-    gSpriteListEnabled = false;
+    //gSpriteListEnabled = false;
     
     mFilePrefix = pFilePrefix;
     
@@ -141,13 +141,13 @@ void FSpriteSequence::Load(const char *pFilePrefix) {
         }
     }
     
-    if (mList.mCount > 0) {
-        gSpriteSequenceList.Add(this);
-    }
+    //if (mList.mCount > 0) {
+    //    gSpriteSequenceList.Add(this);
+    //}
     
     delete aSprite;
     
-    gSpriteListEnabled = true;
+    //gSpriteListEnabled = true;
     
     ComputeBounds();
 }
@@ -155,7 +155,7 @@ void FSpriteSequence::Load(const char *pFilePrefix) {
 void FSpriteSequence::Load(const char *pFilePrefix, int pStartIndex, int pEndIndex) {
     mFilePrefix = pFilePrefix;
     
-    gSpriteListEnabled = false;
+    //gSpriteListEnabled = false;
     
     bool aSuccess = false;
     
@@ -225,14 +225,14 @@ void FSpriteSequence::Load(const char *pFilePrefix, int pStartIndex, int pEndInd
         }
     //}
     
-    if (mList.mCount > 0) {
-        if (gSpriteSequenceList.Exists(this) == false) {
-            gSpriteSequenceList.Add(this);
-        }
-    }
+    //if (mList.mCount > 0) {
+    //    if (gSpriteSequenceList.Exists(this) == false) {
+    //        gSpriteSequenceList.Add(this);
+    //    }
+    //}
     
     delete aSprite;
-    gSpriteListEnabled = true;
+    //gSpriteListEnabled = true;
     ComputeBounds();
 }
 

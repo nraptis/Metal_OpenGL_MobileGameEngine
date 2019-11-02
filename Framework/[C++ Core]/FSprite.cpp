@@ -6,13 +6,12 @@
 #include "core_includes.h"
 
 //TODO: Turn off for release...
-bool gSpriteListEnabled = true;
-FList gSpriteList;
-FList gSpriteSequenceList;
+//bool gSpriteListEnabled = true;
+//FList gSpriteList;
+//FList gSpriteSequenceList;
 
 FMatrix cSpriteMatrixHold;
 FMatrix cSpriteMatrixModelView;
-
 
 FSprite::FSprite() {
     mTexture = 0;
@@ -154,7 +153,7 @@ void FSprite::Load(char *pFile) {
         mDidLoadFromBundle = true;
         mDidLoadSingle = false;
         //if (gSpriteListEnabled == true) {
-            gSpriteList.Add(this);
+        //    gSpriteList.Add(this);
         //}
         return;
     }
@@ -166,7 +165,7 @@ void FSprite::Load(char *pFile) {
         mDidLoadFromBundle = false;
         mDidLoadSingle = true;
         //if (gSpriteListEnabled == true) {
-            gSpriteList.Add(this);
+        //    gSpriteList.Add(this);
         //}
     }
 }

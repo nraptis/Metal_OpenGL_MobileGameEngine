@@ -47,7 +47,7 @@ void FTextureCache::UnloadAllTextures() {
     EnumList(FTextureCacheNode, aNode, mNodeList) {
         //Log("--Unloading Node[%s]\n", aNode->mTexture->mFileName.c());
         if (aNode->mTexture->mBindIndex != -1) {
-            printf("Unloading Texture %s (Should have been unloaded before-hand!\n", aNode->mTexture->mFileName.c());
+            Log("Unloading Texture %s (Should have been unloaded before-hand!\n", aNode->mTexture->mFileName.c());
         }
         aNode->mTexture->Unload();
     }
