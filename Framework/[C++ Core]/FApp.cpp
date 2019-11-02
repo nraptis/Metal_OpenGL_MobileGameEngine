@@ -210,9 +210,13 @@ void FApp::BaseFrame() {
     
     ThrottleUnlock();
     
+    os_sleep(18);
+    
 }
 
 void FApp::BaseUpdate() {
+    
+    //Log("BaseUpdate(%d)\n", (int)(os_system_time() % 1000000));
     
     if (mDidInitialize == false) {
         BaseInitialize();
@@ -805,11 +809,13 @@ void FApp::InterfaceUnlock() {
 }
 
 void FApp::SystemProcess() {
+    /*
     if (gGraphicsInterface) {
         SystemLock();
         gGraphicsInterface->PollEvents();
         SystemUnlock();
     }
+    */
 }
 
 void FApp::MainRunLoop() {
@@ -833,16 +839,14 @@ void FApp::FrameController() {
         if (os_updates_in_background()) {
             os_sleep(200);
         } else {
+            
             SystemProcess();
             os_sleep(20);
-            ThrottleUnlock();
+            
             return;
         }
     }
     
-
-    
-        
     mFrame.mDesiredUpdate = (float)(os_system_time() - mFrame.mBaseUpdateTime);
     mFrame.mDesiredUpdate /= 10;
     mFrame.mDesiredUpdate *= (float)mUpdatesPerSecond / 100.0f;
@@ -867,18 +871,25 @@ void FApp::FrameController() {
                     mFrame.mCurrentUpdateNumber = mFrame.mDesiredUpdate;
                     BaseUpdate();
                 }
+                
             }
         } else {
             while (mFrame.mCurrentUpdateNumber < (int)mFrame.mDesiredUpdate && !mFrame.mBreakUpdate) {
+                
                 SystemProcess();
-                if (mQuit) { break; }
+                if (mQuit) {
+                    //ThrottleUnlock();
+                    
+                    break;
+                }
                 mFrame.mCurrentUpdateNumber++;
                 BaseUpdate();
             }
         }
     }
-    
     ThrottleUnlock();
+    os_sleep(18);
+    
 }
 
 int FApp::GetUPS() {
