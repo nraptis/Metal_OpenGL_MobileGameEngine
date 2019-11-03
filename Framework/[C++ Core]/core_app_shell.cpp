@@ -83,8 +83,8 @@ void AppShellInitialize(int pEnvironment) {
 
     
     os_initialize_outlets();
-    sound_initialize();
     music_initialize();
+    sound_initialize();
     social_Init();
     
     AppShellSetImageFileScale(gImageResolutionScale);
