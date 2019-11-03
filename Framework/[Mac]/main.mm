@@ -9,7 +9,6 @@
 #import <Cocoa/Cocoa.h>
 #import "AppDelegate.h"
 #import "GFXApp.hpp"
-//#include "core_app_shell.hpp"
 
 int main(int argc, const char * argv[]) {
     gApp = new GFXApp();

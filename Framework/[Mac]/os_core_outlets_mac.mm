@@ -63,6 +63,7 @@ int os_getAssetScale() {
     return 1;
 }
 
+
 void os_detach_thread(void (*pFunction)(void *pArg), void *pArg) {
     pthread_t aThread;
     pthread_attr_t aAttr;
@@ -70,19 +71,6 @@ void os_detach_thread(void (*pFunction)(void *pArg), void *pArg) {
     pthread_attr_setdetachstate(&aAttr, PTHREAD_CREATE_DETACHED);
     pthread_create(&aThread, &aAttr, (void*(*)(void*))pFunction, pArg);
 }
-
-/*
-void os_execute_on_main_thread(void (*pFunc)()) {
-    printf("os_execute_on_main_thread - BANNED\n");
-    if ([NSThread isMainThread]) {
-        pFunc();
-    } else {
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            pFunc();
-        });
-    }
-}
-*/
 
 void os_message_box(const char *pTitle, const char *pBody) {
     NSString * tmpTitle = (pTitle) ? [NSString stringWithUTF8String : pTitle] : nil;
@@ -122,8 +110,8 @@ NSMutableSet *gLockStrongReferenceSet = [[NSMutableSet alloc] init];
 int os_create_thread_lock() {
     RecursiveLockWrapper *aContainer = [[RecursiveLockWrapper alloc] init];
     [gLockStrongReferenceSet addObject: aContainer];
-    aContainer.lock = [[NSRecursiveLock alloc] init];
-    //aContainer.lock = [[NSLock alloc] init];
+    //aContainer.lock = [[NSRecursiveLock alloc] init];
+    aContainer.lock = [[NSLock alloc] init];
     
     int aResult = gThreadLockList.mCount;
     gThreadLockList.Add((__bridge void *)aContainer);

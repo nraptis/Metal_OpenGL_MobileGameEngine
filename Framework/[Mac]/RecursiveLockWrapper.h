@@ -9,8 +9,9 @@
 #include <Foundation/Foundation.h>
 
 @interface RecursiveLockWrapper : NSObject
-@property (nonatomic, strong) NSRecursiveLock *lock;
-//@property (nonatomic, strong) NSLock *lock;
+
+//@property (nonatomic, strong) NSRecursiveLock *lock;
+@property (nonatomic, strong) NSLock *lock;
 
 
 
