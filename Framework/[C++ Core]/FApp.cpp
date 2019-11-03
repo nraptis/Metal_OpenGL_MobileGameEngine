@@ -144,8 +144,6 @@ void FApp::BaseSetSafeAreaInsets(int pInsetUp, int pInsetRight, int pInsetDown, 
     ReevaluateScreenResolution();
 }
 
-
-
 //Externally, we are getting a "frame" ...
 void FApp::BaseFrame() {
 
@@ -170,14 +168,14 @@ void FApp::BaseFrame() {
         os_sleep(40);
     }
 
-    while (mThrottleMode != 0) {
-        //Don't draw again until we pass through the update cycle...
-        //Log("Throttle_Sleeping(%d)\n", ((int)(os_system_time() % 100000)));
+    while (mThrottleMode == 1) {
+        //Don't draw again until we pass through the update cycle... Older iOS devices
+        //seem to re-lock inunpredictable order and one thread can starve...
         os_sleep(5);
     }
 
-    mThrottleMode = 1;
     ThrottleLock();
+    mThrottleMode = 1;
 
     if (gGraphicsInterface != NULL) {
         gGraphicsInterface->SetContext();
@@ -216,9 +214,6 @@ void FApp::BaseFrame() {
     }
     
     ThrottleUnlock();
-    
-    //os_sleep(18);
-    
 }
 
 void FApp::BaseUpdate() {
@@ -646,9 +641,12 @@ void FApp::ProcessKeyUp(int pKey) {
 
 void FApp::BaseInactive() {
     
-    Log("**** BaseInactive ****\n");
+    
     
     if (mActive == true) {
+        
+        Log("\n**** BaseInactive ****\n\n");
+        
         mActive = false;
         ProcessTouchFlush();
         Inactive();
@@ -681,6 +679,9 @@ void FApp::BaseInactive() {
 
 void FApp::BaseActive() {
     if(mActive == false) {
+        
+        Log("\n**** BaseActive ****\n\n");
+        
         mActive = true;
         Active();
         
@@ -700,8 +701,8 @@ void FApp::BaseActive() {
         mWindowModal.Active();
         mWindowTools.Active();
         
-        sound_active();
         music_active();
+        sound_active();
     }
 }
 
@@ -839,10 +840,15 @@ void FApp::RecoverTime() {
 }
 
 void FApp::FrameController() {
-
-    mThrottleMode = 0;
     
+    while (mThrottleMode == 0) {
+        //Don't draw again until we pass through the update cycle... Older iOS devices
+        //seem to re-lock inunpredictable order and one thread can starve...
+        os_sleep(5);
+    }
+
     ThrottleLock();
+    mThrottleMode = 0;
     
     if (mActive == false) {
         if (os_updates_in_background()) {
@@ -897,9 +903,6 @@ void FApp::FrameController() {
         }
     }
     ThrottleUnlock();
-    //os_sleep(18);
-    
-    
 }
 
 int FApp::GetUPS() {
