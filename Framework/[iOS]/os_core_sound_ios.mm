@@ -19,6 +19,8 @@
 #include "OpenAL/alc.h"
 #import "FSound.hpp"
 
+static bool cSoundActive = false;
+
 FSoundInstanceMac::FSoundInstanceMac() {
     
 }
@@ -54,17 +56,18 @@ void sound_initialize() {
         //UInt32 allowMixing = true;
         //propertySetError = AudioSessionSetProperty(kAudioSessionProperty_OverrideCategoryMixWithOthers, sizeof (allowMixing),&allowMixing);
         
+        cSoundActive = true;
         
         gAudioContext = alcCreateContext(gAudioDevice, NULL);
         alcMakeContextCurrent(gAudioContext);
         
-        ALfloat ListenerPos[]={0.0, 0.0, 0.0};
-        ALfloat ListenerVel[]={0.0, 0.0, 0.0};
-        ALfloat ListenerOri[]={0.0, 0.0, 0.0,  0.0, 1.0, 0.0};
+        ALfloat aListenerPos[] = { 0.0, 0.0, 0.0};
+        ALfloat aListenerVel[] = { 0.0, 0.0, 0.0};
+        ALfloat aListenerOrientation[] = { 0.0, 0.0, 0.0,  0.0, 1.0, 0.0};
         
-        alListenerfv(AL_POSITION,ListenerPos);
-        alListenerfv(AL_VELOCITY,ListenerVel);
-        alListenerfv(AL_ORIENTATION,ListenerOri);
+        alListenerfv(AL_POSITION, aListenerPos);
+        alListenerfv(AL_VELOCITY, aListenerVel);
+        alListenerfv(AL_ORIENTATION, aListenerOrientation);
     }
 }
 
@@ -219,7 +222,7 @@ bool sound_load(FSound *pSound, const char *pFileName, int pInstanceCount) {
                             pSound->mInstances+=aInstance;
                         }
                     }
-                    if (aData) { free(aData); }
+                    if (aData != NULL) { free(aData); }
                     if (aFail == false) { aResult = true; }
                 }
             }
@@ -383,7 +386,7 @@ void sound_instance_play(FSoundInstance *pInstance, float pVolume) {
     FSoundInstanceMac *aInstance = (FSoundInstanceMac *)pInstance;
     if (aInstance) {
         sound_instance_setVolume(pInstance, pVolume * gSoundVolume);
-        alSourcei(aInstance->mIndexOpenAL, AL_LOOPING,false);
+        alSourcei(aInstance->mIndexOpenAL, AL_LOOPING, false);
         alSourcePlay(aInstance->mIndexOpenAL);
         pInstance->mIsLooping = false;
     }
@@ -466,12 +469,20 @@ void sound_update() {
     
 }
 
-void sound_active()
-{
-    
+void sound_active() {
+    /*
+    if (cSoundActive == false) {
+        alcMakeContextCurrent(gAudioContext);
+        cSoundActive = true;
+    }
+    */
 }
 
-void sound_inactive()
-{
-    
+void sound_inactive() {
+    /*
+    if (cSoundActive == true) {
+        alcMakeContextCurrent(NULL);
+        cSoundActive = false;
+    }
+    */
 }
