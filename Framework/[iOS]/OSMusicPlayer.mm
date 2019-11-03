@@ -197,7 +197,7 @@
 
 - (BOOL)musicIsPlaying {
     BOOL aResult = NO;
-    if (musicPlayer) {
+    if (musicPlayer != NULL) {
         if ([musicPlayer isPlaying]) {
             return YES;
         }

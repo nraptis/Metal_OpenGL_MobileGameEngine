@@ -11,6 +11,7 @@
 #import "OSMusicPlayer.h"
 #include "os_core_outlets.h"
 #include "core_includes.h"
+#include "os_core_sound.h"
 
 OSMusicPlayer *gMusicPlayer;
 
@@ -99,11 +100,17 @@ void music_update() {
 }
 
 void music_active() {
+    
+    /*
     if (gMusicEnabled) {
         [gMusicPlayer musicResume];
+        sound_active();
     }
+    */
 }
 
 void music_inactive() {
-    [gMusicPlayer musicPause];
+    
+    //[gMusicPlayer musicPause];
+    
 }

@@ -28,7 +28,6 @@
     
     bool                                    musicLoop;
     bool                                    musicFadeLoop;
-    
 }
 
 @property (nonatomic, strong) AVAudioPlayer *musicPlayer;
@@ -56,7 +55,6 @@
 - (BOOL)musicIsPlaying;
 
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag;
-
 
 - (void)audioPlayerDecodeErrorDidOccur:(AVAudioPlayer *)player error:(NSError *)error;
 - (void)audioPlayerBeginInterruption:(AVAudioPlayer *)player;
