@@ -127,6 +127,8 @@
 		0DA2613A23662867005AD610 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DA2613523662867005AD610 /* Cocoa.framework */; };
 		0DA2613B23662867005AD610 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DA2613623662867005AD610 /* OpenAL.framework */; };
 		0DA2613C23662867005AD610 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DA2613723662867005AD610 /* QuartzCore.framework */; };
+		0DB8B690236E7F0400C993E5 /* ProgressBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DB8B68F236E7F0400C993E5 /* ProgressBar.cpp */; };
+		0DB8B693236E7F0900C993E5 /* AssetWadGameInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DB8B691236E7F0900C993E5 /* AssetWadGameInterface.cpp */; };
 		0DB8F1FE23662DAA00AF587D /* GFXApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DB8F1FA23662DAA00AF587D /* GFXApp.cpp */; };
 		0DB8F2032366326F00AF587D /* FloatingCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DB8F1FF2366326E00AF587D /* FloatingCamera.cpp */; };
 		0DB8F2042366326F00AF587D /* PhongConfiguration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DB8F2012366326E00AF587D /* PhongConfiguration.cpp */; };
@@ -362,6 +364,10 @@
 		0DA2613523662867005AD610 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		0DA2613623662867005AD610 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		0DA2613723662867005AD610 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		0DB8B68E236E7F0400C993E5 /* ProgressBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ProgressBar.hpp; sourceTree = "<group>"; };
+		0DB8B68F236E7F0400C993E5 /* ProgressBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProgressBar.cpp; sourceTree = "<group>"; };
+		0DB8B691236E7F0900C993E5 /* AssetWadGameInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssetWadGameInterface.cpp; sourceTree = "<group>"; };
+		0DB8B692236E7F0900C993E5 /* AssetWadGameInterface.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AssetWadGameInterface.hpp; sourceTree = "<group>"; };
 		0DB8F1FA23662DAA00AF587D /* GFXApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GFXApp.cpp; sourceTree = "<group>"; };
 		0DB8F1FC23662DAA00AF587D /* GFXApp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GFXApp.hpp; sourceTree = "<group>"; };
 		0DB8F1FF2366326E00AF587D /* FloatingCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FloatingCamera.cpp; sourceTree = "<group>"; };
@@ -678,6 +684,10 @@
 		0DB8F1F823662DAA00AF587D /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0DB8B691236E7F0900C993E5 /* AssetWadGameInterface.cpp */,
+				0DB8B692236E7F0900C993E5 /* AssetWadGameInterface.hpp */,
+				0DB8B68F236E7F0400C993E5 /* ProgressBar.cpp */,
+				0DB8B68E236E7F0400C993E5 /* ProgressBar.hpp */,
 				0DB8F1FF2366326E00AF587D /* FloatingCamera.cpp */,
 				0DB8F2022366326E00AF587D /* FloatingCamera.hpp */,
 				0DB8F2012366326E00AF587D /* PhongConfiguration.cpp */,
@@ -805,6 +815,7 @@
 				0DA26077236627C7005AD610 /* ShapeNodeShaders.metal in Sources */,
 				0DA260CD236627C7005AD610 /* FRect.cpp in Sources */,
 				0DA26079236627C7005AD610 /* Shape2DShaders.metal in Sources */,
+				0DB8B690236E7F0400C993E5 /* ProgressBar.cpp in Sources */,
 				0DA260BE236627C7005AD610 /* ToolMenuSectionRow.cpp in Sources */,
 				0DB8F2042366326F00AF587D /* PhongConfiguration.cpp in Sources */,
 				0DA260D2236627C7005AD610 /* FBuffer.cpp in Sources */,
@@ -858,6 +869,7 @@
 				0DA26084236627C7005AD610 /* FQuad.cpp in Sources */,
 				0DA26092236627C7005AD610 /* FJoystick.cpp in Sources */,
 				0DA260BA236627C7005AD610 /* UICheckBox.cpp in Sources */,
+				0DB8B693236E7F0900C993E5 /* AssetWadGameInterface.cpp in Sources */,
 				0DA260CF236627C7005AD610 /* FList.cpp in Sources */,
 				0DA26089236627C7005AD610 /* FAchievement.cpp in Sources */,
 				0DA260BD236627C7005AD610 /* ToolMenuHeader.cpp in Sources */,

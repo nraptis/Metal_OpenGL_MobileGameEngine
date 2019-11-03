@@ -11,6 +11,8 @@
 
 LandingScene::LandingScene() {
     
+    mProgressBar = NULL;
+    
     mName = "LandingScene";
     
     mRecievesOutsideTouches = true;
@@ -27,6 +29,10 @@ LandingScene::LandingScene() {
     
     mButterflyFrame = 0.0f;
     
+    
+    mProgressBar = new ProgressBar();
+    AddChild(mProgressBar);
+    
 }
 
 LandingScene::~LandingScene() {
@@ -38,6 +44,10 @@ void LandingScene::Layout() {
     
     SetFrame(0.0f, 0.0f, gAppWidth, gAppHeight);
     
+    if (mProgressBar != NULL) {
+        float aProgressBarHeight = gWadGameInterface.mProgressBarFull.mHeight * 0.8f;
+        mProgressBar->SetFrame(20.0f, 20.0f, mWidth - 40.0f, aProgressBarHeight);
+    }
     
 }
 

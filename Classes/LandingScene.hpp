@@ -11,6 +11,7 @@
 
 #include "GFXApp.hpp"
 #include "FloatingCamera.hpp"
+#include "ProgressBar.hpp"
 
 class LandingScene : public FCanvas {
 public:
@@ -41,6 +42,9 @@ public:
     float                                       mButterflyFrame;
     
     float                                       mButterflyRotation;
+    
+    
+    ProgressBar                                 *mProgressBar;
     
     
 };

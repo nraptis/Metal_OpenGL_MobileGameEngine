@@ -16,6 +16,8 @@
 #include "Util_ScreenFrame.h"
 #include "LandingScene.hpp"
 
+AssetWadGameInterface gWadGameInterface;
+
 GFXApp *gApp = 0;
 GFXApp::GFXApp() {
     
@@ -171,6 +173,9 @@ void GFXApp::Active() {
 void GFXApp::ExecuteWadReload() {
     
     Log("*** BEGIN:: GFXApp::ExecuteWadReload()\n");
+    
+    gWadGameInterface.Unload();
+    gWadGameInterface.Load();
     
     Log("*** End:: GFXApp::ExecuteWadReload()\n");
 }

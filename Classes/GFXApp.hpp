@@ -10,6 +10,7 @@
 #define GFXApp_hpp
 
 #include "FApp.hpp"
+#include "AssetWadGameInterface.hpp"
 
 class LandingScene;
 class Util_ScreenFrame;
@@ -56,5 +57,7 @@ public:
 };
 
 extern GFXApp *gApp;
+
+extern AssetWadGameInterface gWadGameInterface;
 
 #endif /* GFXApp_hpp */
