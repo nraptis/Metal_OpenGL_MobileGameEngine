@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "core_app_shell.hpp"
+#import <AVFoundation/AVFoundation.h>
 
 
 //Needed for metal:
@@ -33,6 +34,8 @@ bool kDeviceActive = false;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    
     
     
     float aOSVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
@@ -101,7 +104,11 @@ bool kDeviceActive = false;
         AppShellSetSafeAreaInsets(0.0f, 0.0f, 0.0f, 0.0f);
     }
     
-    
+    NSError *aAudioError = NULL;
+    [[AVAudioSession sharedInstance] setCategory :AVAudioSessionCategoryAmbient error: &aAudioError];
+    if (aAudioError != NULL) {
+        NSLog(@"Audio Error: %@", aAudioError.localizedDescription);
+    }
     
     AppShellInitialize(ENV_IOS);
     
