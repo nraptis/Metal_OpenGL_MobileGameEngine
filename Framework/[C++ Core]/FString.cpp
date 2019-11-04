@@ -1120,6 +1120,40 @@ int FString::CompareS(char *pString, int theCount)
 }
 */
 
+
+void FString::Split(char pSplitter, FList *pResult) {
+    
+    if (pResult == NULL) { return; }
+    if ((mLength <= 0)) { return; }
+    
+    int aStartIndex = 0;
+    while ((aStartIndex < mLength) && (mData[aStartIndex] == pSplitter)) { aStartIndex++; }
+    
+    int aIndex = aStartIndex;
+    int aLength = 0;
+    
+    while (aIndex < mLength) {
+        
+        while ((aIndex < mLength) && (mData[aIndex] != pSplitter)) { ++aIndex; }
+        
+        aLength = (aIndex - aStartIndex);
+        
+        FString *aChunk = new FString();
+        aChunk->Size(aLength + 1);
+        memcpy(aChunk->mData, &(mData[aStartIndex]), aLength);
+        aChunk->mData[aLength] = NULL;
+        pResult->Add(aChunk);
+
+        while ((aIndex < mLength) && (mData[aIndex] == pSplitter)) { ++aIndex; }
+        aStartIndex = aIndex;
+    }
+    
+    
+    
+}
+
+
+
 bool FString::StartsWith(char *pString)
 {
 	if(!mData)return false;

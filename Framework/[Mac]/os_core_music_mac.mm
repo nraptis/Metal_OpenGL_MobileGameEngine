@@ -81,11 +81,9 @@ void music_update() {
 }
 
 void music_active() {
-    if (gMusicEnabled) {
-        [gMusicPlayer musicResume];
-    }
+    
 }
 
 void music_inactive() {
-    [gMusicPlayer musicPause];
+    
 }

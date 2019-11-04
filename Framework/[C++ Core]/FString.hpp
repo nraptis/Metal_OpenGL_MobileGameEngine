@@ -7,6 +7,7 @@
 
 #define lower(c)(((c)>=65&&(c)<=90)?(c)+32:(c))
 
+class FList;
 class FString
 {
 public:
@@ -155,8 +156,10 @@ public:
     void                            Insert(char pChar, int pCount, int pSlot);
     void                            Insert(char pChar, int pSlot);
     
-    
 
+    
+    void                            Split(char pSplitter, FList *pResult);
+    
 
 
 	//
