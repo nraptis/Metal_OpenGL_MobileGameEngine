@@ -797,7 +797,7 @@ float FSpline::GetClosestPosition(float x, float y, float &pDist)
 	return aBestPos;
 }
 
-bool FSpline::GetNextFVec2Sloppy(float &x, float &y, float &t,float theDistance)
+bool FSpline::GetNextPointSloppy(float &x, float &y, float &t,float theDistance)
 {
 	float aX,aY;
 	float aDiffX,aDiffY;
@@ -834,7 +834,7 @@ bool FSpline::GetNextFVec2Sloppy(float &x, float &y, float &t,float theDistance)
 	return!(aDist<theDistance*0.5f);
 }
 
-bool FSpline::GetNextFVec2(float &x, float &y, float &t,float theDistance)
+bool FSpline::GetNextPoint(float &x, float &y, float &t,float theDistance)
 {
 	float aX,aY;
 	float aDiffX,aDiffY;

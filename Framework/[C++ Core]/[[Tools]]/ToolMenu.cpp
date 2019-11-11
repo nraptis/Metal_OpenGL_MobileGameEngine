@@ -36,9 +36,11 @@ ToolMenu::ToolMenu() {
     mMenuBackgroundShadow.SetColorBottom(0.025f, 0.025f, 0.025f, 0.25f);
     mMenuBackgroundShadow.mCornerRadius = 8.0f;
 
-    mScrollContent.mScrollHorizontalEnabled = false;
+    mScrollContent.mEnabledX = false;
     mScrollContent.mRecievesConsumedTouches = false;
+    mScrollContent.mClipEnabled = true;
     mScrollContent.mMenu = this;
+    
     AddChild(mScrollContent);
 
     mContent.mMenu = this;

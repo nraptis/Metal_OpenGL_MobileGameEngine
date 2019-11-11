@@ -270,8 +270,8 @@ public:
 
 	//Steps along the spline by a given linear distance. Returns false when you pass
 	//the end of the spline.
-	bool					GetNextFVec2(float &x, float &y, float &t,float theDistance=1.0f);
-	bool					GetNextFVec2Sloppy(float &x, float &y, float &t,float theDistance=1.0f);
+	bool					GetNextPoint(float &x, float &y, float &t,float theDistance=1.0f);
+	bool					GetNextPointSloppy(float &x, float &y, float &t,float theDistance=1.0f);
 
 	//The maximum and minimum positions of the spline.
 	//for(float i=Min();i<=Max();i+=0.1f){}

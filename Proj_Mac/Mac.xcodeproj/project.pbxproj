@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D96D1232378FB0100DF4636 /* FSpriteCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D96D1212378FB0100DF4636 /* FSpriteCanvas.cpp */; };
+		0D96D1262378FB0A00DF4636 /* FScrollCanvasGeneric.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D96D1252378FB0A00DF4636 /* FScrollCanvasGeneric.cpp */; };
 		0DA26074236627C7005AD610 /* BufferBindingWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA25F10236627C7005AD610 /* BufferBindingWrapper.mm */; };
 		0DA26075236627C7005AD610 /* os_core_graphics.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA25F11236627C7005AD610 /* os_core_graphics.mm */; };
 		0DA26076236627C7005AD610 /* Shape3DShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0DA25F15236627C7005AD610 /* Shape3DShaders.metal */; };
@@ -136,6 +138,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D96D1212378FB0100DF4636 /* FSpriteCanvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSpriteCanvas.cpp; sourceTree = "<group>"; };
+		0D96D1222378FB0100DF4636 /* FSpriteCanvas.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FSpriteCanvas.hpp; sourceTree = "<group>"; };
+		0D96D1242378FB0A00DF4636 /* FScrollCanvasGeneric.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FScrollCanvasGeneric.hpp; sourceTree = "<group>"; };
+		0D96D1252378FB0A00DF4636 /* FScrollCanvasGeneric.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FScrollCanvasGeneric.cpp; sourceTree = "<group>"; };
 		0DA25F10236627C7005AD610 /* BufferBindingWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BufferBindingWrapper.mm; sourceTree = "<group>"; };
 		0DA25F11236627C7005AD610 /* os_core_graphics.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = os_core_graphics.mm; sourceTree = "<group>"; };
 		0DA25F12236627C7005AD610 /* TextureBindingWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureBindingWrapper.h; sourceTree = "<group>"; };
@@ -539,6 +545,8 @@
 				0DA25F31236627C7005AD610 /* FRect.hpp */,
 				0DA25F6B236627C7005AD610 /* FResource.cpp */,
 				0DA25F4E236627C7005AD610 /* FResource.hpp */,
+				0D96D1252378FB0A00DF4636 /* FScrollCanvasGeneric.cpp */,
+				0D96D1242378FB0A00DF4636 /* FScrollCanvasGeneric.hpp */,
 				0DA25F6E236627C7005AD610 /* FScrollCanvas.cpp */,
 				0DA25F51236627C7005AD610 /* FScrollCanvas.hpp */,
 				0DA25F56236627C7005AD610 /* FScrollCanvasPaged.cpp */,
@@ -559,6 +567,8 @@
 				0DA25F48236627C7005AD610 /* FString.hpp */,
 				0DA25F61236627C7005AD610 /* FTexture.cpp */,
 				0DA25F7D236627C7005AD610 /* FTexture.hpp */,
+				0D96D1212378FB0100DF4636 /* FSpriteCanvas.cpp */,
+				0D96D1222378FB0100DF4636 /* FSpriteCanvas.hpp */,
 				0DA25F27236627C7005AD610 /* FTextureCache.cpp */,
 				0DA25F88236627C7005AD610 /* FTextureCache.hpp */,
 				0DA25F39236627C7005AD610 /* FTouchManager.cpp */,
@@ -882,8 +892,10 @@
 				0DA260A6236627C7005AD610 /* FVec2.cpp in Sources */,
 				0DA260CC236627C7005AD610 /* FUniforms.cpp in Sources */,
 				0DA2608C236627C7005AD610 /* FBufferCache.cpp in Sources */,
+				0D96D1232378FB0100DF4636 /* FSpriteCanvas.cpp in Sources */,
 				0DA260C2236627C7005AD610 /* UIRoundedRect.cpp in Sources */,
 				0DA260AE236627C7005AD610 /* FSpriteSequence.cpp in Sources */,
+				0D96D1262378FB0A00DF4636 /* FScrollCanvasGeneric.cpp in Sources */,
 				0DA260D5236627C7005AD610 /* core_app_shell.cpp in Sources */,
 				0DA26096236627C7005AD610 /* FDrawQuad.cpp in Sources */,
 				0DA26082236627C7005AD610 /* FModelData.cpp in Sources */,

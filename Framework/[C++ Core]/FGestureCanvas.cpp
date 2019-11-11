@@ -242,8 +242,9 @@ void FGestureCanvas::BaseTouchMove(float pX, float pY, float pOriginalX, float p
 
         GestureComputeCenter();
 
-        float aTriggerPanDistance = 10.0f;
-        if((gDeviceWidth > 600.0f) || (gDeviceHeight > 600.0f))aTriggerPanDistance = 14.0f;
+        float aTriggerPanDistance = 4.0f;
+        //if ((gDeviceWidth > 600.0f) || (gDeviceHeight > 600.0f)) { aTriggerPanDistance = 6.0f; }
+        
 
         float aTriggerPinchDistance = 1.0f;
         //if((gDeviceWidth > 600.0f) || (gDeviceHeight > 600.0f))aTriggerPinchDistance = 10.0f;
@@ -314,10 +315,7 @@ void FGestureCanvas::BaseTouchMove(float pX, float pY, float pOriginalX, float p
                 mIsPinching = false;
             }
         }
-
-
-
-
+        
         if (mIsRotating == false) {
             if (mTouchCount >= 2) {
                 if(aMovedTouch->mMaxDistMoved > aTriggerPinchDistance) {
