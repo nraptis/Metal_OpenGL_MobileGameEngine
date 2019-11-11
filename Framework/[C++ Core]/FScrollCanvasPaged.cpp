@@ -1,389 +1,247 @@
 //
-//  FScrollCanvasPaged.cpp
-//  MetalLearning
+//  FScrollCanvasPagedPaged.cpp
+//  Crazy Darts 2 iOS
 //
-//  Created by Nicholas Raptis on 2/13/19.
-//  Copyright © 2019 Nicholas Raptis. All rights reserved.
+//  Created by Nick Raptis on 11/8/19.
+//  Copyright © 2019 Froggy Studios. All rights reserved.
 //
 
-#include "FScrollCanvasPaged.hpp"
 #include "core_includes.h"
+#include "FScrollCanvasPaged.hpp"
 
 FScrollCanvasPaged::FScrollCanvasPaged() {
-    mClipEnabled = false;
-    //mRecievesConsumedTouches = true;
     
-    mScrollPanStartThreshold = 14.0f;
-    mScrollPanSwitchDirectionThreshold = 32.0f;
+    mPageCount = 0;
+    mPage = 0;
     
-    mScrollPanning = false;
-    mScrollHorizontal = false;
+    mAnimationCompletePage = 0;
     
-    mScrollEnabledHorizontal = true;
-    mScrollEnabledVertical = true;
-    
-    mScrollCurrentPageH = 0;
-    mScrollCurrentPageV = 0;
-    
-    mScrollAnimating = false;
-    mScrollPanDirectionPicked = false;
-    
-    mScrollAnimationTimeTotal = 0;
-    mScrollAnimationTimer = 0;
-    
-    mSpeedThresholdFlingTo = 7.5f;
-    
-    mScrollPageCountH = 1;
-    mScrollPageCountV = 1;
-    
-    if ((gDeviceWidth < 700) || (gDeviceHeight < 500)) {
-        mSpeedThresholdFlingTo *= 0.75f;
-    }
-    
-    for (int i=0;i<2;i++) {
-        mScrollOffset[i] = 0.0f;
-        mScrollOffsetPanShift[i] = 0.0f;
-        mScrollOffsetPanStart[i] = 0.0f;
-    }
-    
-    mAnimationDirection = 0;
-    mFinishAnimationDirection = 0;
-    mFinishAnimation = false;
-    mScrollAnimationPercent = 0.0f;
-    mScrollAnimationPercentTarget = 0.0f;
+    mVertical = false;
 }
 
 FScrollCanvasPaged::~FScrollCanvasPaged() {
     
 }
 
-void FScrollCanvasPaged::SetPageCountHorizontal(int pCount) {
-    mScrollPageCountH = pCount;
+void FScrollCanvasPaged::BaseLayout() {
+    FScrollCanvasGeneric::BaseLayout();
+    
+    AdjustSizeToFitPageCount();
 }
 
-void FScrollCanvasPaged::SetPageCountVertical(int pCount) {
-    mScrollPageCountV = pCount;
-}
-
-void FScrollCanvasPaged::SnapToPage(int pPageH, int pPageV) {
-    
-    Log("FScrollCanvasPaged::SnapToPage(%d, %d)\n", pPageH, pPageV);
-    
-    mScrollCurrentPageH = pPageH;
-    mScrollCurrentPageV = pPageV;
-    
-    ClearGestures(true);
-    
-    mScrollOffset[0] = ((float)mScrollCurrentPageH) * (-mWidth);
-    mScrollOffset[1] = ((float)mScrollCurrentPageV) * (-mHeight);
-    
-    BaseUpdate();
-}
 
 void FScrollCanvasPaged::BaseUpdate() {
-    FGestureCanvas::BaseUpdate();
-    
-    if (mScrollAnimating == true) {
-        if (mFinishAnimation) {
-            mScrollAnimationPercent = 0.0f;
-            mScrollAnimating = false;
-            
-            int aDir = mFinishAnimationDirection;
-            
-            int aPreviousPageH = mScrollCurrentPageH;
-            int aPreviousPageV = mScrollCurrentPageV;
-            
-            if (mScrollHorizontal == true) {
-                mScrollCurrentPageH += aDir;
-                mScrollOffset[0] = ((float)(-mScrollCurrentPageH)) * mWidth;
-            } else {
-                mScrollCurrentPageV += aDir;
-                
-                mScrollOffset[1] = ((float)(-mScrollCurrentPageV)) * mHeight;
-            }
-            
-            ScrollFinished();
-            
-            if (mScrollHorizontal) {
-                ScrollFinishedHorizontal(aPreviousPageH, mScrollCurrentPageH);
-            } else {
-                ScrollFinishedVertical(aPreviousPageV, mScrollCurrentPageV);
-            }
-        } else {
-            mFinishAnimationDirection = 0;
-            if (mAnimationDirection == 1) {
-                if (mScrollAnimationPercentTarget > mScrollAnimationPercent) {
-                    mScrollAnimationPercent += (mScrollAnimationPercentTarget - mScrollAnimationPercent) / 16.0f;
-                }
-                mScrollAnimationPercent += 0.025f;
-                if (mScrollAnimationPercent >= mScrollAnimationPercentTarget) {
-                    mScrollAnimationPercent = mScrollAnimationPercentTarget;
-                    mFinishAnimation = true;
-                    if (mScrollAnimationPercentTarget > (0.5f)) {
-                        mFinishAnimationDirection = -1;
-                    }
-                }
-            } else {
-                if (mScrollAnimationPercent > mScrollAnimationPercentTarget) {
-                    mScrollAnimationPercent -= (mScrollAnimationPercent - mScrollAnimationPercentTarget) / 16.0f;
-                }
-                mScrollAnimationPercent -= 0.025f;
-                if (mScrollAnimationPercent <= mScrollAnimationPercentTarget) {
-                    mScrollAnimationPercent = mScrollAnimationPercentTarget;
-                    mFinishAnimation = true;
-                    if (mScrollAnimationPercentTarget < (-0.5f)) {
-                        mFinishAnimationDirection = 1;
-                    }
-                }
-            }
-            
-            if (mScrollHorizontal) {
-                float aScrollBaseStartOffset = ((float)(-mScrollCurrentPageH)) * mWidth;
-                mScrollOffset[0] = aScrollBaseStartOffset + mScrollAnimationPercent * mWidth;
-            } else {
-                float aScrollBaseStartOffset = ((float)(-mScrollCurrentPageV)) * mHeight;
-                mScrollOffset[1] = aScrollBaseStartOffset + mScrollAnimationPercent * mHeight;
-            }
-        }
-    }
-    
-    EnumList(FCanvas, aCanvas, mChildren) {
-        aCanvas->SetTransformTranslate(mScrollOffset[0], mScrollOffset[1]);
-    }
-    
+    FScrollCanvasGeneric::BaseUpdate();
+}
+
+void FScrollCanvasPaged::BaseTouchFlush() {
+    FScrollCanvasGeneric::BaseTouchFlush();
+    SnapToCurrentPage();
 }
 
 void FScrollCanvasPaged::PanBegin(float pX, float pY) {
-    if (mScrollAnimating) {
-        mScrollPanning = false;
+    
+}
+
+void FScrollCanvasPaged::PanMove(float pX, float pY) {
+    
+    if (mVertical == true) {
+        mContentOffsetY = mPanStartContentOffsetY + mPanDiffY;
+        if (IsOutOfBoundsY(mContentOffsetY)) {
+            mContentOffsetY = GetDampenedY(mContentOffsetY);
+        }
     } else {
-        mAnimationDirection = 0;
-        mFinishAnimation = false;
-        mScrollAnimationPercent = 0.0f;
-        mScrollAnimationPercentTarget = 0.0f;
-        
-        mScrollPanDirectionPicked = false;
-        mScrollPanning = true;
-        
-        for (int i=0;i<2;i++) {
-            mScrollOffsetPanStart[i] = mScrollOffset[i];
-            mScrollOffsetPanShift[i] = 0.0f;
+        mContentOffsetX = mPanStartContentOffsetX + mPanDiffX;
+        if (IsOutOfBoundsX(mContentOffsetX)) {
+            mContentOffsetX = GetDampenedX(mContentOffsetX);
         }
     }
 }
 
-void FScrollCanvasPaged::Pan(float pX, float pY) {
-    if (mScrollPanning) {
-        mScrollOffsetPanShift[0] = mGesturePanDistX;
-        mScrollOffsetPanShift[1] = mGesturePanDistY;
+void FScrollCanvasPaged::PanRelease(float pX, float pY, float pSpeedX, float pSpeedY) {
+    //printf("FScrollCanvasPaged::PanRelease(%f( (%.2f, %.2f) Vel(%.2f, %.2f)\n", mContentOffsetX, pX, pY, pSpeedX, pSpeedY);
+    
+    if (pSpeedX > mMaxFlingSpeed) { pSpeedX = mMaxFlingSpeed; }
+    if (pSpeedX < -mMaxFlingSpeed) { pSpeedX = -mMaxFlingSpeed; }
+    
+    if (pSpeedY > mMaxFlingSpeed) { pSpeedY = mMaxFlingSpeed; }
+    if (pSpeedY < -mMaxFlingSpeed) { pSpeedY = -mMaxFlingSpeed; }
+    
+    float aMagnitude = 0.0f;
+    
+    if (mVertical == true) {
         
-        float aManhattanDistanceX = fabsf(mScrollOffsetPanShift[0]);
-        float aManhattanDistanceY = fabsf(mScrollOffsetPanShift[1]);
-        float aMaximumManhattanDistance = aManhattanDistanceX;
+        aMagnitude = fabsf(pSpeedY);
         
-        if (mScrollEnabledVertical == true) {
-            if (mScrollEnabledHorizontal == true) {
-                if (aManhattanDistanceY > aMaximumManhattanDistance) {
-                    aMaximumManhattanDistance = aManhattanDistanceY;
-                }
-            } else {
-                aMaximumManhattanDistance = aManhattanDistanceY;
-            }
-        }
         
-        if (aMaximumManhattanDistance < mScrollPanSwitchDirectionThreshold) {
-            if (mScrollPanDirectionPicked == false) {
-                if ((aManhattanDistanceX > aManhattanDistanceY) || (mScrollEnabledVertical == false)) {
-                    if (mScrollEnabledHorizontal == true) {
-                        if (aManhattanDistanceX > mScrollPanStartThreshold) {
-                            //Log("Picked X!\n");
-                            
-                            mScrollPanDirectionPicked = true;
-                            mScrollHorizontal = true;
-                        }
-                    }
-                } else {
-                    if (mScrollEnabledVertical == true) {
-                        if (aManhattanDistanceY > mScrollPanStartThreshold) {
-                            mScrollPanDirectionPicked = true;
-                            mScrollHorizontal = false;
-                        }
-                    }
-                }
-            }
-        }
-        
-        if (mScrollPanDirectionPicked == true) {
-            bool aEdge = false;
             
-            if (mScrollHorizontal == true) {
-                if (mScrollOffsetPanShift[0] > 0.0f) {
-                    if (mScrollCurrentPageH <= 0) {
-                        aEdge = true;
-                    }
-                } else {
-                    if (mScrollCurrentPageH >= (mScrollPageCountH - 1)) {
-                        aEdge = true;
-                    }
-                }
-                
-                float aOffset = mScrollOffsetPanShift[0];
-                if (aEdge == true) {
-                    aOffset = ScrollGetBounceDragShift(aOffset);
-                }
-                
-                mScrollOffset[0] = (mScrollOffsetPanStart[0] + aOffset);
-                mScrollOffset[1] = mScrollOffsetPanStart[1];
-                
-                mScrollAnimationPercent = (aOffset / mWidth);
+        if (aMagnitude >= mReleaseFlingThreshold) {
+            
+            float aStopPosition = GetDecayStopPosition(mContentOffsetY, pSpeedY);
+            if (pSpeedY > 0) {
+                aStopPosition += mHeight2 * 0.5f;
             } else {
-                if (mScrollOffsetPanShift[1] > 0.0f) {
-                    if (mScrollCurrentPageV <= 0) {
-                        aEdge = true;
-                    }
-                } else {
-                    if (mScrollCurrentPageV >= (mScrollPageCountV - 1)) {
-                        aEdge = true;
-                    }
-                }
-                
-                float aOffset = mScrollOffsetPanShift[1];
-                if(aEdge)aOffset = ScrollGetBounceDragShift(aOffset);
-                
-                mScrollOffset[0] = mScrollOffsetPanStart[0];
-                mScrollOffset[1] = (mScrollOffsetPanStart[1] + aOffset);
-                mScrollAnimationPercent = (aOffset / mHeight);
+                aStopPosition -= mHeight2 * 0.5f;
             }
-        }
-    } else {
-        //PanBegin(pX, pY);
-    }
-}
-
-void FScrollCanvasPaged::PanEnd(float pX, float pY, float pSpeedX, float pSpeedY) {
-    if(pSpeedX > 80) { pSpeedX = 80.0f; }
-    if(pSpeedX < -80) { pSpeedX = -80.0f; }
-    if(pSpeedY > 80) { pSpeedY = 80.0f; }
-    if(pSpeedY < -80) { pSpeedY = -80.0f; }
-    
-    if (mScrollPanning == true) {
-        mScrollPanning = false;
-        
-        float aVelocity = pSpeedY;
-        if (mScrollHorizontal) {
-            aVelocity = pSpeedX;
-        }
-        
-        float aMinimumScrollPercent = 0.25f;
-        
-        mAnimationDirection = -1;
-        mFinishAnimation = false;
-        
-        Log("aVelocity: %f  Thresh: %f\n", aVelocity, mSpeedThresholdFlingTo);
-        if (fabsf(aVelocity) >= mSpeedThresholdFlingTo) {
-            if (aVelocity >= 0) {
-                mAnimationDirection = 1;
-                if (mScrollAnimationPercent < 0) {
-                    mScrollAnimationPercentTarget = 0.0f;
-                } else {
-                    mScrollAnimationPercentTarget = 1.0f;
+            
+            mAnimationCompletePage = GetPageForPosition(aStopPosition);
+            if (mAnimationCompletePage < mPage) { mAnimationCompletePage = mPage - 1; }
+            if (mAnimationCompletePage > mPage) { mAnimationCompletePage = mPage + 1; }
+            if (pSpeedY > 0.0f && mPage > 0) {
+                if (mContentOffsetY < GetPositionForPage(mPage)) {
+                    if (mAnimationCompletePage < mPage) {
+                        mAnimationCompletePage = mPage;
+                    }
                 }
             } else {
-                mAnimationDirection = -1;
-                if (mScrollAnimationPercent > 0) {
-                    mScrollAnimationPercentTarget = 0.0f;
-                } else {
-                    mScrollAnimationPercentTarget = -1.0f;
+                if (mContentOffsetY > GetPositionForPage(mPage)) {
+                    if (mAnimationCompletePage > mPage) {
+                        mAnimationCompletePage = mPage;
+                    }
                 }
+            }
+            
+            if (mAnimationCompletePage >= mPageCount) { mAnimationCompletePage = (mPageCount - 1); }
+            if (mAnimationCompletePage < 0) { mAnimationCompletePage = 0; }
+            
+            if (IsOutOfBoundsY(mContentOffsetY)) {
+                SnapAnimationY(GetPositionForPage(mAnimationCompletePage));
+            } else {
+                float aRestingPosition = GetPositionForPage(mAnimationCompletePage);
+                RestAnimationY(aRestingPosition, pSpeedY);
             }
         } else {
-            if (mScrollAnimationPercent >= 0) {
-                if (mScrollAnimationPercent > aMinimumScrollPercent) {
-                    mAnimationDirection = 1;
-                    mScrollAnimationPercentTarget = 1.0f;
-                } else {
-                    mScrollAnimationPercentTarget = 0.0f;
-                }
-            } else {
-                if (mScrollAnimationPercent < (-aMinimumScrollPercent)) {
-                    mAnimationDirection = -1;
-                    mScrollAnimationPercentTarget = -1.0f;
-                } else {
-                    mAnimationDirection = 1;
-                    mScrollAnimationPercentTarget = 0.0f;
-                }
-            }
+            SnapToCurrentPage();
         }
         
-        if (mAnimationDirection < 0) {
-            if (mScrollHorizontal) {
-                if (mScrollCurrentPageH >= (mScrollPageCountH - 1)) {
-                    if (mScrollAnimationPercent <= 0) {
-                        mAnimationDirection = 1;
-                        mScrollAnimationPercentTarget = 0.0f;
+    } else {
+
+        aMagnitude = fabsf(pSpeedX);
+        if (aMagnitude >= mReleaseFlingThreshold) {
+            
+            float aStopPosition = GetDecayStopPosition(mContentOffsetX, pSpeedX);
+            if (pSpeedX > 0) {
+                aStopPosition += mWidth2 * 0.5f;
+            } else {
+                aStopPosition -= mWidth2 * 0.5f;
+            }
+            
+            mAnimationCompletePage = GetPageForPosition(aStopPosition);
+            if (mAnimationCompletePage < mPage) { mAnimationCompletePage = mPage - 1; }
+            if (mAnimationCompletePage > mPage) { mAnimationCompletePage = mPage + 1; }
+            
+            if (pSpeedX > 0.0f && mPage > 0) {
+                if (mContentOffsetX < GetPositionForPage(mPage)) {
+                    if (mAnimationCompletePage < mPage) {
+                        mAnimationCompletePage = mPage;
                     }
                 }
             } else {
-                if (mScrollCurrentPageV >= (mScrollPageCountV - 1)) {
-                    if (mScrollAnimationPercent <= 0) {
-                        mAnimationDirection = 1;
-                        mScrollAnimationPercentTarget = 0.0f;
+                if (mContentOffsetX > GetPositionForPage(mPage)) {
+                    if (mAnimationCompletePage > mPage) {
+                        mAnimationCompletePage = mPage;
                     }
                 }
+            }
+            
+            if (mAnimationCompletePage >= mPageCount) { mAnimationCompletePage = (mPageCount - 1); }
+            if (mAnimationCompletePage < 0) { mAnimationCompletePage = 0; }
+            
+            if (IsOutOfBoundsX(mContentOffsetX)) {
+                SnapAnimationX(GetPositionForPage(mAnimationCompletePage));
+            } else {
+                float aRestingPosition = GetPositionForPage(mAnimationCompletePage);
+                RestAnimationX(aRestingPosition, pSpeedX);
             }
         } else {
-            if (mScrollHorizontal) {
-                if (mScrollCurrentPageH <= 0) {
-                    if (mScrollAnimationPercent >= 0) {
-                        mAnimationDirection = -1;
-                        mScrollAnimationPercentTarget = 0.0f;
-                    }
-                }
-            } else {
-                if (mScrollCurrentPageV <= 0) {
-                    if (mScrollAnimationPercent >= 0) {
-                        mAnimationDirection = -1;
-                        mScrollAnimationPercentTarget = 0.0f;
-                    }
-                }
-            }
+            SnapToCurrentPage();
         }
-        
-        mScrollAnimating = true;
     }
 }
 
-void FScrollCanvasPaged::ScrollFinished() {
+void FScrollCanvasPaged::DidLandOnPage(int pPage) {
+    printf("DidLandOnPage[%d]\n", pPage);
     
 }
 
-void FScrollCanvasPaged::ScrollFinishedHorizontal(int pStartRow, int pEndRow)
-{
-    
-}
-
-void FScrollCanvasPaged::ScrollFinishedVertical(int pStartCol, int pEndCol) {
-    
-}
-
-float FScrollCanvasPaged::ScrollGetBounceDragShift(float pAmount) {
-    float aResult = pAmount;
-    
-    float aScale = mTransformAbsolute.mScale * (mTransformAbsolute.mScaleX + mTransformAbsolute.mScaleY) * 0.5f;
-    
-    float aMaxShift = ((gDeviceWidth * 0.25f)) / aScale;
-    float aMaxDrag = ((gDeviceWidth * 0.75f)) / aScale;
-    
-    bool aNegative = (pAmount < 0.0f);
-    
-    if (aNegative)pAmount = (-pAmount);
-    if (pAmount >= aMaxDrag) {
-        aResult = aMaxShift;
+int FScrollCanvasPaged::GetPageForPosition(float pPosition) {
+    int aResult = 0;
+    if (mVertical) {
+        aResult = (int)((((float)-pPosition) + mHeight2) / mHeight);
     } else {
-        float aPercent = (pAmount / aMaxDrag);
-        float aRads = (PI / 2.0f) * aPercent;
-        aResult = sin(aRads) * aMaxShift;
+        aResult = (int)((((float)-pPosition) + mWidth2) / mWidth);
     }
-    if (aNegative) aResult = (-aResult);
+    if (aResult >= mPageCount) { aResult = mPageCount - 1; }
+    if (aResult < 0) { aResult = 0; }
     return aResult;
+}
+
+float FScrollCanvasPaged::GetPositionForPage(int pPage) {
+    float aResult = 0.0f;
+    if (mVertical) {
+        aResult = ((float)(pPage)) * (-mHeight);
+    } else {
+        aResult = ((float)(pPage)) * (-mWidth);
+    }
+    return aResult;
+}
+
+
+void FScrollCanvasPaged::CancelAnimation() {
+    FScrollCanvasGeneric::CancelAnimation();
+    if (mVertical) {
+        mPage = GetPageForPosition(mContentOffsetY);
+    } else {
+        mPage = GetPageForPosition(mContentOffsetX);
+    }
+    DidLandOnPage(mPage);
+}
+
+void FScrollCanvasPaged::AnimationComplete() {
+    FScrollCanvasGeneric::AnimationComplete();
+    mPage = mAnimationCompletePage;
+    DidLandOnPage(mPage);
+}
+
+void FScrollCanvasPaged::SetPageCount(int pCount) {
+    mPageCount = pCount;
+    AdjustSizeToFitPageCount();
+}
+
+void FScrollCanvasPaged::SetPage(int pPage) {
+    
+    CancelAnimation();
+    
+    mPage = pPage;
+    if (mPage >= mPageCount) { mPage = (mPageCount - 1); }
+    if (mPage < 0) { mPage = 0; }
+    
+    float aPosition = GetPositionForPage(mAnimationCompletePage);
+    if (mVertical) {
+        mContentOffsetY = aPosition;
+    } else {
+        mContentOffsetX = aPosition;
+    }
+    DidLandOnPage(mPage);
+}
+
+void FScrollCanvasPaged::SnapToCurrentPage() {
+    mAnimationCompletePage = 0;
+    if (mVertical) {
+        mAnimationCompletePage = GetPageForPosition(mContentOffsetY);
+        SnapAnimationY(GetPositionForPage(mAnimationCompletePage));
+    } else {
+        mAnimationCompletePage = GetPageForPosition(mContentOffsetX);
+        SnapAnimationX(GetPositionForPage(mAnimationCompletePage));
+    }
+}
+
+void FScrollCanvasPaged::AdjustSizeToFitPageCount() {
+    if (mVertical == true) {
+        mContentWidth = mWidth;
+        mContentHeight = ((float)mPageCount) * mHeight;
+    } else {
+        mContentWidth = ((float)mPageCount) * mWidth;
+        mContentHeight = mHeight;
+    }
 }

@@ -1,78 +1,59 @@
 //
-//  FScrollCanvasPaged.hpp
-//  MetalLearning
+//  FScrollCanvasPagedPaged.hpp
+//  Crazy Darts 2 iOS
 //
-//  Created by Nicholas Raptis on 2/13/19.
-//  Copyright © 2019 Nicholas Raptis. All rights reserved.
+//  Created by Nick Raptis on 11/8/19.
+//  Copyright © 2019 Froggy Studios. All rights reserved.
 //
 
-#ifndef FScrollCanvasPaged_hpp
-#define FScrollCanvasPaged_hpp
+#ifndef FScrollCanvasPagedPaged_hpp
+#define FScrollCanvasPagedPaged_hpp
 
-#include "FGestureCanvas.hpp"
+#include "FScrollCanvasGeneric.hpp"
 
-class FScrollCanvasPaged : public FGestureCanvas {
+class FScrollCanvasPaged : public FScrollCanvasGeneric {
 public:
-    
     FScrollCanvasPaged();
     virtual ~FScrollCanvasPaged();
     
-    virtual void                            BaseUpdate();
+    virtual void                                    BaseLayout() override;
+    virtual void                                    BaseUpdate() override;
     
-    void                                    SetPageCountHorizontal(int pCount);
-    void                                    SetPageCountVertical(int pCount);
-    void                                    SetPageCount(int pCountHorizontal, int pCountVertical){SetPageCountHorizontal(pCountHorizontal);SetPageCountVertical(pCountVertical);}
+    virtual void                                    BaseTouchFlush() override;
     
-    void                                    SnapToPage(int pPageH, int pPageV);
+    virtual void                                    PanBegin(float pX, float pY) override;
+    virtual void                                    PanMove(float pX, float pY) override;
+    virtual void                                    PanRelease(float pX, float pY, float pSpeedX, float pSpeedY) override;
     
-    int                                     mScrollPageCountH;
-    int                                     mScrollPageCountV;
+    virtual void                                    AnimationComplete() override;
+    virtual void                                    CancelAnimation() override;
     
-    virtual void                            ScrollFinished();
-    virtual void                            ScrollFinishedHorizontal(int pStartRow, int pEndRow);
-    virtual void                            ScrollFinishedVertical(int pStartCol, int pEndCol);
+    void                                            SetPageCount(int pCount);
+    void                                            SetPage(int pPage);
     
-    virtual void                            PanBegin(float pX, float pY);
-    virtual void                            Pan(float pX, float pY);
-    virtual void                            PanEnd(float pX, float pY, float pSpeedX, float pSpeedY);
+    virtual void                                    DidLandOnPage(int pPage);
     
-    //virtual bool                            Allow();
+    void                                            JumpToPage(int pPage);
     
     
-    int                                     mScrollCurrentPageH;
-    int                                     mScrollCurrentPageV;
     
-    int                                     mScrollAnimationTimeTotal;
-    int                                     mScrollAnimationTimer;
+    bool                                            mVertical;
     
-    bool                                    mScrollAnimating;
+    int                                             mPageCount;
+    int                                             mPage;
     
-    float                                   mSpeedThresholdFlingTo;
     
-    float                                   mScrollOffset[2];
-    float                                   mScrollOffsetPanShift[2];
-    float                                   mScrollOffsetPanStart[2];
     
-    int                                     mAnimationDirection;
-    int                                     mFinishAnimationDirection;
+private:
+    void                                            AdjustSizeToFitPageCount();
+    void                                            SnapToCurrentPage();
+    int                                             GetPageForPosition(float pPosition);
+    float                                           GetPositionForPage(int pPage);
     
-    bool                                    mFinishAnimation;
+    int                                             mAnimationCompletePage;
     
-    float                                   mScrollAnimationPercent;
-    float                                   mScrollAnimationPercentTarget;
     
-    float                                   mScrollPanStartThreshold;
-    float                                   mScrollPanSwitchDirectionThreshold;
     
-    bool                                    mScrollPanning;
-    bool                                    mScrollPanDirectionPicked;
-    
-    bool                                    mScrollHorizontal;
-    
-    bool                                    mScrollEnabledHorizontal;
-    bool                                    mScrollEnabledVertical;
-    
-    float                                   ScrollGetBounceDragShift(float pAmount);
 };
 
 #endif
