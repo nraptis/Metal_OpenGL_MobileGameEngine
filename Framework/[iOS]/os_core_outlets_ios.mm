@@ -42,8 +42,6 @@ using namespace std;
 FList gThreadLockList;
 
 void os_initialize_outlets() {
-    Log("Initialize Outlets...\n");
-    
     gThreadLockList.Size(128);
 }
 
@@ -73,9 +71,7 @@ bool os_draws_in_background() {
     return true;
 }
 
-
 NSMutableSet *gLockStrongReferenceSet = [[NSMutableSet alloc] init];
-
 int os_create_thread_lock() {
     RecursiveLockWrapper *aContainer = [[RecursiveLockWrapper alloc] init];
     [gLockStrongReferenceSet addObject: aContainer];
@@ -146,17 +142,13 @@ bool os_is_portrait() {
     
 }
 
-void os_log(const char *pMessage)
-{
+void os_log(const char *pMessage) {
     NSLog(@"%s", pMessage);
 }
 
 unsigned int os_system_time() {
-    //unsigned long aMili = chrono::system_clock::now().time_since_epoch() / chrono::milliseconds(1);
-    //return (unsigned int)aMili;
-    
-    unsigned long aMili = chrono::system_clock::now().time_since_epoch() / chrono::milliseconds(1);
-    return (unsigned int)aMili;
+    unsigned long long aMilliseconds = chrono::system_clock::now().time_since_epoch() / chrono::milliseconds(1);
+    return (unsigned int)aMilliseconds;
     
 }
 
@@ -164,71 +156,51 @@ unsigned char *os_read_file(const char *pFileName, unsigned int &pLength) {
     unsigned char *aReturn = nil;
     pLength = 0;
     if (pFileName) {
-        int aFile=open(pFileName, O_RDONLY);
+        int aFile = open(pFileName, O_RDONLY);
         if (aFile == -1) aFile = open(FString(gDirBundle + pFileName).c(), O_RDONLY);
         if (aFile == -1) aFile = open(FString(gDirDocuments + pFileName).c(), O_RDONLY);
         if (aFile != -1) {
             struct stat aFileStats;
-            if(fstat(aFile,&aFileStats) == 0)pLength=(unsigned int)aFileStats.st_size;
-            if(pLength >= 1)
-            {
+            if (fstat(aFile,&aFileStats) == 0) {
+                pLength = (unsigned int)aFileStats.st_size;
+            }
+            if (pLength >= 1) {
                 aReturn = new unsigned char[pLength+32];
                 read(aFile, aReturn, pLength);
-            }
-            else
-            {
+            } else {
                 pLength = 0;
             }
             close(aFile);
         }
     }
-    
     return aReturn;
-    
 }
 
 bool os_write_file(const char *pFileName, unsigned char *pData, unsigned int pLength)
 {
-    if(pFileName == 0)
-    {
+    if (pFileName == 0) {
         return false;
     }
     
-    int aFile = creat(pFileName,S_IREAD|S_IWRITE);
-    //int aFile = creat(pFileName,S_IWRITE);
-    //Log("File 1.1 = [%d]\n", aFile);
-    
+    int aFile = creat(pFileName, S_IREAD | S_IWRITE);
     close(aFile);
-    
     aFile = open(pFileName, O_RDWR);
-    //Log("File 1.2 = [%d]\n", aFile);
     
-    
-    if(aFile != -1)
-    {
+    if (aFile != -1) {
         write(aFile, pData, pLength);
         close(aFile);
         
         return true;
-    }
-    else
-    {
+    } else {
         FString aPath = FString(gDirDocuments + pFileName);
         
-        //Log("Write Path = [%s]\n", aPath.c());
+        aFile = creat(aPath.c(), S_IREAD | S_IWRITE);
         
-        aFile = creat(aPath.c(), S_IREAD|S_IWRITE);
-        //Log("File.1 2 = [%d]\n", aFile);
-        
-        
-        //aFile = creat(aPath.c(),S_IWRITE);
         close(aFile);
         
         aFile = open(aPath.c(), O_RDWR);
-        //Log("File 2.2 = [%d]\n", aFile);
         
-        if(aFile != -1)
-        {
+        if (aFile != -1) {
             write(aFile, pData, pLength);
             close(aFile);
             
@@ -239,8 +211,7 @@ bool os_write_file(const char *pFileName, unsigned char *pData, unsigned int pLe
     return false;
 }
 
-FString os_getBundleDirectory()
-{
+FString os_getBundleDirectory() {
     FString aPath;
     
 	CFURLRef aResourceURL = CFBundleCopyBundleURL(CFBundleGetMainBundle());
@@ -251,28 +222,17 @@ FString os_getBundleDirectory()
 	CFRelease(aStringRef);
     
     aPath = aCharPath;
-    
     aPath += "/";
-    
-    Log("Bundle: [%s]\n", aPath.c());
     
     return aPath;
 }
 
-FString os_getDocumentsDirectory()
-{
+FString os_getDocumentsDirectory() {
     FString aPath;
-    
-    NSArray *aPathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+    NSArray *aPathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *aDocumentDirectory = [aPathArray objectAtIndex:0];
-	//char aCharPath[1024];
-    //[docDir getCString:aCharPath maxLength:PATH_MAX encoding:NSASCIIStringEncoding];
     aPath = [aDocumentDirectory UTF8String];
-    
     aPath += "/";
-    
-    Log("Documents: [%s]\n", aPath.c());
-    
     return aPath;
 }
 
@@ -308,8 +268,7 @@ void os_load_image_to_buffer(char *pFile, unsigned int *pData)
     }
 }
 
-unsigned int *os_load_image(char *pFile,int &pWidth, int &pHeight)
-{
+unsigned int *os_load_image(char *pFile,int &pWidth, int &pHeight) {
     UIImage *aImage;
     NSString *aPath=[NSString stringWithUTF8String:pFile];
     
@@ -320,7 +279,7 @@ unsigned int *os_load_image(char *pFile,int &pWidth, int &pHeight)
     pWidth=0;
     pHeight=0;
     
-    unsigned int *aData=0;
+    unsigned int *aData = NULL;
     
     if (aImage) {
         if (aImage.size.width>0&&aImage.size.height>0) {
@@ -340,22 +299,17 @@ unsigned int *os_load_image(char *pFile,int &pWidth, int &pHeight)
     return aData;
 }
 
-
-
-void os_exportPNGImage(UIImage *pImage, const char *pFilePath)
-{
+void os_exportPNGImage(UIImage *pImage, const char *pFilePath) {
 	NSData *aImageData = UIImagePNGRepresentation(pImage);
 	[aImageData writeToFile:[[NSString alloc] initWithUTF8String:(pFilePath)] atomically:YES];
 }
 
-void os_exportJPEGImage(UIImage *pImage, const char *pFilePath, float pQuality)
-{
+void os_exportJPEGImage(UIImage *pImage, const char *pFilePath, float pQuality) {
 	NSData *aImageData = UIImageJPEGRepresentation(pImage, pQuality);
 	[aImageData writeToFile:[[NSString alloc] initWithUTF8String:(pFilePath)] atomically:YES];
 }
 
-bool os_exportToPhotoLibrary(UIImage *pImage)
-{
+bool os_exportToPhotoLibrary(UIImage *pImage) {
     UIImageWriteToSavedPhotosAlbum(pImage, nil, nil, nil);
     
     /*

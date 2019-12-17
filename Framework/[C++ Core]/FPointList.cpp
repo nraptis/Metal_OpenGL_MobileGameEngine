@@ -400,7 +400,7 @@ bool FPointList::ContainsPoint(float pX, float pY) {
 bool FPointList::IsClockwise() {
     float aAreaSum = 0;
     for (int aStart = 0,aEnd = mCount-1;aStart < mCount;aEnd = aStart++) {
-        aAreaSum+=PHYSICS_CROSS(mX[aStart], mY[aStart], mX[aEnd], mY[aEnd]);
+        aAreaSum += CROSS_PRODUCT(mX[aStart], mY[aStart], mX[aEnd], mY[aEnd]);
     }
     return aAreaSum < 0;
 }

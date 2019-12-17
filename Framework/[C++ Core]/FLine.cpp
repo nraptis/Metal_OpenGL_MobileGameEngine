@@ -60,7 +60,7 @@ void FLine::Make(float x1,float y1,float x2,float y2)
     mNormalX = -mDirY;
     mNormalY = mDirX;
     
-    mCosAlpha=(-PHYSICS_DOT(mX1,mY1,mNormalX,mNormalY));
+    mCosAlpha=(-DOT_PRODUCT(mX1,mY1,mNormalX,mNormalY));
 }
 
 bool FLine::LineLineIntersection(float pL_1_x1, float pL_1_y1, float pL_1_x2, float pL_1_y2,
@@ -208,7 +208,7 @@ bool FLine::SegmentPlaneIntersection(float pL_1_x1, float pL_1_y1, float pL_1_x2
     float aLineNormX = -aLineDirY;
     float aLineNormY = aLineDirX;
     
-    float aLineDot = (-PHYSICS_DOT(pL_1_x1, pL_1_y1, aLineNormX, aLineNormY));
+    float aLineDot = (-DOT_PRODUCT(pL_1_x1, pL_1_y1, aLineNormX, aLineNormY));
     
     float aDenom = pPlaneDirX * aLineNormX + pPlaneDirY * aLineNormY;
     float aNumer = aLineNormX * pPlaneX + aLineNormY * pPlaneY + aLineDot;
@@ -337,43 +337,33 @@ void FLine::ClosestPoint(float x, float y, float &pClosestX, float &pClosestY) {
 float FLine::GetDist(float x, float y, int &pIndex) {
     float aDiffX, aDiffY, aDist1, aDist2;
     
-    aDiffX=x-mX1;
-    aDiffY=y-mY1;
-    aDist1=aDiffX*aDiffX+aDiffY*aDiffY;
-    aDiffX=x-mX2;
-    aDiffY=y-mY2;
-    aDist2=aDiffX*aDiffX+aDiffY*aDiffY;
+    aDiffX = x - mX1;
+    aDiffY = y - mY1;
+    aDist1 = aDiffX * aDiffX + aDiffY * aDiffY;
+    aDiffX = x - mX2;
+    aDiffY = y - mY2;
+    aDist2 = aDiffX * aDiffX + aDiffY * aDiffY;
     
     float aDist;
     
-    if(aDist1<aDist2)
-    {
-        pIndex=0;
-        aDist=aDist1;
-    }
-    else
-    {
-        pIndex=1;
-        aDist=aDist2;
+    if (aDist1 < aDist2) {
+        pIndex = 0;
+        aDist = aDist1;
+    } else {
+        pIndex = 1;
+        aDist = aDist2;
     }
     
-    if(aDist > SQRT_EPSILON)
-    {
-        //aDist = SquareRoot(aDist);
+    if (aDist > SQRT_EPSILON) {
         aDist = sqrtf(aDist);
-        
-    }
-    else
-    {
-        aDist=0;
+    } else {
+        aDist = 0;
     }
     
     return aDist;
-    
 }
 
-int FLine::GetPoint(float x, float y, float pDist)
-{
+int FLine::GetPoint(float x, float y, float pDist) {
     int aResult=-1;
     
     float aDiffX, aDiffY, aDist1, aDist2;

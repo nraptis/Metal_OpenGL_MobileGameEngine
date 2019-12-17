@@ -62,8 +62,51 @@ void FButton::SetUp(FSprite *pSpriteUp, FSprite *pSpriteOver, FSprite *pSpriteDo
     SetFrame(pX, pY, aWidth, aHeight);
 }
 
-void FButton::Update() {
-    
+void FButton::SetTopOverlayOffsetUp(float pX, float pY) {
+    FButtonLayer *aLayer = (FButtonLayer *)(mButtonLayersOver.Last());
+    if (aLayer != NULL) {
+        aLayer->mOffsetUpX = pX;
+        aLayer->mOffsetUpY = pY;
+    }
+}
+
+void FButton::SetTopOverlayOffsetOver(float pX, float pY) {
+    FButtonLayer *aLayer = (FButtonLayer *)(mButtonLayersOver.Last());
+    if (aLayer != NULL) {
+        aLayer->mOffsetOverX = pX;
+        aLayer->mOffsetOverY = pY;
+    }
+}
+void FButton::SetTopOverlayOffsetDown(float pX, float pY) {
+    FButtonLayer *aLayer = (FButtonLayer *)(mButtonLayersOver.Last());
+    if (aLayer != NULL) {
+        aLayer->mOffsetDownX = pX;
+        aLayer->mOffsetDownY = pY;
+    }
+}
+
+void FButton::SetTopUnderlayOffsetUp(float pX, float pY) {
+    FButtonLayer *aLayer = (FButtonLayer *)(mButtonLayersUnder.Last());
+    if (aLayer != NULL) {
+        aLayer->mOffsetUpX = pX;
+        aLayer->mOffsetUpY = pY;
+    }
+}
+
+void FButton::SetTopUnderlayOffsetOver(float pX, float pY) {
+    FButtonLayer *aLayer = (FButtonLayer *)(mButtonLayersUnder.Last());
+    if (aLayer != NULL) {
+        aLayer->mOffsetOverX = pX;
+        aLayer->mOffsetOverY = pY;
+    }
+}
+
+void FButton::SetTopUnderlayOffsetDown(float pX, float pY) {
+    FButtonLayer *aLayer = (FButtonLayer *)(mButtonLayersUnder.Last());
+    if (aLayer != NULL) {
+        aLayer->mOffsetDownX = pX;
+        aLayer->mOffsetDownY = pY;
+    }
 }
 
 void FButton::Draw() {
@@ -129,8 +172,15 @@ void FButton::TouchFlush() {
 }
 
 FButtonLayer::FButtonLayer() {
-    mOffsetX = 0.0f;
-    mOffsetY = 0.0f;
+    
+    mOffsetUpX = 0.0f;
+    mOffsetUpY = 0.0f;
+    
+    mOffsetDownX = 0.0f;
+    mOffsetDownY = 0.0f;
+    
+    mOffsetOverX = 0.0f;
+    mOffsetOverY = 0.0f;
     
     mRotation = 0.0f;
     
@@ -218,12 +268,20 @@ void FButtonLayer::Draw(FButton *pButton, bool pActive, bool pIsOver, bool pIsDo
         float aX = pButton->mWidth2;
         float aY = pButton->mHeight2;
         
+        float aOffsetX = mOffsetUpX;
+        float aOffsetY = mOffsetUpY;
+        
         if (pIsDown) {
             Graphics::SetColor(mColorDown.mRed, mColorDown.mGreen, mColorDown.mBlue, mColorDown.mAlpha);
             aSprite = mSpriteDown;
+            aOffsetX = mOffsetDownX;
+            aOffsetY = mOffsetDownY;
+            
         } else if(pIsOver) {
             Graphics::SetColor(mColorOver.mRed, mColorOver.mGreen, mColorOver.mBlue, mColorOver.mAlpha);
             aSprite = mSpriteOver;
+            aOffsetX = mOffsetOverX;
+            aOffsetY = mOffsetOverY;
         } else {
             Graphics::SetColor(mColorUp.mRed, mColorUp.mGreen, mColorUp.mBlue, mColorUp.mAlpha);
         }
@@ -237,9 +295,8 @@ void FButtonLayer::Draw(FButton *pButton, bool pActive, bool pIsOver, bool pIsDo
             if (pButton->mDrawSetsSpriteAlphaPipelineState == true) {
                 Graphics::PipelineStateSetSpriteAlphaBlending();
             }
-            aSprite->Draw(aX + mOffsetX, aY + mOffsetY, mScale, mRotation);
+            aSprite->Draw(aX + aOffsetX, aY + aOffsetY, mScale, mRotation);
         }
-        
         Graphics::SetColor();
     }
 }

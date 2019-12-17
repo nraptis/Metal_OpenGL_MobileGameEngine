@@ -8,8 +8,8 @@
 #define PI2 (2 * PI)
 #define PI_2 (PI / 2.0f)
 
-#define PHYSICS_DOT(x1,y1,x2,y2)((x1)*(x2)+(y1)*(y2))
-#define PHYSICS_CROSS(x1,y1,x2,y2)((x1)*(y2)-(x2)*(y1))
+#define DOT_PRODUCT(x1,y1,x2,y2)((x1)*(x2)+(y1)*(y2))
+#define CROSS_PRODUCT(x1,y1,x2,y2)((x1)*(y2)-(x2)*(y1))
 
 #include "FVec2.hpp"
 #include "FVec3.hpp"

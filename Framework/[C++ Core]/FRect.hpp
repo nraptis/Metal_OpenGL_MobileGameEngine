@@ -39,7 +39,7 @@ public:
     inline bool                     ContainsPoint(float pX, float pY){return Contains(pX, pY);}
 
     bool                            Intersects(float pX, float pY, float pWidth, float pHeight);
-    inline bool                     Intersects(FRect &pRect){return Intersects(pRect.mX, pRect.mY, pRect.mWidth, pRect.mHeight);}
+    inline bool                     Intersects(FRect &pRect) { return Intersects(pRect.mX, pRect.mY, pRect.mWidth, pRect.mHeight); }
 
     float                           CenterX(){return mX + (mWidth * 0.5f);}
     float                           CenterY(){return mY + (mHeight * 0.5f);}

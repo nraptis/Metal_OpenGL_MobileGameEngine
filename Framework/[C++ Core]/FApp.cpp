@@ -363,7 +363,7 @@ void FApp::BaseLoad() {
     BaseSetVirtualFrame(gVirtualDevX, gVirtualDevY, gVirtualDevWidth, gVirtualDevHeight);
     BaseSetSafeAreaInsets(gSafeAreaInsetTop, gSafeAreaInsetRight, gSafeAreaInsetBottom, gSafeAreaInsetLeft);
     
-    AppShellSetImageFileScale(2.0f);
+    AppShellSetImageFileScale(1);
     AppShellSetSpriteDrawScale(1.0f);
     
     
@@ -877,11 +877,6 @@ void FApp::FrameController() {
     
     if (aUpdateCheck > 0) {
         if ((aUpdateCheck > 80) || (mActive == false)) {
-            
-            if (aUpdateCheck > 80) {
-                Log("aUpdateCheck > 80, assumed break-point?\n");
-            }
-            
             if (!mFrame.mBreakUpdate) {
                 SystemProcess();
                 if (!mQuit) {

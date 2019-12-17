@@ -30,38 +30,31 @@ FRect::FRect() {
     mHeight = 0.0f;
 }
 
-FRect::~FRect()
-{
+FRect::~FRect() {
     
 }
 
-FVec2 FRect::Center()
-{
+FVec2 FRect::Center() {
     return FVec2(mX + mWidth / 2.0f, mY + mHeight / 2.0f);
 }
 
-float FRect::Left()
-{
+float FRect::Left() {
     return mX;
 }
 
-float FRect::Right()
-{
+float FRect::Right() {
     return mX + mWidth;
 }
 
-float FRect::Top()
-{
+float FRect::Top() {
     return mY;
 }
 
-float FRect::Bottom()
-{
+float FRect::Bottom() {
     return mY + mHeight;
 }
 
-FRect FRect::FitAspectFit(FRect pRect, float pObjectWidth, float pObjectHeight, float pBorder)
-{
+FRect FRect::FitAspectFit(FRect pRect, float pObjectWidth, float pObjectHeight, float pBorder) {
     FRect aResult;
     float aScale = 1.0f;
     aResult = FitAspectFit(pRect, pObjectWidth, pObjectHeight, pBorder, aScale);
@@ -69,8 +62,7 @@ FRect FRect::FitAspectFit(FRect pRect, float pObjectWidth, float pObjectHeight, 
 }
 
 //
-FRect FRect::FitAspectFit(FRect pRect, float pObjectWidth, float pObjectHeight, float pBorder, float &pScale)
-{
+FRect FRect::FitAspectFit(FRect pRect, float pObjectWidth, float pObjectHeight, float pBorder, float &pScale) {
     pScale = 1.0f;
     
     float aWidth = 0.0f;
@@ -85,17 +77,13 @@ FRect FRect::FitAspectFit(FRect pRect, float pObjectWidth, float pObjectHeight, 
     aWidth = aProperWidth;
     aHeight = aProperHeight;
     
-    if(aImageWidth > 0 && aImageHeight > 0 && aProperWidth > 0 && aProperHeight > 0)
-    {
-        if((pObjectWidth / pObjectHeight) > (aProperWidth / aProperHeight))
-        {
+    if ((aImageWidth > SQRT_EPSILON) && (aImageHeight > SQRT_EPSILON) && (aProperWidth > SQRT_EPSILON) && (aProperHeight > SQRT_EPSILON)) {
+        if ((pObjectWidth / pObjectHeight) > (aProperWidth / aProperHeight)) {
             pScale = aProperWidth / aImageWidth;
             aWidth = aImageWidth * pScale;
             aHeight = aImageHeight * pScale;
             
-        }
-        else
-        {
+        } else {
             pScale = aProperHeight / aImageHeight;
             aWidth = aImageWidth * pScale;
             aHeight = aImageHeight * pScale;
@@ -108,16 +96,14 @@ FRect FRect::FitAspectFit(FRect pRect, float pObjectWidth, float pObjectHeight, 
     return FRect(aX, aY, aWidth, aHeight);
 }
 
-FRect FRect::FitAspectFill(FRect pRect, float pObjectWidth, float pObjectHeight, float pBorder)
-{
+FRect FRect::FitAspectFill(FRect pRect, float pObjectWidth, float pObjectHeight, float pBorder) {
     FRect aResult;
     float aScale = 1.0f;
     aResult = FitAspectFill(pRect, pObjectWidth, pObjectHeight, pBorder, aScale);
     return aResult;
 }
 
-FRect FRect::FitAspectFill(FRect pRect, float pObjectWidth, float pObjectHeight, float pBorder, float &pScale)
-{
+FRect FRect::FitAspectFill(FRect pRect, float pObjectWidth, float pObjectHeight, float pBorder, float &pScale) {
     pScale = 1.0f;
     
     float aWidth = 0.0f;
@@ -132,10 +118,8 @@ FRect FRect::FitAspectFill(FRect pRect, float pObjectWidth, float pObjectHeight,
     aWidth = aProperWidth;
     aHeight = aProperHeight;
     
-    if(aImageWidth > 0 && aImageHeight > 0 && aProperWidth > 0 && aProperHeight > 0)
-    {
-        if((pObjectWidth / pObjectHeight) < (aProperWidth / aProperHeight))
-        {
+    if ((aImageWidth > SQRT_EPSILON) && (aImageHeight > SQRT_EPSILON) && (aProperWidth > SQRT_EPSILON) && (aProperHeight > SQRT_EPSILON)) {
+        if ((pObjectWidth / pObjectHeight) < (aProperWidth / aProperHeight)) {
             pScale = aProperWidth / aImageWidth;
             aWidth = aImageWidth * pScale;
             aHeight = aImageHeight * pScale;
@@ -155,12 +139,10 @@ FRect FRect::FitAspectFill(FRect pRect, float pObjectWidth, float pObjectHeight,
     return FRect(aX, aY, aWidth, aHeight);
 }
 
-bool FRect::Contains(float pX, float pY)
-{
-    return ((pX>=mX) && (pX <= (mX+mWidth)) && (pY >= mY) && (pY <= (mY+mHeight)));
+bool FRect::Contains(float pX, float pY) {
+    return ((pX >= mX) && (pX <= (mX + mWidth)) && (pY >= mY) && (pY <= (mY + mHeight)));
 }
 
-bool FRect::Intersects(float pX, float pY, float pWidth, float pHeight)
-{
-    return !(((pX+pWidth)<=mX) || ((pY+pHeight)<=mY) || (pX>=(mX+mWidth)) || (pY>=(mY+mHeight)));
+bool FRect::Intersects(float pX, float pY, float pWidth, float pHeight) {
+    return !(((pX + pWidth) <= mX) || ((pY + pHeight) <= mY) || (pX >= (mX + mWidth)) || (pY >= (mY + mHeight)));
 }

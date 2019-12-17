@@ -8,8 +8,8 @@ public:
     FObject();
     virtual ~FObject();
     
-    virtual void                            Update(){}
-    virtual void                            Draw(){}
+    virtual void                            Update() { }
+    virtual void                            Draw() { }
     
     virtual void                            Kill();
     int                                     mKill;

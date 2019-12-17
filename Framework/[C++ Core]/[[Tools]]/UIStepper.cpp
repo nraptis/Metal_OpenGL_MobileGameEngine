@@ -13,8 +13,8 @@ UIStepper::UIStepper() {
     mValue = 0;
     mTarget = NULL;
     
-    mMax = 9999;
-    mMin = -9999;
+    mMax = 99999;
+    mMin = -99999;
     
     mLabelTitle.mScale = 0.75f;
     mLabelTitle.mAlignment = 1;

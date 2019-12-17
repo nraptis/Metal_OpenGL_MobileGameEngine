@@ -505,6 +505,7 @@ void FCanvas::BaseDraw() {
         */
     }
 }
+
 FCanvas *FCanvas::BaseMouseDown(float pX, float pY, float pOriginalX, float pOriginalY, int pButton, bool pOutsideParent, bool &pConsumed) {
     FCanvas *aResult = 0;
     FCanvas *aCollider = 0;
@@ -1490,7 +1491,7 @@ void FCanvasAbsoluteTransform::Untransform(float &pX, float &pY, float pWidth, f
     float aDiffY = (pY - (mAnchorY * pHeight)) * mScale * mScaleY;
     float aPivotRotation = FaceTarget(aDiffX, aDiffY) + mRotation;
     float aDist = aDiffX * aDiffX + aDiffY * aDiffY;
-    if(aDist > SQRT_EPSILON) {
+    if (aDist > SQRT_EPSILON) {
         aDist = sqrtf(aDist);
     }
     float aDirX = Sin(-aPivotRotation);
@@ -1504,7 +1505,7 @@ void FCanvasAbsoluteTransform::Untransform(float &pX, float &pY) {
     float aDiffY = pY * mScale * mScaleY;
     float aPivotRotation = FaceTarget(aDiffX, aDiffY) + mRotation;
     float aDist = aDiffX * aDiffX + aDiffY * aDiffY;
-    if(aDist > SQRT_EPSILON) { aDist = sqrtf(aDist); }
+    if (aDist > SQRT_EPSILON) { aDist = sqrtf(aDist); }
     float aDirX = Sin(-aPivotRotation);
     float aDirY = Cos(-aPivotRotation);
     pX = aDirX * (aDist) + mX;
@@ -1518,7 +1519,7 @@ void FCanvasAbsoluteTransform::Transform(float &pX, float &pY) {
     float aDiffY = (aY - mY);
     float aRot = FaceTarget(aDiffX, aDiffY) - mRotation;
     float aDist = aDiffX * aDiffX + aDiffY * aDiffY;
-    if(aDist > SQRT_EPSILON) { aDist = sqrtf(aDist); }
+    if (aDist > SQRT_EPSILON) { aDist = sqrtf(aDist); }
     float aDirX = Sin(-aRot);
     float aDirY = Cos(-aRot);
     pX = aDirX * (aDist / (mScale * mScaleX));
@@ -1532,7 +1533,7 @@ void FCanvasAbsoluteTransform::Transform(float &pX, float &pY, float pWidth, flo
     float aDiffY = (aY - mY);
     float aRot = FaceTarget(aDiffX, aDiffY) - mRotation;
     float aDist = aDiffX * aDiffX + aDiffY * aDiffY;
-    if(aDist > SQRT_EPSILON) { aDist = sqrtf(aDist); }
+    if (aDist > SQRT_EPSILON) { aDist = sqrtf(aDist); }
     float aDirX = Sin(-aRot);
     float aDirY = Cos(-aRot);
     pX = aDirX * (aDist / (mScale * mScaleX)) + mAnchorX * pWidth;

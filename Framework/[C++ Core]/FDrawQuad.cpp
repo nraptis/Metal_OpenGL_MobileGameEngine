@@ -809,7 +809,6 @@ void FDrawQuadGrid::Size(int pWidth, int pHeight) {
     delete [] mUVWBase;
     delete [] mRGBABase;
     
-    
     delete [] mXYZ;
     delete [] mUVW;
     delete [] mRGBA;

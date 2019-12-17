@@ -160,6 +160,7 @@ void FScrollCanvasPaged::PanRelease(float pX, float pY, float pSpeedX, float pSp
 }
 
 void FScrollCanvasPaged::DidLandOnPage(int pPage) {
+    
     printf("DidLandOnPage[%d]\n", pPage);
     
 }
@@ -189,12 +190,18 @@ float FScrollCanvasPaged::GetPositionForPage(int pPage) {
 
 void FScrollCanvasPaged::CancelAnimation() {
     FScrollCanvasGeneric::CancelAnimation();
+    //int aPrevPage = mPage;
+    
     if (mVertical) {
         mPage = GetPageForPosition(mContentOffsetY);
     } else {
         mPage = GetPageForPosition(mContentOffsetX);
     }
-    DidLandOnPage(mPage);
+    
+    //if (aPrevPage != mPage) {
+    //    DidLandOnPage(mPage);
+    //}
+    
 }
 
 void FScrollCanvasPaged::AnimationComplete() {
@@ -216,7 +223,7 @@ void FScrollCanvasPaged::SetPage(int pPage) {
     if (mPage >= mPageCount) { mPage = (mPageCount - 1); }
     if (mPage < 0) { mPage = 0; }
     
-    float aPosition = GetPositionForPage(mAnimationCompletePage);
+    float aPosition = GetPositionForPage(mPage);
     if (mVertical) {
         mContentOffsetY = aPosition;
     } else {

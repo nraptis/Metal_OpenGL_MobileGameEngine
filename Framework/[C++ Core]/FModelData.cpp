@@ -511,8 +511,7 @@ void FModelData::LoadData(const char *pFile)
 }
 
 
-void FModelData::LoadOBJ(FFile *pFile)
-{
+void FModelData::LoadOBJ(FFile *pFile) {
     Free();
     
     if(pFile == 0)return;

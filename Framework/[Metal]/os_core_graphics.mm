@@ -1059,13 +1059,13 @@ void Graphics::DrawModel(float *pPositions, float *pTextureCoords, float *pNorma
     }
     
     if (pPositions != NULL && cBufferIndexPositions != -1) {
-    cVertexCache.Get(sizeof(float) * pCount * 3);
-    if (cVertexCache.mResult.mSuccess) {
-        FBuffer *aPositionsBuffer = cVertexCache.mResult.mBuffer;
-        int aPositionsBufferOffset = cVertexCache.mResult.mBufferOffset;
-        BufferArrayWrite(aPositionsBuffer, pPositions, aPositionsBufferOffset, sizeof(float) * pCount * 3);
-        ArrayBufferPositions(aPositionsBuffer, aPositionsBufferOffset);
-    }
+        cVertexCache.Get(sizeof(float) * pCount * 3);
+        if (cVertexCache.mResult.mSuccess) {
+            FBuffer *aPositionsBuffer = cVertexCache.mResult.mBuffer;
+            int aPositionsBufferOffset = cVertexCache.mResult.mBufferOffset;
+            BufferArrayWrite(aPositionsBuffer, pPositions, aPositionsBufferOffset, sizeof(float) * pCount * 3);
+            ArrayBufferPositions(aPositionsBuffer, aPositionsBufferOffset);
+        }
     }
     
     if (pTextureCoords != NULL && cBufferIndexTextureCoords != -1) {
@@ -1087,9 +1087,10 @@ void Graphics::DrawModel(float *pPositions, float *pTextureCoords, float *pNorma
             ArrayBufferNormals(aNormalsBuffer, aNormalsBufferOffset);
         }
     }
-    //
+    
     TextureBind(pTexture);
     DrawTriangles(pCount);
+    
 }
 
 void Graphics::DrawTriangles(int pCount, float *pPositions, float *pTextureCoords, float *pNormals) {

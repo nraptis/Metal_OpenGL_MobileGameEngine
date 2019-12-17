@@ -112,7 +112,7 @@ void FList::Remove(void *pItem) {
 	void **aSeek=mData;
 	void **aShelf=mData+mCount;
 	while (aSeek < aShelf) {
-		if(*aSeek == pItem)break;
+        if (*aSeek == pItem) { break; }
 		aSeek++;
 	}
 	if (aSeek < aShelf) {

@@ -61,8 +61,15 @@ public:
     inline void                             AddUnderlay(FSprite &pSpriteUp, FSprite &pSpriteDown){AddUnderlay(&pSpriteUp, 0, &pSpriteDown);}
     inline void                             AddUnderlay(FSprite &pSpriteUp){AddUnderlay(&pSpriteUp, 0, 0);}
     
+    void                                    SetTopOverlayOffsetUp(float pX, float pY);
+    void                                    SetTopOverlayOffsetOver(float pX, float pY);
+    void                                    SetTopOverlayOffsetDown(float pX, float pY);
     
-    virtual void                            Update();
+    void                                    SetTopUnderlayOffsetUp(float pX, float pY);
+    void                                    SetTopUnderlayOffsetOver(float pX, float pY);
+    void                                    SetTopUnderlayOffsetDown(float pX, float pY);
+    
+    
     virtual void                            Draw();
 
     virtual void                            TouchDown(float pX, float pY, void *pData);
@@ -75,6 +82,8 @@ public:
     FButtonLayer                            *mButtonLayer;
     FList                                   mButtonLayersOver;
 
+    
+    
     void                                    *mClickData;
 
     bool                                    mTriggerOnDown;
@@ -103,8 +112,15 @@ public:
     float                                   mWidth;
     float                                   mHeight;
     
-    float                                   mOffsetX;
-    float                                   mOffsetY;
+    float                                   mOffsetUpX;
+    float                                   mOffsetUpY;
+    
+    float                                   mOffsetDownX;
+    float                                   mOffsetDownY;
+    
+    float                                   mOffsetOverX;
+    float                                   mOffsetOverY;
+    
     
     float                                   mRotation;
     
