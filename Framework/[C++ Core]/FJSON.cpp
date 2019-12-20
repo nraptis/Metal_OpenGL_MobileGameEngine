@@ -112,6 +112,41 @@ void FJSONNode::AddArray(FJSONNode *pNode) {
     mList[mListCount++] = pNode;
 }
 
+void FJSONNode::ArrayAddInt(int pValue) {
+    FString aString;
+    aString.ParseInt(pValue);
+    FJSONNode *aValueNode = new FJSONNode();
+    aValueNode->mDataType = JSON_DATA_TYPE_NUMBER;
+    aValueNode->mValue = aString.GetCharArray();
+    AddArray(aValueNode);
+}
+
+void FJSONNode::ArrayAddFloat(float pValue) {
+    FString aString;
+    aString.ParseFloat(pValue);
+    FJSONNode *aValueNode = new FJSONNode();
+    aValueNode->mDataType = JSON_DATA_TYPE_NUMBER;
+    aValueNode->mValue = aString.GetCharArray();
+    AddArray(aValueNode);
+}
+
+void FJSONNode::ArrayAddBool(bool pValue) {
+    FString aString;
+    aString.ParseBool(pValue);
+    FJSONNode *aValueNode = new FJSONNode();
+    aValueNode->mDataType = JSON_DATA_TYPE_FLAG;
+    aValueNode->mValue = aString.GetCharArray();
+    AddArray(aValueNode);
+}
+
+void FJSONNode::ArrayAddString(FString pValue) {
+    FString aString = pValue.c();
+    FJSONNode *aValueNode = new FJSONNode();
+    aValueNode->mDataType = JSON_DATA_TYPE_STRING;
+    aValueNode->mValue = aString.GetCharArray();
+    AddArray(aValueNode);
+}
+
 FJSONNode *FJSONNode::GetArray(const char *pKey) {
     if (mInfo != NULL) {
         FJSONNode *aNode = (FJSONNode *)mInfo->Get(pKey);

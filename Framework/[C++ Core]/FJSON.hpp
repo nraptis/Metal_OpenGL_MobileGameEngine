@@ -53,6 +53,13 @@ public:
     FString                     StringValue(FString pDefaultValue);
     
     
+    void                        ArrayAddInt(int pValue);
+    void                        ArrayAddFloat(float pValue);
+    void                        ArrayAddBool(bool pValue);
+    void                        ArrayAddString(FString pValue);
+    
+    
+    
     
     void                        AddArray(FJSONNode *pNode);
     
