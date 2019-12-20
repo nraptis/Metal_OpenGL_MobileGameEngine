@@ -149,6 +149,8 @@ void FFont::Draw(const char *pText, float pX, float pY, float pScale) {
 
 void FFont::WrapLeft(const char *pText, float pX, float pY, float pAreaWidth, float pLineHeight, float pScale) {
     
+    if (pAreaWidth < 16.0f) { return; }
+    
     unsigned char aChar = 0;
     float aDrawX = pX;
     float aDrawY = pY;
