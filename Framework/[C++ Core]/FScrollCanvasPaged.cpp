@@ -16,6 +16,9 @@ FScrollCanvasPaged::FScrollCanvasPaged() {
     
     mAnimationCompletePage = 0;
     
+    mDragPage = 0;
+    
+    
     mVertical = false;
 }
 
@@ -32,6 +35,22 @@ void FScrollCanvasPaged::BaseLayout() {
 
 void FScrollCanvasPaged::BaseUpdate() {
     FScrollCanvasGeneric::BaseUpdate();
+    
+    if (mAnimatingX || mAnimatingY) {
+        
+        if (mVertical == true) {
+           
+        } else {
+            int aDragPage = GetPageForPosition(mContentOffsetX);
+            if (aDragPage != mDragPage) {
+                mDragPage = aDragPage;
+                mPage = mDragPage;
+                if (mPage >= mPageCount) { mPage = (mPageCount - 1); }
+                if (mPage < 0) { mPage = 0; }
+                DidDragToPage(mPage);
+            }
+        }
+    }
 }
 
 void FScrollCanvasPaged::BaseTouchFlush() {
@@ -41,6 +60,11 @@ void FScrollCanvasPaged::BaseTouchFlush() {
 
 void FScrollCanvasPaged::PanBegin(float pX, float pY) {
     
+    if (mVertical == true) {
+        
+    } else {
+        mDragPage = GetPageForPosition(mContentOffsetX);
+    }
 }
 
 void FScrollCanvasPaged::PanMove(float pX, float pY) {
@@ -54,6 +78,16 @@ void FScrollCanvasPaged::PanMove(float pX, float pY) {
         mContentOffsetX = mPanStartContentOffsetX + mPanDiffX;
         if (IsOutOfBoundsX(mContentOffsetX)) {
             mContentOffsetX = GetDampenedX(mContentOffsetX);
+        }
+        
+        int aDragPage = GetPageForPosition(mContentOffsetX);
+        if (aDragPage != mDragPage) {
+            mDragPage = aDragPage;
+            
+            mPage = mDragPage;
+            if (mPage >= mPageCount) { mPage = (mPageCount - 1); }
+            if (mPage < 0) { mPage = 0; }
+            DidDragToPage(mPage);
         }
     }
 }
@@ -165,6 +199,13 @@ void FScrollCanvasPaged::DidLandOnPage(int pPage) {
     
 }
 
+void FScrollCanvasPaged::DidDragToPage(int pPage) {
+    
+    printf("DidDragToPage[%d]\n", pPage);
+    
+}
+
+
 int FScrollCanvasPaged::GetPageForPosition(float pPosition) {
     int aResult = 0;
     if (mVertical) {
@@ -186,7 +227,6 @@ float FScrollCanvasPaged::GetPositionForPage(int pPage) {
     }
     return aResult;
 }
-
 
 void FScrollCanvasPaged::CancelAnimation() {
     FScrollCanvasGeneric::CancelAnimation();

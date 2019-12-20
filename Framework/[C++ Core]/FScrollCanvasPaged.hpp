@@ -32,6 +32,7 @@ public:
     void                                            SetPage(int pPage);
     
     virtual void                                    DidLandOnPage(int pPage);
+    virtual void                                    DidDragToPage(int pPage);
     
     void                                            JumpToPage(int pPage);
     
@@ -51,6 +52,8 @@ private:
     float                                           GetPositionForPage(int pPage);
     
     int                                             mAnimationCompletePage;
+    
+    int                                             mDragPage;
     
     
     
