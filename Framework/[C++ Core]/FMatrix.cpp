@@ -9,9 +9,9 @@
 #include "FMatrix.hpp"
 #include "core_includes.h"
 
-#if (CURRENT_ENV == ENV_IOS)
-#include <arm_neon.h>
-#endif
+//#if (CURRENT_ENV == ENV_IOS)
+//#include <arm_neon.h>
+//#endif
 
 FMatrix::FMatrix() {
     m[0] = 1.0f;m[1] = 0.0f;m[2] = 0.0f;m[3] = 0.0f;
@@ -763,6 +763,7 @@ FMatrix FMatrixInvert(FMatrix pMatrix, bool *pInvertable) {
 
 FMatrix FMatrixMultiply(FMatrix pMatrixLeft, FMatrix pMatrixRight) {
     
+    /*
     #if (CURRENT_ENV == ENV_IOS)
     
     #if defined(__ARM_NEON__)
@@ -832,6 +833,7 @@ FMatrix FMatrixMultiply(FMatrix pMatrixLeft, FMatrix pMatrixRight) {
     
     
     #else
+    */
     
     FMatrix aResult;
     aResult.m[0]  = pMatrixLeft.m[0] * pMatrixRight.m[0]  + pMatrixLeft.m[4] * pMatrixRight.m[1]  + pMatrixLeft.m[8] * pMatrixRight.m[2]   + pMatrixLeft.m[12] * pMatrixRight.m[3];
@@ -851,8 +853,12 @@ FMatrix FMatrixMultiply(FMatrix pMatrixLeft, FMatrix pMatrixRight) {
     aResult.m[11] = pMatrixLeft.m[3] * pMatrixRight.m[8]  + pMatrixLeft.m[7] * pMatrixRight.m[9]  + pMatrixLeft.m[11] * pMatrixRight.m[10] + pMatrixLeft.m[15] * pMatrixRight.m[11];
     aResult.m[15] = pMatrixLeft.m[3] * pMatrixRight.m[12] + pMatrixLeft.m[7] * pMatrixRight.m[13] + pMatrixLeft.m[11] * pMatrixRight.m[14] + pMatrixLeft.m[15] * pMatrixRight.m[15];
     return aResult;
-    
+    //#if (CURRENT_ENV == ENV_IOS)
+    //#include <arm_neon.h>
+    //#endif
+    /*
     #endif
+    */
     
 }
 

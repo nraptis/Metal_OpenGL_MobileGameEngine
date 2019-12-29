@@ -39,6 +39,10 @@ void GFXApp::Load() {
     mButterflyWingSequence.LoadOBJSequence("butterfly_wings_", 0, 19);
     mButterflyMap.Load("butterfly_map");
     
+    EnumList(FModelDataPacked, aModel, mButterflyBodySequence.mList) {
+        printf("Model Buffer: %d\n", aModel->mBuffer->mBindIndex);
+    }
+    
 }
 
 void GFXApp::Unload() {
@@ -60,6 +64,7 @@ void GFXApp::LoadComplete() {
         mWindowMain.AddChild(mLandingScene);
     }
     
+    #if (CURRENT_ENV != ENV_IOS)
     
     if (mScreenTool == NULL) {
         mScreenTool = new Util_ScreenFrame();
@@ -67,6 +72,7 @@ void GFXApp::LoadComplete() {
         mScreenTool->RefreshVirtualFrame();
         mWindowTools.AddChild(mScreenTool);
     }
+    #endif
     
 }
 

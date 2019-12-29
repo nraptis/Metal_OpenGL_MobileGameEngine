@@ -57,6 +57,12 @@ void LandingScene::LayoutTransform() {
     
     mCamera.mDistance = (gDeviceHeight + gDeviceWidth) * 0.00125f;
     
+    #if (CURRENT_ENV != ENV_MAC)
+
+    mCamera.mDistance *= 2.0f;
+    
+    #endif
+    
     
     //We re-compute the center of our game window...
     float aAbsoluteCenterX = gAppBase->mWindowMain.mRoot.mX + gAppBase->mWindowMain.mRoot.mWidth2;

@@ -257,6 +257,7 @@ void FModelDataPackedSequence::LoadOBJSequence(const char *pFile, int pStartInde
                     }
                     
                     if (aFile.mLength != 0) {
+                        printf("aPath = %s\n", aPath.c());
                         FModelData *aData = new FModelData();
                         aData->LoadOBJ(&aFile);
                         aModelList.Add(aData);
