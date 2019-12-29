@@ -11,6 +11,9 @@
 
 FAchievement::FAchievement() {
     
+    
+    
+    
     mProgress = 0;
     mProgressMax = 1;
     

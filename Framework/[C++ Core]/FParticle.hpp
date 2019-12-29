@@ -29,8 +29,8 @@ public:
     FParticle();
     virtual ~FParticle();
     
-    virtual void								Update();
-    virtual void								Draw();
+    virtual void                                Update() override;
+    virtual void                                Draw() override;
     
     void										Draw(FSprite *pSprite);
     void										Draw(FSpriteSequence *pSpriteSequence);
@@ -116,6 +116,11 @@ public:
     
     void                                        SetRRN(float pRotationSpeed);
     void                                        SetRRN(float pRotationSpeed, float pRotationAccel);
+    
+    
+    void                                        Fling(float pDirX, float pDirY, float pPower, float pPunch);
+    void                                        Fling(float pDirectionAngle, float pPower, float pPunch);
+    
     
     float                                       mX;
     float                                       mY;

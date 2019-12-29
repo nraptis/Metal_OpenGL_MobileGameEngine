@@ -90,7 +90,7 @@ void FParticle::BaseInitialize()
     mSprite = 0;
     mSpriteSequence = 0;
     
-    mTimeKill = 1400;
+    mTimeKill = 100000;
     mTimerDelay = 0;
     mTimerAlive = 0;
 }
@@ -283,19 +283,16 @@ void FParticle::SetDelay(int pDelayTime)
     mTimerDelay = pDelayTime;
 }
 
-void FParticle::SetDelay(int pDelayTime, int pDelayTimeRandom)
-{
+void FParticle::SetDelay(int pDelayTime, int pDelayTimeRandom) {
     SetDelay(pDelayTime + gRand.Get(pDelayTimeRandom));
 }
 
-void FParticle::SetPos(float pX, float pY)
-{
+void FParticle::SetPos(float pX, float pY) {
     mX = pX;
     mY = pY;
 }
 
-void FParticle::SetSpeed(float pXSpeed, float pYSpeed)
-{
+void FParticle::SetSpeed(float pXSpeed, float pYSpeed) {
     mXSpeed = pXSpeed;
     mYSpeed = pYSpeed;
 }
@@ -305,8 +302,7 @@ void FParticle::SetSpeed(float pSpeed)
     SetSpeedDirectional(gRand.R(), pSpeed);
 }
 
-void FParticle::SetSpeedDirectional(float pDegrees)
-{
+void FParticle::SetSpeedDirectional(float pDegrees) {
     mXSpeed = Sin(pDegrees);
     mYSpeed = -Cos(pDegrees);
 }
@@ -464,61 +460,51 @@ void FParticle::SetAlphaSpeed(float pAlphaSpeed)
     mAlphaSpeed = pAlphaSpeed;
 }
 
-void FParticle::SetAlphaSpeedRandom(float pAlphaSpeed, float pSpan)
-{
+void FParticle::SetAlphaSpeedRandom(float pAlphaSpeed, float pSpan) {
     mAlphaSpeed = gRand.GetFloatWithSpan(pAlphaSpeed, pSpan);
 }
 
-void FParticle::SetSpeed(float pXSpeed, float pYSpeed, float pAccel)
-{
+void FParticle::SetSpeed(float pXSpeed, float pYSpeed, float pAccel) {
     mXSpeed = pXSpeed;
     mYSpeed = pYSpeed;
     mSpeedAccel = pAccel;
 }
 
-void FParticle::SetRotation(float pRotation, float pRotationSpeed, float pRotationAccel, bool pSpeedRandomNegative)
-{
+void FParticle::SetRotation(float pRotation, float pRotationSpeed, float pRotationAccel, bool pSpeedRandomNegative) {
     mRotation = pRotation;
     mRotationSpeed = pRotationSpeed;
     mRotationAccel = pRotationAccel;
-    if(pSpeedRandomNegative)
-    {
-        if(gRand.GetBool())
-        {
+    if (pSpeedRandomNegative) {
+        if (gRand.GetBool()) {
             mRotationSpeed = (-mRotationSpeed);
         }
     }
 }
 
-void FParticle::SetGravity(float pGravityX, float pGravityY, float pGravityYAdd)
-{
+void FParticle::SetGravity(float pGravityX, float pGravityY, float pGravityYAdd) {
     mGravityX = pGravityX;
     mGravityY = pGravityY;
     mGravityYAdd = pGravityYAdd;
 }
 
-void FParticle::SetScale(float pScale, float pScaleSpeed, float pScaleSpeedAdd, float pScaleSpeedAccel)
-{
+void FParticle::SetScale(float pScale, float pScaleSpeed, float pScaleSpeedAdd, float pScaleSpeedAccel) {
     mScale = pScale;
     mScaleSpeed = pScaleSpeed;
     mScaleSpeedAdd = pScaleSpeedAdd;
     mScaleAccel = pScaleSpeedAccel;
 }
 
-void FParticle::SetColorSpeed(float pAlpha)
-{
+void FParticle::SetColorSpeed(float pAlpha) {
     mAlphaSpeed = pAlpha;
 }
 
-void FParticle::SetColorSpeed(float pRed, float pGreen, float pBlue)
-{
+void FParticle::SetColorSpeed(float pRed, float pGreen, float pBlue) {
     mRedSpeed = pRed;
     mGreenSpeed = pGreen;
     mBlueSpeed = pBlue;
 }
 
-void FParticle::SetColorSpeed(float pRed, float pGreen, float pBlue, float pAlpha)
-{
+void FParticle::SetColorSpeed(float pRed, float pGreen, float pBlue, float pAlpha) {
     mRedSpeed = pRed;
     mGreenSpeed = pGreen;
     mBlueSpeed = pBlue;
@@ -526,33 +512,60 @@ void FParticle::SetColorSpeed(float pRed, float pGreen, float pBlue, float pAlph
 }
 
 void FParticle::SetColor(float pRed, float pGreen, float pBlue, float pAlpha,
-                                                     float pSpeedRed, float pSpeedGreen, float pSpeedBlue, float pSpeedAlpha)
-{
+                                                     float pSpeedRed, float pSpeedGreen, float pSpeedBlue, float pSpeedAlpha) {
     SetColor(pRed, pGreen, pBlue, pAlpha);
     SetColorSpeed(pSpeedRed, pSpeedGreen, pSpeedBlue, pSpeedAlpha);
 }
 
 
 
-void FParticle::SetFrame(float pFrame, float pFrameSpeed, bool pFrameLoop)
-{
+void FParticle::SetFrame(float pFrame, float pFrameSpeed, bool pFrameLoop) {
     mFrame = pFrame;
     mFrameSpeed = pFrameSpeed;
     mFrameLoop = pFrameLoop;
 }
 
 
-void FParticle::SetDelayAlphaSpeed(int pTime, float pAlphaSpeedAdd)
-{
+void FParticle::SetDelayAlphaSpeed(int pTime, float pAlphaSpeedAdd) {
     mDelayAlphaSpeedAddTime = pTime;
     mDelayAlphaSpeedAdd = pAlphaSpeedAdd;
 }
 
-void FParticle::SetDelayScaleSpeed(int pTime, float pScaleSpeedAdd)
-{
+void FParticle::SetDelayScaleSpeed(int pTime, float pScaleSpeedAdd) {
     mDelayScaleSpeedAddTime = pTime;
     mDelayScaleSpeedAdd = pScaleSpeedAdd;
 }
 
+void FParticle::Fling(float pDirX, float pDirY, float pPower, float pPunch) {
+    float aDirX = pDirX;
+    float aDirY = pDirY;
+    float aLength = aDirX * aDirX + aDirY * aDirY;
+    if (aLength > SQRT_EPSILON) {
+        aLength = sqrt(aLength);
+        aDirX /= aLength;
+        aDirY /= aLength;
+    } else {
+        aDirX = 0.0f;
+        aDirY = -1.0f;
+    }
+    
+    if (pPunch != 0.0f) {
+        mX += aDirX * pPunch;
+        mY += aDirY * pPunch;
+    }
+    
+    SetSpeed(aDirX * pPower, aDirY * pPower);
+}
 
-
+void FParticle::Fling(float pDirectionAngle, float pPower, float pPunch) {
+    
+    float aDirX = Sin(pDirectionAngle);
+    float aDirY = -Cos(pDirectionAngle);
+    
+    if (pPunch != 0.0f) {
+        mX += aDirX * pPunch;
+        mY += aDirY * pPunch;
+    }
+    
+    SetSpeed(aDirX * pPower, aDirY * pPower);
+}

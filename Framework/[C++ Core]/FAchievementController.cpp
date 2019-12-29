@@ -23,13 +23,11 @@ void FAchievementController::Clear() {
     
     mAchievementMap.RemoveAll();
     mGroupMap.RemoveAll();
-    
 }
 
 void FAchievementController::AddAchievement(const char *pAchievementName, int pProgressMax) {
     
     FAchievement *aAchievement = (FAchievement *)(mAchievementMap.Get(pAchievementName));
-    
     if (aAchievement == NULL) {
         aAchievement = new FAchievement();
         mAchievementMap.Add(pAchievementName, aAchievement);
@@ -60,7 +58,6 @@ void FAchievementController::AddAchievement(const char *pGroupName, const char *
     }
     
     aGroup->Add(aAchievement);
-    
 }
 
 FAchievement *FAchievementController::GetAchievement(const char *pAchievementName) {
@@ -78,7 +75,6 @@ void FAchievementController::ProgressAchievementObject(FAchievement *pAchievemen
     if (pAchievement == NULL) { return; }
     
     if (pAchievement->AddProgress() == true) {
-        
         if (mRecentlyCompletedAchievementMap.Exists(pAchievement) == false) {
             mRecentlyCompletedAchievementList.Add(pAchievement);
             mRecentlyCompletedAchievementMap.Add(pAchievement, pAchievement);
@@ -127,7 +123,6 @@ void FAchievementController::Save(const char *pFile) {
     
     aJSON.mRoot = aRoot;
     
-    
     FJSONNode *aAchiementListNode = new FJSONNode();
     aAchiementListNode->mNodeType = JSON_NODE_TYPE_DICTIONARY;
     aRoot->AddDictionary("achievement_list", aAchiementListNode);
@@ -146,9 +141,7 @@ void FAchievementController::Save(const char *pFile) {
         }
     }
     
-    aJSON.Print();
     aJSON.Save(pFile);
-    
 }
 
 void FAchievementController::Load() {
@@ -184,47 +177,23 @@ void FAchievementController::Load(const char *pFile) {
                     if (aLoadNode != NULL) {
                         aAchievement->Load(aLoadNode);
                     }
-                    
-                    
-                    
                 }
-                
-                printf("Loading Node... (%s)\n", aNode->mKey.c());
-                
-                //aNode->mKey
-                
                 aNode = aNode->mListNext;
             }
         }
     }
-    
     
     FJSONNode *aRecentlyCompletedListNode = aRoot->GetArray("recently_completed");
     if (aRecentlyCompletedListNode != NULL) {
         EnumJSONArray(aRecentlyCompletedListNode, aRecentlyCompletedNode) {
             FAchievement *aAchievement = GetAchievement(aRecentlyCompletedNode->mValue);
             if (aAchievement != NULL) {
-                printf("Recent Loaded Achievement: (%s)\n", aAchievement->mName.c());
-                
                 if (mRecentlyCompletedAchievementMap.Exists(aAchievement) == false) {
                     mRecentlyCompletedAchievementList.Add(aAchievement);
                     mRecentlyCompletedAchievementMap.Add(aAchievement, aAchievement);
                 }
             }
-            
-            
-            //FAchievement
-            
-            //aRecentlyCompletedNode->mValue
-            
-            
-            
-            
         }
-        
-        //aRecentlyCompletedListNode
-        
-        
     }
 }
 
