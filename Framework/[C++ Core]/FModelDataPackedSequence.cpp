@@ -210,6 +210,8 @@ void FModelDataPackedSequence::LoadOBJSequence(const char *pFile, int pStartInde
             aPath.Append(aNumberStringPadded);
             aPath.Append(".obj");
             
+            aFile.Clear();
+            
             aResourcePath = gRes.GetResourcePathOfType(aPath.c(), RESOURCE_TYPE_MODEL_OBJ);
             while ((aResourcePath != NULL)) {
                 aFile.LoadDirect((char *)aResourcePath);
@@ -246,6 +248,8 @@ void FModelDataPackedSequence::LoadOBJSequence(const char *pFile, int pStartInde
                     aPath.Append(aNumberStringPadded);
                     aPath.Append(".obj");
                     
+                    aFile.Clear();
+                    
                     aResourcePath = gRes.GetResourcePathOfType(aPath.c(), RESOURCE_TYPE_MODEL_OBJ);
                     while ((aResourcePath != NULL)) {
                         aFile.LoadDirect((char *)aResourcePath);
@@ -257,7 +261,6 @@ void FModelDataPackedSequence::LoadOBJSequence(const char *pFile, int pStartInde
                     }
                     
                     if (aFile.mLength != 0) {
-                        printf("aPath = %s\n", aPath.c());
                         FModelData *aData = new FModelData();
                         aData->LoadOBJ(&aFile);
                         aModelList.Add(aData);

@@ -38,11 +38,6 @@ void GFXApp::Load() {
     mButterflyBodySequence.LoadOBJSequence("butterfly_body_", 0, 19);
     mButterflyWingSequence.LoadOBJSequence("butterfly_wings_", 0, 19);
     mButterflyMap.Load("butterfly_map");
-    
-    EnumList(FModelDataPacked, aModel, mButterflyBodySequence.mList) {
-        printf("Model Buffer: %d\n", aModel->mBuffer->mBindIndex);
-    }
-    
 }
 
 void GFXApp::Unload() {

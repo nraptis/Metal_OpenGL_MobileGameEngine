@@ -46,7 +46,7 @@ void LandingScene::Layout() {
     
     if (mProgressBar != NULL) {
         float aProgressBarHeight = gWadGameInterface.mProgressBarFull.mHeight * 0.8f;
-        mProgressBar->SetFrame(20.0f, 20.0f, mWidth - 40.0f, aProgressBarHeight);
+        mProgressBar->SetFrame(20.0f, gSafeAreaInsetTop + 20.0f, mWidth - 40.0f, aProgressBarHeight);
     }
     
 }
