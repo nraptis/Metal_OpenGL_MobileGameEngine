@@ -92,9 +92,7 @@ void FAssetResolutionConfigurator::SetSpriteScale(float pScale) {
 
 float FAssetResolutionConfigurator::RoundSpriteScale(float pScale) {
     float aScale = pScale;
-    if (aScale < 1.0f) {
-        aScale = 1.0f;
-    } else if (aScale >= 1.0f && aScale < 2.0f) {
+    if (aScale < 2.0f) {
         if (aScale >= 1.5f) {
             aScale = 1.5f;
         } else {
