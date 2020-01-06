@@ -152,7 +152,6 @@ void FScrollCanvas::PanMove(float pX, float pY) {
 }
 
 void FScrollCanvas::PanRelease(float pX, float pY, float pSpeedX, float pSpeedY) {
-    
     if (mEnabledX) {
         if (IsOutOfBoundsX(mContentOffsetX)) {
             OutOfBoundsSnapToEdgeX();

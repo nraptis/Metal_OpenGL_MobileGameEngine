@@ -14,7 +14,7 @@ FScrollCanvasGeneric::FScrollCanvasGeneric() {
     mTouchCount = 0;
     mTouch.mData = NULL;
     
-    mDecayMultiply = 0.96f;
+    mDecayMultiply = 0.925f;
     mDecaySubtract = 0.1125 * gSpriteDrawScale;
     
     mDecayMultiplyHandedOff = 0.90f;
@@ -57,6 +57,7 @@ FScrollCanvasGeneric::FScrollCanvasGeneric() {
     mAnimationDecayHandedOffX = false;
     mAnimationDecayVelocityY = 0.0f;
     mAnimationDecayHandedOffY = false;
+    mAnimationDecayVelocityDampeningFactor = 0.625f;
     
     
     //mAnimationDecayHandedOffX
@@ -236,6 +237,11 @@ void FScrollCanvasGeneric::PanRelease(float pX, float pY, float pSpeedX, float p
 void FScrollCanvasGeneric::SetContentSize(float pWidth, float pHeight) {
     mContentWidth = pWidth;
     mContentHeight = pHeight;
+    
+    if (mContentWidth < mWidth) { mContentWidth = mWidth; }
+    if (mContentHeight < mHeight) { mContentHeight = mHeight; }
+    
+    
 }
 
 bool FScrollCanvasGeneric::IsOutOfBoundsX(float pScrollX) {
@@ -272,7 +278,6 @@ void FScrollCanvasGeneric::OutOfBoundsSnapToEdgeY() {
         SnapAnimationY(aTargetY);
     }
 }
-
 
 float FScrollCanvasGeneric::GetDampenedX(float pScrollX) {
     if (pScrollX > 0.0f) {
@@ -357,8 +362,6 @@ float FScrollCanvasGeneric::GetDecayStopPosition(float pStart, float pVelocity, 
     return aResult;
 }
 
-
-
 void FScrollCanvasGeneric::SnapAnimationX(float pTargetX) {
     mAnimatingX = true;
     mAnimationTypeX = SCROLL_CANVAS_ANIMATION_TYPE_SNAP;
@@ -376,7 +379,7 @@ void FScrollCanvasGeneric::DecayAnimationX(float pVelocity, bool pHandedOff) {
     if (pVelocity < -mMaxFlingSpeed) { pVelocity = -mMaxFlingSpeed; }
     mAnimatingX = true;
     mAnimationTypeX = SCROLL_CANVAS_ANIMATION_TYPE_DECAY;
-    mAnimationDecayVelocityX = pVelocity;
+    mAnimationDecayVelocityX = pVelocity * mAnimationDecayVelocityDampeningFactor;
     mAnimationDecayHandedOffX = pHandedOff;
     if (mAnimationDecayVelocityX > mMaxFlingSpeed) { mAnimationDecayVelocityX = mMaxFlingSpeed; }
     if (mAnimationDecayVelocityX < -mMaxFlingSpeed) { mAnimationDecayVelocityX = -mMaxFlingSpeed; }
@@ -387,7 +390,7 @@ void FScrollCanvasGeneric::DecayAnimationY(float pVelocity, bool pHandedOff) {
     if (pVelocity < -mMaxFlingSpeed) { pVelocity = -mMaxFlingSpeed; }
     mAnimatingY = true;
     mAnimationTypeY = SCROLL_CANVAS_ANIMATION_TYPE_DECAY;
-    mAnimationDecayVelocityY = pVelocity;
+    mAnimationDecayVelocityY = pVelocity * mAnimationDecayVelocityDampeningFactor;
     mAnimationDecayHandedOffY = pHandedOff;
     if (mAnimationDecayVelocityY > mMaxFlingSpeed) { mAnimationDecayVelocityY = mMaxFlingSpeed; }
     if (mAnimationDecayVelocityY < -mMaxFlingSpeed) { mAnimationDecayVelocityY = -mMaxFlingSpeed; }
@@ -537,7 +540,6 @@ void FScrollCanvasGeneric::RestAnimationY(float pTargetPos, float pVelocity) {
     }
 }
 
-
 void FScrollCanvasGeneric::UpdateSnapAnimationX() {
     float aDiffX = mAnimationSnapTargetX - mContentOffsetX;
     float aLength = fabsf(aDiffX);
@@ -586,7 +588,6 @@ void FScrollCanvasGeneric::UpdateSnapAnimationY() {
     }
 }
 
-
 void FScrollCanvasGeneric::UpdateDecayAnimationX() {
     
     mContentOffsetX += mAnimationDecayVelocityX;
@@ -607,13 +608,11 @@ void FScrollCanvasGeneric::UpdateDecayAnimationX() {
     }
     
     if (mAnimationDecayVelocityX < 0.0f) {
-        
         if (mAnimationDecayHandedOffX == true) {
             mAnimationDecayVelocityX += mDecaySubtractHandedOff;
         } else {
             mAnimationDecayVelocityX += mDecaySubtract;
         }
-        
         
         if (mAnimationDecayVelocityX >= 0.0f) {
              mAnimationDecayVelocityX = 0.0f;
@@ -633,7 +632,6 @@ void FScrollCanvasGeneric::UpdateDecayAnimationX() {
         } else {
             mAnimationDecayVelocityX *= mDecayMultiply;
         }
-        
     }
 }
 
@@ -643,13 +641,11 @@ void FScrollCanvasGeneric::UpdateDecayAnimationY() {
     bool aComplete = false;
     
     if (mAnimationDecayVelocityY > 0.0f) {
-        
         if (mAnimationDecayHandedOffY == true) {
             mAnimationDecayVelocityY -= mDecaySubtractHandedOff;
         } else {
             mAnimationDecayVelocityY -= mDecaySubtract;
         }
-        
         
         if (mAnimationDecayVelocityY <= 0.0f) {
             mAnimationDecayVelocityY = 0.0f;
@@ -658,13 +654,11 @@ void FScrollCanvasGeneric::UpdateDecayAnimationY() {
     }
     
     if (mAnimationDecayVelocityY < 0.0f) {
-        
         if (mAnimationDecayHandedOffY == true) {
             mAnimationDecayVelocityY += mDecaySubtractHandedOff;
         } else {
             mAnimationDecayVelocityY += mDecaySubtract;
         }
-        
         
         if (mAnimationDecayVelocityY >= 0.0f) {
              mAnimationDecayVelocityY = 0.0f;
@@ -679,15 +673,11 @@ void FScrollCanvasGeneric::UpdateDecayAnimationY() {
             AnimationComplete();
         }
     } else {
-        
         if (mAnimationDecayHandedOffY == true) {
             mAnimationDecayVelocityY *= mDecayMultiplyHandedOff;
         } else {
             mAnimationDecayVelocityY *= mDecayMultiply;
         }
-        
-        
-        
     }
 }
 

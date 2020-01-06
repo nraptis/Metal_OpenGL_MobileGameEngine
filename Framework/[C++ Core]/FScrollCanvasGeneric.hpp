@@ -138,6 +138,8 @@ private:
     bool                                            mAnimationDecayHandedOffX;
     float                                           mAnimationDecayVelocityY;
     bool                                            mAnimationDecayHandedOffY;
+    float                                           mAnimationDecayVelocityDampeningFactor;
+    
     
     
     int                                             mAnimationDecelerateTickX;

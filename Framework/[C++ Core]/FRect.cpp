@@ -61,7 +61,6 @@ FRect FRect::FitAspectFit(FRect pRect, float pObjectWidth, float pObjectHeight, 
     return aResult;
 }
 
-//
 FRect FRect::FitAspectFit(FRect pRect, float pObjectWidth, float pObjectHeight, float pBorder, float &pScale) {
     pScale = 1.0f;
     
@@ -82,7 +81,6 @@ FRect FRect::FitAspectFit(FRect pRect, float pObjectWidth, float pObjectHeight, 
             pScale = aProperWidth / aImageWidth;
             aWidth = aImageWidth * pScale;
             aHeight = aImageHeight * pScale;
-            
         } else {
             pScale = aProperHeight / aImageHeight;
             aWidth = aImageWidth * pScale;
@@ -124,9 +122,7 @@ FRect FRect::FitAspectFill(FRect pRect, float pObjectWidth, float pObjectHeight,
             aWidth = aImageWidth * pScale;
             aHeight = aImageHeight * pScale;
             
-        }
-        else
-        {
+        } else {
             pScale = aProperHeight / aImageHeight;
             aWidth = aImageWidth * pScale;
             aHeight = aImageHeight * pScale;
