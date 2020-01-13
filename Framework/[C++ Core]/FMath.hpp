@@ -11,9 +11,11 @@
 #define DOT_PRODUCT(x1,y1,x2,y2)((x1)*(x2)+(y1)*(y2))
 #define CROSS_PRODUCT(x1,y1,x2,y2)((x1)*(y2)-(x2)*(y1))
 
+#define SQRT_EPSILON 0.005f
+#define FLOAT_EPSILON 0.0001f
+
 #include "FVec2.hpp"
 #include "FVec3.hpp"
-#include "FVec2.hpp"
 
 float Distance(float x1, float y1, float x2, float y2);
 inline float Distance(float x1, float y1, FVec2 p2){return Distance(x1,y1,p2.mX,p2.mY);}

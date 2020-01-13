@@ -846,6 +846,17 @@ void Graphics::BufferSetIndicesShapeNode() {
     Graphics::BufferSetUniformsIndex(GFX_BUFFER_INDEX_UNIFORMS_SHAPE_NODE);
 }
 
+void Graphics::BufferSetIndicesShapeNodeSprite() {
+    Graphics::BufferSetPositionsIndex(GFX_BUFFER_INDEX_DATA_SHAPE_NODE);
+    Graphics::BufferSetTextureCoordsIndex(-1);
+    Graphics::BufferSetColorsIndex(-1);
+    Graphics::BufferSetNormalsIndex(-1);
+    Graphics::BufferSetTangentsIndex(-1);
+    Graphics::BufferSetUNormalsIndex(-1);
+    Graphics::BufferSetDataIndex(-1);
+    Graphics::BufferSetUniformsIndex(GFX_BUFFER_INDEX_UNIFORMS_SHAPE_NODE);
+}
+
 void Graphics::BufferSetIndicesSprite() {
     Graphics::BufferSetPositionsIndex(GFX_BUFFER_INDEX_POSITIONS_SPRITE);
     Graphics::BufferSetTextureCoordsIndex(GFX_BUFFER_INDEX_TEXTURE_COORDS_SPRITE);
@@ -1182,21 +1193,8 @@ void Graphics::DrawTrianglesIndexedWithPackedBuffers(FBuffer *pVertexBuffer, int
         return;
     }
     
-    //unsigned char *aAddressVertex = (unsigned char *)aWrapperVertex.buffer.contents;
-    //aAddressVertex = &(aAddressVertex[pVertexBufferOffset]);
-    
-    //unsigned char *aAddressIndex = (unsigned char *)aWrapperIndex.buffer.contents;
-    //aAddressIndex = &(aAddressIndex[pIndexBufferOffset]);
-    
     [gMetalEngine.renderCommandEncoder setVertexBuffer: aWrapperVertex.buffer offset: pVertexBufferOffset atIndex: cBufferIndexData];
-    
     DrawTrianglesIndexed(pIndices, pCount);
-    
-    
-    //[gMetalEngine.renderCommandEncoder drawIndexedPrimitives: MTLPrimitiveTypeTriangle indexCount: pCount indexType: MTLIndexTypeUInt16 indexBuffer: aWrapperIndex.buffer indexBufferOffset: pIndexBufferOffset];
-    
-    
-    
 }
 
 
@@ -1639,6 +1637,25 @@ void Graphics::PipelineStateSetShapeNodeAdditiveBlending() {
     [gMetalPipeline pipelineStateSetShapeNodeAdditiveBlending];
 }
 
+void Graphics::PipelineStateSetShapeNodeSpriteNoBlending() {
+    Graphics::BufferSetIndicesShapeNodeSprite();
+    [gMetalPipeline pipelineStateSetShapeNodeSpriteNoBlending];
+}
+
+void Graphics::PipelineStateSetShapeNodeSpriteAlphaBlending() {
+    Graphics::BufferSetIndicesShapeNodeSprite();
+    [gMetalPipeline pipelineStateSetShapeNodeSpriteAlphaBlending];
+}
+
+void Graphics::PipelineStateSetShapeNodeSpriteAdditiveBlending() {
+    Graphics::BufferSetIndicesShapeNodeSprite();
+    [gMetalPipeline pipelineStateSetShapeNodeSpriteAdditiveBlending];
+}
+
+void Graphics::PipelineStateSetShapeNodeSpritePremultipliedBlending() {
+    Graphics::BufferSetIndicesShapeNodeSprite();
+    [gMetalPipeline pipelineStateSetShapeNodeSpritePremultipliedBlending];
+}
 
 void Graphics::PipelineStateSetSimpleModelNoBlending() {
     Graphics::BufferSetIndicesSimpleModel();
@@ -1648,6 +1665,16 @@ void Graphics::PipelineStateSetSimpleModelNoBlending() {
 void Graphics::PipelineStateSetSimpleModelAlphaBlending() {
     Graphics::BufferSetIndicesSimpleModel();
     [gMetalPipeline pipelineStateSetSimpleModelAlphaBlending];
+}
+
+void Graphics::PipelineStateSetSimpleModelAdditiveBlending() {
+    Graphics::BufferSetIndicesSimpleModel();
+    [gMetalPipeline pipelineStateSetSimpleModelAdditiveBlending];
+}
+
+void Graphics::PipelineStateSetSimpleModelPremultipliedBlending() {
+    Graphics::BufferSetIndicesSimpleModel();
+    [gMetalPipeline pipelineStateSetSimpleModelPremultipliedBlending];
 }
 
 void Graphics::PipelineStateSetSpriteNoBlending() {

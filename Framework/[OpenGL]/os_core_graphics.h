@@ -217,7 +217,6 @@ public:
     
     static void                             TextureSetFilterMipMap();
     static void                             TextureSetFilterLinear();
-    static void                             TextureSetFilterNearest();
     
     //Uniforms...
     
@@ -228,12 +227,9 @@ public:
     //Think of this like "batched" information that pertains to one render command...
     //
     
-    
     //static void                             FlushUniforms();
     static void                             UniformBind();
     static void                             UniformBind(FUniforms *pUniforms);
-    
-    
     
     //Textures...
     static int                              TextureGenerate(unsigned int *pData, int pWidth, int pHeight);
@@ -355,6 +351,12 @@ public:
     static void                             PipelineStateSetShapeNodeAlphaBlending();
     static void                             PipelineStateSetShapeNodeAdditiveBlending();
     
+    static void                             PipelineStateSetShapeNodeSpriteNoBlending();
+    static void                             PipelineStateSetShapeNodeSpriteAlphaBlending();
+    static void                             PipelineStateSetShapeNodeSpriteAdditiveBlending();
+    static void                             PipelineStateSetShapeNodeSpritePremultipliedBlending();
+    
+    
     static void                             PipelineStateSetSpriteNoBlending();
     static void                             PipelineStateSetSpriteAlphaBlending();
     static void                             PipelineStateSetSpriteAdditiveBlending();
@@ -363,6 +365,9 @@ public:
     
     static void                             PipelineStateSetSimpleModelNoBlending();
     static void                             PipelineStateSetSimpleModelAlphaBlending();
+    static void                             PipelineStateSetSimpleModelAdditiveBlending();
+    static void                             PipelineStateSetSimpleModelPremultipliedBlending();
+    
     
     static void                             PipelineStateSetSimpleModelIndexedNoBlending();
     static void                             PipelineStateSetSimpleModelIndexedAlphaBlending();

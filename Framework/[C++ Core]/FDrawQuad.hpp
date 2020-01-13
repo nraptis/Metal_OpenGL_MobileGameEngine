@@ -12,7 +12,7 @@
 #include "core_includes.h"
 
 #include "FTexture.hpp"
-#include "FVertexBuffer.h"
+//#include "FVertexBuffer.h"
 #include "FPrimitive.hpp"
 #include "FColor.hpp"
 
@@ -21,8 +21,7 @@
 #define QUAD_INDEX_3 2
 #define QUAD_INDEX_4 3
 
-class FDrawQuad
-{
+class FDrawQuad {
 public:
 	FDrawQuad();
 	virtual ~FDrawQuad();
@@ -313,67 +312,7 @@ public:
     bool                            mRefresh;
 };
 
-class FDrawQuadSnake
-{
-public:
-    FDrawQuadSnake();
-    virtual ~FDrawQuadSnake();
-    
-    
-    void                            Draw();
-    void                            DrawMarkers();
-    
-    void                            Reset();
-    void                            Clear();
-    
-    void                            Size(int pSize);
-    int                             mCount;
-    int                             mSize;
-    
-    void                            SetPoint(int pIndex, float pX, float pY);
-    void                            AddPoint(float pX, float pY);
-    
-    void                            Generate();
-    
-    //void                            SetAlpha(float pAlpha);
-    //float                           mAlpha;
-    
-    float                           *mCenterX;
-    float                           *mCenterY;
-    
-    float                           *mDirX;
-    float                           *mDirY;
-    
-    float                           *mNormX;
-    float                           *mNormY;
-    
-    float                           *mU;
-    float                           *mV;
-    
-    float                           *mDist;
-    float                           *mPercent;
-    
-    void                            SetSprite(FSprite *pSprite);
-    inline void                     SetSprite(FSprite &pSprite){SetSprite(&pSprite);}
-    
-    FSprite                         *mSprite;
-    
-    //float                           mWidth;
-    
-    float                           mWidthFactor;
-    
-    //FDrawQuadStrip                      mQuadStrip;
-    FDrawNodeList                   mNodeList;
-    
-    bool                            mRefresh;
-    
-    
-    
-    float                           mLength;
-    
-    //FVertexBuffer                   mBuffer;
-    
-};
+
 
 
 #endif

@@ -339,7 +339,7 @@ void FApp::BaseDraw() {
         Graphics::PipelineStateSetShape2DAlphaBlending();
         //Graphics::SetColor(0.0075f, 0.0075f, 0.0075f, 0.93f);
         //Graphics::SetColor(0.0075f, 0.0075f, 0.0075f, 0.90f);
-        Graphics::SetColor(0.0075f, 0.0075f, 0.0075f, 0.85f);
+        Graphics::SetColor(0.0075f, 0.0075f, 0.0075f, 0.80f);
         
         Graphics::DrawRect(0.0f, 0.0f, gDeviceWidth, gDeviceHeight);
         Graphics::SetColor();

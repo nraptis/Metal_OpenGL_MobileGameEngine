@@ -70,6 +70,7 @@ public:
     
     static void                             BufferSetIndicesShape();
     static void                             BufferSetIndicesShapeNode();
+    static void                             BufferSetIndicesShapeNodeSprite();
     static void                             BufferSetIndicesSprite();
     static void                             BufferSetIndicesSimpleModel();
     static void                             BufferSetIndicesSimpleModelIndexed();
@@ -322,6 +323,12 @@ public:
     static void                             PipelineStateSetShapeNodeAlphaBlending();
     static void                             PipelineStateSetShapeNodeAdditiveBlending();
     
+    static void                             PipelineStateSetShapeNodeSpriteNoBlending();
+    static void                             PipelineStateSetShapeNodeSpriteAlphaBlending();
+    static void                             PipelineStateSetShapeNodeSpriteAdditiveBlending();
+    static void                             PipelineStateSetShapeNodeSpritePremultipliedBlending();
+    
+    
     static void                             PipelineStateSetSpriteNoBlending();
     static void                             PipelineStateSetSpriteAlphaBlending();
     static void                             PipelineStateSetSpriteAdditiveBlending();
@@ -330,6 +337,9 @@ public:
     
     static void                             PipelineStateSetSimpleModelNoBlending();
     static void                             PipelineStateSetSimpleModelAlphaBlending();
+    static void                             PipelineStateSetSimpleModelAdditiveBlending();
+    static void                             PipelineStateSetSimpleModelPremultipliedBlending();
+    
     
     static void                             PipelineStateSetSimpleModelIndexedNoBlending();
     static void                             PipelineStateSetSimpleModelIndexedAlphaBlending();

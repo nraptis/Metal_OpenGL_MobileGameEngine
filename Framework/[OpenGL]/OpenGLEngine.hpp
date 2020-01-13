@@ -15,6 +15,7 @@
 #include "ShaderProgramShape3D.hpp"
 
 #include "ShaderProgramShapeNode.hpp"
+#include "ShaderProgramShapeNodeSprite.hpp"
 #include "ShaderProgramSpriteNode.hpp"
 #include "ShaderProgramSimpleModel.hpp"
 #include "ShaderProgramSimpleModelIndexed.hpp"
@@ -50,6 +51,7 @@ public:
     void                                            UseProgramSprite();
     void                                            UseProgramSpriteWhite();
     void                                            UseProgramShapeNode();
+    void                                            UseProgramShapeNodeSprite();
     void                                            UseProgramSimpleModel();
     void                                            UseProgramSimpleModelIndexed();
     void                                            UseProgramModelIndexed();
@@ -75,6 +77,7 @@ public:
     
     
     ShaderProgramShapeNode                          *mShaderProgramShapeNode;//ShaderProgramShapeNode
+    ShaderProgramShapeNodeSprite                    *mShaderProgramShapeNodeSprite;
     ShaderProgramSpriteNode                         *mShaderProgramSpriteNode;//ShaderProgramSpriteNode
     ShaderProgramSimpleModel                        *mShaderProgramSimpleModel;//ShaderProgramSimpleModel
     ShaderProgramSimpleModelIndexed                 *mShaderProgramSimpleModelIndexed;
@@ -83,7 +86,7 @@ public:
     
     ShaderProgramModelIndexedLightedAmbient         *mShaderProgramModelIndexedLightedAmbient;
     
-    ShaderProgramModelIndexedLightedDiffuse  *mShaderProgramModelIndexedLightedDiffuse;
+    ShaderProgramModelIndexedLightedDiffuse         *mShaderProgramModelIndexedLightedDiffuse;
     
     ShaderProgramModelIndexedLightedPhong           *mShaderProgramModelIndexedLightedPhong;
     ShaderProgramModelIndexedLightedPhong           *mShaderProgramModelIndexedLightedPhongOverlay;

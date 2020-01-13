@@ -559,13 +559,9 @@ void FPolyPath::Generate() {
         mNormX[0] = mNormX[mCount];
         mNormY[0] = mNormY[mCount];
         
-        
-        
-        if(mFlipNormals)
-        {
+        if (mFlipNormals == true) {
             aIndex = 0;
-            while(aIndex < aCount)
-            {
+            while (aIndex < aCount) {
                 mNormX[aIndex] = -(mNormX[aIndex]);
                 mNormY[aIndex] = -(mNormY[aIndex]);
                 aIndex++;
@@ -573,8 +569,7 @@ void FPolyPath::Generate() {
         }
         
         aIndex = 0;
-        while(aIndex < mCount)
-        {
+        while (aIndex < mCount) {
             mCenterX += mX[aIndex];
             mCenterY += mY[aIndex];
             aIndex++;
@@ -583,11 +578,8 @@ void FPolyPath::Generate() {
         mCenterX /= ((float)mCount);
         mCenterY /= ((float)mCount);
         
-        
-        
         aIndex = 0;
-        while(aIndex < mCount)
-        {
+        while (aIndex < mCount) {
             aDiffX = mX[aIndex] - mCenterX;
             aDiffY = mY[aIndex] - mCenterY;
             
@@ -605,11 +597,6 @@ void FPolyPath::Generate() {
             
             aIndex++;
         }
-        
-        //mCenterX /= ((float)mCount);
-        
-        
-        
         
         if (mLength > SQRT_EPSILON) {
             aIndex = 0;

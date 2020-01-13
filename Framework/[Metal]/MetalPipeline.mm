@@ -25,6 +25,12 @@
     id <MTLRenderPipelineState> pipelineStateShapeNodeAlphaBlending[GFX_RENDER_PASS_COUNT];
     id <MTLRenderPipelineState> pipelineStateShapeNodeAdditiveBlending[GFX_RENDER_PASS_COUNT];
     
+    
+    id <MTLRenderPipelineState> pipelineStateShapeNodeSpriteNoBlending[GFX_RENDER_PASS_COUNT];
+    id <MTLRenderPipelineState> pipelineStateShapeNodeSpriteAlphaBlending[GFX_RENDER_PASS_COUNT];
+    id <MTLRenderPipelineState> pipelineStateShapeNodeSpriteAdditiveBlending[GFX_RENDER_PASS_COUNT];
+    id <MTLRenderPipelineState> pipelineStateShapeNodeSpritePremultipliedBlending[GFX_RENDER_PASS_COUNT];
+    
     id <MTLRenderPipelineState> pipelineStateSpriteNoBlending[GFX_RENDER_PASS_COUNT];
     id <MTLRenderPipelineState> pipelineStateSpriteAlphaBlending[GFX_RENDER_PASS_COUNT];
     id <MTLRenderPipelineState> pipelineStateSpriteAdditiveBlending[GFX_RENDER_PASS_COUNT];
@@ -33,6 +39,8 @@
     
     id <MTLRenderPipelineState> pipelineStateSimpleModelNoBlending[GFX_RENDER_PASS_COUNT];
     id <MTLRenderPipelineState> pipelineStateSimpleModelAlphaBlending[GFX_RENDER_PASS_COUNT];
+    id <MTLRenderPipelineState> pipelineStateSimpleModelPremultipliedBlending[GFX_RENDER_PASS_COUNT];
+    id <MTLRenderPipelineState> pipelineStateSimpleModelAdditiveBlending[GFX_RENDER_PASS_COUNT];
     
     id <MTLRenderPipelineState> pipelineStateSimpleModelIndexedNoBlending[GFX_RENDER_PASS_COUNT];
     id <MTLRenderPipelineState> pipelineStateSimpleModelIndexedAlphaBlending[GFX_RENDER_PASS_COUNT];
@@ -77,6 +85,13 @@
     
     _shapeNodeVertexProgram = [aLibrary newFunctionWithName:@"shape_node_vertex"];
     _shapeNodeFragmentProgram = [aLibrary newFunctionWithName:@"shape_node_fragment"];
+    
+    
+    //NEW
+    _shapeNodeSpriteFragmentProgram = [aLibrary newFunctionWithName:@"shape_node_sprite_fragment"];
+    
+    
+    
     _spriteVertexProgram = [aLibrary newFunctionWithName:@"sprite_vertex"];
     _spriteFragmentProgram = [aLibrary newFunctionWithName:@"sprite_fragment"];
     _spriteFragmentProgramWhite = [aLibrary newFunctionWithName:@"sprite_fragment_white"];
@@ -121,6 +136,12 @@
     
     [self buildPipelineStatesShapeNode: GFX_RENDER_PASS_3D_MAIN];
     [self buildPipelineStatesShapeNode: GFX_RENDER_PASS_2D_MAIN];
+    
+    
+    [self buildPipelineStatesShapeNodeSprite: GFX_RENDER_PASS_3D_MAIN];
+    [self buildPipelineStatesShapeNodeSprite: GFX_RENDER_PASS_2D_MAIN];
+    
+    
     
 }
 
@@ -174,6 +195,22 @@
     [gMetalEngine.renderCommandEncoder setRenderPipelineState: pipelineStateShapeNodeAdditiveBlending[_renderPass]];
 }
 
+- (void)pipelineStateSetShapeNodeSpriteNoBlending {
+    [gMetalEngine.renderCommandEncoder setRenderPipelineState: pipelineStateShapeNodeSpriteNoBlending[_renderPass]];
+}
+
+- (void)pipelineStateSetShapeNodeSpriteAlphaBlending {
+    [gMetalEngine.renderCommandEncoder setRenderPipelineState: pipelineStateShapeNodeSpriteAlphaBlending[_renderPass]];
+}
+
+- (void)pipelineStateSetShapeNodeSpriteAdditiveBlending {
+    [gMetalEngine.renderCommandEncoder setRenderPipelineState: pipelineStateShapeNodeSpriteAdditiveBlending[_renderPass]];
+}
+
+- (void)pipelineStateSetShapeNodeSpritePremultipliedBlending {
+    [gMetalEngine.renderCommandEncoder setRenderPipelineState: pipelineStateShapeNodeSpritePremultipliedBlending[_renderPass]];
+}
+
 - (void)pipelineStateSetSpriteNoBlending {
     [gMetalEngine.renderCommandEncoder setRenderPipelineState: pipelineStateSpriteNoBlending[_renderPass]];
 }
@@ -200,6 +237,14 @@
 
 - (void)pipelineStateSetSimpleModelAlphaBlending {
     [gMetalEngine.renderCommandEncoder setRenderPipelineState: pipelineStateSimpleModelAlphaBlending[_renderPass]];
+}
+
+- (void)pipelineStateSetSimpleModelPremultipliedBlending {
+    [gMetalEngine.renderCommandEncoder setRenderPipelineState: pipelineStateSimpleModelPremultipliedBlending[_renderPass]];
+}
+
+- (void)pipelineStateSetSimpleModelAdditiveBlending {
+    [gMetalEngine.renderCommandEncoder setRenderPipelineState: pipelineStateSimpleModelAdditiveBlending[_renderPass]];
 }
 
 - (void)pipelineStateSetSimpleModelIndexedNoBlending {
@@ -480,6 +525,95 @@
     }
 }
 
+- (void)buildPipelineStatesShapeNodeSprite: (int)pRenderPass {
+    
+    int aSampleCount = 4;
+    if (pRenderPass != GFX_RENDER_PASS_2D_MAIN) {
+        aSampleCount = 1;
+    }
+    
+    MTLVertexDescriptor *aShapeVertexDescriptor = [[MTLVertexDescriptor alloc] init];
+    //
+    aShapeVertexDescriptor.attributes[NodePackedVertexAttributeData].format = MTLVertexFormatFloat3;
+    aShapeVertexDescriptor.attributes[NodePackedVertexAttributeData].offset = 0;
+    aShapeVertexDescriptor.attributes[NodePackedVertexAttributeData].bufferIndex = NodePackedBufferIndexMeshData;
+    //
+    aShapeVertexDescriptor.layouts[NodePackedBufferIndexMeshData].stride = sizeof(float) * (3 + 3 + 4);
+    aShapeVertexDescriptor.layouts[NodePackedBufferIndexMeshData].stepRate = 1;
+    aShapeVertexDescriptor.layouts[NodePackedBufferIndexMeshData].stepFunction = MTLVertexStepFunctionPerVertex;
+    //
+    //////////////////////////////////////////////////////////////////////////////////
+    //
+    MTLRenderPipelineDescriptor *aPipelineDescriptor = [[MTLRenderPipelineDescriptor alloc] init];
+    aPipelineDescriptor.label = @"Shape Node State, No Blending";
+    aPipelineDescriptor.sampleCount = aSampleCount;
+    aPipelineDescriptor.vertexDescriptor = aShapeVertexDescriptor;
+    aPipelineDescriptor.vertexFunction = _shapeNodeVertexProgram;
+    aPipelineDescriptor.fragmentFunction = _shapeNodeSpriteFragmentProgram;
+    aPipelineDescriptor.colorAttachments[0].pixelFormat = gMetalLayer.pixelFormat;
+    if (pRenderPass != GFX_RENDER_PASS_2D_MAIN) {
+        aPipelineDescriptor.depthAttachmentPixelFormat = MTLPixelFormatDepth32Float_Stencil8;
+        aPipelineDescriptor.stencilAttachmentPixelFormat = MTLPixelFormatDepth32Float_Stencil8;
+    }
+    //
+    NSError *pipelineError01 = NULL;
+    pipelineStateShapeNodeSpriteNoBlending[pRenderPass] = [gMetalEngine.device newRenderPipelineStateWithDescriptor: aPipelineDescriptor error: &pipelineError01];
+    if (pipelineError01 != NULL) {
+        NSLog(@"Pipeline State Error 01: %@", pipelineError01.description);
+        return;
+    }
+    //
+    //////////////////////////////////////////////////////////////////////////////////
+    //
+    aPipelineDescriptor.label = @"Shape Node State, Alpha Blending";
+    
+    aPipelineDescriptor.colorAttachments[0].blendingEnabled = YES;
+    aPipelineDescriptor.colorAttachments[0].rgbBlendOperation = MTLBlendOperationAdd;
+    aPipelineDescriptor.colorAttachments[0].alphaBlendOperation = MTLBlendOperationAdd;
+    aPipelineDescriptor.colorAttachments[0].sourceRGBBlendFactor = MTLBlendFactorSourceAlpha;
+    aPipelineDescriptor.colorAttachments[0].sourceAlphaBlendFactor = MTLBlendFactorSourceAlpha;
+    aPipelineDescriptor.colorAttachments[0].destinationRGBBlendFactor = MTLBlendFactorOneMinusSourceAlpha;
+    aPipelineDescriptor.colorAttachments[0].destinationAlphaBlendFactor = MTLBlendFactorOneMinusSourceAlpha;
+    
+    NSError *pipelineError02 = NULL;
+    pipelineStateShapeNodeSpriteAlphaBlending[pRenderPass] = [gMetalEngine.device newRenderPipelineStateWithDescriptor: aPipelineDescriptor error: &pipelineError02];
+    if (pipelineError02 != NULL) {
+        NSLog(@"Pipeline State Error 02: %@", pipelineError02.description);
+        return;
+    }
+    //
+    //////////////////////////////////////////////////////////////////////////////////
+    //
+    aPipelineDescriptor.label = @"Shape Node State, Additive Blending";
+    
+    aPipelineDescriptor.colorAttachments[0].sourceRGBBlendFactor = MTLBlendFactorSourceAlpha;
+    aPipelineDescriptor.colorAttachments[0].sourceAlphaBlendFactor = MTLBlendFactorOne;
+    aPipelineDescriptor.colorAttachments[0].destinationRGBBlendFactor = MTLBlendFactorOne;
+    aPipelineDescriptor.colorAttachments[0].destinationAlphaBlendFactor = MTLBlendFactorOne;
+    //
+    NSError *pipelineError03 = NULL;
+    pipelineStateShapeNodeSpriteAdditiveBlending[pRenderPass] = [gMetalEngine.device newRenderPipelineStateWithDescriptor: aPipelineDescriptor error: &pipelineError03];
+    if (pipelineError03 != NULL) {
+        NSLog(@"Pipeline State Error 03: %@", pipelineError03.description);
+        return;
+    }
+    
+    
+    aPipelineDescriptor.label = @"Shape Node State, Premultiplied Blending";
+    
+    aPipelineDescriptor.colorAttachments[0].sourceRGBBlendFactor = MTLBlendFactorOne;
+    aPipelineDescriptor.colorAttachments[0].sourceAlphaBlendFactor = MTLBlendFactorOne;
+    aPipelineDescriptor.colorAttachments[0].destinationRGBBlendFactor = MTLBlendFactorOneMinusSourceAlpha;
+    aPipelineDescriptor.colorAttachments[0].destinationAlphaBlendFactor = MTLBlendFactorOneMinusSourceAlpha;
+    
+    NSError *pipelineError04 = NULL;
+    pipelineStateShapeNodeSpritePremultipliedBlending[pRenderPass] = [gMetalEngine.device newRenderPipelineStateWithDescriptor: aPipelineDescriptor error: &pipelineError03];
+    if (pipelineError04 != NULL) {
+        NSLog(@"Pipeline State Error 04: %@", pipelineError04.description);
+        return;
+    }
+}
+
 - (void)buildPipelineStatesSprite: (int)pRenderPass {
     int aSampleCount = 4;
     //
@@ -633,9 +767,11 @@
         NSLog(@"Pipeline State Error 01: %@", pipelineError01.description);
         return;
     }
+    
     //
     //////////////////////////////////////////////////////////////////////////////////
     //
+    
     aPipelineDescriptor.label = @"Simple Model, Alpha Blending";
     
     aPipelineDescriptor.colorAttachments[0].blendingEnabled = YES;
@@ -653,6 +789,43 @@
         NSLog(@"Pipeline State Error 02: %@", pipelineError02.description);
         return;
     }
+    
+    //
+    //////////////////////////////////////////////////////////////////////////////////
+    //
+    
+    aPipelineDescriptor.label = @"Simple Model, Premultiplied Blending";
+    aPipelineDescriptor.colorAttachments[0].sourceRGBBlendFactor = MTLBlendFactorOne;
+    aPipelineDescriptor.colorAttachments[0].sourceAlphaBlendFactor = MTLBlendFactorOne;
+    aPipelineDescriptor.colorAttachments[0].destinationRGBBlendFactor = MTLBlendFactorOneMinusSourceAlpha;
+    aPipelineDescriptor.colorAttachments[0].destinationAlphaBlendFactor = MTLBlendFactorOneMinusSourceAlpha;
+    
+    //
+    NSError *pipelineError03 = NULL;
+    pipelineStateSimpleModelPremultipliedBlending[pRenderPass] = [gMetalEngine.device newRenderPipelineStateWithDescriptor: aPipelineDescriptor error: &pipelineError02];
+    if (pipelineError03 != NULL) {
+        NSLog(@"Pipeline State Error 03: %@", pipelineError03.description);
+        return;
+    }
+    
+    //
+    //////////////////////////////////////////////////////////////////////////////////
+    //
+    
+    aPipelineDescriptor.label = @"Simple Model, Additive Blending";
+    aPipelineDescriptor.colorAttachments[0].sourceRGBBlendFactor = MTLBlendFactorSourceAlpha;
+    aPipelineDescriptor.colorAttachments[0].sourceAlphaBlendFactor = MTLBlendFactorOne;
+    aPipelineDescriptor.colorAttachments[0].destinationRGBBlendFactor = MTLBlendFactorOne;
+    aPipelineDescriptor.colorAttachments[0].destinationAlphaBlendFactor = MTLBlendFactorOne;
+    
+    //
+    NSError *pipelineError04 = NULL;
+    pipelineStateSimpleModelAdditiveBlending[pRenderPass] = [gMetalEngine.device newRenderPipelineStateWithDescriptor: aPipelineDescriptor error: &pipelineError02];
+    if (pipelineError04 != NULL) {
+        NSLog(@"Pipeline State Error 04: %@", pipelineError04.description);
+        return;
+    }
+    
 }
 
 - (void)buildPipelineStatesSimpleModelIndexed: (int)pRenderPass {

@@ -7,109 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D9F86CA23AC63AA00C259A8 /* FHashMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F861223AC63A900C259A8 /* FHashMap.cpp */; };
-		0D9F86CB23AC63AA00C259A8 /* FTextureCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F861523AC63A900C259A8 /* FTextureCache.cpp */; };
-		0D9F86CC23AC63AA00C259A8 /* FModelData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F861823AC63A900C259A8 /* FModelData.cpp */; };
-		0D9F86CD23AC63AA00C259A8 /* FAchievementGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F861A23AC63A900C259A8 /* FAchievementGroup.cpp */; };
-		0D9F86CE23AC63AA00C259A8 /* FIntList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F861C23AC63A900C259A8 /* FIntList.cpp */; };
-		0D9F86CF23AC63AA00C259A8 /* FQuad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F862123AC63A900C259A8 /* FQuad.cpp */; };
-		0D9F86D023AC63AA00C259A8 /* FAssetWad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F862423AC63A900C259A8 /* FAssetWad.cpp */; };
-		0D9F86D123AC63AA00C259A8 /* FImageBundler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F862523AC63A900C259A8 /* FImageBundler.cpp */; };
-		0D9F86D223AC63AA00C259A8 /* FFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F862623AC63A900C259A8 /* FFont.cpp */; };
-		0D9F86D323AC63AA00C259A8 /* FTouchManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F862823AC63A900C259A8 /* FTouchManager.cpp */; };
-		0D9F86D423AC63AA00C259A8 /* FAchievement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F862B23AC63A900C259A8 /* FAchievement.cpp */; };
-		0D9F86D523AC63AA00C259A8 /* FVertexBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F862C23AC63A900C259A8 /* FVertexBuffer.cpp */; };
-		0D9F86D623AC63AA00C259A8 /* FMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F862D23AC63A900C259A8 /* FMath.cpp */; };
-		0D9F86D723AC63AA00C259A8 /* FBufferCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F862E23AC63A900C259A8 /* FBufferCache.cpp */; };
-		0D9F86D823AC63AA00C259A8 /* FFloatBufferCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F863023AC63A900C259A8 /* FFloatBufferCache.cpp */; };
-		0D9F86D923AC63AA00C259A8 /* FMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F863323AC63A900C259A8 /* FMatrix.cpp */; };
-		0D9F86DA23AC63AA00C259A8 /* FPrimitive.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F863523AC63A900C259A8 /* FPrimitive.cpp */; };
-		0D9F86DB23AC63AA00C259A8 /* FSound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F863923AC63A900C259A8 /* FSound.cpp */; };
-		0D9F86DC23AC63AA00C259A8 /* FScrollCanvasGeneric.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F863E23AC63A900C259A8 /* FScrollCanvasGeneric.cpp */; };
-		0D9F86DD23AC63AA00C259A8 /* FAchievementController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F864023AC63A900C259A8 /* FAchievementController.cpp */; };
-		0D9F86DE23AC63AA00C259A8 /* FSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F864123AC63A900C259A8 /* FSlider.cpp */; };
-		0D9F86DF23AC63AA00C259A8 /* FJoystick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F864423AC63A900C259A8 /* FJoystick.cpp */; };
-		0D9F86E023AC63AA00C259A8 /* FScrollCanvasPaged.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F864723AC63A900C259A8 /* FScrollCanvasPaged.cpp */; };
-		0D9F86E123AC63AA00C259A8 /* core_social.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F864823AC63A900C259A8 /* core_social.cpp */; };
-		0D9F86E223AC63AA00C259A8 /* core_web.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F864B23AC63A900C259A8 /* core_web.cpp */; };
-		0D9F86E323AC63AA00C259A8 /* FSpriteCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F864C23AC63A900C259A8 /* FSpriteCanvas.cpp */; };
-		0D9F86E423AC63AA00C259A8 /* FDrawQuad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F864E23AC63A900C259A8 /* FDrawQuad.cpp */; };
-		0D9F86E523AC63AA00C259A8 /* FAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F865223AC63A900C259A8 /* FAnimation.cpp */; };
-		0D9F86E623AC63AA00C259A8 /* FTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F865323AC63A900C259A8 /* FTexture.cpp */; };
-		0D9F86E723AC63AA00C259A8 /* FGestureCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F865623AC63A900C259A8 /* FGestureCanvas.cpp */; };
-		0D9F86E823AC63AA00C259A8 /* FIndexBufferCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F865723AC63A900C259A8 /* FIndexBufferCache.cpp */; };
-		0D9F86E923AC63AA00C259A8 /* FSpline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F865823AC63A900C259A8 /* FSpline.cpp */; };
-		0D9F86EA23AC63AA00C259A8 /* FLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F865923AC63A900C259A8 /* FLine.cpp */; };
-		0D9F86EB23AC63AA00C259A8 /* FSize.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F865B23AC63A900C259A8 /* FSize.cpp */; };
-		0D9F86EC23AC63AA00C259A8 /* FRandomizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F865C23AC63A900C259A8 /* FRandomizer.cpp */; };
-		0D9F86ED23AC63AA00C259A8 /* FResource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F865D23AC63A900C259A8 /* FResource.cpp */; };
-		0D9F86EE23AC63AA00C259A8 /* FModelDataPacked.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F865E23AC63A900C259A8 /* FModelDataPacked.cpp */; };
-		0D9F86EF23AC63AA00C259A8 /* FFileTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F866023AC63A900C259A8 /* FFileTable.cpp */; };
-		0D9F86F023AC63AA00C259A8 /* FScrollCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F866123AC63A900C259A8 /* FScrollCanvas.cpp */; };
-		0D9F86F123AC63AA00C259A8 /* FColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F866523AC63A900C259A8 /* FColor.cpp */; };
-		0D9F86F223AC63AA00C259A8 /* FJSON.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F866623AC63A900C259A8 /* FJSON.cpp */; };
-		0D9F86F323AC63AA00C259A8 /* FVec3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F866823AC63A900C259A8 /* FVec3.cpp */; };
-		0D9F86F423AC63AA00C259A8 /* FVec2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F866923AC63A900C259A8 /* FVec2.cpp */; };
-		0D9F86F523AC63AA00C259A8 /* FAssetResolutionConfigurator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F866A23AC63A900C259A8 /* FAssetResolutionConfigurator.cpp */; };
-		0D9F86F623AC63AA00C259A8 /* FCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F866D23AC63A900C259A8 /* FCanvas.cpp */; };
-		0D9F86F723AC63AA00C259A8 /* GraphicsInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F866E23AC63A900C259A8 /* GraphicsInterface.cpp */; };
-		0D9F86F823AC63AA00C259A8 /* FButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F866F23AC63A900C259A8 /* FButton.cpp */; };
-		0D9F86F923AC63AA00C259A8 /* FLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F867023AC63A900C259A8 /* FLight.cpp */; };
-		0D9F86FA23AC63AA00C259A8 /* FXML.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F867123AC63A900C259A8 /* FXML.cpp */; };
-		0D9F86FB23AC63AA00C259A8 /* FParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F867423AC63A900C259A8 /* FParticle.cpp */; };
-		0D9F86FC23AC63AA00C259A8 /* FSpriteSequence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F867823AC63A900C259A8 /* FSpriteSequence.cpp */; };
-		0D9F86FD23AC63AA00C259A8 /* FImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F867B23AC63A900C259A8 /* FImage.cpp */; };
-		0D9F86FE23AC63AA00C259A8 /* FPointList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F867E23AC63A900C259A8 /* FPointList.cpp */; };
-		0D9F86FF23AC63AA00C259A8 /* FSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F868023AC63A900C259A8 /* FSprite.cpp */; };
-		0D9F870023AC63AA00C259A8 /* FObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F868123AC63A900C259A8 /* FObject.cpp */; };
-		0D9F870123AC63AA00C259A8 /* FIndexList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F868223AC63A900C259A8 /* FIndexList.cpp */; };
-		0D9F870223AC63AA00C259A8 /* UILabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F868723AC63A900C259A8 /* UILabel.cpp */; };
-		0D9F870323AC63AA00C259A8 /* UIElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F868823AC63A900C259A8 /* UIElement.cpp */; };
-		0D9F870423AC63AA00C259A8 /* UISegment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F868A23AC63A900C259A8 /* UISegment.cpp */; };
-		0D9F870523AC63AA00C259A8 /* UITextBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F868B23AC63A900C259A8 /* UITextBox.cpp */; };
-		0D9F870623AC63AA00C259A8 /* UIButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F868C23AC63A900C259A8 /* UIButton.cpp */; };
-		0D9F870723AC63AA00C259A8 /* UISegmentButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F868E23AC63A900C259A8 /* UISegmentButton.cpp */; };
-		0D9F870823AC63AA00C259A8 /* UICheckBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F869023AC63A900C259A8 /* UICheckBox.cpp */; };
-		0D9F870923AC63AA00C259A8 /* UIAlignmentPicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F869123AC63A900C259A8 /* UIAlignmentPicker.cpp */; };
-		0D9F870A23AC63AA00C259A8 /* UIAlignmentPickerButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F869323AC63A900C259A8 /* UIAlignmentPickerButton.cpp */; };
-		0D9F870B23AC63AA00C259A8 /* ToolMenuHeader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F869423AC63A900C259A8 /* ToolMenuHeader.cpp */; };
-		0D9F870C23AC63AA00C259A8 /* ToolMenuSectionRow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F869823AC63A900C259A8 /* ToolMenuSectionRow.cpp */; };
-		0D9F870D23AC63AA00C259A8 /* DragableCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F869C23AC63A900C259A8 /* DragableCanvas.cpp */; };
-		0D9F870E23AC63AA00C259A8 /* ToolMenuSection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F869F23AC63A900C259A8 /* ToolMenuSection.cpp */; };
-		0D9F870F23AC63AA00C259A8 /* ToolMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F86A023AC63A900C259A8 /* ToolMenu.cpp */; };
-		0D9F871023AC63AA00C259A8 /* UIRoundedRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F86A123AC63A900C259A8 /* UIRoundedRect.cpp */; };
-		0D9F871123AC63AA00C259A8 /* UIImagePicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F86A323AC63A900C259A8 /* UIImagePicker.cpp */; };
-		0D9F871223AC63AA00C259A8 /* Util_ScreenFrame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F86A423AC63A900C259A8 /* Util_ScreenFrame.cpp */; };
-		0D9F871323AC63AA00C259A8 /* UIStepper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F86A523AC63A900C259A8 /* UIStepper.cpp */; };
-		0D9F871423AC63AA00C259A8 /* ToolMenuPanelHeader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F86A623AC63A900C259A8 /* ToolMenuPanelHeader.cpp */; };
-		0D9F871523AC63AA00C259A8 /* UISlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F86AB23AC63AA00C259A8 /* UISlider.cpp */; };
-		0D9F871623AC63AA00C259A8 /* UIImagePickerCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F86AD23AC63AA00C259A8 /* UIImagePickerCell.cpp */; };
-		0D9F871723AC63AA00C259A8 /* ToolMenuPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F86B023AC63AA00C259A8 /* ToolMenuPanel.cpp */; };
-		0D9F871823AC63AA00C259A8 /* FWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F86B223AC63AA00C259A8 /* FWindow.cpp */; };
-		0D9F871923AC63AA00C259A8 /* FPolyPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F86B323AC63AA00C259A8 /* FPolyPath.cpp */; };
-		0D9F871A23AC63AA00C259A8 /* FUniforms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F86B423AC63AA00C259A8 /* FUniforms.cpp */; };
-		0D9F871B23AC63AA00C259A8 /* FRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F86B623AC63AA00C259A8 /* FRect.cpp */; };
-		0D9F871C23AC63AA00C259A8 /* FFloatList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F86B723AC63AA00C259A8 /* FFloatList.cpp */; };
-		0D9F871D23AC63AA00C259A8 /* FList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F86B823AC63AA00C259A8 /* FList.cpp */; };
-		0D9F871E23AC63AA00C259A8 /* FModelDataPackedSequence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F86BA23AC63AA00C259A8 /* FModelDataPackedSequence.cpp */; };
-		0D9F871F23AC63AA00C259A8 /* FFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F86BD23AC63AA00C259A8 /* FFile.cpp */; };
-		0D9F872023AC63AA00C259A8 /* FBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F86BE23AC63AA00C259A8 /* FBuffer.cpp */; };
-		0D9F872123AC63AA00C259A8 /* FApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F86BF23AC63AA00C259A8 /* FApp.cpp */; };
-		0D9F872223AC63AA00C259A8 /* FNotificationCenter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F86C523AC63AA00C259A8 /* FNotificationCenter.cpp */; };
-		0D9F872323AC63AA00C259A8 /* core_app_shell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F86C623AC63AA00C259A8 /* core_app_shell.cpp */; };
-		0D9F872423AC63AA00C259A8 /* FString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F86C923AC63AA00C259A8 /* FString.cpp */; };
-		0DA26074236627C7005AD610 /* BufferBindingWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA25F10236627C7005AD610 /* BufferBindingWrapper.mm */; };
-		0DA26075236627C7005AD610 /* os_core_graphics.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA25F11236627C7005AD610 /* os_core_graphics.mm */; };
-		0DA26076236627C7005AD610 /* Shape3DShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0DA25F15236627C7005AD610 /* Shape3DShaders.metal */; };
-		0DA26077236627C7005AD610 /* ShapeNodeShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0DA25F16236627C7005AD610 /* ShapeNodeShaders.metal */; };
-		0DA26078236627C7005AD610 /* PhongShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0DA25F18236627C7005AD610 /* PhongShaders.metal */; };
-		0DA26079236627C7005AD610 /* Shape2DShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0DA25F19236627C7005AD610 /* Shape2DShaders.metal */; };
-		0DA2607A236627C7005AD610 /* ModelShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0DA25F1A236627C7005AD610 /* ModelShaders.metal */; };
-		0DA2607B236627C7005AD610 /* SpriteShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0DA25F1B236627C7005AD610 /* SpriteShaders.metal */; };
-		0DA2607C236627C7005AD610 /* SimpleModelShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0DA25F1C236627C7005AD610 /* SimpleModelShaders.metal */; };
-		0DA2607D236627C7005AD610 /* TextureBindingWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA25F1E236627C7005AD610 /* TextureBindingWrapper.mm */; };
-		0DA2607E236627C7005AD610 /* MetalEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA25F21236627C7005AD610 /* MetalEngine.mm */; };
-		0DA2607F236627C7005AD610 /* MetalPipeline.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA25F22236627C7005AD610 /* MetalPipeline.mm */; };
 		0DA260D7236627C7005AD610 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA25FD5236627C7005AD610 /* RootViewController.mm */; };
 		0DA260D8236627C7005AD610 /* RecursiveLockWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA25FD6236627C7005AD610 /* RecursiveLockWrapper.m */; };
 		0DA260D9236627C7005AD610 /* os_core_social.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DA25FD7236627C7005AD610 /* os_core_social.cpp */; };
@@ -137,210 +34,112 @@
 		0DB8F2032366326F00AF587D /* FloatingCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DB8F1FF2366326E00AF587D /* FloatingCamera.cpp */; };
 		0DB8F2042366326F00AF587D /* PhongConfiguration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DB8F2012366326E00AF587D /* PhongConfiguration.cpp */; };
 		0DB8F207236633E200AF587D /* LandingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DB8F205236633E200AF587D /* LandingScene.cpp */; };
+		0DDA7AB323CD1065001850EB /* FHashMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA79EC23CD1065001850EB /* FHashMap.cpp */; };
+		0DDA7AB423CD1065001850EB /* FTextureCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA79EF23CD1065001850EB /* FTextureCache.cpp */; };
+		0DDA7AB523CD1065001850EB /* FModelData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA79F223CD1065001850EB /* FModelData.cpp */; };
+		0DDA7AB623CD1065001850EB /* FAchievementGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA79F423CD1065001850EB /* FAchievementGroup.cpp */; };
+		0DDA7AB723CD1065001850EB /* FIntList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA79F623CD1065001850EB /* FIntList.cpp */; };
+		0DDA7AB823CD1065001850EB /* FQuad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA79FB23CD1065001850EB /* FQuad.cpp */; };
+		0DDA7AB923CD1065001850EB /* FAssetWad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA79FE23CD1065001850EB /* FAssetWad.cpp */; };
+		0DDA7ABA23CD1065001850EB /* FImageBundler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA79FF23CD1065001850EB /* FImageBundler.cpp */; };
+		0DDA7ABB23CD1065001850EB /* FFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A0023CD1065001850EB /* FFont.cpp */; };
+		0DDA7ABC23CD1065001850EB /* FTouchManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A0223CD1065001850EB /* FTouchManager.cpp */; };
+		0DDA7ABD23CD1065001850EB /* FAchievement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A0523CD1065001850EB /* FAchievement.cpp */; };
+		0DDA7ABE23CD1065001850EB /* FMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A0623CD1065001850EB /* FMath.cpp */; };
+		0DDA7ABF23CD1065001850EB /* FBufferCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A0723CD1065001850EB /* FBufferCache.cpp */; };
+		0DDA7AC023CD1065001850EB /* FFloatBufferCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A0923CD1065001850EB /* FFloatBufferCache.cpp */; };
+		0DDA7AC123CD1065001850EB /* FMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A0C23CD1065001850EB /* FMatrix.cpp */; };
+		0DDA7AC223CD1065001850EB /* FPrimitive.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A0E23CD1065001850EB /* FPrimitive.cpp */; };
+		0DDA7AC323CD1065001850EB /* FSound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A1223CD1065001850EB /* FSound.cpp */; };
+		0DDA7AC423CD1065001850EB /* FScrollCanvasGeneric.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A1723CD1065001850EB /* FScrollCanvasGeneric.cpp */; };
+		0DDA7AC523CD1065001850EB /* FAchievementController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A1923CD1065001850EB /* FAchievementController.cpp */; };
+		0DDA7AC623CD1065001850EB /* FSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A1A23CD1065001850EB /* FSlider.cpp */; };
+		0DDA7AC723CD1065001850EB /* FJoystick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A1D23CD1065001850EB /* FJoystick.cpp */; };
+		0DDA7AC823CD1065001850EB /* FScrollCanvasPaged.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A2023CD1065001850EB /* FScrollCanvasPaged.cpp */; };
+		0DDA7AC923CD1065001850EB /* core_social.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A2123CD1065001850EB /* core_social.cpp */; };
+		0DDA7ACA23CD1065001850EB /* core_web.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A2423CD1065001850EB /* core_web.cpp */; };
+		0DDA7ACB23CD1065001850EB /* FSpriteCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A2523CD1065001850EB /* FSpriteCanvas.cpp */; };
+		0DDA7ACC23CD1065001850EB /* FDrawQuad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A2723CD1065001850EB /* FDrawQuad.cpp */; };
+		0DDA7ACD23CD1065001850EB /* FAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A2B23CD1065001850EB /* FAnimation.cpp */; };
+		0DDA7ACE23CD1065001850EB /* FTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A2C23CD1065001850EB /* FTexture.cpp */; };
+		0DDA7ACF23CD1065001850EB /* FGestureCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A2F23CD1065001850EB /* FGestureCanvas.cpp */; };
+		0DDA7AD023CD1065001850EB /* FIndexBufferCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A3023CD1065001850EB /* FIndexBufferCache.cpp */; };
+		0DDA7AD123CD1065001850EB /* FSpline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A3123CD1065001850EB /* FSpline.cpp */; };
+		0DDA7AD223CD1065001850EB /* FLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A3323CD1065001850EB /* FLine.cpp */; };
+		0DDA7AD323CD1065001850EB /* FSize.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A3523CD1065001850EB /* FSize.cpp */; };
+		0DDA7AD423CD1065001850EB /* FRandomizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A3623CD1065001850EB /* FRandomizer.cpp */; };
+		0DDA7AD523CD1065001850EB /* FResource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A3723CD1065001850EB /* FResource.cpp */; };
+		0DDA7AD623CD1065001850EB /* FModelDataPacked.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A3823CD1065001850EB /* FModelDataPacked.cpp */; };
+		0DDA7AD723CD1065001850EB /* FFileTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A3A23CD1065001850EB /* FFileTable.cpp */; };
+		0DDA7AD823CD1065001850EB /* FScrollCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A3B23CD1065001850EB /* FScrollCanvas.cpp */; };
+		0DDA7AD923CD1065001850EB /* FColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A3F23CD1065001850EB /* FColor.cpp */; };
+		0DDA7ADA23CD1065001850EB /* FJSON.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A4023CD1065001850EB /* FJSON.cpp */; };
+		0DDA7ADB23CD1065001850EB /* FVec3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A4223CD1065001850EB /* FVec3.cpp */; };
+		0DDA7ADC23CD1065001850EB /* FVec2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A4323CD1065001850EB /* FVec2.cpp */; };
+		0DDA7ADD23CD1065001850EB /* FAssetResolutionConfigurator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A4423CD1065001850EB /* FAssetResolutionConfigurator.cpp */; };
+		0DDA7ADE23CD1065001850EB /* FCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A4723CD1065001850EB /* FCanvas.cpp */; };
+		0DDA7ADF23CD1065001850EB /* GraphicsInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A4823CD1065001850EB /* GraphicsInterface.cpp */; };
+		0DDA7AE023CD1065001850EB /* FButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A4923CD1065001850EB /* FButton.cpp */; };
+		0DDA7AE123CD1065001850EB /* FLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A4A23CD1065001850EB /* FLight.cpp */; };
+		0DDA7AE223CD1065001850EB /* FXML.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A4B23CD1065001850EB /* FXML.cpp */; };
+		0DDA7AE323CD1065001850EB /* FParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A4E23CD1065001850EB /* FParticle.cpp */; };
+		0DDA7AE423CD1065001850EB /* FSpriteSequence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A5123CD1065001850EB /* FSpriteSequence.cpp */; };
+		0DDA7AE523CD1065001850EB /* FTextureSnake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A5423CD1065001850EB /* FTextureSnake.cpp */; };
+		0DDA7AE623CD1065001850EB /* FImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A5523CD1065001850EB /* FImage.cpp */; };
+		0DDA7AE723CD1065001850EB /* FPointList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A5823CD1065001850EB /* FPointList.cpp */; };
+		0DDA7AE823CD1065001850EB /* FSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A5A23CD1065001850EB /* FSprite.cpp */; };
+		0DDA7AE923CD1065001850EB /* FObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A5B23CD1065001850EB /* FObject.cpp */; };
+		0DDA7AEA23CD1065001850EB /* FIndexList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A5C23CD1065001850EB /* FIndexList.cpp */; };
+		0DDA7AEB23CD1065001850EB /* UILabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A6123CD1065001850EB /* UILabel.cpp */; };
+		0DDA7AEC23CD1065001850EB /* UIElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A6223CD1065001850EB /* UIElement.cpp */; };
+		0DDA7AED23CD1065001850EB /* UISegment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A6423CD1065001850EB /* UISegment.cpp */; };
+		0DDA7AEE23CD1065001850EB /* UITextBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A6523CD1065001850EB /* UITextBox.cpp */; };
+		0DDA7AEF23CD1065001850EB /* UIButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A6623CD1065001850EB /* UIButton.cpp */; };
+		0DDA7AF023CD1065001850EB /* UISegmentButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A6823CD1065001850EB /* UISegmentButton.cpp */; };
+		0DDA7AF123CD1065001850EB /* UICheckBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A6A23CD1065001850EB /* UICheckBox.cpp */; };
+		0DDA7AF223CD1065001850EB /* UIAlignmentPicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A6B23CD1065001850EB /* UIAlignmentPicker.cpp */; };
+		0DDA7AF323CD1065001850EB /* UIAlignmentPickerButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A6D23CD1065001850EB /* UIAlignmentPickerButton.cpp */; };
+		0DDA7AF423CD1065001850EB /* ToolMenuHeader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A6E23CD1065001850EB /* ToolMenuHeader.cpp */; };
+		0DDA7AF523CD1066001850EB /* ToolMenuSectionRow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A7223CD1065001850EB /* ToolMenuSectionRow.cpp */; };
+		0DDA7AF623CD1066001850EB /* DragableCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A7623CD1065001850EB /* DragableCanvas.cpp */; };
+		0DDA7AF723CD1066001850EB /* ToolMenuSection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A7923CD1065001850EB /* ToolMenuSection.cpp */; };
+		0DDA7AF823CD1066001850EB /* ToolMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A7A23CD1065001850EB /* ToolMenu.cpp */; };
+		0DDA7AF923CD1066001850EB /* UIRoundedRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A7B23CD1065001850EB /* UIRoundedRect.cpp */; };
+		0DDA7AFA23CD1066001850EB /* UIImagePicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A7D23CD1065001850EB /* UIImagePicker.cpp */; };
+		0DDA7AFB23CD1066001850EB /* Util_ScreenFrame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A7E23CD1065001850EB /* Util_ScreenFrame.cpp */; };
+		0DDA7AFC23CD1066001850EB /* UIStepper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A7F23CD1065001850EB /* UIStepper.cpp */; };
+		0DDA7AFD23CD1066001850EB /* ToolMenuPanelHeader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A8023CD1065001850EB /* ToolMenuPanelHeader.cpp */; };
+		0DDA7AFE23CD1066001850EB /* UISlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A8523CD1065001850EB /* UISlider.cpp */; };
+		0DDA7AFF23CD1066001850EB /* UIImagePickerCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A8723CD1065001850EB /* UIImagePickerCell.cpp */; };
+		0DDA7B0023CD1066001850EB /* ToolMenuPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A8A23CD1065001850EB /* ToolMenuPanel.cpp */; };
+		0DDA7B0123CD1066001850EB /* FWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A8C23CD1065001850EB /* FWindow.cpp */; };
+		0DDA7B0223CD1066001850EB /* FPolyPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A8D23CD1065001850EB /* FPolyPath.cpp */; };
+		0DDA7B0323CD1066001850EB /* FUniforms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A8E23CD1065001850EB /* FUniforms.cpp */; };
+		0DDA7B0423CD1066001850EB /* FRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A9023CD1065001850EB /* FRect.cpp */; };
+		0DDA7B0523CD1066001850EB /* FFloatList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A9123CD1065001850EB /* FFloatList.cpp */; };
+		0DDA7B0623CD1066001850EB /* FList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A9223CD1065001850EB /* FList.cpp */; };
+		0DDA7B0723CD1066001850EB /* FModelDataPackedSequence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A9423CD1065001850EB /* FModelDataPackedSequence.cpp */; };
+		0DDA7B0823CD1066001850EB /* FFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A9723CD1065001850EB /* FFile.cpp */; };
+		0DDA7B0923CD1066001850EB /* FBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A9823CD1065001850EB /* FBuffer.cpp */; };
+		0DDA7B0A23CD1066001850EB /* FApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A9923CD1065001850EB /* FApp.cpp */; };
+		0DDA7B0B23CD1066001850EB /* FNotificationCenter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7A9F23CD1065001850EB /* FNotificationCenter.cpp */; };
+		0DDA7B0C23CD1066001850EB /* core_app_shell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7AA023CD1065001850EB /* core_app_shell.cpp */; };
+		0DDA7B0D23CD1066001850EB /* FString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7AA323CD1065001850EB /* FString.cpp */; };
+		0DDA7B2223CD1072001850EB /* BufferBindingWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7B0F23CD1072001850EB /* BufferBindingWrapper.mm */; };
+		0DDA7B2323CD1072001850EB /* os_core_graphics.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7B1023CD1072001850EB /* os_core_graphics.mm */; };
+		0DDA7B2423CD1072001850EB /* Shape3DShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7B1423CD1072001850EB /* Shape3DShaders.metal */; };
+		0DDA7B2523CD1072001850EB /* ShapeNodeShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7B1523CD1072001850EB /* ShapeNodeShaders.metal */; };
+		0DDA7B2623CD1072001850EB /* PhongShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7B1723CD1072001850EB /* PhongShaders.metal */; };
+		0DDA7B2723CD1072001850EB /* Shape2DShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7B1823CD1072001850EB /* Shape2DShaders.metal */; };
+		0DDA7B2823CD1072001850EB /* ModelShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7B1923CD1072001850EB /* ModelShaders.metal */; };
+		0DDA7B2923CD1072001850EB /* SpriteShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7B1A23CD1072001850EB /* SpriteShaders.metal */; };
+		0DDA7B2A23CD1072001850EB /* SimpleModelShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7B1B23CD1072001850EB /* SimpleModelShaders.metal */; };
+		0DDA7B2B23CD1072001850EB /* TextureBindingWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7B1D23CD1072001850EB /* TextureBindingWrapper.mm */; };
+		0DDA7B2C23CD1072001850EB /* MetalEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7B2023CD1072001850EB /* MetalEngine.mm */; };
+		0DDA7B2D23CD1072001850EB /* MetalPipeline.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7B2123CD1072001850EB /* MetalPipeline.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0D9F861223AC63A900C259A8 /* FHashMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FHashMap.cpp; sourceTree = "<group>"; };
-		0D9F861323AC63A900C259A8 /* FImage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FImage.hpp; sourceTree = "<group>"; };
-		0D9F861423AC63A900C259A8 /* FObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FObject.hpp; sourceTree = "<group>"; };
-		0D9F861523AC63A900C259A8 /* FTextureCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FTextureCache.cpp; sourceTree = "<group>"; };
-		0D9F861623AC63A900C259A8 /* FPointList.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FPointList.hpp; sourceTree = "<group>"; };
-		0D9F861723AC63A900C259A8 /* FSprite.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FSprite.hpp; sourceTree = "<group>"; };
-		0D9F861823AC63A900C259A8 /* FModelData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FModelData.cpp; sourceTree = "<group>"; };
-		0D9F861923AC63A900C259A8 /* FIndexList.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FIndexList.hpp; sourceTree = "<group>"; };
-		0D9F861A23AC63A900C259A8 /* FAchievementGroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FAchievementGroup.cpp; sourceTree = "<group>"; };
-		0D9F861B23AC63A900C259A8 /* FWindow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FWindow.hpp; sourceTree = "<group>"; };
-		0D9F861C23AC63A900C259A8 /* FIntList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FIntList.cpp; sourceTree = "<group>"; };
-		0D9F861D23AC63A900C259A8 /* FUniforms.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FUniforms.hpp; sourceTree = "<group>"; };
-		0D9F861E23AC63A900C259A8 /* FPolyPath.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FPolyPath.hpp; sourceTree = "<group>"; };
-		0D9F861F23AC63A900C259A8 /* FModelData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FModelData.h; sourceTree = "<group>"; };
-		0D9F862023AC63A900C259A8 /* FRect.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FRect.hpp; sourceTree = "<group>"; };
-		0D9F862123AC63A900C259A8 /* FQuad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FQuad.cpp; sourceTree = "<group>"; };
-		0D9F862223AC63A900C259A8 /* FFloatList.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FFloatList.hpp; sourceTree = "<group>"; };
-		0D9F862323AC63A900C259A8 /* FList.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FList.hpp; sourceTree = "<group>"; };
-		0D9F862423AC63A900C259A8 /* FAssetWad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FAssetWad.cpp; sourceTree = "<group>"; };
-		0D9F862523AC63A900C259A8 /* FImageBundler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FImageBundler.cpp; sourceTree = "<group>"; };
-		0D9F862623AC63A900C259A8 /* FFont.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FFont.cpp; sourceTree = "<group>"; };
-		0D9F862723AC63A900C259A8 /* FModelDataPackedSequence.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FModelDataPackedSequence.hpp; sourceTree = "<group>"; };
-		0D9F862823AC63A900C259A8 /* FTouchManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FTouchManager.cpp; sourceTree = "<group>"; };
-		0D9F862923AC63A900C259A8 /* FBuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FBuffer.hpp; sourceTree = "<group>"; };
-		0D9F862A23AC63A900C259A8 /* FFile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FFile.hpp; sourceTree = "<group>"; };
-		0D9F862B23AC63A900C259A8 /* FAchievement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FAchievement.cpp; sourceTree = "<group>"; };
-		0D9F862C23AC63A900C259A8 /* FVertexBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FVertexBuffer.cpp; sourceTree = "<group>"; };
-		0D9F862D23AC63A900C259A8 /* FMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FMath.cpp; sourceTree = "<group>"; };
-		0D9F862E23AC63A900C259A8 /* FBufferCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FBufferCache.cpp; sourceTree = "<group>"; };
-		0D9F862F23AC63A900C259A8 /* core_social.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = core_social.h; sourceTree = "<group>"; };
-		0D9F863023AC63A900C259A8 /* FFloatBufferCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FFloatBufferCache.cpp; sourceTree = "<group>"; };
-		0D9F863123AC63A900C259A8 /* FApp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FApp.hpp; sourceTree = "<group>"; };
-		0D9F863223AC63A900C259A8 /* FNotificationCenter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FNotificationCenter.hpp; sourceTree = "<group>"; };
-		0D9F863323AC63A900C259A8 /* FMatrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FMatrix.cpp; sourceTree = "<group>"; };
-		0D9F863423AC63A900C259A8 /* FImageBundler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FImageBundler.h; sourceTree = "<group>"; };
-		0D9F863523AC63A900C259A8 /* FPrimitive.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FPrimitive.cpp; sourceTree = "<group>"; };
-		0D9F863623AC63A900C259A8 /* core_app_shell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = core_app_shell.hpp; sourceTree = "<group>"; };
-		0D9F863723AC63A900C259A8 /* FString.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FString.hpp; sourceTree = "<group>"; };
-		0D9F863823AC63A900C259A8 /* core_web.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = core_web.h; sourceTree = "<group>"; };
-		0D9F863923AC63A900C259A8 /* FSound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSound.cpp; sourceTree = "<group>"; };
-		0D9F863A23AC63A900C259A8 /* FSize.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FSize.hpp; sourceTree = "<group>"; };
-		0D9F863B23AC63A900C259A8 /* FRandomizer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FRandomizer.hpp; sourceTree = "<group>"; };
-		0D9F863C23AC63A900C259A8 /* FFileTable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FFileTable.hpp; sourceTree = "<group>"; };
-		0D9F863D23AC63A900C259A8 /* FResource.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FResource.hpp; sourceTree = "<group>"; };
-		0D9F863E23AC63A900C259A8 /* FScrollCanvasGeneric.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FScrollCanvasGeneric.cpp; sourceTree = "<group>"; };
-		0D9F863F23AC63A900C259A8 /* FModelDataPacked.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FModelDataPacked.hpp; sourceTree = "<group>"; };
-		0D9F864023AC63A900C259A8 /* FAchievementController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FAchievementController.cpp; sourceTree = "<group>"; };
-		0D9F864123AC63A900C259A8 /* FSlider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSlider.cpp; sourceTree = "<group>"; };
-		0D9F864223AC63A900C259A8 /* FScrollCanvas.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FScrollCanvas.hpp; sourceTree = "<group>"; };
-		0D9F864323AC63A900C259A8 /* FColor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FColor.hpp; sourceTree = "<group>"; };
-		0D9F864423AC63A900C259A8 /* FJoystick.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FJoystick.cpp; sourceTree = "<group>"; };
-		0D9F864523AC63A900C259A8 /* FJSON.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FJSON.hpp; sourceTree = "<group>"; };
-		0D9F864623AC63A900C259A8 /* FVec3.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FVec3.hpp; sourceTree = "<group>"; };
-		0D9F864723AC63A900C259A8 /* FScrollCanvasPaged.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FScrollCanvasPaged.cpp; sourceTree = "<group>"; };
-		0D9F864823AC63A900C259A8 /* core_social.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = core_social.cpp; sourceTree = "<group>"; };
-		0D9F864923AC63A900C259A8 /* FAssetResolutionConfigurator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FAssetResolutionConfigurator.hpp; sourceTree = "<group>"; };
-		0D9F864A23AC63A900C259A8 /* FVec2.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FVec2.hpp; sourceTree = "<group>"; };
-		0D9F864B23AC63A900C259A8 /* core_web.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = core_web.cpp; sourceTree = "<group>"; };
-		0D9F864C23AC63A900C259A8 /* FSpriteCanvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSpriteCanvas.cpp; sourceTree = "<group>"; };
-		0D9F864D23AC63A900C259A8 /* FCanvas.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FCanvas.hpp; sourceTree = "<group>"; };
-		0D9F864E23AC63A900C259A8 /* FDrawQuad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FDrawQuad.cpp; sourceTree = "<group>"; };
-		0D9F864F23AC63A900C259A8 /* FXML.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FXML.hpp; sourceTree = "<group>"; };
-		0D9F865023AC63A900C259A8 /* FLight.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FLight.hpp; sourceTree = "<group>"; };
-		0D9F865123AC63A900C259A8 /* FButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FButton.hpp; sourceTree = "<group>"; };
-		0D9F865223AC63A900C259A8 /* FAnimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FAnimation.cpp; sourceTree = "<group>"; };
-		0D9F865323AC63A900C259A8 /* FTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FTexture.cpp; sourceTree = "<group>"; };
-		0D9F865423AC63A900C259A8 /* GraphicsInterface.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GraphicsInterface.hpp; sourceTree = "<group>"; };
-		0D9F865523AC63A900C259A8 /* FParticle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FParticle.hpp; sourceTree = "<group>"; };
-		0D9F865623AC63A900C259A8 /* FGestureCanvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FGestureCanvas.cpp; sourceTree = "<group>"; };
-		0D9F865723AC63A900C259A8 /* FIndexBufferCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FIndexBufferCache.cpp; sourceTree = "<group>"; };
-		0D9F865823AC63A900C259A8 /* FSpline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSpline.cpp; sourceTree = "<group>"; };
-		0D9F865923AC63A900C259A8 /* FLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FLine.cpp; sourceTree = "<group>"; };
-		0D9F865A23AC63A900C259A8 /* FSound.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FSound.hpp; sourceTree = "<group>"; };
-		0D9F865B23AC63A900C259A8 /* FSize.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSize.cpp; sourceTree = "<group>"; };
-		0D9F865C23AC63A900C259A8 /* FRandomizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FRandomizer.cpp; sourceTree = "<group>"; };
-		0D9F865D23AC63A900C259A8 /* FResource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FResource.cpp; sourceTree = "<group>"; };
-		0D9F865E23AC63A900C259A8 /* FModelDataPacked.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FModelDataPacked.cpp; sourceTree = "<group>"; };
-		0D9F865F23AC63A900C259A8 /* FScrollCanvasGeneric.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FScrollCanvasGeneric.hpp; sourceTree = "<group>"; };
-		0D9F866023AC63A900C259A8 /* FFileTable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FFileTable.cpp; sourceTree = "<group>"; };
-		0D9F866123AC63A900C259A8 /* FScrollCanvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FScrollCanvas.cpp; sourceTree = "<group>"; };
-		0D9F866223AC63A900C259A8 /* core_includes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = core_includes.h; sourceTree = "<group>"; };
-		0D9F866323AC63A900C259A8 /* FAchievementController.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FAchievementController.hpp; sourceTree = "<group>"; };
-		0D9F866423AC63A900C259A8 /* FSlider.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FSlider.hpp; sourceTree = "<group>"; };
-		0D9F866523AC63A900C259A8 /* FColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FColor.cpp; sourceTree = "<group>"; };
-		0D9F866623AC63A900C259A8 /* FJSON.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FJSON.cpp; sourceTree = "<group>"; };
-		0D9F866723AC63A900C259A8 /* FScrollCanvasPaged.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FScrollCanvasPaged.hpp; sourceTree = "<group>"; };
-		0D9F866823AC63A900C259A8 /* FVec3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FVec3.cpp; sourceTree = "<group>"; };
-		0D9F866923AC63A900C259A8 /* FVec2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FVec2.cpp; sourceTree = "<group>"; };
-		0D9F866A23AC63A900C259A8 /* FAssetResolutionConfigurator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FAssetResolutionConfigurator.cpp; sourceTree = "<group>"; };
-		0D9F866B23AC63A900C259A8 /* FSpriteCanvas.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FSpriteCanvas.hpp; sourceTree = "<group>"; };
-		0D9F866C23AC63A900C259A8 /* FDrawQuad.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FDrawQuad.hpp; sourceTree = "<group>"; };
-		0D9F866D23AC63A900C259A8 /* FCanvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FCanvas.cpp; sourceTree = "<group>"; };
-		0D9F866E23AC63A900C259A8 /* GraphicsInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphicsInterface.cpp; sourceTree = "<group>"; };
-		0D9F866F23AC63A900C259A8 /* FButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FButton.cpp; sourceTree = "<group>"; };
-		0D9F867023AC63A900C259A8 /* FLight.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FLight.cpp; sourceTree = "<group>"; };
-		0D9F867123AC63A900C259A8 /* FXML.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FXML.cpp; sourceTree = "<group>"; };
-		0D9F867223AC63A900C259A8 /* FTexture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FTexture.hpp; sourceTree = "<group>"; };
-		0D9F867323AC63A900C259A8 /* FAnimation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FAnimation.hpp; sourceTree = "<group>"; };
-		0D9F867423AC63A900C259A8 /* FParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FParticle.cpp; sourceTree = "<group>"; };
-		0D9F867523AC63A900C259A8 /* FGestureCanvas.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FGestureCanvas.hpp; sourceTree = "<group>"; };
-		0D9F867623AC63A900C259A8 /* FIndexBufferCache.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FIndexBufferCache.hpp; sourceTree = "<group>"; };
-		0D9F867723AC63A900C259A8 /* FVertexBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FVertexBuffer.h; sourceTree = "<group>"; };
-		0D9F867823AC63A900C259A8 /* FSpriteSequence.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSpriteSequence.cpp; sourceTree = "<group>"; };
-		0D9F867923AC63A900C259A8 /* FSpline.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FSpline.hpp; sourceTree = "<group>"; };
-		0D9F867A23AC63A900C259A8 /* FLine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FLine.hpp; sourceTree = "<group>"; };
-		0D9F867B23AC63A900C259A8 /* FImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FImage.cpp; sourceTree = "<group>"; };
-		0D9F867C23AC63A900C259A8 /* FHashMap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FHashMap.hpp; sourceTree = "<group>"; };
-		0D9F867D23AC63A900C259A8 /* FTextureCache.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FTextureCache.hpp; sourceTree = "<group>"; };
-		0D9F867E23AC63A900C259A8 /* FPointList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FPointList.cpp; sourceTree = "<group>"; };
-		0D9F867F23AC63A900C259A8 /* FJoystick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJoystick.h; sourceTree = "<group>"; };
-		0D9F868023AC63A900C259A8 /* FSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSprite.cpp; sourceTree = "<group>"; };
-		0D9F868123AC63A900C259A8 /* FObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FObject.cpp; sourceTree = "<group>"; };
-		0D9F868223AC63A900C259A8 /* FIndexList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FIndexList.cpp; sourceTree = "<group>"; };
-		0D9F868323AC63A900C259A8 /* FAchievementGroup.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FAchievementGroup.hpp; sourceTree = "<group>"; };
-		0D9F868523AC63A900C259A8 /* UIStepper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UIStepper.hpp; sourceTree = "<group>"; };
-		0D9F868623AC63A900C259A8 /* ToolMenuPanelHeader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ToolMenuPanelHeader.hpp; sourceTree = "<group>"; };
-		0D9F868723AC63A900C259A8 /* UILabel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UILabel.cpp; sourceTree = "<group>"; };
-		0D9F868823AC63A900C259A8 /* UIElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIElement.cpp; sourceTree = "<group>"; };
-		0D9F868923AC63A900C259A8 /* UISlider.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UISlider.hpp; sourceTree = "<group>"; };
-		0D9F868A23AC63A900C259A8 /* UISegment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UISegment.cpp; sourceTree = "<group>"; };
-		0D9F868B23AC63A900C259A8 /* UITextBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UITextBox.cpp; sourceTree = "<group>"; };
-		0D9F868C23AC63A900C259A8 /* UIButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIButton.cpp; sourceTree = "<group>"; };
-		0D9F868D23AC63A900C259A8 /* UIImagePickerCell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UIImagePickerCell.hpp; sourceTree = "<group>"; };
-		0D9F868E23AC63A900C259A8 /* UISegmentButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UISegmentButton.cpp; sourceTree = "<group>"; };
-		0D9F868F23AC63A900C259A8 /* ToolMenuPanel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ToolMenuPanel.hpp; sourceTree = "<group>"; };
-		0D9F869023AC63A900C259A8 /* UICheckBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UICheckBox.cpp; sourceTree = "<group>"; };
-		0D9F869123AC63A900C259A8 /* UIAlignmentPicker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIAlignmentPicker.cpp; sourceTree = "<group>"; };
-		0D9F869223AC63A900C259A8 /* DragableCanvas.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DragableCanvas.hpp; sourceTree = "<group>"; };
-		0D9F869323AC63A900C259A8 /* UIAlignmentPickerButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIAlignmentPickerButton.cpp; sourceTree = "<group>"; };
-		0D9F869423AC63A900C259A8 /* ToolMenuHeader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToolMenuHeader.cpp; sourceTree = "<group>"; };
-		0D9F869523AC63A900C259A8 /* ToolMenuSection.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ToolMenuSection.hpp; sourceTree = "<group>"; };
-		0D9F869623AC63A900C259A8 /* ToolMenu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ToolMenu.hpp; sourceTree = "<group>"; };
-		0D9F869723AC63A900C259A8 /* UIRoundedRect.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UIRoundedRect.hpp; sourceTree = "<group>"; };
-		0D9F869823AC63A900C259A8 /* ToolMenuSectionRow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToolMenuSectionRow.cpp; sourceTree = "<group>"; };
-		0D9F869923AC63A900C259A8 /* UIImagePicker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UIImagePicker.hpp; sourceTree = "<group>"; };
-		0D9F869A23AC63A900C259A8 /* UICheckBox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UICheckBox.hpp; sourceTree = "<group>"; };
-		0D9F869B23AC63A900C259A8 /* UIAlignmentPicker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UIAlignmentPicker.hpp; sourceTree = "<group>"; };
-		0D9F869C23AC63A900C259A8 /* DragableCanvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DragableCanvas.cpp; sourceTree = "<group>"; };
-		0D9F869D23AC63A900C259A8 /* UIAlignmentPickerButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UIAlignmentPickerButton.hpp; sourceTree = "<group>"; };
-		0D9F869E23AC63A900C259A8 /* ToolMenuHeader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ToolMenuHeader.hpp; sourceTree = "<group>"; };
-		0D9F869F23AC63A900C259A8 /* ToolMenuSection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToolMenuSection.cpp; sourceTree = "<group>"; };
-		0D9F86A023AC63A900C259A8 /* ToolMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToolMenu.cpp; sourceTree = "<group>"; };
-		0D9F86A123AC63A900C259A8 /* UIRoundedRect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIRoundedRect.cpp; sourceTree = "<group>"; };
-		0D9F86A223AC63A900C259A8 /* ToolMenuSectionRow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ToolMenuSectionRow.hpp; sourceTree = "<group>"; };
-		0D9F86A323AC63A900C259A8 /* UIImagePicker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIImagePicker.cpp; sourceTree = "<group>"; };
-		0D9F86A423AC63A900C259A8 /* Util_ScreenFrame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Util_ScreenFrame.cpp; sourceTree = "<group>"; };
-		0D9F86A523AC63A900C259A8 /* UIStepper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIStepper.cpp; sourceTree = "<group>"; };
-		0D9F86A623AC63A900C259A8 /* ToolMenuPanelHeader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToolMenuPanelHeader.cpp; sourceTree = "<group>"; };
-		0D9F86A723AC63A900C259A8 /* UILabel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UILabel.hpp; sourceTree = "<group>"; };
-		0D9F86A823AC63A900C259A8 /* UIElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UIElement.hpp; sourceTree = "<group>"; };
-		0D9F86A923AC63AA00C259A8 /* UISegment.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UISegment.hpp; sourceTree = "<group>"; };
-		0D9F86AA23AC63AA00C259A8 /* UITextBox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UITextBox.hpp; sourceTree = "<group>"; };
-		0D9F86AB23AC63AA00C259A8 /* UISlider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UISlider.cpp; sourceTree = "<group>"; };
-		0D9F86AC23AC63AA00C259A8 /* UIButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UIButton.hpp; sourceTree = "<group>"; };
-		0D9F86AD23AC63AA00C259A8 /* UIImagePickerCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIImagePickerCell.cpp; sourceTree = "<group>"; };
-		0D9F86AE23AC63AA00C259A8 /* UISegmentButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UISegmentButton.hpp; sourceTree = "<group>"; };
-		0D9F86AF23AC63AA00C259A8 /* Util_ScreenFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util_ScreenFrame.h; sourceTree = "<group>"; };
-		0D9F86B023AC63AA00C259A8 /* ToolMenuPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToolMenuPanel.cpp; sourceTree = "<group>"; };
-		0D9F86B123AC63AA00C259A8 /* FIntList.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FIntList.hpp; sourceTree = "<group>"; };
-		0D9F86B223AC63AA00C259A8 /* FWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FWindow.cpp; sourceTree = "<group>"; };
-		0D9F86B323AC63AA00C259A8 /* FPolyPath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FPolyPath.cpp; sourceTree = "<group>"; };
-		0D9F86B423AC63AA00C259A8 /* FUniforms.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FUniforms.cpp; sourceTree = "<group>"; };
-		0D9F86B523AC63AA00C259A8 /* FQuad.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FQuad.hpp; sourceTree = "<group>"; };
-		0D9F86B623AC63AA00C259A8 /* FRect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FRect.cpp; sourceTree = "<group>"; };
-		0D9F86B723AC63AA00C259A8 /* FFloatList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FFloatList.cpp; sourceTree = "<group>"; };
-		0D9F86B823AC63AA00C259A8 /* FList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FList.cpp; sourceTree = "<group>"; };
-		0D9F86B923AC63AA00C259A8 /* FAssetWad.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FAssetWad.hpp; sourceTree = "<group>"; };
-		0D9F86BA23AC63AA00C259A8 /* FModelDataPackedSequence.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FModelDataPackedSequence.cpp; sourceTree = "<group>"; };
-		0D9F86BB23AC63AA00C259A8 /* FFont.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FFont.hpp; sourceTree = "<group>"; };
-		0D9F86BC23AC63AA00C259A8 /* FTouchManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FTouchManager.hpp; sourceTree = "<group>"; };
-		0D9F86BD23AC63AA00C259A8 /* FFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FFile.cpp; sourceTree = "<group>"; };
-		0D9F86BE23AC63AA00C259A8 /* FBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FBuffer.cpp; sourceTree = "<group>"; };
-		0D9F86BF23AC63AA00C259A8 /* FApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FApp.cpp; sourceTree = "<group>"; };
-		0D9F86C023AC63AA00C259A8 /* FBufferCache.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FBufferCache.hpp; sourceTree = "<group>"; };
-		0D9F86C123AC63AA00C259A8 /* FFloatBufferCache.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FFloatBufferCache.hpp; sourceTree = "<group>"; };
-		0D9F86C223AC63AA00C259A8 /* FAchievement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FAchievement.hpp; sourceTree = "<group>"; };
-		0D9F86C323AC63AA00C259A8 /* FMath.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FMath.hpp; sourceTree = "<group>"; };
-		0D9F86C423AC63AA00C259A8 /* FSpriteSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSpriteSequence.h; sourceTree = "<group>"; };
-		0D9F86C523AC63AA00C259A8 /* FNotificationCenter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FNotificationCenter.cpp; sourceTree = "<group>"; };
-		0D9F86C623AC63AA00C259A8 /* core_app_shell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = core_app_shell.cpp; sourceTree = "<group>"; };
-		0D9F86C723AC63AA00C259A8 /* FPrimitive.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FPrimitive.hpp; sourceTree = "<group>"; };
-		0D9F86C823AC63AA00C259A8 /* FMatrix.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FMatrix.hpp; sourceTree = "<group>"; };
-		0D9F86C923AC63AA00C259A8 /* FString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FString.cpp; sourceTree = "<group>"; };
-		0DA25F10236627C7005AD610 /* BufferBindingWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BufferBindingWrapper.mm; sourceTree = "<group>"; };
-		0DA25F11236627C7005AD610 /* os_core_graphics.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = os_core_graphics.mm; sourceTree = "<group>"; };
-		0DA25F12236627C7005AD610 /* TextureBindingWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureBindingWrapper.h; sourceTree = "<group>"; };
-		0DA25F13236627C7005AD610 /* MetalPipeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetalPipeline.h; sourceTree = "<group>"; };
-		0DA25F15236627C7005AD610 /* Shape3DShaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shape3DShaders.metal; sourceTree = "<group>"; };
-		0DA25F16236627C7005AD610 /* ShapeNodeShaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = ShapeNodeShaders.metal; sourceTree = "<group>"; };
-		0DA25F17236627C7005AD610 /* ShaderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
-		0DA25F18236627C7005AD610 /* PhongShaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = PhongShaders.metal; sourceTree = "<group>"; };
-		0DA25F19236627C7005AD610 /* Shape2DShaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shape2DShaders.metal; sourceTree = "<group>"; };
-		0DA25F1A236627C7005AD610 /* ModelShaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = ModelShaders.metal; sourceTree = "<group>"; };
-		0DA25F1B236627C7005AD610 /* SpriteShaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = SpriteShaders.metal; sourceTree = "<group>"; };
-		0DA25F1C236627C7005AD610 /* SimpleModelShaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = SimpleModelShaders.metal; sourceTree = "<group>"; };
-		0DA25F1D236627C7005AD610 /* BufferBindingWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BufferBindingWrapper.h; sourceTree = "<group>"; };
-		0DA25F1E236627C7005AD610 /* TextureBindingWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TextureBindingWrapper.mm; sourceTree = "<group>"; };
-		0DA25F1F236627C7005AD610 /* MetalEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetalEngine.h; sourceTree = "<group>"; };
-		0DA25F20236627C7005AD610 /* os_core_graphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = os_core_graphics.h; sourceTree = "<group>"; };
-		0DA25F21236627C7005AD610 /* MetalEngine.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MetalEngine.mm; sourceTree = "<group>"; };
-		0DA25F22236627C7005AD610 /* MetalPipeline.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MetalPipeline.mm; sourceTree = "<group>"; };
 		0DA25FD5236627C7005AD610 /* RootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RootViewController.mm; sourceTree = "<group>"; };
 		0DA25FD6236627C7005AD610 /* RecursiveLockWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecursiveLockWrapper.m; sourceTree = "<group>"; };
 		0DA25FD7236627C7005AD610 /* os_core_social.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = os_core_social.cpp; sourceTree = "<group>"; };
@@ -388,6 +187,207 @@
 		0DB8F2022366326E00AF587D /* FloatingCamera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FloatingCamera.hpp; sourceTree = "<group>"; };
 		0DB8F205236633E200AF587D /* LandingScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LandingScene.cpp; sourceTree = "<group>"; };
 		0DB8F206236633E200AF587D /* LandingScene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LandingScene.hpp; sourceTree = "<group>"; };
+		0DDA79EC23CD1065001850EB /* FHashMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FHashMap.cpp; sourceTree = "<group>"; };
+		0DDA79ED23CD1065001850EB /* FImage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FImage.hpp; sourceTree = "<group>"; };
+		0DDA79EE23CD1065001850EB /* FObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FObject.hpp; sourceTree = "<group>"; };
+		0DDA79EF23CD1065001850EB /* FTextureCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FTextureCache.cpp; sourceTree = "<group>"; };
+		0DDA79F023CD1065001850EB /* FPointList.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FPointList.hpp; sourceTree = "<group>"; };
+		0DDA79F123CD1065001850EB /* FSprite.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FSprite.hpp; sourceTree = "<group>"; };
+		0DDA79F223CD1065001850EB /* FModelData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FModelData.cpp; sourceTree = "<group>"; };
+		0DDA79F323CD1065001850EB /* FIndexList.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FIndexList.hpp; sourceTree = "<group>"; };
+		0DDA79F423CD1065001850EB /* FAchievementGroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FAchievementGroup.cpp; sourceTree = "<group>"; };
+		0DDA79F523CD1065001850EB /* FWindow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FWindow.hpp; sourceTree = "<group>"; };
+		0DDA79F623CD1065001850EB /* FIntList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FIntList.cpp; sourceTree = "<group>"; };
+		0DDA79F723CD1065001850EB /* FUniforms.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FUniforms.hpp; sourceTree = "<group>"; };
+		0DDA79F823CD1065001850EB /* FPolyPath.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FPolyPath.hpp; sourceTree = "<group>"; };
+		0DDA79F923CD1065001850EB /* FModelData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FModelData.h; sourceTree = "<group>"; };
+		0DDA79FA23CD1065001850EB /* FRect.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FRect.hpp; sourceTree = "<group>"; };
+		0DDA79FB23CD1065001850EB /* FQuad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FQuad.cpp; sourceTree = "<group>"; };
+		0DDA79FC23CD1065001850EB /* FFloatList.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FFloatList.hpp; sourceTree = "<group>"; };
+		0DDA79FD23CD1065001850EB /* FList.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FList.hpp; sourceTree = "<group>"; };
+		0DDA79FE23CD1065001850EB /* FAssetWad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FAssetWad.cpp; sourceTree = "<group>"; };
+		0DDA79FF23CD1065001850EB /* FImageBundler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FImageBundler.cpp; sourceTree = "<group>"; };
+		0DDA7A0023CD1065001850EB /* FFont.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FFont.cpp; sourceTree = "<group>"; };
+		0DDA7A0123CD1065001850EB /* FModelDataPackedSequence.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FModelDataPackedSequence.hpp; sourceTree = "<group>"; };
+		0DDA7A0223CD1065001850EB /* FTouchManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FTouchManager.cpp; sourceTree = "<group>"; };
+		0DDA7A0323CD1065001850EB /* FBuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FBuffer.hpp; sourceTree = "<group>"; };
+		0DDA7A0423CD1065001850EB /* FFile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FFile.hpp; sourceTree = "<group>"; };
+		0DDA7A0523CD1065001850EB /* FAchievement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FAchievement.cpp; sourceTree = "<group>"; };
+		0DDA7A0623CD1065001850EB /* FMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FMath.cpp; sourceTree = "<group>"; };
+		0DDA7A0723CD1065001850EB /* FBufferCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FBufferCache.cpp; sourceTree = "<group>"; };
+		0DDA7A0823CD1065001850EB /* core_social.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = core_social.h; sourceTree = "<group>"; };
+		0DDA7A0923CD1065001850EB /* FFloatBufferCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FFloatBufferCache.cpp; sourceTree = "<group>"; };
+		0DDA7A0A23CD1065001850EB /* FApp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FApp.hpp; sourceTree = "<group>"; };
+		0DDA7A0B23CD1065001850EB /* FNotificationCenter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FNotificationCenter.hpp; sourceTree = "<group>"; };
+		0DDA7A0C23CD1065001850EB /* FMatrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FMatrix.cpp; sourceTree = "<group>"; };
+		0DDA7A0D23CD1065001850EB /* FImageBundler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FImageBundler.h; sourceTree = "<group>"; };
+		0DDA7A0E23CD1065001850EB /* FPrimitive.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FPrimitive.cpp; sourceTree = "<group>"; };
+		0DDA7A0F23CD1065001850EB /* core_app_shell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = core_app_shell.hpp; sourceTree = "<group>"; };
+		0DDA7A1023CD1065001850EB /* FString.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FString.hpp; sourceTree = "<group>"; };
+		0DDA7A1123CD1065001850EB /* core_web.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = core_web.h; sourceTree = "<group>"; };
+		0DDA7A1223CD1065001850EB /* FSound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSound.cpp; sourceTree = "<group>"; };
+		0DDA7A1323CD1065001850EB /* FSize.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FSize.hpp; sourceTree = "<group>"; };
+		0DDA7A1423CD1065001850EB /* FRandomizer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FRandomizer.hpp; sourceTree = "<group>"; };
+		0DDA7A1523CD1065001850EB /* FFileTable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FFileTable.hpp; sourceTree = "<group>"; };
+		0DDA7A1623CD1065001850EB /* FResource.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FResource.hpp; sourceTree = "<group>"; };
+		0DDA7A1723CD1065001850EB /* FScrollCanvasGeneric.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FScrollCanvasGeneric.cpp; sourceTree = "<group>"; };
+		0DDA7A1823CD1065001850EB /* FModelDataPacked.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FModelDataPacked.hpp; sourceTree = "<group>"; };
+		0DDA7A1923CD1065001850EB /* FAchievementController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FAchievementController.cpp; sourceTree = "<group>"; };
+		0DDA7A1A23CD1065001850EB /* FSlider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSlider.cpp; sourceTree = "<group>"; };
+		0DDA7A1B23CD1065001850EB /* FScrollCanvas.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FScrollCanvas.hpp; sourceTree = "<group>"; };
+		0DDA7A1C23CD1065001850EB /* FColor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FColor.hpp; sourceTree = "<group>"; };
+		0DDA7A1D23CD1065001850EB /* FJoystick.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FJoystick.cpp; sourceTree = "<group>"; };
+		0DDA7A1E23CD1065001850EB /* FJSON.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FJSON.hpp; sourceTree = "<group>"; };
+		0DDA7A1F23CD1065001850EB /* FVec3.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FVec3.hpp; sourceTree = "<group>"; };
+		0DDA7A2023CD1065001850EB /* FScrollCanvasPaged.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FScrollCanvasPaged.cpp; sourceTree = "<group>"; };
+		0DDA7A2123CD1065001850EB /* core_social.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = core_social.cpp; sourceTree = "<group>"; };
+		0DDA7A2223CD1065001850EB /* FAssetResolutionConfigurator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FAssetResolutionConfigurator.hpp; sourceTree = "<group>"; };
+		0DDA7A2323CD1065001850EB /* FVec2.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FVec2.hpp; sourceTree = "<group>"; };
+		0DDA7A2423CD1065001850EB /* core_web.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = core_web.cpp; sourceTree = "<group>"; };
+		0DDA7A2523CD1065001850EB /* FSpriteCanvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSpriteCanvas.cpp; sourceTree = "<group>"; };
+		0DDA7A2623CD1065001850EB /* FCanvas.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FCanvas.hpp; sourceTree = "<group>"; };
+		0DDA7A2723CD1065001850EB /* FDrawQuad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FDrawQuad.cpp; sourceTree = "<group>"; };
+		0DDA7A2823CD1065001850EB /* FXML.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FXML.hpp; sourceTree = "<group>"; };
+		0DDA7A2923CD1065001850EB /* FLight.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FLight.hpp; sourceTree = "<group>"; };
+		0DDA7A2A23CD1065001850EB /* FButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FButton.hpp; sourceTree = "<group>"; };
+		0DDA7A2B23CD1065001850EB /* FAnimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FAnimation.cpp; sourceTree = "<group>"; };
+		0DDA7A2C23CD1065001850EB /* FTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FTexture.cpp; sourceTree = "<group>"; };
+		0DDA7A2D23CD1065001850EB /* GraphicsInterface.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GraphicsInterface.hpp; sourceTree = "<group>"; };
+		0DDA7A2E23CD1065001850EB /* FParticle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FParticle.hpp; sourceTree = "<group>"; };
+		0DDA7A2F23CD1065001850EB /* FGestureCanvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FGestureCanvas.cpp; sourceTree = "<group>"; };
+		0DDA7A3023CD1065001850EB /* FIndexBufferCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FIndexBufferCache.cpp; sourceTree = "<group>"; };
+		0DDA7A3123CD1065001850EB /* FSpline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSpline.cpp; sourceTree = "<group>"; };
+		0DDA7A3223CD1065001850EB /* FTextureSnake.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FTextureSnake.hpp; sourceTree = "<group>"; };
+		0DDA7A3323CD1065001850EB /* FLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FLine.cpp; sourceTree = "<group>"; };
+		0DDA7A3423CD1065001850EB /* FSound.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FSound.hpp; sourceTree = "<group>"; };
+		0DDA7A3523CD1065001850EB /* FSize.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSize.cpp; sourceTree = "<group>"; };
+		0DDA7A3623CD1065001850EB /* FRandomizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FRandomizer.cpp; sourceTree = "<group>"; };
+		0DDA7A3723CD1065001850EB /* FResource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FResource.cpp; sourceTree = "<group>"; };
+		0DDA7A3823CD1065001850EB /* FModelDataPacked.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FModelDataPacked.cpp; sourceTree = "<group>"; };
+		0DDA7A3923CD1065001850EB /* FScrollCanvasGeneric.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FScrollCanvasGeneric.hpp; sourceTree = "<group>"; };
+		0DDA7A3A23CD1065001850EB /* FFileTable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FFileTable.cpp; sourceTree = "<group>"; };
+		0DDA7A3B23CD1065001850EB /* FScrollCanvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FScrollCanvas.cpp; sourceTree = "<group>"; };
+		0DDA7A3C23CD1065001850EB /* core_includes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = core_includes.h; sourceTree = "<group>"; };
+		0DDA7A3D23CD1065001850EB /* FAchievementController.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FAchievementController.hpp; sourceTree = "<group>"; };
+		0DDA7A3E23CD1065001850EB /* FSlider.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FSlider.hpp; sourceTree = "<group>"; };
+		0DDA7A3F23CD1065001850EB /* FColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FColor.cpp; sourceTree = "<group>"; };
+		0DDA7A4023CD1065001850EB /* FJSON.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FJSON.cpp; sourceTree = "<group>"; };
+		0DDA7A4123CD1065001850EB /* FScrollCanvasPaged.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FScrollCanvasPaged.hpp; sourceTree = "<group>"; };
+		0DDA7A4223CD1065001850EB /* FVec3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FVec3.cpp; sourceTree = "<group>"; };
+		0DDA7A4323CD1065001850EB /* FVec2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FVec2.cpp; sourceTree = "<group>"; };
+		0DDA7A4423CD1065001850EB /* FAssetResolutionConfigurator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FAssetResolutionConfigurator.cpp; sourceTree = "<group>"; };
+		0DDA7A4523CD1065001850EB /* FSpriteCanvas.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FSpriteCanvas.hpp; sourceTree = "<group>"; };
+		0DDA7A4623CD1065001850EB /* FDrawQuad.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FDrawQuad.hpp; sourceTree = "<group>"; };
+		0DDA7A4723CD1065001850EB /* FCanvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FCanvas.cpp; sourceTree = "<group>"; };
+		0DDA7A4823CD1065001850EB /* GraphicsInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphicsInterface.cpp; sourceTree = "<group>"; };
+		0DDA7A4923CD1065001850EB /* FButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FButton.cpp; sourceTree = "<group>"; };
+		0DDA7A4A23CD1065001850EB /* FLight.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FLight.cpp; sourceTree = "<group>"; };
+		0DDA7A4B23CD1065001850EB /* FXML.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FXML.cpp; sourceTree = "<group>"; };
+		0DDA7A4C23CD1065001850EB /* FTexture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FTexture.hpp; sourceTree = "<group>"; };
+		0DDA7A4D23CD1065001850EB /* FAnimation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FAnimation.hpp; sourceTree = "<group>"; };
+		0DDA7A4E23CD1065001850EB /* FParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FParticle.cpp; sourceTree = "<group>"; };
+		0DDA7A4F23CD1065001850EB /* FGestureCanvas.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FGestureCanvas.hpp; sourceTree = "<group>"; };
+		0DDA7A5023CD1065001850EB /* FIndexBufferCache.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FIndexBufferCache.hpp; sourceTree = "<group>"; };
+		0DDA7A5123CD1065001850EB /* FSpriteSequence.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSpriteSequence.cpp; sourceTree = "<group>"; };
+		0DDA7A5223CD1065001850EB /* FSpline.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FSpline.hpp; sourceTree = "<group>"; };
+		0DDA7A5323CD1065001850EB /* FLine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FLine.hpp; sourceTree = "<group>"; };
+		0DDA7A5423CD1065001850EB /* FTextureSnake.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FTextureSnake.cpp; sourceTree = "<group>"; };
+		0DDA7A5523CD1065001850EB /* FImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FImage.cpp; sourceTree = "<group>"; };
+		0DDA7A5623CD1065001850EB /* FHashMap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FHashMap.hpp; sourceTree = "<group>"; };
+		0DDA7A5723CD1065001850EB /* FTextureCache.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FTextureCache.hpp; sourceTree = "<group>"; };
+		0DDA7A5823CD1065001850EB /* FPointList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FPointList.cpp; sourceTree = "<group>"; };
+		0DDA7A5923CD1065001850EB /* FJoystick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJoystick.h; sourceTree = "<group>"; };
+		0DDA7A5A23CD1065001850EB /* FSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSprite.cpp; sourceTree = "<group>"; };
+		0DDA7A5B23CD1065001850EB /* FObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FObject.cpp; sourceTree = "<group>"; };
+		0DDA7A5C23CD1065001850EB /* FIndexList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FIndexList.cpp; sourceTree = "<group>"; };
+		0DDA7A5D23CD1065001850EB /* FAchievementGroup.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FAchievementGroup.hpp; sourceTree = "<group>"; };
+		0DDA7A5F23CD1065001850EB /* UIStepper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UIStepper.hpp; sourceTree = "<group>"; };
+		0DDA7A6023CD1065001850EB /* ToolMenuPanelHeader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ToolMenuPanelHeader.hpp; sourceTree = "<group>"; };
+		0DDA7A6123CD1065001850EB /* UILabel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UILabel.cpp; sourceTree = "<group>"; };
+		0DDA7A6223CD1065001850EB /* UIElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIElement.cpp; sourceTree = "<group>"; };
+		0DDA7A6323CD1065001850EB /* UISlider.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UISlider.hpp; sourceTree = "<group>"; };
+		0DDA7A6423CD1065001850EB /* UISegment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UISegment.cpp; sourceTree = "<group>"; };
+		0DDA7A6523CD1065001850EB /* UITextBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UITextBox.cpp; sourceTree = "<group>"; };
+		0DDA7A6623CD1065001850EB /* UIButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIButton.cpp; sourceTree = "<group>"; };
+		0DDA7A6723CD1065001850EB /* UIImagePickerCell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UIImagePickerCell.hpp; sourceTree = "<group>"; };
+		0DDA7A6823CD1065001850EB /* UISegmentButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UISegmentButton.cpp; sourceTree = "<group>"; };
+		0DDA7A6923CD1065001850EB /* ToolMenuPanel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ToolMenuPanel.hpp; sourceTree = "<group>"; };
+		0DDA7A6A23CD1065001850EB /* UICheckBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UICheckBox.cpp; sourceTree = "<group>"; };
+		0DDA7A6B23CD1065001850EB /* UIAlignmentPicker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIAlignmentPicker.cpp; sourceTree = "<group>"; };
+		0DDA7A6C23CD1065001850EB /* DragableCanvas.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DragableCanvas.hpp; sourceTree = "<group>"; };
+		0DDA7A6D23CD1065001850EB /* UIAlignmentPickerButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIAlignmentPickerButton.cpp; sourceTree = "<group>"; };
+		0DDA7A6E23CD1065001850EB /* ToolMenuHeader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToolMenuHeader.cpp; sourceTree = "<group>"; };
+		0DDA7A6F23CD1065001850EB /* ToolMenuSection.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ToolMenuSection.hpp; sourceTree = "<group>"; };
+		0DDA7A7023CD1065001850EB /* ToolMenu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ToolMenu.hpp; sourceTree = "<group>"; };
+		0DDA7A7123CD1065001850EB /* UIRoundedRect.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UIRoundedRect.hpp; sourceTree = "<group>"; };
+		0DDA7A7223CD1065001850EB /* ToolMenuSectionRow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToolMenuSectionRow.cpp; sourceTree = "<group>"; };
+		0DDA7A7323CD1065001850EB /* UIImagePicker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UIImagePicker.hpp; sourceTree = "<group>"; };
+		0DDA7A7423CD1065001850EB /* UICheckBox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UICheckBox.hpp; sourceTree = "<group>"; };
+		0DDA7A7523CD1065001850EB /* UIAlignmentPicker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UIAlignmentPicker.hpp; sourceTree = "<group>"; };
+		0DDA7A7623CD1065001850EB /* DragableCanvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DragableCanvas.cpp; sourceTree = "<group>"; };
+		0DDA7A7723CD1065001850EB /* UIAlignmentPickerButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UIAlignmentPickerButton.hpp; sourceTree = "<group>"; };
+		0DDA7A7823CD1065001850EB /* ToolMenuHeader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ToolMenuHeader.hpp; sourceTree = "<group>"; };
+		0DDA7A7923CD1065001850EB /* ToolMenuSection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToolMenuSection.cpp; sourceTree = "<group>"; };
+		0DDA7A7A23CD1065001850EB /* ToolMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToolMenu.cpp; sourceTree = "<group>"; };
+		0DDA7A7B23CD1065001850EB /* UIRoundedRect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIRoundedRect.cpp; sourceTree = "<group>"; };
+		0DDA7A7C23CD1065001850EB /* ToolMenuSectionRow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ToolMenuSectionRow.hpp; sourceTree = "<group>"; };
+		0DDA7A7D23CD1065001850EB /* UIImagePicker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIImagePicker.cpp; sourceTree = "<group>"; };
+		0DDA7A7E23CD1065001850EB /* Util_ScreenFrame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Util_ScreenFrame.cpp; sourceTree = "<group>"; };
+		0DDA7A7F23CD1065001850EB /* UIStepper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIStepper.cpp; sourceTree = "<group>"; };
+		0DDA7A8023CD1065001850EB /* ToolMenuPanelHeader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToolMenuPanelHeader.cpp; sourceTree = "<group>"; };
+		0DDA7A8123CD1065001850EB /* UILabel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UILabel.hpp; sourceTree = "<group>"; };
+		0DDA7A8223CD1065001850EB /* UIElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UIElement.hpp; sourceTree = "<group>"; };
+		0DDA7A8323CD1065001850EB /* UISegment.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UISegment.hpp; sourceTree = "<group>"; };
+		0DDA7A8423CD1065001850EB /* UITextBox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UITextBox.hpp; sourceTree = "<group>"; };
+		0DDA7A8523CD1065001850EB /* UISlider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UISlider.cpp; sourceTree = "<group>"; };
+		0DDA7A8623CD1065001850EB /* UIButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UIButton.hpp; sourceTree = "<group>"; };
+		0DDA7A8723CD1065001850EB /* UIImagePickerCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIImagePickerCell.cpp; sourceTree = "<group>"; };
+		0DDA7A8823CD1065001850EB /* UISegmentButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UISegmentButton.hpp; sourceTree = "<group>"; };
+		0DDA7A8923CD1065001850EB /* Util_ScreenFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util_ScreenFrame.h; sourceTree = "<group>"; };
+		0DDA7A8A23CD1065001850EB /* ToolMenuPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToolMenuPanel.cpp; sourceTree = "<group>"; };
+		0DDA7A8B23CD1065001850EB /* FIntList.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FIntList.hpp; sourceTree = "<group>"; };
+		0DDA7A8C23CD1065001850EB /* FWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FWindow.cpp; sourceTree = "<group>"; };
+		0DDA7A8D23CD1065001850EB /* FPolyPath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FPolyPath.cpp; sourceTree = "<group>"; };
+		0DDA7A8E23CD1065001850EB /* FUniforms.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FUniforms.cpp; sourceTree = "<group>"; };
+		0DDA7A8F23CD1065001850EB /* FQuad.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FQuad.hpp; sourceTree = "<group>"; };
+		0DDA7A9023CD1065001850EB /* FRect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FRect.cpp; sourceTree = "<group>"; };
+		0DDA7A9123CD1065001850EB /* FFloatList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FFloatList.cpp; sourceTree = "<group>"; };
+		0DDA7A9223CD1065001850EB /* FList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FList.cpp; sourceTree = "<group>"; };
+		0DDA7A9323CD1065001850EB /* FAssetWad.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FAssetWad.hpp; sourceTree = "<group>"; };
+		0DDA7A9423CD1065001850EB /* FModelDataPackedSequence.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FModelDataPackedSequence.cpp; sourceTree = "<group>"; };
+		0DDA7A9523CD1065001850EB /* FFont.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FFont.hpp; sourceTree = "<group>"; };
+		0DDA7A9623CD1065001850EB /* FTouchManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FTouchManager.hpp; sourceTree = "<group>"; };
+		0DDA7A9723CD1065001850EB /* FFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FFile.cpp; sourceTree = "<group>"; };
+		0DDA7A9823CD1065001850EB /* FBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FBuffer.cpp; sourceTree = "<group>"; };
+		0DDA7A9923CD1065001850EB /* FApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FApp.cpp; sourceTree = "<group>"; };
+		0DDA7A9A23CD1065001850EB /* FBufferCache.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FBufferCache.hpp; sourceTree = "<group>"; };
+		0DDA7A9B23CD1065001850EB /* FFloatBufferCache.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FFloatBufferCache.hpp; sourceTree = "<group>"; };
+		0DDA7A9C23CD1065001850EB /* FAchievement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FAchievement.hpp; sourceTree = "<group>"; };
+		0DDA7A9D23CD1065001850EB /* FMath.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FMath.hpp; sourceTree = "<group>"; };
+		0DDA7A9E23CD1065001850EB /* FSpriteSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSpriteSequence.h; sourceTree = "<group>"; };
+		0DDA7A9F23CD1065001850EB /* FNotificationCenter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FNotificationCenter.cpp; sourceTree = "<group>"; };
+		0DDA7AA023CD1065001850EB /* core_app_shell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = core_app_shell.cpp; sourceTree = "<group>"; };
+		0DDA7AA123CD1065001850EB /* FPrimitive.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FPrimitive.hpp; sourceTree = "<group>"; };
+		0DDA7AA223CD1065001850EB /* FMatrix.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FMatrix.hpp; sourceTree = "<group>"; };
+		0DDA7AA323CD1065001850EB /* FString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FString.cpp; sourceTree = "<group>"; };
+		0DDA7B0F23CD1072001850EB /* BufferBindingWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BufferBindingWrapper.mm; sourceTree = "<group>"; };
+		0DDA7B1023CD1072001850EB /* os_core_graphics.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = os_core_graphics.mm; sourceTree = "<group>"; };
+		0DDA7B1123CD1072001850EB /* TextureBindingWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureBindingWrapper.h; sourceTree = "<group>"; };
+		0DDA7B1223CD1072001850EB /* MetalPipeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetalPipeline.h; sourceTree = "<group>"; };
+		0DDA7B1423CD1072001850EB /* Shape3DShaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shape3DShaders.metal; sourceTree = "<group>"; };
+		0DDA7B1523CD1072001850EB /* ShapeNodeShaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = ShapeNodeShaders.metal; sourceTree = "<group>"; };
+		0DDA7B1623CD1072001850EB /* ShaderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
+		0DDA7B1723CD1072001850EB /* PhongShaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = PhongShaders.metal; sourceTree = "<group>"; };
+		0DDA7B1823CD1072001850EB /* Shape2DShaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shape2DShaders.metal; sourceTree = "<group>"; };
+		0DDA7B1923CD1072001850EB /* ModelShaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = ModelShaders.metal; sourceTree = "<group>"; };
+		0DDA7B1A23CD1072001850EB /* SpriteShaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = SpriteShaders.metal; sourceTree = "<group>"; };
+		0DDA7B1B23CD1072001850EB /* SimpleModelShaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = SimpleModelShaders.metal; sourceTree = "<group>"; };
+		0DDA7B1C23CD1072001850EB /* BufferBindingWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BufferBindingWrapper.h; sourceTree = "<group>"; };
+		0DDA7B1D23CD1072001850EB /* TextureBindingWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TextureBindingWrapper.mm; sourceTree = "<group>"; };
+		0DDA7B1E23CD1072001850EB /* MetalEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetalEngine.h; sourceTree = "<group>"; };
+		0DDA7B1F23CD1072001850EB /* os_core_graphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = os_core_graphics.h; sourceTree = "<group>"; };
+		0DDA7B2023CD1072001850EB /* MetalEngine.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MetalEngine.mm; sourceTree = "<group>"; };
+		0DDA7B2123CD1072001850EB /* MetalPipeline.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MetalPipeline.mm; sourceTree = "<group>"; };
 		0DF714872365134D00BD573D /* Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DF714952365134E00BD573D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0DF714982365134E00BD573D /* Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mac.entitlements; sourceTree = "<group>"; };
@@ -410,246 +410,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0D9F861123AC63A900C259A8 /* [C++ Core] */ = {
-			isa = PBXGroup;
-			children = (
-				0D9F868423AC63A900C259A8 /* [[Tools]] */,
-				0D9F86C623AC63AA00C259A8 /* core_app_shell.cpp */,
-				0D9F863623AC63A900C259A8 /* core_app_shell.hpp */,
-				0D9F866223AC63A900C259A8 /* core_includes.h */,
-				0D9F864823AC63A900C259A8 /* core_social.cpp */,
-				0D9F862F23AC63A900C259A8 /* core_social.h */,
-				0D9F864B23AC63A900C259A8 /* core_web.cpp */,
-				0D9F863823AC63A900C259A8 /* core_web.h */,
-				0D9F862B23AC63A900C259A8 /* FAchievement.cpp */,
-				0D9F86C223AC63AA00C259A8 /* FAchievement.hpp */,
-				0D9F864023AC63A900C259A8 /* FAchievementController.cpp */,
-				0D9F866323AC63A900C259A8 /* FAchievementController.hpp */,
-				0D9F861A23AC63A900C259A8 /* FAchievementGroup.cpp */,
-				0D9F868323AC63A900C259A8 /* FAchievementGroup.hpp */,
-				0D9F865223AC63A900C259A8 /* FAnimation.cpp */,
-				0D9F867323AC63A900C259A8 /* FAnimation.hpp */,
-				0D9F86BF23AC63AA00C259A8 /* FApp.cpp */,
-				0D9F863123AC63A900C259A8 /* FApp.hpp */,
-				0D9F866A23AC63A900C259A8 /* FAssetResolutionConfigurator.cpp */,
-				0D9F864923AC63A900C259A8 /* FAssetResolutionConfigurator.hpp */,
-				0D9F862423AC63A900C259A8 /* FAssetWad.cpp */,
-				0D9F86B923AC63AA00C259A8 /* FAssetWad.hpp */,
-				0D9F86BE23AC63AA00C259A8 /* FBuffer.cpp */,
-				0D9F862923AC63A900C259A8 /* FBuffer.hpp */,
-				0D9F862E23AC63A900C259A8 /* FBufferCache.cpp */,
-				0D9F86C023AC63AA00C259A8 /* FBufferCache.hpp */,
-				0D9F866F23AC63A900C259A8 /* FButton.cpp */,
-				0D9F865123AC63A900C259A8 /* FButton.hpp */,
-				0D9F866D23AC63A900C259A8 /* FCanvas.cpp */,
-				0D9F864D23AC63A900C259A8 /* FCanvas.hpp */,
-				0D9F866523AC63A900C259A8 /* FColor.cpp */,
-				0D9F864323AC63A900C259A8 /* FColor.hpp */,
-				0D9F864E23AC63A900C259A8 /* FDrawQuad.cpp */,
-				0D9F866C23AC63A900C259A8 /* FDrawQuad.hpp */,
-				0D9F86BD23AC63AA00C259A8 /* FFile.cpp */,
-				0D9F862A23AC63A900C259A8 /* FFile.hpp */,
-				0D9F866023AC63A900C259A8 /* FFileTable.cpp */,
-				0D9F863C23AC63A900C259A8 /* FFileTable.hpp */,
-				0D9F863023AC63A900C259A8 /* FFloatBufferCache.cpp */,
-				0D9F86C123AC63AA00C259A8 /* FFloatBufferCache.hpp */,
-				0D9F86B723AC63AA00C259A8 /* FFloatList.cpp */,
-				0D9F862223AC63A900C259A8 /* FFloatList.hpp */,
-				0D9F862623AC63A900C259A8 /* FFont.cpp */,
-				0D9F86BB23AC63AA00C259A8 /* FFont.hpp */,
-				0D9F865623AC63A900C259A8 /* FGestureCanvas.cpp */,
-				0D9F867523AC63A900C259A8 /* FGestureCanvas.hpp */,
-				0D9F861223AC63A900C259A8 /* FHashMap.cpp */,
-				0D9F867C23AC63A900C259A8 /* FHashMap.hpp */,
-				0D9F867B23AC63A900C259A8 /* FImage.cpp */,
-				0D9F861323AC63A900C259A8 /* FImage.hpp */,
-				0D9F862523AC63A900C259A8 /* FImageBundler.cpp */,
-				0D9F863423AC63A900C259A8 /* FImageBundler.h */,
-				0D9F865723AC63A900C259A8 /* FIndexBufferCache.cpp */,
-				0D9F867623AC63A900C259A8 /* FIndexBufferCache.hpp */,
-				0D9F868223AC63A900C259A8 /* FIndexList.cpp */,
-				0D9F861923AC63A900C259A8 /* FIndexList.hpp */,
-				0D9F861C23AC63A900C259A8 /* FIntList.cpp */,
-				0D9F86B123AC63AA00C259A8 /* FIntList.hpp */,
-				0D9F864423AC63A900C259A8 /* FJoystick.cpp */,
-				0D9F867F23AC63A900C259A8 /* FJoystick.h */,
-				0D9F866623AC63A900C259A8 /* FJSON.cpp */,
-				0D9F864523AC63A900C259A8 /* FJSON.hpp */,
-				0D9F867023AC63A900C259A8 /* FLight.cpp */,
-				0D9F865023AC63A900C259A8 /* FLight.hpp */,
-				0D9F865923AC63A900C259A8 /* FLine.cpp */,
-				0D9F867A23AC63A900C259A8 /* FLine.hpp */,
-				0D9F86B823AC63AA00C259A8 /* FList.cpp */,
-				0D9F862323AC63A900C259A8 /* FList.hpp */,
-				0D9F862D23AC63A900C259A8 /* FMath.cpp */,
-				0D9F86C323AC63AA00C259A8 /* FMath.hpp */,
-				0D9F863323AC63A900C259A8 /* FMatrix.cpp */,
-				0D9F86C823AC63AA00C259A8 /* FMatrix.hpp */,
-				0D9F861823AC63A900C259A8 /* FModelData.cpp */,
-				0D9F861F23AC63A900C259A8 /* FModelData.h */,
-				0D9F865E23AC63A900C259A8 /* FModelDataPacked.cpp */,
-				0D9F863F23AC63A900C259A8 /* FModelDataPacked.hpp */,
-				0D9F86BA23AC63AA00C259A8 /* FModelDataPackedSequence.cpp */,
-				0D9F862723AC63A900C259A8 /* FModelDataPackedSequence.hpp */,
-				0D9F86C523AC63AA00C259A8 /* FNotificationCenter.cpp */,
-				0D9F863223AC63A900C259A8 /* FNotificationCenter.hpp */,
-				0D9F868123AC63A900C259A8 /* FObject.cpp */,
-				0D9F861423AC63A900C259A8 /* FObject.hpp */,
-				0D9F867423AC63A900C259A8 /* FParticle.cpp */,
-				0D9F865523AC63A900C259A8 /* FParticle.hpp */,
-				0D9F867E23AC63A900C259A8 /* FPointList.cpp */,
-				0D9F861623AC63A900C259A8 /* FPointList.hpp */,
-				0D9F86B323AC63AA00C259A8 /* FPolyPath.cpp */,
-				0D9F861E23AC63A900C259A8 /* FPolyPath.hpp */,
-				0D9F863523AC63A900C259A8 /* FPrimitive.cpp */,
-				0D9F86C723AC63AA00C259A8 /* FPrimitive.hpp */,
-				0D9F862123AC63A900C259A8 /* FQuad.cpp */,
-				0D9F86B523AC63AA00C259A8 /* FQuad.hpp */,
-				0D9F865C23AC63A900C259A8 /* FRandomizer.cpp */,
-				0D9F863B23AC63A900C259A8 /* FRandomizer.hpp */,
-				0D9F86B623AC63AA00C259A8 /* FRect.cpp */,
-				0D9F862023AC63A900C259A8 /* FRect.hpp */,
-				0D9F865D23AC63A900C259A8 /* FResource.cpp */,
-				0D9F863D23AC63A900C259A8 /* FResource.hpp */,
-				0D9F866123AC63A900C259A8 /* FScrollCanvas.cpp */,
-				0D9F864223AC63A900C259A8 /* FScrollCanvas.hpp */,
-				0D9F863E23AC63A900C259A8 /* FScrollCanvasGeneric.cpp */,
-				0D9F865F23AC63A900C259A8 /* FScrollCanvasGeneric.hpp */,
-				0D9F864723AC63A900C259A8 /* FScrollCanvasPaged.cpp */,
-				0D9F866723AC63A900C259A8 /* FScrollCanvasPaged.hpp */,
-				0D9F865B23AC63A900C259A8 /* FSize.cpp */,
-				0D9F863A23AC63A900C259A8 /* FSize.hpp */,
-				0D9F864123AC63A900C259A8 /* FSlider.cpp */,
-				0D9F866423AC63A900C259A8 /* FSlider.hpp */,
-				0D9F863923AC63A900C259A8 /* FSound.cpp */,
-				0D9F865A23AC63A900C259A8 /* FSound.hpp */,
-				0D9F865823AC63A900C259A8 /* FSpline.cpp */,
-				0D9F867923AC63A900C259A8 /* FSpline.hpp */,
-				0D9F868023AC63A900C259A8 /* FSprite.cpp */,
-				0D9F861723AC63A900C259A8 /* FSprite.hpp */,
-				0D9F864C23AC63A900C259A8 /* FSpriteCanvas.cpp */,
-				0D9F866B23AC63A900C259A8 /* FSpriteCanvas.hpp */,
-				0D9F867823AC63A900C259A8 /* FSpriteSequence.cpp */,
-				0D9F86C423AC63AA00C259A8 /* FSpriteSequence.h */,
-				0D9F86C923AC63AA00C259A8 /* FString.cpp */,
-				0D9F863723AC63A900C259A8 /* FString.hpp */,
-				0D9F865323AC63A900C259A8 /* FTexture.cpp */,
-				0D9F867223AC63A900C259A8 /* FTexture.hpp */,
-				0D9F861523AC63A900C259A8 /* FTextureCache.cpp */,
-				0D9F867D23AC63A900C259A8 /* FTextureCache.hpp */,
-				0D9F862823AC63A900C259A8 /* FTouchManager.cpp */,
-				0D9F86BC23AC63AA00C259A8 /* FTouchManager.hpp */,
-				0D9F86B423AC63AA00C259A8 /* FUniforms.cpp */,
-				0D9F861D23AC63A900C259A8 /* FUniforms.hpp */,
-				0D9F866923AC63A900C259A8 /* FVec2.cpp */,
-				0D9F864A23AC63A900C259A8 /* FVec2.hpp */,
-				0D9F866823AC63A900C259A8 /* FVec3.cpp */,
-				0D9F864623AC63A900C259A8 /* FVec3.hpp */,
-				0D9F862C23AC63A900C259A8 /* FVertexBuffer.cpp */,
-				0D9F867723AC63A900C259A8 /* FVertexBuffer.h */,
-				0D9F86B223AC63AA00C259A8 /* FWindow.cpp */,
-				0D9F861B23AC63A900C259A8 /* FWindow.hpp */,
-				0D9F867123AC63A900C259A8 /* FXML.cpp */,
-				0D9F864F23AC63A900C259A8 /* FXML.hpp */,
-				0D9F866E23AC63A900C259A8 /* GraphicsInterface.cpp */,
-				0D9F865423AC63A900C259A8 /* GraphicsInterface.hpp */,
-			);
-			path = "[C++ Core]";
-			sourceTree = "<group>";
-		};
-		0D9F868423AC63A900C259A8 /* [[Tools]] */ = {
-			isa = PBXGroup;
-			children = (
-				0D9F869C23AC63A900C259A8 /* DragableCanvas.cpp */,
-				0D9F869223AC63A900C259A8 /* DragableCanvas.hpp */,
-				0D9F86A023AC63A900C259A8 /* ToolMenu.cpp */,
-				0D9F869623AC63A900C259A8 /* ToolMenu.hpp */,
-				0D9F869423AC63A900C259A8 /* ToolMenuHeader.cpp */,
-				0D9F869E23AC63A900C259A8 /* ToolMenuHeader.hpp */,
-				0D9F86B023AC63AA00C259A8 /* ToolMenuPanel.cpp */,
-				0D9F868F23AC63A900C259A8 /* ToolMenuPanel.hpp */,
-				0D9F86A623AC63A900C259A8 /* ToolMenuPanelHeader.cpp */,
-				0D9F868623AC63A900C259A8 /* ToolMenuPanelHeader.hpp */,
-				0D9F869F23AC63A900C259A8 /* ToolMenuSection.cpp */,
-				0D9F869523AC63A900C259A8 /* ToolMenuSection.hpp */,
-				0D9F869823AC63A900C259A8 /* ToolMenuSectionRow.cpp */,
-				0D9F86A223AC63A900C259A8 /* ToolMenuSectionRow.hpp */,
-				0D9F869123AC63A900C259A8 /* UIAlignmentPicker.cpp */,
-				0D9F869B23AC63A900C259A8 /* UIAlignmentPicker.hpp */,
-				0D9F869323AC63A900C259A8 /* UIAlignmentPickerButton.cpp */,
-				0D9F869D23AC63A900C259A8 /* UIAlignmentPickerButton.hpp */,
-				0D9F868C23AC63A900C259A8 /* UIButton.cpp */,
-				0D9F86AC23AC63AA00C259A8 /* UIButton.hpp */,
-				0D9F869023AC63A900C259A8 /* UICheckBox.cpp */,
-				0D9F869A23AC63A900C259A8 /* UICheckBox.hpp */,
-				0D9F868823AC63A900C259A8 /* UIElement.cpp */,
-				0D9F86A823AC63A900C259A8 /* UIElement.hpp */,
-				0D9F86A323AC63A900C259A8 /* UIImagePicker.cpp */,
-				0D9F869923AC63A900C259A8 /* UIImagePicker.hpp */,
-				0D9F86AD23AC63AA00C259A8 /* UIImagePickerCell.cpp */,
-				0D9F868D23AC63A900C259A8 /* UIImagePickerCell.hpp */,
-				0D9F868723AC63A900C259A8 /* UILabel.cpp */,
-				0D9F86A723AC63A900C259A8 /* UILabel.hpp */,
-				0D9F86A123AC63A900C259A8 /* UIRoundedRect.cpp */,
-				0D9F869723AC63A900C259A8 /* UIRoundedRect.hpp */,
-				0D9F868A23AC63A900C259A8 /* UISegment.cpp */,
-				0D9F86A923AC63AA00C259A8 /* UISegment.hpp */,
-				0D9F868E23AC63A900C259A8 /* UISegmentButton.cpp */,
-				0D9F86AE23AC63AA00C259A8 /* UISegmentButton.hpp */,
-				0D9F86AB23AC63AA00C259A8 /* UISlider.cpp */,
-				0D9F868923AC63A900C259A8 /* UISlider.hpp */,
-				0D9F86A523AC63A900C259A8 /* UIStepper.cpp */,
-				0D9F868523AC63A900C259A8 /* UIStepper.hpp */,
-				0D9F868B23AC63A900C259A8 /* UITextBox.cpp */,
-				0D9F86AA23AC63AA00C259A8 /* UITextBox.hpp */,
-				0D9F86A423AC63A900C259A8 /* Util_ScreenFrame.cpp */,
-				0D9F86AF23AC63AA00C259A8 /* Util_ScreenFrame.h */,
-			);
-			path = "[[Tools]]";
-			sourceTree = "<group>";
-		};
 		0DA25F0E236627C7005AD610 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				0D9F861123AC63A900C259A8 /* [C++ Core] */,
-				0DA25F0F236627C7005AD610 /* [Metal] */,
+				0DDA7B0E23CD1072001850EB /* [Metal] */,
+				0DDA79EB23CD1065001850EB /* [C++ Core] */,
 				0DA25FD4236627C7005AD610 /* [Mac] */,
 			);
 			name = Framework;
 			path = ../Framework;
-			sourceTree = "<group>";
-		};
-		0DA25F0F236627C7005AD610 /* [Metal] */ = {
-			isa = PBXGroup;
-			children = (
-				0DA25F1D236627C7005AD610 /* BufferBindingWrapper.h */,
-				0DA25F10236627C7005AD610 /* BufferBindingWrapper.mm */,
-				0DA25F1F236627C7005AD610 /* MetalEngine.h */,
-				0DA25F21236627C7005AD610 /* MetalEngine.mm */,
-				0DA25F13236627C7005AD610 /* MetalPipeline.h */,
-				0DA25F22236627C7005AD610 /* MetalPipeline.mm */,
-				0DA25F20236627C7005AD610 /* os_core_graphics.h */,
-				0DA25F11236627C7005AD610 /* os_core_graphics.mm */,
-				0DA25F14236627C7005AD610 /* Shaders */,
-				0DA25F12236627C7005AD610 /* TextureBindingWrapper.h */,
-				0DA25F1E236627C7005AD610 /* TextureBindingWrapper.mm */,
-			);
-			path = "[Metal]";
-			sourceTree = "<group>";
-		};
-		0DA25F14236627C7005AD610 /* Shaders */ = {
-			isa = PBXGroup;
-			children = (
-				0DA25F1A236627C7005AD610 /* ModelShaders.metal */,
-				0DA25F18236627C7005AD610 /* PhongShaders.metal */,
-				0DA25F17236627C7005AD610 /* ShaderTypes.h */,
-				0DA25F19236627C7005AD610 /* Shape2DShaders.metal */,
-				0DA25F15236627C7005AD610 /* Shape3DShaders.metal */,
-				0DA25F16236627C7005AD610 /* ShapeNodeShaders.metal */,
-				0DA25F1C236627C7005AD610 /* SimpleModelShaders.metal */,
-				0DA25F1B236627C7005AD610 /* SpriteShaders.metal */,
-			);
-			path = Shaders;
 			sourceTree = "<group>";
 		};
 		0DA25FD4236627C7005AD610 /* [Mac] */ = {
@@ -719,6 +488,237 @@
 			);
 			name = Classes;
 			path = ../Classes;
+			sourceTree = "<group>";
+		};
+		0DDA79EB23CD1065001850EB /* [C++ Core] */ = {
+			isa = PBXGroup;
+			children = (
+				0DDA7A5E23CD1065001850EB /* [[Tools]] */,
+				0DDA7AA023CD1065001850EB /* core_app_shell.cpp */,
+				0DDA7A0F23CD1065001850EB /* core_app_shell.hpp */,
+				0DDA7A3C23CD1065001850EB /* core_includes.h */,
+				0DDA7A2123CD1065001850EB /* core_social.cpp */,
+				0DDA7A0823CD1065001850EB /* core_social.h */,
+				0DDA7A2423CD1065001850EB /* core_web.cpp */,
+				0DDA7A1123CD1065001850EB /* core_web.h */,
+				0DDA7A0523CD1065001850EB /* FAchievement.cpp */,
+				0DDA7A9C23CD1065001850EB /* FAchievement.hpp */,
+				0DDA7A1923CD1065001850EB /* FAchievementController.cpp */,
+				0DDA7A3D23CD1065001850EB /* FAchievementController.hpp */,
+				0DDA79F423CD1065001850EB /* FAchievementGroup.cpp */,
+				0DDA7A5D23CD1065001850EB /* FAchievementGroup.hpp */,
+				0DDA7A2B23CD1065001850EB /* FAnimation.cpp */,
+				0DDA7A4D23CD1065001850EB /* FAnimation.hpp */,
+				0DDA7A9923CD1065001850EB /* FApp.cpp */,
+				0DDA7A0A23CD1065001850EB /* FApp.hpp */,
+				0DDA7A4423CD1065001850EB /* FAssetResolutionConfigurator.cpp */,
+				0DDA7A2223CD1065001850EB /* FAssetResolutionConfigurator.hpp */,
+				0DDA79FE23CD1065001850EB /* FAssetWad.cpp */,
+				0DDA7A9323CD1065001850EB /* FAssetWad.hpp */,
+				0DDA7A9823CD1065001850EB /* FBuffer.cpp */,
+				0DDA7A0323CD1065001850EB /* FBuffer.hpp */,
+				0DDA7A0723CD1065001850EB /* FBufferCache.cpp */,
+				0DDA7A9A23CD1065001850EB /* FBufferCache.hpp */,
+				0DDA7A4923CD1065001850EB /* FButton.cpp */,
+				0DDA7A2A23CD1065001850EB /* FButton.hpp */,
+				0DDA7A4723CD1065001850EB /* FCanvas.cpp */,
+				0DDA7A2623CD1065001850EB /* FCanvas.hpp */,
+				0DDA7A3F23CD1065001850EB /* FColor.cpp */,
+				0DDA7A1C23CD1065001850EB /* FColor.hpp */,
+				0DDA7A2723CD1065001850EB /* FDrawQuad.cpp */,
+				0DDA7A4623CD1065001850EB /* FDrawQuad.hpp */,
+				0DDA7A9723CD1065001850EB /* FFile.cpp */,
+				0DDA7A0423CD1065001850EB /* FFile.hpp */,
+				0DDA7A3A23CD1065001850EB /* FFileTable.cpp */,
+				0DDA7A1523CD1065001850EB /* FFileTable.hpp */,
+				0DDA7A0923CD1065001850EB /* FFloatBufferCache.cpp */,
+				0DDA7A9B23CD1065001850EB /* FFloatBufferCache.hpp */,
+				0DDA7A9123CD1065001850EB /* FFloatList.cpp */,
+				0DDA79FC23CD1065001850EB /* FFloatList.hpp */,
+				0DDA7A0023CD1065001850EB /* FFont.cpp */,
+				0DDA7A9523CD1065001850EB /* FFont.hpp */,
+				0DDA7A2F23CD1065001850EB /* FGestureCanvas.cpp */,
+				0DDA7A4F23CD1065001850EB /* FGestureCanvas.hpp */,
+				0DDA79EC23CD1065001850EB /* FHashMap.cpp */,
+				0DDA7A5623CD1065001850EB /* FHashMap.hpp */,
+				0DDA7A5523CD1065001850EB /* FImage.cpp */,
+				0DDA79ED23CD1065001850EB /* FImage.hpp */,
+				0DDA79FF23CD1065001850EB /* FImageBundler.cpp */,
+				0DDA7A0D23CD1065001850EB /* FImageBundler.h */,
+				0DDA7A3023CD1065001850EB /* FIndexBufferCache.cpp */,
+				0DDA7A5023CD1065001850EB /* FIndexBufferCache.hpp */,
+				0DDA7A5C23CD1065001850EB /* FIndexList.cpp */,
+				0DDA79F323CD1065001850EB /* FIndexList.hpp */,
+				0DDA79F623CD1065001850EB /* FIntList.cpp */,
+				0DDA7A8B23CD1065001850EB /* FIntList.hpp */,
+				0DDA7A1D23CD1065001850EB /* FJoystick.cpp */,
+				0DDA7A5923CD1065001850EB /* FJoystick.h */,
+				0DDA7A4023CD1065001850EB /* FJSON.cpp */,
+				0DDA7A1E23CD1065001850EB /* FJSON.hpp */,
+				0DDA7A4A23CD1065001850EB /* FLight.cpp */,
+				0DDA7A2923CD1065001850EB /* FLight.hpp */,
+				0DDA7A3323CD1065001850EB /* FLine.cpp */,
+				0DDA7A5323CD1065001850EB /* FLine.hpp */,
+				0DDA7A9223CD1065001850EB /* FList.cpp */,
+				0DDA79FD23CD1065001850EB /* FList.hpp */,
+				0DDA7A0623CD1065001850EB /* FMath.cpp */,
+				0DDA7A9D23CD1065001850EB /* FMath.hpp */,
+				0DDA7A0C23CD1065001850EB /* FMatrix.cpp */,
+				0DDA7AA223CD1065001850EB /* FMatrix.hpp */,
+				0DDA79F223CD1065001850EB /* FModelData.cpp */,
+				0DDA79F923CD1065001850EB /* FModelData.h */,
+				0DDA7A3823CD1065001850EB /* FModelDataPacked.cpp */,
+				0DDA7A1823CD1065001850EB /* FModelDataPacked.hpp */,
+				0DDA7A9423CD1065001850EB /* FModelDataPackedSequence.cpp */,
+				0DDA7A0123CD1065001850EB /* FModelDataPackedSequence.hpp */,
+				0DDA7A9F23CD1065001850EB /* FNotificationCenter.cpp */,
+				0DDA7A0B23CD1065001850EB /* FNotificationCenter.hpp */,
+				0DDA7A5B23CD1065001850EB /* FObject.cpp */,
+				0DDA79EE23CD1065001850EB /* FObject.hpp */,
+				0DDA7A4E23CD1065001850EB /* FParticle.cpp */,
+				0DDA7A2E23CD1065001850EB /* FParticle.hpp */,
+				0DDA7A5823CD1065001850EB /* FPointList.cpp */,
+				0DDA79F023CD1065001850EB /* FPointList.hpp */,
+				0DDA7A8D23CD1065001850EB /* FPolyPath.cpp */,
+				0DDA79F823CD1065001850EB /* FPolyPath.hpp */,
+				0DDA7A0E23CD1065001850EB /* FPrimitive.cpp */,
+				0DDA7AA123CD1065001850EB /* FPrimitive.hpp */,
+				0DDA79FB23CD1065001850EB /* FQuad.cpp */,
+				0DDA7A8F23CD1065001850EB /* FQuad.hpp */,
+				0DDA7A3623CD1065001850EB /* FRandomizer.cpp */,
+				0DDA7A1423CD1065001850EB /* FRandomizer.hpp */,
+				0DDA7A9023CD1065001850EB /* FRect.cpp */,
+				0DDA79FA23CD1065001850EB /* FRect.hpp */,
+				0DDA7A3723CD1065001850EB /* FResource.cpp */,
+				0DDA7A1623CD1065001850EB /* FResource.hpp */,
+				0DDA7A3B23CD1065001850EB /* FScrollCanvas.cpp */,
+				0DDA7A1B23CD1065001850EB /* FScrollCanvas.hpp */,
+				0DDA7A1723CD1065001850EB /* FScrollCanvasGeneric.cpp */,
+				0DDA7A3923CD1065001850EB /* FScrollCanvasGeneric.hpp */,
+				0DDA7A2023CD1065001850EB /* FScrollCanvasPaged.cpp */,
+				0DDA7A4123CD1065001850EB /* FScrollCanvasPaged.hpp */,
+				0DDA7A3523CD1065001850EB /* FSize.cpp */,
+				0DDA7A1323CD1065001850EB /* FSize.hpp */,
+				0DDA7A1A23CD1065001850EB /* FSlider.cpp */,
+				0DDA7A3E23CD1065001850EB /* FSlider.hpp */,
+				0DDA7A1223CD1065001850EB /* FSound.cpp */,
+				0DDA7A3423CD1065001850EB /* FSound.hpp */,
+				0DDA7A3123CD1065001850EB /* FSpline.cpp */,
+				0DDA7A5223CD1065001850EB /* FSpline.hpp */,
+				0DDA7A5A23CD1065001850EB /* FSprite.cpp */,
+				0DDA79F123CD1065001850EB /* FSprite.hpp */,
+				0DDA7A2523CD1065001850EB /* FSpriteCanvas.cpp */,
+				0DDA7A4523CD1065001850EB /* FSpriteCanvas.hpp */,
+				0DDA7A5123CD1065001850EB /* FSpriteSequence.cpp */,
+				0DDA7A9E23CD1065001850EB /* FSpriteSequence.h */,
+				0DDA7AA323CD1065001850EB /* FString.cpp */,
+				0DDA7A1023CD1065001850EB /* FString.hpp */,
+				0DDA7A2C23CD1065001850EB /* FTexture.cpp */,
+				0DDA7A4C23CD1065001850EB /* FTexture.hpp */,
+				0DDA79EF23CD1065001850EB /* FTextureCache.cpp */,
+				0DDA7A5723CD1065001850EB /* FTextureCache.hpp */,
+				0DDA7A5423CD1065001850EB /* FTextureSnake.cpp */,
+				0DDA7A3223CD1065001850EB /* FTextureSnake.hpp */,
+				0DDA7A0223CD1065001850EB /* FTouchManager.cpp */,
+				0DDA7A9623CD1065001850EB /* FTouchManager.hpp */,
+				0DDA7A8E23CD1065001850EB /* FUniforms.cpp */,
+				0DDA79F723CD1065001850EB /* FUniforms.hpp */,
+				0DDA7A4323CD1065001850EB /* FVec2.cpp */,
+				0DDA7A2323CD1065001850EB /* FVec2.hpp */,
+				0DDA7A4223CD1065001850EB /* FVec3.cpp */,
+				0DDA7A1F23CD1065001850EB /* FVec3.hpp */,
+				0DDA7A8C23CD1065001850EB /* FWindow.cpp */,
+				0DDA79F523CD1065001850EB /* FWindow.hpp */,
+				0DDA7A4B23CD1065001850EB /* FXML.cpp */,
+				0DDA7A2823CD1065001850EB /* FXML.hpp */,
+				0DDA7A4823CD1065001850EB /* GraphicsInterface.cpp */,
+				0DDA7A2D23CD1065001850EB /* GraphicsInterface.hpp */,
+			);
+			path = "[C++ Core]";
+			sourceTree = "<group>";
+		};
+		0DDA7A5E23CD1065001850EB /* [[Tools]] */ = {
+			isa = PBXGroup;
+			children = (
+				0DDA7A5F23CD1065001850EB /* UIStepper.hpp */,
+				0DDA7A6023CD1065001850EB /* ToolMenuPanelHeader.hpp */,
+				0DDA7A6123CD1065001850EB /* UILabel.cpp */,
+				0DDA7A6223CD1065001850EB /* UIElement.cpp */,
+				0DDA7A6323CD1065001850EB /* UISlider.hpp */,
+				0DDA7A6423CD1065001850EB /* UISegment.cpp */,
+				0DDA7A6523CD1065001850EB /* UITextBox.cpp */,
+				0DDA7A6623CD1065001850EB /* UIButton.cpp */,
+				0DDA7A6723CD1065001850EB /* UIImagePickerCell.hpp */,
+				0DDA7A6823CD1065001850EB /* UISegmentButton.cpp */,
+				0DDA7A6923CD1065001850EB /* ToolMenuPanel.hpp */,
+				0DDA7A6A23CD1065001850EB /* UICheckBox.cpp */,
+				0DDA7A6B23CD1065001850EB /* UIAlignmentPicker.cpp */,
+				0DDA7A6C23CD1065001850EB /* DragableCanvas.hpp */,
+				0DDA7A6D23CD1065001850EB /* UIAlignmentPickerButton.cpp */,
+				0DDA7A6E23CD1065001850EB /* ToolMenuHeader.cpp */,
+				0DDA7A6F23CD1065001850EB /* ToolMenuSection.hpp */,
+				0DDA7A7023CD1065001850EB /* ToolMenu.hpp */,
+				0DDA7A7123CD1065001850EB /* UIRoundedRect.hpp */,
+				0DDA7A7223CD1065001850EB /* ToolMenuSectionRow.cpp */,
+				0DDA7A7323CD1065001850EB /* UIImagePicker.hpp */,
+				0DDA7A7423CD1065001850EB /* UICheckBox.hpp */,
+				0DDA7A7523CD1065001850EB /* UIAlignmentPicker.hpp */,
+				0DDA7A7623CD1065001850EB /* DragableCanvas.cpp */,
+				0DDA7A7723CD1065001850EB /* UIAlignmentPickerButton.hpp */,
+				0DDA7A7823CD1065001850EB /* ToolMenuHeader.hpp */,
+				0DDA7A7923CD1065001850EB /* ToolMenuSection.cpp */,
+				0DDA7A7A23CD1065001850EB /* ToolMenu.cpp */,
+				0DDA7A7B23CD1065001850EB /* UIRoundedRect.cpp */,
+				0DDA7A7C23CD1065001850EB /* ToolMenuSectionRow.hpp */,
+				0DDA7A7D23CD1065001850EB /* UIImagePicker.cpp */,
+				0DDA7A7E23CD1065001850EB /* Util_ScreenFrame.cpp */,
+				0DDA7A7F23CD1065001850EB /* UIStepper.cpp */,
+				0DDA7A8023CD1065001850EB /* ToolMenuPanelHeader.cpp */,
+				0DDA7A8123CD1065001850EB /* UILabel.hpp */,
+				0DDA7A8223CD1065001850EB /* UIElement.hpp */,
+				0DDA7A8323CD1065001850EB /* UISegment.hpp */,
+				0DDA7A8423CD1065001850EB /* UITextBox.hpp */,
+				0DDA7A8523CD1065001850EB /* UISlider.cpp */,
+				0DDA7A8623CD1065001850EB /* UIButton.hpp */,
+				0DDA7A8723CD1065001850EB /* UIImagePickerCell.cpp */,
+				0DDA7A8823CD1065001850EB /* UISegmentButton.hpp */,
+				0DDA7A8923CD1065001850EB /* Util_ScreenFrame.h */,
+				0DDA7A8A23CD1065001850EB /* ToolMenuPanel.cpp */,
+			);
+			path = "[[Tools]]";
+			sourceTree = "<group>";
+		};
+		0DDA7B0E23CD1072001850EB /* [Metal] */ = {
+			isa = PBXGroup;
+			children = (
+				0DDA7B1C23CD1072001850EB /* BufferBindingWrapper.h */,
+				0DDA7B0F23CD1072001850EB /* BufferBindingWrapper.mm */,
+				0DDA7B1E23CD1072001850EB /* MetalEngine.h */,
+				0DDA7B2023CD1072001850EB /* MetalEngine.mm */,
+				0DDA7B1223CD1072001850EB /* MetalPipeline.h */,
+				0DDA7B2123CD1072001850EB /* MetalPipeline.mm */,
+				0DDA7B1F23CD1072001850EB /* os_core_graphics.h */,
+				0DDA7B1023CD1072001850EB /* os_core_graphics.mm */,
+				0DDA7B1323CD1072001850EB /* Shaders */,
+				0DDA7B1123CD1072001850EB /* TextureBindingWrapper.h */,
+				0DDA7B1D23CD1072001850EB /* TextureBindingWrapper.mm */,
+			);
+			path = "[Metal]";
+			sourceTree = "<group>";
+		};
+		0DDA7B1323CD1072001850EB /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				0DDA7B1923CD1072001850EB /* ModelShaders.metal */,
+				0DDA7B1723CD1072001850EB /* PhongShaders.metal */,
+				0DDA7B1623CD1072001850EB /* ShaderTypes.h */,
+				0DDA7B1823CD1072001850EB /* Shape2DShaders.metal */,
+				0DDA7B1423CD1072001850EB /* Shape3DShaders.metal */,
+				0DDA7B1523CD1072001850EB /* ShapeNodeShaders.metal */,
+				0DDA7B1B23CD1072001850EB /* SimpleModelShaders.metal */,
+				0DDA7B1A23CD1072001850EB /* SpriteShaders.metal */,
+			);
+			path = Shaders;
 			sourceTree = "<group>";
 		};
 		0DF7147E2365134D00BD573D = {
@@ -816,130 +816,130 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D9F86EE23AC63AA00C259A8 /* FModelDataPacked.cpp in Sources */,
-				0D9F86E923AC63AA00C259A8 /* FSpline.cpp in Sources */,
-				0D9F870F23AC63AA00C259A8 /* ToolMenu.cpp in Sources */,
-				0D9F86E123AC63AA00C259A8 /* core_social.cpp in Sources */,
-				0DA26078236627C7005AD610 /* PhongShaders.metal in Sources */,
-				0D9F86E023AC63AA00C259A8 /* FScrollCanvasPaged.cpp in Sources */,
-				0D9F870D23AC63AA00C259A8 /* DragableCanvas.cpp in Sources */,
-				0DA2607D236627C7005AD610 /* TextureBindingWrapper.mm in Sources */,
-				0D9F871423AC63AA00C259A8 /* ToolMenuPanelHeader.cpp in Sources */,
-				0D9F86F123AC63AA00C259A8 /* FColor.cpp in Sources */,
-				0D9F871723AC63AA00C259A8 /* ToolMenuPanel.cpp in Sources */,
 				0DA260DD236627C7005AD610 /* main.mm in Sources */,
-				0DA2607B236627C7005AD610 /* SpriteShaders.metal in Sources */,
-				0D9F870023AC63AA00C259A8 /* FObject.cpp in Sources */,
-				0D9F86CC23AC63AA00C259A8 /* FModelData.cpp in Sources */,
-				0D9F86D223AC63AA00C259A8 /* FFont.cpp in Sources */,
-				0D9F872223AC63AA00C259A8 /* FNotificationCenter.cpp in Sources */,
-				0D9F871123AC63AA00C259A8 /* UIImagePicker.cpp in Sources */,
-				0D9F871223AC63AA00C259A8 /* Util_ScreenFrame.cpp in Sources */,
+				0DDA7AB523CD1065001850EB /* FModelData.cpp in Sources */,
+				0DDA7AC523CD1065001850EB /* FAchievementController.cpp in Sources */,
+				0DDA7AB623CD1065001850EB /* FAchievementGroup.cpp in Sources */,
+				0DDA7AD023CD1065001850EB /* FIndexBufferCache.cpp in Sources */,
+				0DDA7AFA23CD1066001850EB /* UIImagePicker.cpp in Sources */,
+				0DDA7AE523CD1065001850EB /* FTextureSnake.cpp in Sources */,
 				0DA260DB236627C7005AD610 /* os_core_includes.cpp in Sources */,
-				0D9F872123AC63AA00C259A8 /* FApp.cpp in Sources */,
-				0D9F86E423AC63AA00C259A8 /* FDrawQuad.cpp in Sources */,
-				0D9F870223AC63AA00C259A8 /* UILabel.cpp in Sources */,
-				0D9F86DF23AC63AA00C259A8 /* FJoystick.cpp in Sources */,
-				0D9F86FD23AC63AA00C259A8 /* FImage.cpp in Sources */,
-				0D9F870123AC63AA00C259A8 /* FIndexList.cpp in Sources */,
-				0D9F86F823AC63AA00C259A8 /* FButton.cpp in Sources */,
-				0D9F86FB23AC63AA00C259A8 /* FParticle.cpp in Sources */,
-				0D9F870B23AC63AA00C259A8 /* ToolMenuHeader.cpp in Sources */,
-				0D9F86FE23AC63AA00C259A8 /* FPointList.cpp in Sources */,
 				0DB8F1FE23662DAA00AF587D /* GFXApp.cpp in Sources */,
+				0DDA7AF523CD1066001850EB /* ToolMenuSectionRow.cpp in Sources */,
 				0DA260E4236627C7005AD610 /* OSMusicPlayer.mm in Sources */,
-				0D9F86F223AC63AA00C259A8 /* FJSON.cpp in Sources */,
+				0DDA7B2B23CD1072001850EB /* TextureBindingWrapper.mm in Sources */,
+				0DDA7AEE23CD1065001850EB /* UITextBox.cpp in Sources */,
 				0DA260D9236627C7005AD610 /* os_core_social.cpp in Sources */,
-				0D9F871523AC63AA00C259A8 /* UISlider.cpp in Sources */,
-				0DA26077236627C7005AD610 /* ShapeNodeShaders.metal in Sources */,
-				0D9F86F523AC63AA00C259A8 /* FAssetResolutionConfigurator.cpp in Sources */,
-				0D9F871D23AC63AA00C259A8 /* FList.cpp in Sources */,
-				0D9F86FC23AC63AA00C259A8 /* FSpriteSequence.cpp in Sources */,
-				0D9F86E323AC63AA00C259A8 /* FSpriteCanvas.cpp in Sources */,
-				0D9F86D323AC63AA00C259A8 /* FTouchManager.cpp in Sources */,
-				0D9F86CA23AC63AA00C259A8 /* FHashMap.cpp in Sources */,
-				0DA26079236627C7005AD610 /* Shape2DShaders.metal in Sources */,
-				0D9F86CE23AC63AA00C259A8 /* FIntList.cpp in Sources */,
-				0D9F872323AC63AA00C259A8 /* core_app_shell.cpp in Sources */,
-				0D9F86D523AC63AA00C259A8 /* FVertexBuffer.cpp in Sources */,
+				0DDA7B2623CD1072001850EB /* PhongShaders.metal in Sources */,
+				0DDA7B0523CD1066001850EB /* FFloatList.cpp in Sources */,
+				0DDA7AF923CD1066001850EB /* UIRoundedRect.cpp in Sources */,
+				0DDA7B0223CD1066001850EB /* FPolyPath.cpp in Sources */,
+				0DDA7B0623CD1066001850EB /* FList.cpp in Sources */,
+				0DDA7AFC23CD1066001850EB /* UIStepper.cpp in Sources */,
+				0DDA7AFD23CD1066001850EB /* ToolMenuPanelHeader.cpp in Sources */,
+				0DDA7AB323CD1065001850EB /* FHashMap.cpp in Sources */,
 				0DB8B690236E7F0400C993E5 /* ProgressBar.cpp in Sources */,
-				0D9F870423AC63AA00C259A8 /* UISegment.cpp in Sources */,
-				0D9F870823AC63AA00C259A8 /* UICheckBox.cpp in Sources */,
-				0D9F872423AC63AA00C259A8 /* FString.cpp in Sources */,
+				0DDA7AC223CD1065001850EB /* FPrimitive.cpp in Sources */,
 				0DB8F2042366326F00AF587D /* PhongConfiguration.cpp in Sources */,
-				0D9F871923AC63AA00C259A8 /* FPolyPath.cpp in Sources */,
-				0D9F86D623AC63AA00C259A8 /* FMath.cpp in Sources */,
-				0D9F86F423AC63AA00C259A8 /* FVec2.cpp in Sources */,
 				0DA260DF236627C7005AD610 /* PlatformGraphicsInterface.mm in Sources */,
-				0D9F871B23AC63AA00C259A8 /* FRect.cpp in Sources */,
-				0D9F871C23AC63AA00C259A8 /* FFloatList.cpp in Sources */,
-				0D9F870A23AC63AA00C259A8 /* UIAlignmentPickerButton.cpp in Sources */,
-				0D9F870C23AC63AA00C259A8 /* ToolMenuSectionRow.cpp in Sources */,
+				0DDA7AEF23CD1065001850EB /* UIButton.cpp in Sources */,
+				0DDA7AE623CD1065001850EB /* FImage.cpp in Sources */,
+				0DDA7AEA23CD1065001850EB /* FIndexList.cpp in Sources */,
+				0DDA7AC423CD1065001850EB /* FScrollCanvasGeneric.cpp in Sources */,
+				0DDA7AD223CD1065001850EB /* FLine.cpp in Sources */,
+				0DDA7B2323CD1072001850EB /* os_core_graphics.mm in Sources */,
 				0DA260E1236627C7005AD610 /* os_core_web.cpp in Sources */,
+				0DDA7B0C23CD1066001850EB /* core_app_shell.cpp in Sources */,
+				0DDA7B0D23CD1066001850EB /* FString.cpp in Sources */,
+				0DDA7AC023CD1065001850EB /* FFloatBufferCache.cpp in Sources */,
 				0DA260D8236627C7005AD610 /* RecursiveLockWrapper.m in Sources */,
-				0D9F86D723AC63AA00C259A8 /* FBufferCache.cpp in Sources */,
-				0D9F86DC23AC63AA00C259A8 /* FScrollCanvasGeneric.cpp in Sources */,
-				0D9F86FA23AC63AA00C259A8 /* FXML.cpp in Sources */,
-				0D9F871F23AC63AA00C259A8 /* FFile.cpp in Sources */,
-				0DA26075236627C7005AD610 /* os_core_graphics.mm in Sources */,
-				0D9F86F323AC63AA00C259A8 /* FVec3.cpp in Sources */,
-				0DA26076236627C7005AD610 /* Shape3DShaders.metal in Sources */,
-				0D9F86F623AC63AA00C259A8 /* FCanvas.cpp in Sources */,
+				0DDA7AB923CD1065001850EB /* FAssetWad.cpp in Sources */,
+				0DDA7ADA23CD1065001850EB /* FJSON.cpp in Sources */,
+				0DDA7AD923CD1065001850EB /* FColor.cpp in Sources */,
+				0DDA7ADF23CD1065001850EB /* GraphicsInterface.cpp in Sources */,
 				0DA260E2236627C7005AD610 /* AppDelegate.mm in Sources */,
 				0DB8F2032366326F00AF587D /* FloatingCamera.cpp in Sources */,
 				0DA260DC236627C7005AD610 /* MetalViewController.mm in Sources */,
-				0D9F86CF23AC63AA00C259A8 /* FQuad.cpp in Sources */,
-				0D9F86E223AC63AA00C259A8 /* core_web.cpp in Sources */,
-				0D9F86E623AC63AA00C259A8 /* FTexture.cpp in Sources */,
+				0DDA7AB823CD1065001850EB /* FQuad.cpp in Sources */,
+				0DDA7AE023CD1065001850EB /* FButton.cpp in Sources */,
+				0DDA7AD523CD1065001850EB /* FResource.cpp in Sources */,
+				0DDA7AE223CD1065001850EB /* FXML.cpp in Sources */,
+				0DDA7AC623CD1065001850EB /* FSlider.cpp in Sources */,
+				0DDA7AEC23CD1065001850EB /* UIElement.cpp in Sources */,
+				0DDA7ABE23CD1065001850EB /* FMath.cpp in Sources */,
 				0DB8F207236633E200AF587D /* LandingScene.cpp in Sources */,
-				0D9F86E723AC63AA00C259A8 /* FGestureCanvas.cpp in Sources */,
-				0D9F86DB23AC63AA00C259A8 /* FSound.cpp in Sources */,
-				0DA26074236627C7005AD610 /* BufferBindingWrapper.mm in Sources */,
-				0DA2607F236627C7005AD610 /* MetalPipeline.mm in Sources */,
-				0D9F86D823AC63AA00C259A8 /* FFloatBufferCache.cpp in Sources */,
-				0D9F871323AC63AA00C259A8 /* UIStepper.cpp in Sources */,
-				0D9F86EA23AC63AA00C259A8 /* FLine.cpp in Sources */,
+				0DDA7B2823CD1072001850EB /* ModelShaders.metal in Sources */,
+				0DDA7ABA23CD1065001850EB /* FImageBundler.cpp in Sources */,
+				0DDA7AF623CD1066001850EB /* DragableCanvas.cpp in Sources */,
+				0DDA7ABC23CD1065001850EB /* FTouchManager.cpp in Sources */,
+				0DDA7AE923CD1065001850EB /* FObject.cpp in Sources */,
+				0DDA7AD423CD1065001850EB /* FRandomizer.cpp in Sources */,
+				0DDA7B0A23CD1066001850EB /* FApp.cpp in Sources */,
+				0DDA7B2C23CD1072001850EB /* MetalEngine.mm in Sources */,
+				0DDA7AD323CD1065001850EB /* FSize.cpp in Sources */,
+				0DDA7AE823CD1065001850EB /* FSprite.cpp in Sources */,
+				0DDA7AC823CD1065001850EB /* FScrollCanvasPaged.cpp in Sources */,
+				0DDA7B0B23CD1066001850EB /* FNotificationCenter.cpp in Sources */,
+				0DDA7AED23CD1065001850EB /* UISegment.cpp in Sources */,
+				0DDA7ACD23CD1065001850EB /* FAnimation.cpp in Sources */,
+				0DDA7B0723CD1066001850EB /* FModelDataPackedSequence.cpp in Sources */,
+				0DDA7AC723CD1065001850EB /* FJoystick.cpp in Sources */,
+				0DDA7ADC23CD1065001850EB /* FVec2.cpp in Sources */,
+				0DDA7B2723CD1072001850EB /* Shape2DShaders.metal in Sources */,
+				0DDA7AF423CD1065001850EB /* ToolMenuHeader.cpp in Sources */,
+				0DDA7B0023CD1066001850EB /* ToolMenuPanel.cpp in Sources */,
 				0DA260E0236627C7005AD610 /* MetalView.mm in Sources */,
-				0D9F86EB23AC63AA00C259A8 /* FSize.cpp in Sources */,
-				0D9F86DA23AC63AA00C259A8 /* FPrimitive.cpp in Sources */,
-				0D9F871023AC63AA00C259A8 /* UIRoundedRect.cpp in Sources */,
-				0D9F86CB23AC63AA00C259A8 /* FTextureCache.cpp in Sources */,
 				0DA260E3236627C7005AD610 /* os_core_app_shell_mac.mm in Sources */,
-				0D9F86CD23AC63AA00C259A8 /* FAchievementGroup.cpp in Sources */,
-				0D9F86E523AC63AA00C259A8 /* FAnimation.cpp in Sources */,
+				0DDA7AC123CD1065001850EB /* FMatrix.cpp in Sources */,
+				0DDA7AE423CD1065001850EB /* FSpriteSequence.cpp in Sources */,
+				0DDA7AF723CD1066001850EB /* ToolMenuSection.cpp in Sources */,
+				0DDA7AD123CD1065001850EB /* FSpline.cpp in Sources */,
 				0DB8B693236E7F0900C993E5 /* AssetWadGameInterface.cpp in Sources */,
-				0D9F86E823AC63AA00C259A8 /* FIndexBufferCache.cpp in Sources */,
-				0D9F86D023AC63AA00C259A8 /* FAssetWad.cpp in Sources */,
-				0D9F870723AC63AA00C259A8 /* UISegmentButton.cpp in Sources */,
-				0D9F871A23AC63AA00C259A8 /* FUniforms.cpp in Sources */,
-				0D9F870E23AC63AA00C259A8 /* ToolMenuSection.cpp in Sources */,
-				0D9F86ED23AC63AA00C259A8 /* FResource.cpp in Sources */,
-				0D9F86DD23AC63AA00C259A8 /* FAchievementController.cpp in Sources */,
+				0DDA7ABB23CD1065001850EB /* FFont.cpp in Sources */,
+				0DDA7B0123CD1066001850EB /* FWindow.cpp in Sources */,
+				0DDA7B2523CD1072001850EB /* ShapeNodeShaders.metal in Sources */,
+				0DDA7AF123CD1065001850EB /* UICheckBox.cpp in Sources */,
+				0DDA7ABD23CD1065001850EB /* FAchievement.cpp in Sources */,
+				0DDA7AE723CD1065001850EB /* FPointList.cpp in Sources */,
+				0DDA7AD623CD1065001850EB /* FModelDataPacked.cpp in Sources */,
+				0DDA7B0923CD1066001850EB /* FBuffer.cpp in Sources */,
+				0DDA7ACA23CD1065001850EB /* core_web.cpp in Sources */,
+				0DDA7B2223CD1072001850EB /* BufferBindingWrapper.mm in Sources */,
+				0DDA7AC923CD1065001850EB /* core_social.cpp in Sources */,
+				0DDA7AFB23CD1066001850EB /* Util_ScreenFrame.cpp in Sources */,
+				0DDA7AEB23CD1065001850EB /* UILabel.cpp in Sources */,
+				0DDA7AFF23CD1066001850EB /* UIImagePickerCell.cpp in Sources */,
+				0DDA7B0323CD1066001850EB /* FUniforms.cpp in Sources */,
+				0DDA7AE123CD1065001850EB /* FLight.cpp in Sources */,
+				0DDA7AD723CD1065001850EB /* FFileTable.cpp in Sources */,
+				0DDA7ADB23CD1065001850EB /* FVec3.cpp in Sources */,
+				0DDA7AF323CD1065001850EB /* UIAlignmentPickerButton.cpp in Sources */,
+				0DDA7AF023CD1065001850EB /* UISegmentButton.cpp in Sources */,
+				0DDA7B0423CD1066001850EB /* FRect.cpp in Sources */,
+				0DDA7ACB23CD1065001850EB /* FSpriteCanvas.cpp in Sources */,
+				0DDA7ACE23CD1065001850EB /* FTexture.cpp in Sources */,
+				0DDA7ACF23CD1065001850EB /* FGestureCanvas.cpp in Sources */,
+				0DDA7ADD23CD1065001850EB /* FAssetResolutionConfigurator.cpp in Sources */,
+				0DDA7B2A23CD1072001850EB /* SimpleModelShaders.metal in Sources */,
+				0DDA7B0823CD1066001850EB /* FFile.cpp in Sources */,
 				0DA260E5236627C7005AD610 /* os_core_outlets_mac.mm in Sources */,
-				0D9F871823AC63AA00C259A8 /* FWindow.cpp in Sources */,
-				0D9F870323AC63AA00C259A8 /* UIElement.cpp in Sources */,
-				0D9F870523AC63AA00C259A8 /* UITextBox.cpp in Sources */,
-				0D9F86F923AC63AA00C259A8 /* FLight.cpp in Sources */,
 				0DA260DE236627C7005AD610 /* os_core_sound_mac.mm in Sources */,
+				0DDA7AE323CD1065001850EB /* FParticle.cpp in Sources */,
+				0DDA7AB723CD1065001850EB /* FIntList.cpp in Sources */,
+				0DDA7AC323CD1065001850EB /* FSound.cpp in Sources */,
 				0DA260DA236627C7005AD610 /* os_core_music_mac.mm in Sources */,
-				0D9F86FF23AC63AA00C259A8 /* FSprite.cpp in Sources */,
-				0D9F86F723AC63AA00C259A8 /* GraphicsInterface.cpp in Sources */,
-				0D9F871E23AC63AA00C259A8 /* FModelDataPackedSequence.cpp in Sources */,
-				0DA2607C236627C7005AD610 /* SimpleModelShaders.metal in Sources */,
-				0D9F86DE23AC63AA00C259A8 /* FSlider.cpp in Sources */,
-				0D9F86EC23AC63AA00C259A8 /* FRandomizer.cpp in Sources */,
-				0D9F872023AC63AA00C259A8 /* FBuffer.cpp in Sources */,
+				0DDA7B2923CD1072001850EB /* SpriteShaders.metal in Sources */,
+				0DDA7B2D23CD1072001850EB /* MetalPipeline.mm in Sources */,
+				0DDA7B2423CD1072001850EB /* Shape3DShaders.metal in Sources */,
+				0DDA7ACC23CD1065001850EB /* FDrawQuad.cpp in Sources */,
+				0DDA7ABF23CD1065001850EB /* FBufferCache.cpp in Sources */,
+				0DDA7AB423CD1065001850EB /* FTextureCache.cpp in Sources */,
+				0DDA7AF823CD1066001850EB /* ToolMenu.cpp in Sources */,
+				0DDA7AD823CD1065001850EB /* FScrollCanvas.cpp in Sources */,
+				0DDA7AF223CD1065001850EB /* UIAlignmentPicker.cpp in Sources */,
+				0DDA7ADE23CD1065001850EB /* FCanvas.cpp in Sources */,
+				0DDA7AFE23CD1066001850EB /* UISlider.cpp in Sources */,
 				0DA260D7236627C7005AD610 /* RootViewController.mm in Sources */,
-				0D9F86D423AC63AA00C259A8 /* FAchievement.cpp in Sources */,
-				0D9F86D123AC63AA00C259A8 /* FImageBundler.cpp in Sources */,
-				0D9F86F023AC63AA00C259A8 /* FScrollCanvas.cpp in Sources */,
-				0D9F870623AC63AA00C259A8 /* UIButton.cpp in Sources */,
-				0D9F86D923AC63AA00C259A8 /* FMatrix.cpp in Sources */,
-				0D9F871623AC63AA00C259A8 /* UIImagePickerCell.cpp in Sources */,
-				0D9F86EF23AC63AA00C259A8 /* FFileTable.cpp in Sources */,
-				0D9F870923AC63AA00C259A8 /* UIAlignmentPicker.cpp in Sources */,
-				0DA2607A236627C7005AD610 /* ModelShaders.metal in Sources */,
-				0DA2607E236627C7005AD610 /* MetalEngine.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

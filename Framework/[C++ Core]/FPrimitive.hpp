@@ -71,14 +71,12 @@ public:
     bool                            mEnabledTexture;
     bool                            mEnabledColor;
     
-    inline void                     DrawSetup(FSprite *pSprite);
-    
     virtual void					Draw(FSprite *pSprite, bool pStrips=false);
     virtual void					Draw(FSprite &pSprite, bool pStrips=false){Draw(&pSprite, pStrips);}
     
     virtual void					DrawTris(FSprite *pSprite) { Draw(pSprite, false); }
     virtual void					DrawTris(FSprite &pSprite) { Draw(&pSprite, false); }
-    virtual void					DrawTris() { Draw(0, false); }
+    virtual void					DrawTris() { Draw(NULL, false); }
     
     virtual void					DrawTriStrips(FSprite *pSprite) { Draw(pSprite, true); }
     virtual void					DrawTriStrips(FSprite &pSprite) { Draw(&pSprite, true); }
@@ -107,18 +105,19 @@ public:
     void                            SetB(int pIndex, float pBlue);
     void                            SetA(int pIndex, float pAlpha);
     
-    inline float                    GetX(int pIndex){return ((pIndex>=0)&&(pIndex<mCountNodes))?(mData[pIndex].mX):(0.0f);}
-    inline float                    GetY(int pIndex){return ((pIndex>=0)&&(pIndex<mCountNodes))?(mData[pIndex].mY):(0.0f);}
-    inline float                    GetZ(int pIndex){return ((pIndex>=0)&&(pIndex<mCountNodes))?(mData[pIndex].mZ):(0.0f);}
+    inline float                    GetX(int pIndex) { return ((pIndex>=0)&&(pIndex<mCountNodes))?(mData[pIndex].mX):(0.0f); }
+    inline float                    GetY(int pIndex) { return ((pIndex>=0)&&(pIndex<mCountNodes))?(mData[pIndex].mY):(0.0f); }
+    inline float                    GetZ(int pIndex) { return ((pIndex>=0)&&(pIndex<mCountNodes))?(mData[pIndex].mZ):(0.0f); }
     
-    inline float                    GetU(int pIndex){return ((pIndex>=0)&&(pIndex<mCountNodes))?(mData[pIndex].mU):(0.0f);}
-    inline float                    GetV(int pIndex){return ((pIndex>=0)&&(pIndex<mCountNodes))?(mData[pIndex].mV):(0.0f);}
-    inline float                    SetW(int pIndex){return ((pIndex>=0)&&(pIndex<mCountNodes))?(mData[pIndex].mW):(0.0f);}
+    inline float                    GetU(int pIndex) { return ((pIndex>=0)&&(pIndex<mCountNodes))?(mData[pIndex].mU):(0.0f); }
+    inline float                    GetV(int pIndex) { return ((pIndex>=0)&&(pIndex<mCountNodes))?(mData[pIndex].mV):(0.0f); }
+    inline float                    SetW(int pIndex) { return ((pIndex>=0)&&(pIndex<mCountNodes))?(mData[pIndex].mW):(0.0f); }
     
-    inline float                    GetR(int pIndex){return ((pIndex>=0)&&(pIndex<mCountNodes))?(mData[pIndex].mR):(0.0f);}
-    inline float                    GetG(int pIndex){return ((pIndex>=0)&&(pIndex<mCountNodes))?(mData[pIndex].mG):(0.0f);}
-    inline float                    GetB(int pIndex){return ((pIndex>=0)&&(pIndex<mCountNodes))?(mData[pIndex].mB):(0.0f);}
-    inline float                    GetA(int pIndex){return ((pIndex>=0)&&(pIndex<mCountNodes))?(mData[pIndex].mA):(0.0f);}
+    inline float                    GetR(int pIndex) { return ((pIndex>=0)&&(pIndex<mCountNodes))?(mData[pIndex].mR):(0.0f); }
+    inline float                    GetG(int pIndex) { return ((pIndex>=0)&&(pIndex<mCountNodes))?(mData[pIndex].mG):(0.0f); }
+    inline float                    GetB(int pIndex) { return ((pIndex>=0)&&(pIndex<mCountNodes))?(mData[pIndex].mB):(0.0f); }
+    inline float                    GetA(int pIndex) { return ((pIndex>=0)&&(pIndex<mCountNodes))?(mData[pIndex].mA):(0.0f); }
+    
 };
 
 #endif

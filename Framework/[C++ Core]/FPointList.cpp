@@ -37,8 +37,8 @@ void FPointList::Add(float pX, float pY)
 }
 
 void FPointList::Add(FPointList *pList) {
-    if (pList) {
-        if((pList->mCount + mCount) > mSize) {
+    if (pList != NULL) {
+        if ((pList->mCount + mCount) > mSize) {
             Size(pList->mCount + mCount);
         }
         for (int i=0;i<pList->mCount;i++) {
@@ -98,41 +98,33 @@ void FPointList::AddEdge(float pX1, float pY1, float pX2, float pY2) {
     }
 }
 
-void FPointList::Set(int pIndex, float pX, float pY)
-{
-    if(pIndex >= mSize)
-    {
+void FPointList::Set(int pIndex, float pX, float pY) {
+    if (pIndex >= mSize) {
         SetSize(pIndex + 1);
     }
-    if(pIndex >= mCount)
-    {
+    
+    if (pIndex >= mCount) {
         mCount = (pIndex + 1);
     }
     
-    if(pIndex >= 0)
-    {
+    if (pIndex >= 0) {
         mX[pIndex] = pX;
         mY[pIndex] = pY;
     }
 }
 
-int FPointList::Remove(int pIndex)
-{
+int FPointList::Remove(int pIndex) {
     int aResult = pIndex;
     
-    if((pIndex >= 0) && (pIndex < mCount))
-    {
-        for(int i=(pIndex+1);i<mCount;i++)
-        {
+    if ((pIndex >= 0) && (pIndex < mCount)) {
+        for (int i=(pIndex+1);i<mCount;i++) {
             mX[i - 1] = mX[i];
             mY[i - 1] = mY[i];
         }
         mCount--;
     }
     
-    if(mCount > 0)
-    {
-        
+    if (mCount > 0) {
         if(aResult < 0)aResult = (mCount - 1);
         else if(aResult >= mCount)aResult = 0;
     }
@@ -155,25 +147,22 @@ int FPointList::Remove(int pIndex)
 }
 
 void FPointList::Size(int pSize) {
-    if(pSize != mSize)
-    {
-        if(pSize <= 0)
-        {
+    if (pSize != mSize) {
+        if (pSize <= 0) {
             Clear();
-        }
-        else
-        {
-            if(mCount >= pSize)mCount = pSize;
+        } else {
+            if (mCount >= pSize) {
+                mCount = pSize;
+            }
 
-            
             float *aNewX = new float[pSize * 2 + 1];
             float *aNewY = aNewX + pSize;
             
-            for(int i=0;i<mCount;i++)aNewX[i] = mX[i];
-            for(int i=0;i<mCount;i++)aNewY[i] = mY[i];
+            for (int i=0;i<mCount;i++) { aNewX[i] = mX[i]; }
+            for (int i=0;i<mCount;i++) { aNewY[i] = mY[i]; }
             
-            for(int i=mCount;i<pSize;i++)aNewX[i] = 0.0f;
-            for(int i=mCount;i<pSize;i++)aNewY[i] = 0.0f;
+            for (int i=mCount;i<pSize;i++) { aNewX[i] = 0.0f; }
+            for (int i=mCount;i<pSize;i++) { aNewY[i] = 0.0f; }
             
             delete [] mX;
             
@@ -214,18 +203,15 @@ void FPointList::OutlinePoints(float pSize, float pBorderWidth) {
 }
 
 
-void FPointList::DrawEdges(float pLineSize)
-{
-    if(mCount > 0)
-    {
+void FPointList::DrawEdges(float pLineSize) {
+    if (mCount > 0) {
         float aLastX = mX[mCount - 1];
         float aLastY = mY[mCount - 1];
         
         float aX = 0.0f;
         float aY = 0.0f;
         
-        for(int i=0;i<mCount;i++)
-        {
+        for (int i=0;i<mCount;i++) {
             aX = mX[i];aY = mY[i];
             Graphics::DrawLine(aLastX, aLastY, aX, aY, pLineSize);
             aLastX = aX;aLastY = aY;
@@ -250,24 +236,18 @@ void FPointList::DrawEdgesOpen(float pLineSize) {
     }
 }
 
-
-
-
-
-
-void FPointList::DrawEdgeLists(FPointList *pEdgeList1, FPointList *pEdgeList2, int pStartIndex, int pSkipAmount)
-{
+void FPointList::DrawEdgeLists(FPointList *pEdgeList1, FPointList *pEdgeList2, int pStartIndex, int pSkipAmount) {
     if (pSkipAmount < 1)pSkipAmount = 1;
     if ((pEdgeList1 != 0) && (pEdgeList2 != 0)) {
         int aCount = ((pEdgeList1->mCount < pEdgeList2->mCount) ? (pEdgeList1->mCount) : (pEdgeList2->mCount));
         int aIndex = pStartIndex;
         
         if (aIndex >= 0) {
-        while (aIndex < aCount) {
-            Graphics::DrawLine(pEdgeList1->mX[aIndex], pEdgeList1->mY[aIndex], pEdgeList2->mX[aIndex], pEdgeList2->mY[aIndex], 2);
-            aIndex += pSkipAmount;
+            while (aIndex < aCount) {
+                Graphics::DrawLine(pEdgeList1->mX[aIndex], pEdgeList1->mY[aIndex], pEdgeList2->mX[aIndex], pEdgeList2->mY[aIndex], 2);
+                aIndex += pSkipAmount;
+            }
         }
-              }
     }
 }
 

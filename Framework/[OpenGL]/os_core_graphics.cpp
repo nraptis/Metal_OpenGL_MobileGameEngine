@@ -108,11 +108,6 @@ void Graphics::Initialize() {
 #endif
     
     Graphics::TextureSetFilterLinear();
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    
-    //Graphics::TextureSetModulate();
-    //glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
     
     //Graphics::TextureEnable();
     glEnable(GL_TEXTURE_2D);
@@ -575,23 +570,33 @@ void Graphics::Clear() {
 }
 
 void Graphics::TextureSetWrap() {
+    //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,GL_REPEAT);
+    //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,GL_REPEAT);
+    
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     
 }
 
 void Graphics::TextureSetClamp() {
-    
+    #if (CURRENT_ENV == ENV_WIN32)
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
+        glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T, GL_CLAMP);
+    #else
+        glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+        
+    #endif
 }
 
 void Graphics::TextureSetFilterMipMap() {
-    
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 }
 
 void Graphics::TextureSetFilterLinear() {
-    
-}
-
-void Graphics::TextureSetFilterNearest() {
-    
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 }
 
 void Graphics::ArrayBufferData(FBuffer *pBuffer) {
@@ -675,17 +680,6 @@ FBuffer *Graphics::ArrayWriteData(void *pData, int pCount) {
             ArrayBufferData(aDataBuffer);
             return aDataBuffer;
         }
-        
-        /*
-         cVertexCache.Get(pCount);
-         if (cVertexCache.mResult.mSuccess) {
-         FBuffer *aDataBuffer = cVertexCache.mResult.mBuffer;
-         int aDataBufferOffset = cVertexCache.mResult.mBufferOffset;
-         
-         BufferArrayWrite(aDataBuffer, pData, aDataBufferOffset, pCount);
-         ArrayBufferData(aDataBuffer, aDataBufferOffset);
-         }
-         */
     }
     return NULL;
 }
@@ -1108,10 +1102,9 @@ void Graphics::DrawTrianglesIndexedWithPackedBuffers(FBuffer *pVertexBuffer, int
     Graphics::ArrayBufferPositions(NULL, 0);
     Graphics::ArrayBufferTextureCoords(NULL, sizeof(float) * 3);
     Graphics::ArrayBufferNormals(NULL, sizeof(float) * 6);
+    
     Graphics::DrawTrianglesIndexed(pIndices, pCount);
 }
-
-
 
 void Graphics::DrawTriangleStripsIndexed(GFX_MODEL_INDEX_TYPE *pIndices, int pCount) {
     glDrawElements(GL_TRIANGLE_STRIP, pCount, GFX_MODEL_INDEX_GL_TYPE, pIndices);
@@ -1257,8 +1250,8 @@ void Graphics::RenderQuadScaled(float pX1, float pY1, float pX2, float pY2, floa
 }
 
 
-void Graphics::RenderQuadScaled(float pX1, float pY1, float pX2, float pY2, float pX3, float pY3, float pX4, float pY4, float pU1, float pV1, float pU2, float pV2, float pU3, float pV3, float pU4, float pV4, FTexture *pTexture, float pScale, float pCenterX, float pCenterY)
-{
+void Graphics::RenderQuadScaled(float pX1, float pY1, float pX2, float pY2, float pX3, float pY3, float pX4, float pY4, float pU1, float pV1, float pU2, float pV2, float pU3, float pV3, float pU4, float pV4, FTexture *pTexture, float pScale, float pCenterX, float pCenterY) {
+    
     pX1 = pCenterX - (pCenterX - pX1) * pScale;
     pX2 = pCenterX - (pX2 - pCenterX) * pScale;
     
@@ -1334,7 +1327,6 @@ bool Graphics::DrawSpriteSetup(float *pPositions, float *pTextureCoords) {
     if (aBufferTextureCoords == NULL) { return false; }
     if (aBufferTextureCoords->mBindIndex == -1) { return false; }
     
-    
     BufferArrayWrite(aBufferPositions, pPositions, sizeof(float) * 8);
     ArrayBufferPositions(aBufferPositions);
     
@@ -1403,7 +1395,6 @@ bool Graphics::DrawSpriteTriangleSetup(float *pPositions, float *pTextureCoords)
     FBuffer *aBufferTextureCoords = gBufferCache.GetArrayBuffer(sizeof(float) * 6);
     if (aBufferTextureCoords == NULL) { return false; }
     if (aBufferTextureCoords->mBindIndex == -1) { return false; }
-    
     
     BufferArrayWrite(aBufferPositions, pPositions, sizeof(float) * 6);
     ArrayBufferPositions(aBufferPositions);
@@ -1602,6 +1593,36 @@ void Graphics::PipelineStateSetShapeNodeAdditiveBlending() {
     }
 }
 
+void Graphics::PipelineStateSetShapeNodeSpriteNoBlending() {
+    if (gOpenGLEngine) {
+        BlendDisable();
+        gOpenGLEngine->UseProgramShapeNodeSprite();
+    }
+}
+
+void Graphics::PipelineStateSetShapeNodeSpriteAlphaBlending() {
+    if (gOpenGLEngine) {
+        BlendEnable();
+        BlendSetAlpha();
+        gOpenGLEngine->UseProgramShapeNodeSprite();
+    }
+}
+
+void Graphics::PipelineStateSetShapeNodeSpriteAdditiveBlending() {
+    if (gOpenGLEngine) {
+        BlendEnable();
+        BlendSetAdditive();
+        gOpenGLEngine->UseProgramShapeNodeSprite();
+    }
+}
+
+void Graphics::PipelineStateSetShapeNodeSpritePremultipliedBlending() {
+    if (gOpenGLEngine) {
+        BlendEnable();
+        BlendSetPremultiplied();
+        gOpenGLEngine->UseProgramShapeNodeSprite();
+    }
+}
 
 void Graphics::PipelineStateSetSimpleModelNoBlending() {
     if (gOpenGLEngine) {
@@ -1614,6 +1635,22 @@ void Graphics::PipelineStateSetSimpleModelAlphaBlending() {
     if (gOpenGLEngine) {
         BlendEnable();
         BlendSetAlpha();
+        gOpenGLEngine->UseProgramSimpleModel();
+    }
+}
+
+void Graphics::PipelineStateSetSimpleModelAdditiveBlending() {
+    if (gOpenGLEngine) {
+        BlendEnable();
+        BlendSetAdditive();
+        gOpenGLEngine->UseProgramSimpleModel();
+    }
+}
+
+void Graphics::PipelineStateSetSimpleModelPremultipliedBlending() {
+    if (gOpenGLEngine) {
+        BlendEnable();
+        BlendSetPremultiplied();
         gOpenGLEngine->UseProgramSimpleModel();
     }
 }

@@ -22,6 +22,9 @@ OpenGLEngine::OpenGLEngine() {
     mShaderProgramSpriteWhite = NULL;
     
     mShaderProgramShapeNode = NULL;
+    
+    mShaderProgramShapeNodeSprite = NULL;
+    
     mShaderProgramSpriteNode = NULL;
     
     mShaderProgramSimpleModel = NULL;
@@ -85,6 +88,9 @@ void OpenGLEngine::TearDown() {
     delete mShaderProgramShapeNode;
     mShaderProgramShapeNode = NULL;
     
+    delete mShaderProgramShapeNodeSprite;
+    mShaderProgramShapeNodeSprite = NULL;
+    
     delete mShaderProgramSpriteNode;
     mShaderProgramSpriteNode = NULL;
     
@@ -131,6 +137,9 @@ void OpenGLEngine::BuildPrograms() {
     
     mShaderProgramShapeNode = new ShaderProgramShapeNode("shape_node_vertex_shader.glsl", "shape_node_fragment_shader.glsl");
     mShaderProgramShapeNode->Compile();
+    
+    mShaderProgramShapeNodeSprite = new ShaderProgramShapeNodeSprite("shape_node_sprite_vertex_shader.glsl", "shape_node_sprite_fragment_shader.glsl");
+    mShaderProgramShapeNodeSprite->Compile();
     
     mShaderProgramSimpleModel = new ShaderProgramSimpleModel("simple_model_vertex_shader.glsl", "simple_model_fragment_shader.glsl");
     mShaderProgramSimpleModel->Compile();
@@ -252,6 +261,10 @@ void OpenGLEngine::UseProgramSpriteWhite() {
 
 void OpenGLEngine::UseProgramShapeNode() {
     UseProgram(mShaderProgramShapeNode);
+}
+
+void OpenGLEngine::UseProgramShapeNodeSprite() {
+    UseProgram(mShaderProgramShapeNodeSprite);
 }
 
 void OpenGLEngine::UseProgramSimpleModel() {

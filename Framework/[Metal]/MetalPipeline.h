@@ -24,6 +24,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) id <MTLFunction> shapeNodeVertexProgram;
 @property (nonatomic, strong) id <MTLFunction> shapeNodeFragmentProgram;
+
+@property (nonatomic, strong) id <MTLFunction> shapeNodeSpriteFragmentProgram;
+
 @property (nonatomic, strong) id <MTLFunction> spriteVertexProgram;
 @property (nonatomic, strong) id <MTLFunction> spriteFragmentProgram;
 @property (nonatomic, strong) id <MTLFunction> spriteFragmentProgramWhite;
@@ -62,6 +65,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)pipelineStateSetShapeNodeAlphaBlending;
 - (void)pipelineStateSetShapeNodeAdditiveBlending;
 
+
+- (void)pipelineStateSetShapeNodeSpriteNoBlending;
+- (void)pipelineStateSetShapeNodeSpriteAlphaBlending;
+- (void)pipelineStateSetShapeNodeSpriteAdditiveBlending;
+- (void)pipelineStateSetShapeNodeSpritePremultipliedBlending;
+
 - (void)pipelineStateSetSpriteNoBlending;
 - (void)pipelineStateSetSpriteAlphaBlending;
 - (void)pipelineStateSetSpriteAdditiveBlending;
@@ -70,6 +79,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)pipelineStateSetSimpleModelNoBlending;
 - (void)pipelineStateSetSimpleModelAlphaBlending;
+- (void)pipelineStateSetSimpleModelPremultipliedBlending;
+- (void)pipelineStateSetSimpleModelAdditiveBlending;
 
 - (void)pipelineStateSetSimpleModelIndexedNoBlending;
 - (void)pipelineStateSetSimpleModelIndexedAlphaBlending;

@@ -304,94 +304,67 @@ void FDrawNodeList::SetW(int pIndex, float pW)
     }
 }
 
-void FDrawNodeList::SetR(int pIndex, float pRed)
-{
-    if((pIndex >= 0) && (pIndex < mCountNodes))
-    {
+void FDrawNodeList::SetR(int pIndex, float pRed) {
+    if ((pIndex >= 0) && (pIndex < mCountNodes)) {
         mData[pIndex].mR = pRed;
-    }
-    else
-    {
+    } else {
         SetRGBA(pIndex, pRed, 1.0f, 1.0f, 1.0f);
     }
 }
 
-
-void FDrawNodeList::SetG(int pIndex, float pGreen)
-{
-    if((pIndex >= 0) && (pIndex < mCountNodes))
-    {
+void FDrawNodeList::SetG(int pIndex, float pGreen) {
+    if ((pIndex >= 0) && (pIndex < mCountNodes)) {
         mData[pIndex].mG = pGreen;
-    }
-    else
-    {
+    } else {
         SetRGBA(pIndex, 1.0, pGreen, 1.0f, 1.0f);
     }
 }
 
-void FDrawNodeList::SetB(int pIndex, float pBlue)
-{
-    if((pIndex >= 0) && (pIndex < mCountNodes))
-    {
+void FDrawNodeList::SetB(int pIndex, float pBlue) {
+    if ((pIndex >= 0) && (pIndex < mCountNodes)) {
         mData[pIndex].mB = pBlue;
-    }
-    else
-    {
+    } else {
         SetRGBA(pIndex, 1.0f, 1.0f, pBlue, 1.0f);
     }
 }
 
-void FDrawNodeList::SetA(int pIndex, float pAlpha)
-{
-    if((pIndex >= 0) && (pIndex < mCountNodes))
-    {
+void FDrawNodeList::SetA(int pIndex, float pAlpha) {
+    if ((pIndex >= 0) && (pIndex < mCountNodes)) {
         mData[pIndex].mA = pAlpha;
-    }
-    else
-    {
+    } else {
         SetRGBA(pIndex, 1.0f, 1.0f, 1.0f, pAlpha);
     }
 }
 
-void FDrawNodeList::SetXY(int pIndex, float pX, float pY)
-{
-    if((pIndex >= 0) && (pIndex < mCountNodes))
-    {
+void FDrawNodeList::SetXY(int pIndex, float pX, float pY) {
+    if ((pIndex >= 0) && (pIndex < mCountNodes)) {
         mData[pIndex].mX = pX;
         mData[pIndex].mY = pY;
-    }
-    else
-    {
+    } else {
         SetXYZ(pIndex, pX, pY, 0.0f);
     }
 }
 
-void FDrawNodeList::SetUV(int pIndex, float pU, float pV)
-{
-    SetUVW(pIndex, pU, pV, 0.0f);
+void FDrawNodeList::SetUV(int pIndex, float pU, float pV) {
+    
+    //TODO: 1 or 0?
+    SetUVW(pIndex, pU, pV, 1.0f);
+    
 }
 
-
-void FDrawNodeList::Add(FDrawNode *pNode)
-{
-    if(pNode)
-    {
+void FDrawNodeList::Add(FDrawNode *pNode) {
+    if (pNode != NULL) {
         Add(pNode->mX, pNode->mY, pNode->mZ, pNode->mU, pNode->mV, pNode->mW, pNode->mR, pNode->mG, pNode->mB, pNode->mA);
     }
 }
 
-void FDrawNodeList::Add(float pX, float pY, float pZ, float pU, float pV, float pW, float pRed, float pGreen, float pBlue, float pAlpha)
-{
-    
+void FDrawNodeList::Add(float pX, float pY, float pZ, float pU, float pV, float pW, float pRed, float pGreen, float pBlue, float pAlpha) {
     Set(mCountNodes, pX, pY, pZ, pU, pV, pW, pRed, pGreen, pBlue, pAlpha);
 }
 
-void FDrawNodeList::Set(int pIndex, float pX, float pY, float pZ, float pU, float pV, float pW, float pRed, float pGreen, float pBlue, float pAlpha)
-{
-    if(pIndex >= 0)
-    {
-        if(pIndex >= mNodeSize)
-        {
+void FDrawNodeList::Set(int pIndex, float pX, float pY, float pZ, float pU, float pV, float pW, float pRed, float pGreen, float pBlue, float pAlpha) {
+    if (pIndex >= 0) {
+        if (pIndex >= mNodeSize) {
             int aSize = (pIndex + (pIndex / 2) + 2);
             Size(aSize);
         }
@@ -409,8 +382,7 @@ void FDrawNodeList::Set(int pIndex, float pX, float pY, float pZ, float pU, floa
         mData[pIndex].mB = pBlue;
         mData[pIndex].mA = pAlpha;
         
-        if(pIndex >= mCountNodes)
-        {
+        if (pIndex >= mCountNodes) {
             mCountNodes = pIndex + 1;
             mIndexList.mCount = mCountNodes;
         }
@@ -452,8 +424,7 @@ void FDrawNodeList::SetUVW(int pIndex, float pU, float pV, float pW) {
     }
 }
 
-void FDrawNodeList::SetRGBA(int pIndex, float pRed, float pGreen, float pBlue, float pAlpha)
-{
+void FDrawNodeList::SetRGBA(int pIndex, float pRed, float pGreen, float pBlue, float pAlpha) {
     if (pIndex >= 0) {
         
         if (pIndex >= mNodeSize) {
@@ -473,62 +444,10 @@ void FDrawNodeList::SetRGBA(int pIndex, float pRed, float pGreen, float pBlue, f
     }
 }
 
-void FDrawNodeList::DrawSetup(FSprite *pSprite)
-{
-    /*
-     //if(mCountNodes <= 0)return;
-     
-     float *aPtr = (float *)(&(mData[0]));
-     
-     Graphics::EnableVertexArray();
-     Graphics::ArrayVertices(aPtr, sizeof(FDrawNode), 3);
-     
-     bool aUseTexture = false;
-     
-     if((mEnabledTexture == true) && (pSprite != 0))
-     {
-     if(pSprite->mTexture != 0)
-     {
-     aUseTexture = true;
-     }
-     }
-     
-     
-     
-     if(aUseTexture)
-     {
-     Graphics::EnableTextureCoordinateArray();
-     Graphics::ArrayCoords(aPtr + 3, sizeof(FDrawNode), 3);
-     
-     Graphics::TextureEnable();
-     Graphics::TextureBind(pSprite->mTexture);
-     
-     if(pStrips)Graphics::DrawTriangleStrips(mCountNodes);
-     else Graphics::DrawTriangles(mCountNodes);
-     
-     //Graphics::DisableColorArray();
-     
-     }
-     else
-     {
-     Graphics::DisableTextureCoordinateArray();
-     Graphics::TextureDisable();
-     
-     if(pStrips)Graphics::DrawTriangleStrips(mCountNodes);
-     else Graphics::DrawTriangles(mCountNodes);
-     
-     
-     }
-     */
-    
-    
-    
-    
-}
-
-void FDrawNodeList::Draw(FSprite *pSprite, bool pStrips)
-{
-    if(mCountNodes <= 0)return;
+void FDrawNodeList::Draw(FSprite *pSprite, bool pStrips) {
+    if (mCountNodes <= 0) {
+        return;
+    }
     
     float *aPtr = (float *)(&(mData[0]));
     
@@ -558,21 +477,16 @@ void FDrawNodeList::Draw(FSprite *pSprite, bool pStrips)
         
         Graphics::UniformBind();
         
-        //TODO: Smurf?
-        //Graphics::DrawTriangleStripsIndexed(mIndexList.mIndex, mCountNodes);
         if (pStrips) {
             Graphics::DrawTriangleStripsIndexed(mIndexList.mIndex, mCountNodes);
         } else {
             Graphics::DrawTrianglesIndexed(mIndexList.mIndex, mCountNodes);
         }
-        
     }
 }
 
-void FDrawNodeList::DrawNodes(int pHighlightIndex)
-{
-    for(int i=0;i<mCountNodes;i++)
-    {
+void FDrawNodeList::DrawNodes(int pHighlightIndex) {
+    for(int i=0;i<mCountNodes;i++) {
         float aX = mData[i].mX;
         float aY = mData[i].mY;
         
@@ -600,8 +514,7 @@ void FDrawNodeList::DrawNodes(int pHighlightIndex)
         
         FRect aRect[4];
         
-        for(int i=3;i>=0;i--)
-        {
+        for (int i=3;i>=0;i--) {
             aRect[i].mX = aShiftX;
             aRect[i].mY = aShiftY;
             aRect[i].mWidth = aBarWidth;
@@ -617,10 +530,7 @@ void FDrawNodeList::DrawNodes(int pHighlightIndex)
         aColor[2] = FColor(0.0f,0.0f,1.0f);
         aColor[3] = FColor(1.0f,1.0f,1.0f);
         
-        
-        
         for (int i=0;i<mCountNodes;i++) {
-            
             if (i == pHighlightIndex) {
                 float aX = mData[i].mX;
                 float aY = mData[i].mY;
@@ -631,7 +541,6 @@ void FDrawNodeList::DrawNodes(int pHighlightIndex)
                 aP[2] = mData[i].mB;
                 aP[3] = mData[i].mA;
                 
-                
                 for (int c=0;c<4;c++) {
                     Graphics::SetColor(0.25f, 0.45f, 0.25f);
                     Graphics::OutlineRect(aX + aRect[c].mX, aRect[c].mY, aRect[c].mWidth, aRect[c].mHeight, 4.0f);
@@ -639,39 +548,25 @@ void FDrawNodeList::DrawNodes(int pHighlightIndex)
                     Graphics::SetColor(0.25f, 0.45f, 0.25f);
                     Graphics::OutlineRect(aX + aRect[c].mX, aRect[c].mY, aRect[c].mWidth, aRect[c].mHeight, 2.0f);
                     
-                    
                     Graphics::SetColor(0.4f, 0.4f, 0.4f);
                     Graphics::DrawRect(aX + aRect[c].mX, aY + aRect[c].mY, aRect[c].mWidth, aRect[c].mHeight);
-                    
-                    
                     
                     Graphics::SetColor(aColor[c]);
                     Graphics::DrawRect(aX + aRect[c].mX, aY + aRect[c].mY, aRect[c].mWidth * aP[c], aRect[c].mHeight);
                     
                 }
-                
-                
-                
             }
-            
         }
-        
-        
-        
     }
     
     Graphics::SetColor();
     
 }
 
-int FDrawNodeList::GetClosestNode(float pX, float pY, float &pDist)
-{
+int FDrawNodeList::GetClosestNode(float pX, float pY, float &pDist) {
     pDist = 0.0f;
-    
     int aResult = -1;
-    
-    if(mCountNodes > 0)
-    {
+    if (mCountNodes > 0) {
         aResult = 0;
         
         float aDiffX = mData[0].mX - pX;
@@ -680,15 +575,11 @@ int FDrawNodeList::GetClosestNode(float pX, float pY, float &pDist)
         pDist = aDiffX * aDiffX + aDiffY * aDiffY;
         
         float aDist = 0.0f;
-        for(int i=1;i<mCountNodes;i++)
-        {
+        for (int i=1;i<mCountNodes;i++) {
             aDiffX = mData[i].mX - pX;
             aDiffY = mData[i].mY - pY;
-            
             aDist = aDiffX * aDiffX + aDiffY * aDiffY;
-            
-            if(aDist < pDist)
-            {
+            if (aDist < pDist) {
                 pDist = aDist;
                 aResult = i;
             }
@@ -698,41 +589,31 @@ int FDrawNodeList::GetClosestNode(float pX, float pY, float &pDist)
     return aResult;
 }
 
-int FDrawNodeList::GetClosestNode(float pX, float pY)
-{
+int FDrawNodeList::GetClosestNode(float pX, float pY) {
     float aDist = 200.0f;
-    
     int aResult = GetClosestNode(pX, pY, aDist);
-    
     return aResult;
 }
 
-
-void FDrawNodeList::AdjustTextureCoordinates(float pStartU, float pStartV, float pEndU, float pEndV)
-{
+void FDrawNodeList::AdjustTextureCoordinates(float pStartU, float pStartV, float pEndU, float pEndV) {
     float aRangeU = (pEndU - pStartU);
     float aRangeV = (pEndV - pStartV);
     
-    for(int i=0;i<mCountNodes;i++)
-    {
+    for (int i=0;i<mCountNodes;i++) {
         mData[i].mU = pStartU + mData[i].mU * aRangeU;
         mData[i].mV = pStartV + mData[i].mV * aRangeV;
     }
 }
 
-void FDrawNodeList::AdjustTextureCoordinates(FSprite *pSprite)
-{
-    if(pSprite)
-    {
+void FDrawNodeList::AdjustTextureCoordinates(FSprite *pSprite) {
+    if (pSprite != NULL) {
         AdjustTextureCoordinates(pSprite->mTextureRect.GetStartU(), pSprite->mTextureRect.GetStartV(), pSprite->mTextureRect.GetEndU(), pSprite->mTextureRect.GetEndV());
     }
 }
 
-void FDrawNodeList::SwapUV()
-{
+void FDrawNodeList::SwapUV() {
     float aHold = 0.0f;
-    for(int i=0;i<mCountNodes;i++)
-    {
+    for (int i=0;i<mCountNodes;i++) {
         aHold = mData[i].mU;
         mData[i].mU = mData[i].mV;
         mData[i].mV = aHold;
