@@ -14,24 +14,26 @@ FTextureSnake::FTextureSnake() {
     mCount = 0;
     mSize = 0;
     
-    mCenterX = 0;
-    mCenterY = 0;
+    mCenterX = NULL;
+    mCenterY = NULL;
     
-    mDirX = 0;
-    mDirY = 0;
+    mDirX = NULL;
+    mDirY = NULL;
     
-    mNormX = 0;
-    mNormY = 0;
+    mNormX = NULL;
+    mNormY = NULL;;
     
-    mU = 0;
-    mV = 0;
+    mU = NULL;
+    mV = NULL;
     
-    mDist = 0;
-    mPercent = 0;
+    mDist = NULL;
+    mPercent = NULL;
     
     mOffsetU = 0.0f;
     
     mSprite = 0;
+    
+    mScale = 1.0f;
     
     mWidthFactor = 1.0f;
     
@@ -42,11 +44,9 @@ FTextureSnake::FTextureSnake() {
     mRefresh = false;
 }
 
-FTextureSnake::~FTextureSnake()
-{
+FTextureSnake::~FTextureSnake() {
     Clear();
 }
-
 
 void FTextureSnake::Draw() {
     if (mRefresh) { Generate(); }
@@ -94,14 +94,9 @@ void FTextureSnake::DrawMarkers() {
         Graphics::DrawLine(aX, aY, aCornerX2, aCornerY2);
         
         Graphics::SetColor(0.25f, 0.5f, 0.75f);
-        
-        
-        
     }
     
-    
     Graphics::SetColor();
-    
 }
 
 void FTextureSnake::Reset() {
@@ -113,22 +108,22 @@ void FTextureSnake::Reset() {
 void FTextureSnake::Clear() {
     delete [] mCenterX;
     
-    mCenterX = 0;
-    mCenterY = 0;
+    mCenterX = NULL;
+    mCenterY = NULL;
     
-    mCount = 0;
-    mSize = 0;
+    mCount = NULL;
+    mSize = NULL;
     
-    mDirX = 0;
-    mDirY = 0;
+    mDirX = NULL;
+    mDirY = NULL;
     
-    mNormX = 0;
-    mNormY = 0;
+    mNormX = NULL;
+    mNormY = NULL;
     
-    mU = 0;
-    mV = 0;
+    mU = NULL;
+    mV = NULL;
     
-    mDist = 0;
+    mDist = NULL;
     
     mLength = 0.0f;
     
@@ -143,7 +138,7 @@ void FTextureSnake::Size(int pSize) {
     
     mSize = pSize;
     
-    int aSize = pSize * 10;
+    int aSize = pSize * 11;
     
     float *aCenterX = new float[aSize];
     float *aCenterY = &(aCenterX[pSize]);
@@ -206,6 +201,7 @@ void FTextureSnake::Size(int pSize) {
     
     mDist = aDist;
     mPercent = aPercent;
+    
 }
 
 void FTextureSnake::SetPoint(int pIndex, float pX, float pY) {
@@ -257,6 +253,9 @@ void FTextureSnake::Generate() {
     aPushWidth *= mWidthFactor;
     aImageWidth *= mWidthFactor;
     
+    aPushWidth *= mScale;
+    aImageWidth *= mScale;
+    
     if ((aImageWidth < 1.0f) || (aPushWidth < 1.0f)) { return; }
     
     float aLastX = mCenterX[0];
@@ -270,7 +269,7 @@ void FTextureSnake::Generate() {
     
     float aDiffX = 0.0f;
     float aDiffY = 0.0f;
-    float aDist = 0.1f;
+    float aDist = 0.0f;
     
     int aIndex = 0;
     
@@ -290,8 +289,6 @@ void FTextureSnake::Generate() {
             
             aDirX = aDiffX / aDist;
             aDirY = aDiffY / aDist;
-        } else {
-            aDist = 0.1f;
         }
 
         mDist[i] = aDist;
@@ -321,14 +318,8 @@ void FTextureSnake::Generate() {
     
     float aPercent = 0.0f;
     
-    //float aStartU = mSprite->GetStartU();
-    float aStartV = mSprite->GetStartV();
-    //float aEndU = mSprite->GetEndU();
-    float aEndV = mSprite->GetEndV();
-    
     aDist = 0.0f;
     mU[0] = mOffsetU;
-    
     
     for (int i=mCount-1;i>=0;i--) {
         aPercent = aDist / aImageWidth;
@@ -339,41 +330,162 @@ void FTextureSnake::Generate() {
     float aOvershoot = 1.0f - fmodf(aPercent, 1.0f);
     for (int i=0;i<mCount;i++) {
         mU[i] += aOvershoot;
+        while (mU[i] > 1.0f) {
+            mU[i] -= 1.0f;
+        }
     }
     
-    /*
+    GenerateDrawNodeList();
+}
+
+void FTextureSnake::GenerateWithFixedNormals(float pNormX, float pNormY) {
+    
+    mLength = 0.0f;
+    mRefresh = false;
+
+    if (mCount < 2) { return; }
+    if (mSprite == 0) { return; }
+
+    float aImageWidth = mSprite->mHeight;
+    float aPushWidth = mSprite->mWidth / 2.0f;
+
+    aPushWidth *= mWidthFactor;
+    aImageWidth *= mWidthFactor;
+
+    aPushWidth *= mScale;
+    aImageWidth *= mScale;
+
+    if ((aImageWidth < 1.0f) || (aPushWidth < 1.0f)) { return; }
+
+    float aLastX = mCenterX[0];
+    float aLastY = mCenterY[0];
+
+    float aX = aLastX;
+    float aY = aLastY;
+
+    float aDirX = 0.0f;
+    float aDirY = -1.0f;
+
+    float aDiffX = 0.0f;
+    float aDiffY = 0.0f;
+    float aDist = 0.0f;
+
+    int aIndex = 0;
+
+    mDist[0] = 0.0f;
+
     for (int i=1;i<mCount;i++) {
-        aDist += mDist[i];
-        aPercent = aDist / aImageWidth;
-        mU[i] = mOffsetU + aPercent;
+       
+       aX = mCenterX[i];
+       aY = mCenterY[i];
+       
+       aDiffX = aX - aLastX;
+       aDiffY = aY - aLastY;
+       
+       aDist = aDiffX * aDiffX + aDiffY * aDiffY;
+       
+       if (aDist > SQRT_EPSILON) {
+           aDist = sqrtf(aDist);
+           
+           aDirX = aDiffX / aDist;
+           aDirY = aDiffY / aDist;
+       }
+
+       mDist[i] = aDist;
+       mLength += aDist;
+       
+       mDirX[aIndex] = aDirX;
+       mDirY[aIndex] = aDirY;
+       
+       mNormX[aIndex] = pNormX;
+       mNormY[aIndex] = pNormY;
+       
+       aIndex++;
+       
+       aLastX = aX;
+       aLastY = aY;
     }
-    */
+
+    mDirX[aIndex] = aDirX;
+    mDirY[aIndex] = aDirY;
+
+    mNormX[aIndex] = pNormX;
+    mNormY[aIndex] = pNormY;
+
+    if (mLength < 1.0f) {
+       mLength = 1.0f;
+    }
+
+    float aPercent = 0.0f;
+
+    aDist = 0.0f;
+    mU[0] = mOffsetU;
+
+    for (int i=mCount-1;i>=0;i--) {
+       aPercent = aDist / aImageWidth;
+       mU[i] = mOffsetU + aPercent;
+       aDist += mDist[i];
+    }
+
+    float aOvershoot = 1.0f - fmodf(aPercent, 1.0f);
+    for (int i=0;i<mCount;i++) {
+       mU[i] += aOvershoot;
+       while (mU[i] > 1.0f) {
+           mU[i] -= 1.0f;
+       }
+    }
+
+    GenerateDrawNodeList();
     
+}
+
+void FTextureSnake::GenerateDrawNodeList() {
+    
+    mNodeList.Reset();
+    
+    float aImageWidth = mSprite->mHeight;
+    float aPushWidth = mSprite->mWidth * 0.5f;
+    
+    aPushWidth *= mWidthFactor;
+    aImageWidth *= mWidthFactor;
+    
+    aPushWidth *= mScale;
+    aImageWidth *= mScale;
+    
+    if ((aImageWidth < 1.0f) || (aPushWidth < 1.0f)) { return; }
     
     float aNormX = 0.0f;
     float aNormY = 0.0f;
     
-    mNodeList.Reset();
+    float aStartV = mSprite->GetStartV();
+    float aEndV = mSprite->GetEndV();
     
     int aStripIndex = 0;
     
     float aX1 = mCenterX[0] - mNormX[0] * aPushWidth;
     float aY1 = mCenterY[0] - mNormY[0] * aPushWidth;
-    
     float aX2 = mCenterX[0] + mNormX[0] * aPushWidth;
     float aY2 = mCenterY[0] + mNormY[0] * aPushWidth;
     
     float aLastX1 = aX1;
     float aLastY1 = aY1;
-    
     float aLastX2 = aX2;
     float aLastY2 = aY2;
     
-    aX = mCenterX[0];
-    aY = mCenterY[0];
+    float aX = mCenterX[0];
+    float aY = mCenterY[0];
     
     float aU =  mU[0];
     float aLastU = mU[0];
+    
+    float aOverflowU = 0.0f;
+    float aSpan = 0.0f;
+    float aPercent = 0.0f;
+    
+    float aInterpX1 = 0.0f;
+    float aInterpY1 = 0.0f;
+    float aInterpX2 = 0.0f;
+    float aInterpY2 = 0.0f;
     
     for (int i=1;i<mCount;i++) {
         aX = mCenterX[i];
@@ -384,59 +496,166 @@ void FTextureSnake::Generate() {
         
         aU = mU[i];
         
-        
-        //printf("U[%d] == %.3f (%.3f)\n", i, aU, aLastU);
-        
         aX1 = aX - aNormX * aPushWidth;
         aY1 = aY - aNormY * aPushWidth;
-        
         aX2 = aX + aNormX * aPushWidth;
         aY2 = aY + aNormY * aPushWidth;
         
-        ////////////
-        //////////// - Triangle 1 - /////////
-        ////////////
-        
-        //Top Left (startU, startV)
-        mNodeList.SetXYZ(aStripIndex, aLastX1, aLastY1, 0.0f);
-        mNodeList.SetUV(aStripIndex, aStartV, aLastU);
-        aStripIndex++;
-        
-        //Bottom Left (startU, endV)
-        mNodeList.SetXYZ(aStripIndex, aX1, aY1, 0.0f);
-        mNodeList.SetUV(aStripIndex, aStartV, aU);
-        aStripIndex++;
-        
-        //Top Right (endU, startV)
-        mNodeList.SetXYZ(aStripIndex, aLastX2, aLastY2, 0.0f);
-        mNodeList.SetUV(aStripIndex, aEndV, aLastU);
-        aStripIndex++;
-        
-        ////////////
-        //////////// - Triangle 2 - /////////
-        ////////////
-        
-        //Top Right (endU, startV)
-        mNodeList.SetXYZ(aStripIndex, aLastX2, aLastY2, 0.0f);
-        mNodeList.SetUV(aStripIndex, aEndV, aLastU);
-        aStripIndex++;
-        
-        //Bottom Left (startU, endV)
-        mNodeList.SetXYZ(aStripIndex, aX1, aY1, 0.0f);
-        mNodeList.SetUV(aStripIndex, aStartV, aU);
-        aStripIndex++;
-        
-        //Bottom Right (endU, endV)
-        mNodeList.SetXYZ(aStripIndex, aX2, aY2, 0.0f);
-        mNodeList.SetUV(aStripIndex, aEndV, aU);
-        aStripIndex++;
+        if ((aU > aLastU)) {
+            
+            aOverflowU = aLastU + 1.0f;
+            aSpan = (aOverflowU - aU);
+            aPercent = (aLastU) / aSpan;
+            
+            aInterpX1 = aLastX1 + (aX1 - aLastX1) * aPercent;
+            aInterpY1 = aLastY1 + (aY1 - aLastY1) * aPercent;
+            
+            aInterpX2 = aLastX2 + (aX2 - aLastX2) * aPercent;
+            aInterpY2 = aLastY2 + (aY2 - aLastY2) * aPercent;
+
+            //Top Left (startU, startV)
+            mNodeList.SetXYZ(aStripIndex, aLastX1, aLastY1, 0.0f);
+            mNodeList.SetUV(aStripIndex, aStartV, aLastU);
+            aStripIndex++;
+            
+            //Bottom Left (startU, endV)
+            mNodeList.SetXYZ(aStripIndex, aInterpX1, aInterpY1, 0.0f);
+            mNodeList.SetUV(aStripIndex, aStartV, 0.0f);
+            aStripIndex++;
+            
+            //Top Right (endU, startV)
+            mNodeList.SetXYZ(aStripIndex, aLastX2, aLastY2, 0.0f);
+            mNodeList.SetUV(aStripIndex, aEndV, aLastU);
+            aStripIndex++;
+            
+            ////////////
+            //////////// - Triangle 2 - /////////
+            ////////////
+            
+            //Top Right (endU, startV)
+            mNodeList.SetXYZ(aStripIndex, aLastX2, aLastY2, 0.0f);
+            mNodeList.SetUV(aStripIndex, aEndV, aLastU);
+            aStripIndex++;
+            
+            //Bottom Left (startU, endV)
+            mNodeList.SetXYZ(aStripIndex, aInterpX1, aInterpY1, 0.0f);
+            mNodeList.SetUV(aStripIndex, aStartV, 0.0f);
+            aStripIndex++;
+            
+            //Bottom Right (endU, endV)
+            mNodeList.SetXYZ(aStripIndex, aInterpX2, aInterpY2, 0.0f);
+            mNodeList.SetUV(aStripIndex, aEndV, 0.0f);
+            aStripIndex++;
+            
+            ////////////////////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////////////
+            
+            //Top Left (startU, startV)
+            mNodeList.SetXYZ(aStripIndex, aInterpX1, aInterpY1, 0.0f);
+            mNodeList.SetUV(aStripIndex, aStartV, 1.0f);
+            aStripIndex++;
+            
+            //Bottom Left (startU, endV)
+            mNodeList.SetXYZ(aStripIndex, aX1, aY1, 0.0f);
+            mNodeList.SetUV(aStripIndex, aStartV, aU);
+            aStripIndex++;
+            
+            //Top Right (endU, startV)
+            mNodeList.SetXYZ(aStripIndex, aInterpX2, aInterpY2, 0.0f);
+            mNodeList.SetUV(aStripIndex, aEndV, 1.0f);
+            aStripIndex++;
+            
+            ////////////
+            //////////// - Triangle 2 - /////////
+            ////////////
+            
+            //Top Right (endU, startV)
+            mNodeList.SetXYZ(aStripIndex, aInterpX2, aInterpY2, 0.0f);
+            mNodeList.SetUV(aStripIndex, aEndV, 1.0f);
+            aStripIndex++;
+            
+            //Bottom Left (startU, endV)
+            mNodeList.SetXYZ(aStripIndex, aX1, aY1, 0.0f);
+            mNodeList.SetUV(aStripIndex, aStartV, aU);
+            aStripIndex++;
+            
+            //Bottom Right (endU, endV)
+            mNodeList.SetXYZ(aStripIndex, aX2, aY2, 0.0f);
+            mNodeList.SetUV(aStripIndex, aEndV, aU);
+            aStripIndex++;
+            
+            
+            
+            
+        } else {
+            
+            
+            ////////////
+            //////////// - Triangle 1 - /////////
+            ////////////
+            
+            //Top Left (startU, startV)
+            mNodeList.SetXYZ(aStripIndex, aLastX1, aLastY1, 0.0f);
+            mNodeList.SetUV(aStripIndex, aStartV, aLastU);
+            aStripIndex++;
+            
+            //Bottom Left (startU, endV)
+            mNodeList.SetXYZ(aStripIndex, aX1, aY1, 0.0f);
+            mNodeList.SetUV(aStripIndex, aStartV, aU);
+            aStripIndex++;
+            
+            //Top Right (endU, startV)
+            mNodeList.SetXYZ(aStripIndex, aLastX2, aLastY2, 0.0f);
+            mNodeList.SetUV(aStripIndex, aEndV, aLastU);
+            aStripIndex++;
+            
+            ////////////
+            //////////// - Triangle 2 - /////////
+            ////////////
+            
+            //Top Right (endU, startV)
+            mNodeList.SetXYZ(aStripIndex, aLastX2, aLastY2, 0.0f);
+            mNodeList.SetUV(aStripIndex, aEndV, aLastU);
+            aStripIndex++;
+            
+            //Bottom Left (startU, endV)
+            mNodeList.SetXYZ(aStripIndex, aX1, aY1, 0.0f);
+            mNodeList.SetUV(aStripIndex, aStartV, aU);
+            aStripIndex++;
+            
+            //Bottom Right (endU, endV)
+            mNodeList.SetXYZ(aStripIndex, aX2, aY2, 0.0f);
+            mNodeList.SetUV(aStripIndex, aEndV, aU);
+            aStripIndex++;
+        }
         
         aLastX1 = aX1;
         aLastY1 = aY1;
         aLastX2 = aX2;
         aLastY2 = aY2;
         aLastU = aU;
+    }
+    
+    if (mSprite != NULL) {
         
+        float aStartU = mSprite->mTextureRect.GetStartU();
+        float aStartV = mSprite->mTextureRect.GetStartV();
+        float aEndU = mSprite->mTextureRect.GetEndU();
+        float aEndV = mSprite->mTextureRect.GetEndV();
         
+        if (aStartU != 0.0f ||
+            aStartV != 0.0f ||
+            aEndU != 1.0f ||
+            aEndV != 1.0f) {
+
+            float aSpanU = (aEndU - aStartU);
+            float aSpanV = (aEndV - aStartV);
+            
+            for (int i=0;i<mNodeList.mCountNodes;i++) {
+                mNodeList.mData[i].mU = aStartU + aSpanU * mNodeList.mData[i].mU;
+                mNodeList.mData[i].mV = aStartV + aSpanV * mNodeList.mData[i].mV;
+            }
+        }
     }
 }

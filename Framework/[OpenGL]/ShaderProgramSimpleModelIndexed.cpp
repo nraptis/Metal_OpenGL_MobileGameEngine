@@ -26,9 +26,6 @@ void ShaderProgramSimpleModelIndexed::Compile() {
     //mSlotColors = glGetAttribLocation(mProgram, "Colors");
     mSlotTexture = glGetUniformLocation(mProgram, "Texture");
     mSlotTextureCoords = glGetAttribLocation(mProgram, "TextureCoords");
-    
-    Log("Shader[%s] mSlotProjectionMatrixUniform = %d\n", mName.c(), mSlotProjectionMatrixUniform);
-    
 }
 
 void ShaderProgramSimpleModelIndexed::BindUniform(FUniforms *pUniform) {

@@ -53,21 +53,13 @@ void ShaderProgramModelIndexedLightedPhong::Compile() {
     
     if (IsValid() == false) return;
     
-    
     mSlotNormalMatrixUniform = glGetUniformLocation(mProgram, "NormalMatrix");
-    
-    //mSlotColors = glGetAttribLocation(mProgram, "Colors");
     mSlotTexture = glGetUniformLocation(mProgram, "Texture");
     mSlotAmbient = glGetUniformLocation(mProgram, "Ambient");
     mSlotDiffuse = glGetUniformLocation(mProgram, "Diffuse");
     mSlotSpecular = glGetUniformLocation(mProgram, "Specular");
-    
     mSlotTextureCoords = glGetAttribLocation(mProgram, "TextureCoords");
     mSlotNormals = glGetAttribLocation(mProgram, "Normals");
-    
-    Log("Shader[%s] mSlotProjectionMatrixUniform = %d\n", mName.c(), mSlotProjectionMatrixUniform);
-    Log("Shader[%s] mSlotModelViewMatrixUniform = %d\n", mName.c(), mSlotModelViewMatrixUniform);
-    Log("Shader[%s] mSlotNormalMatrixUniform = %d\n", mName.c(), mSlotNormalMatrixUniform);
 }
 
 void ShaderProgramModelIndexedLightedPhong::BindUniform(FUniforms *pUniform) {

@@ -22,16 +22,6 @@ void ShaderProgramSpriteWhite::Compile() {
     
     mSlotTexture = glGetUniformLocation(mProgram, "Texture");
     mSlotTextureCoords = glGetAttribLocation(mProgram, "TextureCoords");
-    
-    //Log("*******\n");
-    //Log("Shader[%s] mSlotProjectionMatrixUniform = %d\n", mName.c(), mSlotProjectionMatrixUniform);
-    //Log("Shader[%s] mSlotModelViewMatrixUniform = %d\n", mName.c(), mSlotModelViewMatrixUniform);
-    //Log("Shader[%s] mSlotModulateColorUniform = %d\n", mName.c(), mSlotModulateColorUniform);
-    //Log("Shader[%s] mSlotTexture = %d\n", mName.c(), mSlotTexture);
-    //Log("Shader[%s] mSlotPositions = %d\n", mName.c(), mSlotPositions);
-    //Log("Shader[%s] mSlotTextureCoords = %d\n", mName.c(), mSlotTextureCoords);
-    //Log("*******\n");
-    
 }
 
 void ShaderProgramSpriteWhite::BindUniform(FUniforms *pUniform) {

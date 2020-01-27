@@ -255,28 +255,20 @@ bool FLine::SegmentClosestPoint(float pLineX1, float pLineY1, float pLineX2, flo
     
     float aLineLength = (aLineDiffX * aLineDiffX) + (aLineDiffY * aLineDiffY);
     
-    if(aLineLength > SQRT_EPSILON)
-    {
+    if (aLineLength > SQRT_EPSILON) {
         aLineLength = sqrtf(aLineLength);
         
         aFactor2X /= aLineLength;
         aFactor2Y /= aLineLength;
         
         float aScalar = aFactor2X * aFactor1X + aFactor2Y * aFactor1Y;
-        
-        if(aScalar < 0)
-        {
+        if (aScalar < 0) {
             pClosestX = pLineX1;
             pClosestY = pLineY1;
-        }
-        else if(aScalar > aLineLength)
-        {
+        } else if(aScalar > aLineLength) {
             pClosestX = pLineX2;
             pClosestY = pLineY2;
-        }
-        else
-        {
-            
+        } else {
             pClosestX = pLineX1 + aFactor2X * aScalar;
             pClosestY = pLineY1 + aFactor2Y * aScalar;
             
@@ -304,7 +296,7 @@ bool FLine::SegmentRayIntersection(float pL_1_x1, float pL_1_y1, float pL_1_x2, 
 
 float FLine::RayPlaneDist(float x, float y, float pDirX, float pDirY) {
     float aDenom = pDirX * mNormalX + pDirY * mNormalY;
-    if (aDenom <= SQRT_EPSILON && aDenom >= -SQRT_EPSILON) return 0;
+    if (aDenom <= SQRT_EPSILON && aDenom >= -SQRT_EPSILON) { return 0.0f; }
     float aNumer = mNormalX * x + mNormalY * y + mCosAlpha;
     return -(aNumer / aDenom);
 }
@@ -357,7 +349,7 @@ float FLine::GetDist(float x, float y, int &pIndex) {
     if (aDist > SQRT_EPSILON) {
         aDist = sqrtf(aDist);
     } else {
-        aDist = 0;
+        aDist = 0.0f;
     }
     
     return aDist;

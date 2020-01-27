@@ -99,6 +99,7 @@ void FWindow::Update() {
             if (aCanvas->mDeleteWhenKilled == true) {
                 delete aCanvas;
             }
+            
         }
     }
 

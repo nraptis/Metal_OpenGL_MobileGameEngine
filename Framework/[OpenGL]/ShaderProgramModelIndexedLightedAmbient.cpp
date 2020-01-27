@@ -24,14 +24,9 @@ void ShaderProgramModelIndexedLightedAmbient::Compile() {
     
     if (IsValid() == false) return;
     
-    //mSlotColors = glGetAttribLocation(mProgram, "Colors");
     mSlotTexture = glGetUniformLocation(mProgram, "Texture");
     mSlotAmbient = glGetUniformLocation(mProgram, "Ambient");
-    
     mSlotTextureCoords = glGetAttribLocation(mProgram, "TextureCoords");
-
-    
-    Log("Shader[%s] mSlotProjectionMatrixUniform = %d\n", mName.c(), mSlotProjectionMatrixUniform);
 }
 
 void ShaderProgramModelIndexedLightedAmbient::BindUniform(FUniforms *pUniform) {

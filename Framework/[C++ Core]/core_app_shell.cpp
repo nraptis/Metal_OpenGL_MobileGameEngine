@@ -234,9 +234,6 @@ void AppShellInitialize(int pEnvironment) {
 }
 
 void AppShellGraphicsSetUp() {
-
-    Log("AppShellGraphicsSetUp()\n");
-
 	if (gGraphicsInterface  == NULL) {
         gGraphicsInterface = new PlatformGraphicsInterface();
         gGraphicsInterface->Initialize();
@@ -264,7 +261,6 @@ void AppShellGraphicsTearDown() {
 }
 
 void AppShellLoad() {
-    Log("AppShellLoad()\n");
     if (gAppBase) {
         gAppBase->BaseLoad();
         gAppBase->BaseLoadComplete();

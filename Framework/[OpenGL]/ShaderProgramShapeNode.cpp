@@ -22,8 +22,6 @@ void ShaderProgramShapeNode::Compile() {
     if (IsValid() == false) return;
     
     mSlotColors = glGetAttribLocation(mProgram, "Colors");
-    
-    Log("Shader[%s] mSlotProjectionMatrixUniform = %d\n", mName.c(), mSlotProjectionMatrixUniform);
 }
 
 void ShaderProgramShapeNode::BindUniform(FUniforms *pUniform) {

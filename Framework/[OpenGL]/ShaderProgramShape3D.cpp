@@ -17,8 +17,6 @@ void ShaderProgramShape3D::Compile() {
     ShaderProgram::Compile();
     
     if (IsValid() == false) return;
-    
-    Log("Shader[%s] mSlotProjectionMatrixUniform = %d\n", mName.c(), mSlotProjectionMatrixUniform);
 }
 
 void ShaderProgramShape3D::BindUniform(FUniforms *pUniform) {

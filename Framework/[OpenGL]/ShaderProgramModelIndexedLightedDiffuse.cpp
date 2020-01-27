@@ -29,18 +29,12 @@ void ShaderProgramModelIndexedLightedDiffuse::Compile() {
     if (IsValid() == false) return;
     
     mSlotNormalMatrixUniform = glGetUniformLocation(mProgram, "NormalMatrix");
-    
-    
     mSlotTexture = glGetUniformLocation(mProgram, "Texture");
     mSlotAmbient = glGetUniformLocation(mProgram, "Ambient");
     mSlotDiffuse = glGetUniformLocation(mProgram, "Diffuse");
-    
-    
     mSlotTextureCoords = glGetAttribLocation(mProgram, "TextureCoords");
     mSlotNormals = glGetAttribLocation(mProgram, "Normals");
     
-    
-    Log("Shader[%s] mSlotProjectionMatrixUniform = %d\n", mName.c(), mSlotProjectionMatrixUniform);
 }
 
 void ShaderProgramModelIndexedLightedDiffuse::BindUniform(FUniforms *pUniform) {

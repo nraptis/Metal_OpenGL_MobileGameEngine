@@ -88,7 +88,6 @@ void FApp::BaseInitialize() {
         Initialize();
 
         if (mDidDetachFrameController == false) {
-            Log("FApp::DetachMainRunLoop ... ...\n\n");
             mDidDetachFrameController = true;
             os_detach_thread(AppFrameThread, (void*)0xB00BFACE);
         }
@@ -120,8 +119,6 @@ void FApp::BaseSetDeviceSize(int pWidth, int pHeight) {
 
 void FApp::BaseSetVirtualFrame(int pX, int pY, int pWidth, int pHeight) {
     
-    //Log("Virtual Frame(%.2f, %.2f  %.2f, %.2f]  Dev[%.2f, %.2f]----\n", gVirtualDevX, gVirtualDevY, gVirtualDevWidth, gVirtualDevHeight, gDeviceWidth, gDeviceHeight);
-    
     mWindowMain.SetVirtualFrame(gVirtualDevX, gVirtualDevY, gVirtualDevWidth, gVirtualDevHeight);
     mWindowModal.SetVirtualFrame(gVirtualDevX, gVirtualDevY, gVirtualDevWidth, gVirtualDevHeight);
     mWindowTools.SetVirtualFrame(0.0f, 0.0f, gDeviceWidth, gDeviceHeight);
@@ -132,8 +129,6 @@ void FApp::BaseSetVirtualFrame(int pX, int pY, int pWidth, int pHeight) {
 }
 
 void FApp::BaseSetSafeAreaInsets(int pInsetUp, int pInsetRight, int pInsetDown, int pInsetLeft) {
-    
-    //Log("SafeAreaInsets(%.2f, %.2f, %.2f, %.2f)----\n", gSafeAreaInsetTop, gSafeAreaInsetRight, gSafeAreaInsetBottom, gSafeAreaInsetLeft);
     
     mWindowMain.SetSafeAreaInsets(gSafeAreaInsetTop + 0.5f, gSafeAreaInsetRight + 0.5f, gSafeAreaInsetBottom + 0.5f, gSafeAreaInsetLeft + 0.5f);
     mWindowModal.SetSafeAreaInsets(gSafeAreaInsetTop + 0.5f, gSafeAreaInsetRight + 0.5f, gSafeAreaInsetBottom + 0.5f, gSafeAreaInsetLeft + 0.5f);
@@ -339,9 +334,17 @@ void FApp::BaseDraw() {
         Graphics::PipelineStateSetShape2DAlphaBlending();
         //Graphics::SetColor(0.0075f, 0.0075f, 0.0075f, 0.93f);
         //Graphics::SetColor(0.0075f, 0.0075f, 0.0075f, 0.90f);
-        Graphics::SetColor(0.0075f, 0.0075f, 0.0075f, 0.80f);
+        
+#if (CURRENT_ENV == ENV_IOS)
+        Graphics::SetColor(0.0075f, 0.0075f, 0.0075f, 0.86f);
+#else
+        Graphics::SetColor(0.0075f, 0.0075f, 0.0075f, 0.76f);
+#endif
+        
+        
         
         Graphics::DrawRect(0.0f, 0.0f, gDeviceWidth, gDeviceHeight);
+        
         Graphics::SetColor();
     }
 }
@@ -643,11 +646,7 @@ void FApp::ProcessKeyUp(int pKey) {
 
 void FApp::BaseInactive() {
     
-    
-    
     if (mActive == true) {
-        
-        Log("\n**** BaseInactive ****\n\n");
         
         mActive = false;
         ProcessTouchFlush();
@@ -681,8 +680,6 @@ void FApp::BaseInactive() {
 
 void FApp::BaseActive() {
     if(mActive == false) {
-        
-        Log("\n**** BaseActive ****\n\n");
         
         mActive = true;
         Active();

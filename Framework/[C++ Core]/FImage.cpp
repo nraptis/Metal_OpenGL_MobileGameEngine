@@ -544,7 +544,7 @@ void FImage::BufferEdges(int pSize)
     int aWidth = mExpandedWidth;
     int aHeight = mExpandedHeight;
     
-    ExpandFView(pSize);
+    ExpandAllBorders(pSize);
     
     
     FixTileBorders(aX, aY, aWidth, aHeight, pSize);
@@ -564,7 +564,7 @@ void FImage::BufferEdges(int pSize)
     
 }
 
-void FImage::ExpandFView(int pSize)
+void FImage::ExpandAllBorders(int pSize)
 {
     
     unsigned int *aOldData = mData;
@@ -595,22 +595,14 @@ void FImage::ExpandFView(int pSize)
     delete[]aOldData;
 }
 
-void FImage::FixTileBorders(int pBorderSize)
-{
+void FImage::FixTileBorders(int pBorderSize) {
+    if (pBorderSize <= 0) { return; }
+    if (pBorderSize > 100) { pBorderSize = 100; }
     
-    if(pBorderSize <= 0)return;
-    if(pBorderSize > 100)pBorderSize=100;
-    
-    //int i=0;
-    //int n=0;
-    
-    if(mExpandedWidth>0&&mExpandedHeight>0)
-    {
+    if (mExpandedWidth > 0 && mExpandedHeight > 0) {
         unsigned int *aOldData = mData;
-        
-        int aOldWidth=mExpandedWidth;
-        int aOldHeight=mExpandedHeight;
-        
+        int aOldWidth = mExpandedWidth;
+        int aOldHeight = mExpandedHeight;
         int aNewWidth = mExpandedWidth + pBorderSize * 2;
         int aNewHeight = mExpandedHeight + pBorderSize * 2;
         

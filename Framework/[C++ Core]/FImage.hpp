@@ -117,7 +117,7 @@ public:
 	
 	void                            Stroke(unsigned int pColor, unsigned int pAlpha=128, int pSize=2, int pFade=1);
     
-    void                            ExpandFView(int pSize);
+    void                            ExpandAllBorders(int pSize);
     
     void                            BufferEdges(int pSize);
     

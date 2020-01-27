@@ -65,27 +65,16 @@ float Sin(float pDegrees) { return sinf(D_R * pDegrees); }
 float Cos(float pDegrees) { return cosf(D_R * pDegrees); }
 float Tan(float pDegrees) { return tanf(D_R * pDegrees); }
 
-float LoopAngle(float &pDegrees, float pSpeed) {
-    float aResult = pDegrees + pSpeed;
-    if (aResult >= 360.0f) { aResult -= 360.0f; }
-    if (aResult < 0.0f) { aResult += 360.0f; }
-    return aResult;
-}
-
-float DistanceBetweenAngles(float theDegrees1, float theDegrees2)
-{
+float DistanceBetweenAngles(float theDegrees1, float theDegrees2) {
     float aDifference = theDegrees1 - theDegrees2;
-    aDifference = (float)fmod(aDifference,360);
-    if(aDifference < 0)aDifference+=360;
-    if(aDifference > 180)return 360 - aDifference;
+    aDifference = (float)fmodf(aDifference, 360.0f);
+    if (aDifference < 0.0f) { aDifference += 360.0f; }
+    if (aDifference > 180.0f) { return 360.0f - aDifference; }
     else return -aDifference;
 }
 
-float FaceTarget(float pOriginX, float pOriginY, float pTargetX, float pTargetY)//(FVec2 &pPos, FVec2 &pTarget)
-{
+float FaceTarget(float pOriginX, float pOriginY, float pTargetX, float pTargetY) {
     return RADIANS_TO_DEGREES(-atan2f(pOriginX - pTargetX, pOriginY - pTargetY));
-    
-    //return atan2f(pTargetX-pOriginX,pTargetY-pOriginY)*(-R_D);
 }
 
 float Clamp(float pNum, float pMin, float pMax) {
@@ -113,23 +102,22 @@ bool QuadContainsPoint(float pPointX, float pPointY, float pX1, float pY1, float
     float aX[4];
     float aY[4];
     
-    aX[0]=pX1;
-    aX[1]=pX2;
-    aX[2]=pX3;
-    aX[3]=pX4;
+    aX[0] = pX1;
+    aX[1] = pX2;
+    aX[2] = pX3;
+    aX[3] = pX4;
     
-    aY[0]=pY1;
-    aY[1]=pY2;
-    aY[2]=pY3;
-    aY[3]=pY4;
+    aY[0] = pY1;
+    aY[1] = pY2;
+    aY[2] = pY3;
+    aY[3] = pY4;
     
     bool aResult = false;
     for (int aStart=0,aEnd=3;aStart<4;aEnd=aStart++) {
         if((((aY[aStart]<=pPointY) && (pPointY<aY[aEnd]))||
             ((aY[aEnd]<=pPointY) && (pPointY<aY[aStart])))&&
            (pPointX < (aX[aEnd] - aX[aStart])*(pPointY - aY[aStart])
-            /(aY[aEnd] - aY[aStart]) + aX[aStart]))
-        {
+            /(aY[aEnd] - aY[aStart]) + aX[aStart])) {
             aResult=!aResult;
         }
     }

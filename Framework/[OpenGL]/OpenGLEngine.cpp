@@ -51,27 +51,11 @@ OpenGLEngine::~OpenGLEngine() {
 }
 
 void OpenGLEngine::SetUp() {
-    
-    Log("OpenGLEngine::SetUp()\n");
-    
-    
-    /*
-    glGenFramebuffers(1, &gFrameBuffer);
-    glBindFramebuffer(GL_FRAMEBUFFER, gFrameBuffer);
-    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, gRenderBuffer0);
-    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, gRenderBuffer1);
-    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, gDepthBuffer);
-    */
-    
     BuildPrograms();
-    
     mIsReady = true;
 }
 
 void OpenGLEngine::TearDown() {
-    
-    Log("OpenGLEngine::TearDown()\n");
-    
     
     delete mShaderProgramShape2D;
     mShaderProgramShape2D = NULL;

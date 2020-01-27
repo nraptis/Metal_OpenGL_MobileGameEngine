@@ -23,11 +23,8 @@ void ShaderProgramModelIndexed::Compile() {
     
     if (IsValid() == false) return;
     
-    //mSlotColors = glGetAttribLocation(mProgram, "Colors");
     mSlotTexture = glGetUniformLocation(mProgram, "Texture");
     mSlotTextureCoords = glGetAttribLocation(mProgram, "TextureCoords");
-    
-    Log("Shader[%s] mSlotProjectionMatrixUniform = %d\n", mName.c(), mSlotProjectionMatrixUniform);
 }
 
 void ShaderProgramModelIndexed::BindUniform(FUniforms *pUniform) {

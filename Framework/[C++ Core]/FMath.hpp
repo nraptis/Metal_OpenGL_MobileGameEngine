@@ -40,8 +40,6 @@ float Sin(float pDegree);
 float Cos(float pDegrees);
 float Tan(float pDegrees);
 
-float LoopAngle(float &pDegrees, float pSpeed);
-
 bool IsPowerOfTwo(int pNumber);
 
 int ClosestPowerOfTwo(int pNumber);

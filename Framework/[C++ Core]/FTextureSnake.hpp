@@ -12,11 +12,19 @@
 #include "FSprite.hpp"
 #include "FPrimitive.hpp"
 
+//The rules of texture snake.
+
+//1.) Make sure you add enough points, to cover each image length with 4+ points.
+//2.) Favor "Reset" over "Clear" if you are changing the texture snake...
+//3.) If you are using a bundled image, please bundle it with mInset > 1, or there will be jaggy connections.
+
+// Q: Why does it work THIS WAY instead of just using wrap?
+// A: Because it supports bundled textures and non-power-2 textures.
+
 class FTextureSnake {
 public:
     FTextureSnake();
     virtual ~FTextureSnake();
-    
     
     void                            Draw();
     void                            DrawMarkers();
@@ -34,6 +42,8 @@ public:
     void                            AddPoint(float pX, float pY);
     
     void                            Generate();
+    
+    void                            GenerateWithFixedNormals(float pNormX, float pNormY);
     
     float                           *mCenterX;
     float                           *mCenterY;
@@ -57,11 +67,18 @@ public:
     
     float                           mWidthFactor;
     
+    float                           mScale;
+    
     FDrawNodeList                   mNodeList;
     
     bool                            mRefresh;
     
     float                           mLength;
+    
+private:
+    
+    //Only do this after the initial generation step...
+    void                            GenerateDrawNodeList();
     
 };
 
