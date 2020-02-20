@@ -77,17 +77,17 @@ public:
 	void                                    Draw(float pX, float pY);
 	void                                    Draw(float pX, float pY, float pScale, float pRotation=0);
     void                                    Draw(float pX, float pY, float pScale, float pRotationDegrees, int pFacing);
-	inline void                             Draw(FVec2 pPosition){Draw(pPosition.mX,pPosition.mY);}
-	inline void                             Draw(FVec2 pPosition, float pScale, float pRotationDegrees=0){Draw(pPosition.mX,pPosition.mY,pScale,pRotationDegrees);}
+	//inline void                             Draw(FVec2 pPosition){Draw(pPosition.mX,pPosition.mY);}
+	//inline void                             Draw(FVec2 pPosition, float pScale, float pRotationDegrees=0){Draw(pPosition.mX,pPosition.mY,pScale,pRotationDegrees);}
 
     void                                    DrawScaled(float pX, float pY, float pScale);
     void                                    DrawScaled(float pX, float pY, float pScaleX, float pScaleY);
     
     void                                    DrawScaled(float pX, float pY, float pScaleX, float pScaleY, float pRotation);
     
+    //inline void                             DrawScaled(FVec2 pPosition, float pScale) { DrawScaled(pPosition.mX,pPosition.mY, pScale); }
+    //inline void                             DrawScaled(FVec2 pPosition, float pScaleX, float pScaleY){DrawScaled(pPosition.mX,pPosition.mY, pScaleX, pScaleY);}
     
-    inline void                             DrawScaled(FVec2 pPosition, float pScale){DrawScaled(pPosition.mX,pPosition.mY, pScale);}
-    inline void                             DrawScaled(FVec2 pPosition, float pScaleX, float pScaleY){DrawScaled(pPosition.mX,pPosition.mY, pScaleX, pScaleY);}
     
     void                                    DrawRotated(float pX, float pY, float pRotation);
     inline void                             DrawRotated(FVec2 pPosition, float pRotation){DrawRotated(pPosition.mX,pPosition.mY, pRotation);}
@@ -99,19 +99,23 @@ public:
     void                                    DrawTripletHProgress(float pX, float pY, float pInsetLeft, float pInsetRight, float pLength,
     float pProgressInsetLeft, float pProgressInsetRight, float pProgress);
     
+    // [cap] [stretch] [center, fixed size] [stretch] [cap]
+    // note: the stretch regions will invert if the total length
+    // is less than the image width...
+    void                                    DrawEndCappedTripletH(float pX, float pY, float pInsetLeft, float pInsetRight, float pLength);
     
     
     void                                    Draw9x9(float pX, float pY, float pWidth, float pHeight, float pScale, float pRotation, float pInsetTop, float pInsetRight, float pInsetBottom, float pInsetLeft);
 	
 	void                                    DrawFlippedH(float pX, float pY);
 	void                                    DrawFlippedH(float pX, float pY, float pScale, float pRotationDegrees=0);
-	inline void                             DrawFlippedH(FVec2 pPos){DrawFlippedH(pPos.mX,pPos.mY);}
-	inline void                             DrawFlippedH(FVec2 pPos, float pScale, float pRotationDegrees=0){DrawFlippedH(pPos.mX,pPos.mY,pScale,pRotationDegrees);}
+	//inline void                             DrawFlippedH(FVec2 pPos){DrawFlippedH(pPos.mX,pPos.mY);}
+	//inline void                             DrawFlippedH(FVec2 pPos, float pScale, float pRotationDegrees=0){DrawFlippedH(pPos.mX,pPos.mY,pScale,pRotationDegrees);}
 	
 	void                                    DrawFlippedV(float pX, float pY);
 	void                                    DrawFlippedV(float pX, float pY, float pScale, float pRotationDegrees=0);
-	inline void                             DrawFlippedV(FVec2 pPos){DrawFlippedV(pPos.mX,pPos.mY);}
-	inline void                             DrawFlippedV(FVec2 pPos, float pScale, float pRotationDegrees=0){DrawFlippedV(pPos.mX,pPos.mY,pScale,pRotationDegrees);}
+	//inline void                             DrawFlippedV(FVec2 pPos){DrawFlippedV(pPos.mX,pPos.mY);}
+	//inline void                             DrawFlippedV(FVec2 pPos, float pScale, float pRotationDegrees=0){DrawFlippedV(pPos.mX,pPos.mY,pScale,pRotationDegrees);}
 	
 	
 	void                                    Center(float pX, float pY);

@@ -367,7 +367,6 @@ void FImage::ExportBMP(char *pFile)
     aFile.WriteInt(0);
     aFile.WriteInt(0);
     
-    
     for(int aY=mExpandedHeight-1;aY>=0;aY--)
     {
         for(int aX=mExpandedWidth-1;aX>=0;aX--)
@@ -546,27 +545,17 @@ void FImage::BufferEdges(int pSize)
     
     ExpandAllBorders(pSize);
     
-    
-    FixTileBorders(aX, aY, aWidth, aHeight, pSize);
-    
-    /*
-     for(int i=0;i<pSize;i++)
-     {
-     //FixTileBorders(aX, aY, aWidth, aHeight);
-     
-     aX --;
-     aY --;
-     aWidth += 2;
-     aHeight += 2;
-     }
-     
-     */
+     for (int i=0;i<pSize;i++) {
+         FixTileBorders(aX, aY, aWidth, aHeight);
+         aX--;
+         aY--;
+         aWidth += 2;
+         aHeight += 2;
+    }
     
 }
 
-void FImage::ExpandAllBorders(int pSize)
-{
-    
+void FImage::ExpandAllBorders(int pSize) {
     unsigned int *aOldData = mData;
     
     int aOldWidth = mExpandedWidth;
@@ -588,63 +577,43 @@ void FImage::ExpandAllBorders(int pSize)
     
     MakeBlank(aNewWidth, aNewHeight);
     
+    Flood(0, 0, aNewWidth, aNewHeight, 255, 128, 0, 128);
+    
     Stamp(aOldData, pSize, pSize, aOldWidth, aOldHeight);
     
-    //Stamp(<#unsigned int *pData#>, <#int x#>, <#int y#>, <#int pWidth#>, <#int pHeight#>)
-    
-    delete[]aOldData;
+    delete [] aOldData;
 }
 
-void FImage::FixTileBorders(int pBorderSize) {
-    if (pBorderSize <= 0) { return; }
-    if (pBorderSize > 100) { pBorderSize = 100; }
+void FImage::FixTileBorders(int pX, int pY, int pWidth, int pHeight) {
     
-    if (mExpandedWidth > 0 && mExpandedHeight > 0) {
-        unsigned int *aOldData = mData;
-        int aOldWidth = mExpandedWidth;
-        int aOldHeight = mExpandedHeight;
-        int aNewWidth = mExpandedWidth + pBorderSize * 2;
-        int aNewHeight = mExpandedHeight + pBorderSize * 2;
-        
-        MakeBlank(aNewWidth, aNewHeight);
-        
-        Stamp(aOldData,pBorderSize,pBorderSize,aOldWidth,aOldHeight);
-        
-        
-        //FixTileBorders(pBorderSize, pBorderSize, aOldWidth, aOldHeight);
-        FixTileBorders(pBorderSize, pBorderSize, aOldWidth, aOldHeight, pBorderSize);
-        
-        
-    }
-}
-
-void FImage::FixTileBorders(int pX, int pY, int pWidth, int pHeight, int pTimes)
-{
+    if (pX <= 0) { return; }
+    if (pY <= 0) { return; }
+    
+    if (pX >= (mExpandedWidth - 1)) { return; }
+    if (pY >= (mExpandedHeight - 1)) { return; }
+    
+    
+    
+    
     //int i=0;
-    int n=0;
+    int n = 0;
     
-    if(mExpandedWidth>0&&mExpandedHeight>0)
-    {
-        unsigned int **aData=new unsigned int*[mExpandedHeight];
-        unsigned int *aPtr=mData;
+    if ((mExpandedWidth > 0) && (mExpandedHeight > 0)) {
+        unsigned int **aData = new unsigned int*[mExpandedHeight];
+        unsigned int *aPtr = mData;
         
         int aLeft = pX;
-        if(aLeft < 0)aLeft = 0;
         
         int aRight = pX+pWidth-1;
-        if(aRight >= mExpandedWidth)aRight = mExpandedWidth-1;
         
         int aTop = pY;
-        if(aTop < 0)aTop = 0;
         
         int aBottom = pY+pHeight-1;
-        if(aBottom >= mExpandedHeight)aBottom = mExpandedHeight-1;
         
         
         
         
-        for(n=0;n<mExpandedHeight;n++)
-        {
+        for (n=0;n<mExpandedHeight;n++) {
             aData[n]=aPtr;
             aPtr+=mExpandedWidth;
         }
@@ -652,7 +621,6 @@ void FImage::FixTileBorders(int pX, int pY, int pWidth, int pHeight, int pTimes)
         
         //Fix the top...
         
-        /*
          for(int aY = aTop-1;aY>=0;aY--)
          {
          for(int aX = aLeft;aX <= aRight;aX ++)
@@ -684,121 +652,25 @@ void FImage::FixTileBorders(int pX, int pY, int pWidth, int pHeight, int pTimes)
          aData[aY][aX]=aData[aY][aX-1];
          }
          }
-         */
-        
-        int aLoops = pTimes;
         
         
-        //Fix the top...
-        for(int aY = aTop-1;(aY>=0) && (aLoops > 0);aY--)
-        {
-            for(int aX = aLeft;aX <= aRight;aX ++)
-            {
-                //aData[aY][aX]=aData[aY+1][aX];
-                aData[aY][aX]= aData[aY+pHeight][aX];
-                
-                
-                //pWidth
-                
-            }
-            aLoops--;
-        }
+        int aX = pX;
+        int aY = pY;
         
+        aData[aX - 1][aY - 1] = aData[aX][aY];
         
-        aLoops = pTimes;
-        for(int aY = aBottom+1;(aY<mExpandedHeight) && (aLoops > 0);aY++)
-        {
-            for(int aX = aLeft;aX <= aRight;aX ++)
-            {
-                //aData[aY][aX]=aData[aY-1][aX];
-                aData[aY][aX]=aData[aY-pHeight][aX];
-                
-                
-            }
-            aLoops--;
-        }
+        aX = pX + pWidth - 1;
+        aY = pY;
         
+        aData[aX + 1][aY - 1] = aData[aX][aY];
         
-        aLoops = pTimes;
-        for(int aX = aLeft-1;(aX >= 0) && (aLoops > 0);aX--)
-        {
-            for(int aY = aTop;aY<=aBottom;aY++)
-            {
-                //aData[aY][aX]=aData[aY][aX+1];
-                aData[aY][aX]=aData[aY][aX+pWidth];
-                
-            }
-            aLoops--;
-        }
+        aY = pY + pHeight - 1;
+        aData[aX + 1][aY + 1] = aData[aX][aY];
         
-        aLoops = pTimes;
-        for(int aX = aRight+1;(aX <mExpandedWidth) && (aLoops > 0);aX++)
-        {
-            for(int aY = aTop;aY<=aBottom;aY++)
-            {
-                //aData[aY][aX]=aData[aY][aX-1];
-                aData[aY][aX]=aData[aY][aX-pWidth];
-                
-            }
-            aLoops--;
-        }
+        aX = pX;
+        aData[aX - 1][aY + 1] = aData[aX][aY];
         
-        
-        
-        
-        
-        unsigned int aColor;
-        
-        
-        aColor = aData[aTop][aLeft];//AverageColors(aData[aTop-1][aLeft], aData[aTop][aLeft-1]);
-        //for(int i=0;i<aLeft;i++)
-        for(int i=(aLeft-1);i>=0;i--)
-        {
-            for(int n=0;n<aTop;n++)
-            {
-                //aData[n][i] = aColor;
-                aData[n][i] = aData[n + pHeight][i + pWidth];
-                
-            }
-        }
-        
-        aColor = aData[aTop][aRight];//AverageColors(aData[aTop-1][aRight], aData[aTop][aRight+1]);
-        for(int i=aRight+1;i<mExpandedWidth;i++)
-        {
-            for(int n=0;n<aTop;n++)
-            {
-                //aData[n][i] = aColor;
-                aData[n][i] = aData[n + pHeight][i - pWidth];
-                
-            }
-        }
-        
-        
-        aColor = aData[aBottom][aRight];
-        for(int i=aRight+1;i<mExpandedWidth;i++)
-        {
-            for(int n=aBottom+1;n<mExpandedHeight;n++)
-            {
-                //aData[n][i] = aColor;
-                aData[n][i] = aData[n - pHeight][i - pWidth];
-            }
-        }
-        
-        
-        aColor = aData[aBottom][aLeft];//AverageColors(aData[aBottom+1][aLeft], aData[aTop][aLeft-1]);
-        //for(int i=0;i<aLeft;i++)
-        for(int i=(aLeft-1);i>=0;i--)
-        {
-            for(int n=aBottom+1;n<mExpandedHeight;n++)
-            {
-                aData[n][i] = aColor;
-                aData[n][i] = aData[n - pHeight][i + pWidth];
-            }
-        }
-        
-        
-        
-        delete[]aData;
+        delete [] aData;
     }
 }
 

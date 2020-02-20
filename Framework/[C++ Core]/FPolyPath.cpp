@@ -123,10 +123,6 @@ void FPolyPath::Set(int pIndex, float pX, float pY) {
     }
 }
 
-
-
-
-
 void FPolyPath::Size(int pSize) {
     if (pSize != mSize) {
         if (pSize <= 0) {
@@ -218,10 +214,8 @@ void FPolyPath::Size(int pSize) {
     }
 }
 
-void FPolyPath::Draw()
-{
-    if(mRefresh)
-    {
+void FPolyPath::Draw() {
+    if (mRefresh == true) {
         Generate();
     }
     
@@ -232,69 +226,57 @@ void FPolyPath::Draw()
     Graphics::SetColor();
 }
 
-void FPolyPath::DrawPoints()
-{
+void FPolyPath::DrawPoints() {
     float aX = 0.0f;
     float aY = 0.0f;
     
     float aSize = 8.0f;
     float aSize2 = aSize * 0.5f;
     
-    for(int i=0;i<mCount;i++)
-    {
+    for (int i=0;i<mCount;i++) {
         aX = mX[i];
         aY = mY[i];
         Graphics::DrawRect(aX - aSize2, aY - aSize2, aSize, aSize);
         //gAppBase->mSysFont.Center(FString(i).c(), aX, aY - 30.0f);
-        
-    }
-    
-    
-}
-
-void FPolyPath::DrawEdges()
-{
-    if(mCount > 1)
-    {
-    
-    int aIndex = 0;
-    
-    float aX = 0.0f;
-    float aY = 0.0f;
-    
-    float aLastX = aX;
-    float aLastY = aY;
-    
-    if(mClosed)
-    {
-        aIndex = 0;
-        aLastX = mX[mCount - 1];
-        aLastY = mY[mCount - 1];
-    }
-    else
-    {
-        aIndex = 1;
-        aLastX = mX[0];
-        aLastY = mY[0];
-    }
-    
-    while(aIndex < mCount)
-    {
-        aX = mX[aIndex];
-        aY = mY[aIndex];
-        
-        Graphics::DrawLine(aLastX, aLastY, aX, aY, 1.0f);
-        
-        aLastX = aX;
-        aLastY = aY;
-        
-        aIndex++;
-    }
     }
 }
 
-void FPolyPath::DrawNormals()
-{
+void FPolyPath::DrawEdges() {
+    if (mCount > 1) {
+    
+        int aIndex = 0;
+        
+        float aX = 0.0f;
+        float aY = 0.0f;
+        
+        float aLastX = aX;
+        float aLastY = aY;
+        
+        if (mClosed == true) {
+            aIndex = 0;
+            aLastX = mX[mCount - 1];
+            aLastY = mY[mCount - 1];
+        } else {
+            aIndex = 1;
+            aLastX = mX[0];
+            aLastY = mY[0];
+        }
+        
+        while (aIndex < mCount) {
+            aX = mX[aIndex];
+            aY = mY[aIndex];
+            
+            Graphics::DrawLine(aLastX, aLastY, aX, aY, 1.0f);
+            
+            aLastX = aX;
+            aLastY = aY;
+            
+            aIndex++;
+        }
+    }
+}
+
+void FPolyPath::DrawNormals() {
     float aX = 0.0f;
     float aY = 0.0f;
     
@@ -305,15 +287,13 @@ void FPolyPath::DrawNormals()
     
     int aCount = mCount;
     
-    if(aCount > 0)
-    {
-        if(mClosed)aCount++;
-        
+    if (aCount > 0) {
+        if (mClosed) {
+            aCount++;
+        }
     }
     
-    
-    for(int aIndex = 0;aIndex < aCount; aIndex++)
-    {
+    for (int aIndex = 0;aIndex < aCount; aIndex++) {
         aX = mX[aIndex];
         aY = mY[aIndex];
         
@@ -327,15 +307,10 @@ void FPolyPath::DrawNormals()
         Graphics::DrawLine(aX, aY, aDrawX, aDrawY);
         
         Graphics::DrawPoint(aDrawX, aDrawY, 3.0f);
-        
-        
-        
     }
-    
 }
 
-bool FPolyPath::Interpolate(float pLength)
-{
+bool FPolyPath::Interpolate(float pLength) {
     return Interpolate(&mInterpolater, pLength);
 }
 
@@ -384,8 +359,7 @@ bool FPolyPath::Interpolate(FPolyPathInterp *pInterp, float pLength) {
             int aMid = 0;
             int aHigh = mCount;
             while (aInd2 != aHigh) {
-                aMid = (aInd2 + aHigh) / 2;
-                
+                aMid = (aInd2 + aHigh) >> 1;
                 if (mDistance[aMid] <= pLength) {
                     aInd2 = aMid + 1;
                 } else {

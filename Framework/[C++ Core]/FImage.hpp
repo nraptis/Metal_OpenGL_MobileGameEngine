@@ -143,10 +143,8 @@ public:
 	
     
     //void                            FixTileBorders(int pX, int pY, int pWidth, int pHeight);
-    void                            FixTileBorders(int pX, int pY, int pWidth, int pHeight, int pTimes);
-    void                            FixTileBorders(int pBorderSize);
+    void                            FixTileBorders(int pX, int pY, int pWidth, int pHeight);
     
-	
 	void                            GetColorCentroid(int pRed, int pGreen, int pBlue, int &x, int &y, int pTolerance=10);
 	
 	void                            MakePowerOf2();

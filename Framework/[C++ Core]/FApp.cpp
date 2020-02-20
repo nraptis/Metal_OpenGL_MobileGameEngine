@@ -336,16 +336,14 @@ void FApp::BaseDraw() {
         //Graphics::SetColor(0.0075f, 0.0075f, 0.0075f, 0.90f);
         
 #if (CURRENT_ENV == ENV_IOS)
-        Graphics::SetColor(0.0075f, 0.0075f, 0.0075f, 0.86f);
+        Graphics::SetColor(0.0075f, 0.0075f, 0.0075f, 0.825f);
 #else
         Graphics::SetColor(0.0075f, 0.0075f, 0.0075f, 0.76f);
 #endif
         
-        
-        
         Graphics::DrawRect(0.0f, 0.0f, gDeviceWidth, gDeviceHeight);
-        
         Graphics::SetColor();
+        
     }
 }
 
