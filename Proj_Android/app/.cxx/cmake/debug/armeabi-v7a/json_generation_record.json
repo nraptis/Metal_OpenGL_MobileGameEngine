@@ -1,0 +1,58 @@
+[
+  {
+    "level": "INFO",
+    "message": "Start JSON generation. Platform version: 19 min SDK version: armeabi-v7a"
+  },
+  {
+    "level": "INFO",
+    "message": "No CMake version was specified in build.gradle. Choosing a suitable version."
+  },
+  {
+    "level": "INFO",
+    "message": "Trying to locate CMake in local SDK repository."
+  },
+  {
+    "level": "INFO",
+    "message": "- CMake found in SDK at \u0027/Users/nraptis/Library/Android/sdk/cmake/3.6.4111459\u0027 had version \u00273.6.0\u0027"
+  },
+  {
+    "level": "INFO",
+    "message": "rebuilding JSON /Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/debug/armeabi-v7a/android_gradle_build.json due to:"
+  },
+  {
+    "level": "INFO",
+    "message": "- a dependent build file changed"
+  },
+  {
+    "level": "INFO",
+    "message": "  - /Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/CMakeLists.txt"
+  },
+  {
+    "level": "INFO",
+    "message": "keeping json folder \u0027/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/debug/armeabi-v7a\u0027 but regenerating project"
+  },
+  {
+    "level": "INFO",
+    "message": "executing cmake Executable : /Users/nraptis/Library/Android/sdk/cmake/3.6.4111459/bin/cmake\narguments : \n-H/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp\n-B/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/debug/armeabi-v7a\n-DANDROID_ABI\u003darmeabi-v7a\n-DANDROID_PLATFORM\u003dandroid-19\n-DCMAKE_LIBRARY_OUTPUT_DIRECTORY\u003d/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/build/intermediates/cmake/debug/obj/armeabi-v7a\n-DCMAKE_BUILD_TYPE\u003dDebug\n-DANDROID_NDK\u003d/Users/nraptis/Library/Android/sdk/ndk-bundle\n-DCMAKE_CXX_FLAGS\u003d\n-DCMAKE_TOOLCHAIN_FILE\u003d/Users/nraptis/Library/Android/sdk/ndk-bundle/build/cmake/android.toolchain.cmake\n-DCMAKE_MAKE_PROGRAM\u003d/Users/nraptis/Library/Android/sdk/cmake/3.6.4111459/bin/ninja\n-GAndroid Gradle - Ninja\n-DANDROID_ARM_NEON\u003dON\njvmArgs : \n\n"
+  },
+  {
+    "level": "INFO",
+    "message": "Executable : /Users/nraptis/Library/Android/sdk/cmake/3.6.4111459/bin/cmake\narguments : \n-H/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp\n-B/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/debug/armeabi-v7a\n-DANDROID_ABI\u003darmeabi-v7a\n-DANDROID_PLATFORM\u003dandroid-19\n-DCMAKE_LIBRARY_OUTPUT_DIRECTORY\u003d/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/build/intermediates/cmake/debug/obj/armeabi-v7a\n-DCMAKE_BUILD_TYPE\u003dDebug\n-DANDROID_NDK\u003d/Users/nraptis/Library/Android/sdk/ndk-bundle\n-DCMAKE_CXX_FLAGS\u003d\n-DCMAKE_TOOLCHAIN_FILE\u003d/Users/nraptis/Library/Android/sdk/ndk-bundle/build/cmake/android.toolchain.cmake\n-DCMAKE_MAKE_PROGRAM\u003d/Users/nraptis/Library/Android/sdk/cmake/3.6.4111459/bin/ninja\n-GAndroid Gradle - Ninja\n-DANDROID_ARM_NEON\u003dON\njvmArgs : \n\n"
+  },
+  {
+    "level": "INFO",
+    "message": "done executing cmake"
+  },
+  {
+    "level": "INFO",
+    "message": "write build output /Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/debug/armeabi-v7a/build_output.txt"
+  },
+  {
+    "level": "INFO",
+    "message": "write command file /Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/debug/armeabi-v7a/build_command.txt"
+  },
+  {
+    "level": "INFO",
+    "message": "JSON generation completed without problems"
+  }
+]

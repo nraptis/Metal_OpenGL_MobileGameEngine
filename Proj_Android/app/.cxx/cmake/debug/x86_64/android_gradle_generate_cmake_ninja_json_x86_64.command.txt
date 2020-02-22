@@ -1,0 +1,16 @@
+Executable : /Users/nraptis/Library/Android/sdk/cmake/3.6.4111459/bin/cmake
+arguments : 
+-H/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp
+-B/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/debug/x86_64
+-DANDROID_ABI=x86_64
+-DANDROID_PLATFORM=android-19
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/build/intermediates/cmake/debug/obj/x86_64
+-DCMAKE_BUILD_TYPE=Debug
+-DANDROID_NDK=/Users/nraptis/Library/Android/sdk/ndk-bundle
+-DCMAKE_CXX_FLAGS=
+-DCMAKE_TOOLCHAIN_FILE=/Users/nraptis/Library/Android/sdk/ndk-bundle/build/cmake/android.toolchain.cmake
+-DCMAKE_MAKE_PROGRAM=/Users/nraptis/Library/Android/sdk/cmake/3.6.4111459/bin/ninja
+-GAndroid Gradle - Ninja
+-DANDROID_ARM_NEON=ON
+jvmArgs : 
+

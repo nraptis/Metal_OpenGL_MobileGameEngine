@@ -1,0 +1,236 @@
+[1/128] Building CXX object CMakeFiles/gl2jni.dir/__DROID.cpp.o
+[2/128] Building CXX object CMakeFiles/gl2jni.dir/AssetWadGameInterface.cpp.o
+[3/128] Building CXX object CMakeFiles/gl2jni.dir/core_app_shell.cpp.o
+[4/128] Building CXX object CMakeFiles/gl2jni.dir/core_social.cpp.o
+[5/128] Building CXX object CMakeFiles/gl2jni.dir/core_web.cpp.o
+[6/128] Building CXX object CMakeFiles/gl2jni.dir/DragableCanvas.cpp.o
+[7/128] Building CXX object CMakeFiles/gl2jni.dir/FAchievement.cpp.o
+[8/128] Building CXX object CMakeFiles/gl2jni.dir/FAchievementController.cpp.o
+[9/128] Building CXX object CMakeFiles/gl2jni.dir/FAchievementGroup.cpp.o
+[10/128] Building CXX object CMakeFiles/gl2jni.dir/FAnimation.cpp.o
+[11/128] Building CXX object CMakeFiles/gl2jni.dir/FApp.cpp.o
+[12/128] Building CXX object CMakeFiles/gl2jni.dir/FAssetResolutionConfigurator.cpp.o
+[13/128] Building CXX object CMakeFiles/gl2jni.dir/FAssetWad.cpp.o
+[14/128] Building CXX object CMakeFiles/gl2jni.dir/FBuffer.cpp.o
+[15/128] Building CXX object CMakeFiles/gl2jni.dir/FBufferCache.cpp.o
+[16/128] Building CXX object CMakeFiles/gl2jni.dir/FButton.cpp.o
+[17/128] Building CXX object CMakeFiles/gl2jni.dir/FCanvas.cpp.o
+[18/128] Building CXX object CMakeFiles/gl2jni.dir/FColor.cpp.o
+[19/128] Building CXX object CMakeFiles/gl2jni.dir/FDrawQuad.cpp.o
+[20/128] Building CXX object CMakeFiles/gl2jni.dir/FFile.cpp.o
+[21/128] Building CXX object CMakeFiles/gl2jni.dir/FFileTable.cpp.o
+[22/128] Building CXX object CMakeFiles/gl2jni.dir/FFloatBufferCache.cpp.o
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/__DROID.cpp:115:13: warning: unused variable 'cDidInitializeGraphicsReady' [-Wunused-variable]
+static bool cDidInitializeGraphicsReady = false;
+            ^
+1 warning generated.
+[23/128] Building CXX object CMakeFiles/gl2jni.dir/FFloatList.cpp.o
+[24/128] Building CXX object CMakeFiles/gl2jni.dir/FFont.cpp.o
+[25/128] Building CXX object CMakeFiles/gl2jni.dir/FGestureCanvas.cpp.o
+[26/128] Building CXX object CMakeFiles/gl2jni.dir/FHashMap.cpp.o
+[27/128] Building CXX object CMakeFiles/gl2jni.dir/FImage.cpp.o
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/core_app_shell.cpp:81:2: warning: delete called on non-final 'FString' that has virtual functions but non-virtual destructor [-Wdelete-non-virtual-dtor]
+        FreeList(FString, aResourceList);
+        ^
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FList.hpp:11:76: note: expanded from macro 'FreeList'
+#define FreeList(pType,pList){EnumList(pType,__LIST_ITERATOR_NAME__,pList){delete __LIST_ITERATOR_NAME__;}pList.Clear();}
+                                                                           ^
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/core_app_shell.cpp:287:19: warning: unused variable 'aAspectRatio' [-Wunused-variable]
+            float aAspectRatio = 768.0f / 1024.0f;
+                  ^
+2 warnings generated.
+[28/128] Building CXX object CMakeFiles/gl2jni.dir/FImageBundler.cpp.o
+[29/128] Building CXX object CMakeFiles/gl2jni.dir/FIndexBufferCache.cpp.o
+[30/128] Building CXX object CMakeFiles/gl2jni.dir/FIndexList.cpp.o
+[31/128] Building CXX object CMakeFiles/gl2jni.dir/FIntList.cpp.o
+[32/128] Building CXX object CMakeFiles/gl2jni.dir/FJoystick.cpp.o
+[33/128] Building CXX object CMakeFiles/gl2jni.dir/FJSON.cpp.o
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FFloatList.cpp:92:60: warning: implicit conversion of NULL constant to 'float' [-Wnull-conversion]
+            for (int i = mCount; i<pSize; i++) { aNew[i] = NULL; }
+                                                         ~ ^~~~
+                                                           0.0
+1 warning generated.
+[34/128] Building CXX object CMakeFiles/gl2jni.dir/FLight.cpp.o
+[35/128] Building CXX object CMakeFiles/gl2jni.dir/FLine.cpp.o
+[36/128] Building CXX object CMakeFiles/gl2jni.dir/FList.cpp.o
+[37/128] Building CXX object CMakeFiles/gl2jni.dir/FloatingCamera.cpp.o
+[38/128] Building CXX object CMakeFiles/gl2jni.dir/FMath.cpp.o
+[39/128] Building CXX object CMakeFiles/gl2jni.dir/FMatrix.cpp.o
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FDrawQuad.cpp:30:29: warning: unused variable 'cQuadIndex' [-Wunused-variable]
+static GFX_MODEL_INDEX_TYPE cQuadIndex[6] = { 0, 1, 2, 1, 3, 2 };
+                            ^
+1 warning generated.
+[40/128] Building CXX object CMakeFiles/gl2jni.dir/FModelData.cpp.o
+[41/128] Building CXX object CMakeFiles/gl2jni.dir/FModelDataPacked.cpp.o
+[42/128] Building CXX object CMakeFiles/gl2jni.dir/FModelDataPackedSequence.cpp.o
+[43/128] Building CXX object CMakeFiles/gl2jni.dir/FNotificationCenter.cpp.o
+[44/128] Building CXX object CMakeFiles/gl2jni.dir/FObject.cpp.o
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FImage.cpp:2456:9: warning: 'delete' applied to a pointer that was allocated with 'new[]'; did you mean 'delete[]'? [-Wmismatched-new-delete]
+        delete aNewHorzPixels;
+        ^
+              []
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FImage.cpp:2235:41: note: allocated with 'new[]' here
+        unsigned long* aNewHorzPixels = new unsigned long[aTempDestWidth*aSrcHeightI*4];
+                                        ^
+1 warning generated.
+[45/128] Building CXX object CMakeFiles/gl2jni.dir/FParticle.cpp.o
+[46/128] Building CXX object CMakeFiles/gl2jni.dir/FPointList.cpp.o
+[47/128] Building CXX object CMakeFiles/gl2jni.dir/FPolyPath.cpp.o
+[48/128] Building CXX object CMakeFiles/gl2jni.dir/FPrimitive.cpp.o
+[49/128] Building CXX object CMakeFiles/gl2jni.dir/FQuad.cpp.o
+[50/128] Building CXX object CMakeFiles/gl2jni.dir/FRandomizer.cpp.o
+[51/128] Building CXX object CMakeFiles/gl2jni.dir/FRect.cpp.o
+[52/128] Building CXX object CMakeFiles/gl2jni.dir/FResource.cpp.o
+[53/128] Building CXX object CMakeFiles/gl2jni.dir/FScrollCanvas.cpp.o
+[54/128] Building CXX object CMakeFiles/gl2jni.dir/FScrollCanvasGeneric.cpp.o
+[55/128] Building CXX object CMakeFiles/gl2jni.dir/FScrollCanvasPaged.cpp.o
+[56/128] Building CXX object CMakeFiles/gl2jni.dir/FSize.cpp.o
+[57/128] Building CXX object CMakeFiles/gl2jni.dir/FSlider.cpp.o
+[58/128] Building CXX object CMakeFiles/gl2jni.dir/FSound.cpp.o
+[59/128] Building CXX object CMakeFiles/gl2jni.dir/FSpline.cpp.o
+[60/128] Building CXX object CMakeFiles/gl2jni.dir/FSprite.cpp.o
+[61/128] Building CXX object CMakeFiles/gl2jni.dir/FSpriteCanvas.cpp.o
+[62/128] Building CXX object CMakeFiles/gl2jni.dir/FSpriteSequence.cpp.o
+[63/128] Building CXX object CMakeFiles/gl2jni.dir/FString.cpp.o
+[64/128] Building CXX object CMakeFiles/gl2jni.dir/FTexture.cpp.o
+[65/128] Building CXX object CMakeFiles/gl2jni.dir/FTextureCache.cpp.o
+[66/128] Building CXX object CMakeFiles/gl2jni.dir/FTextureSnake.cpp.o
+[67/128] Building CXX object CMakeFiles/gl2jni.dir/FTextureSnakeWithBookend.cpp.o
+[68/128] Building CXX object CMakeFiles/gl2jni.dir/FTouchManager.cpp.o
+[69/128] Building CXX object CMakeFiles/gl2jni.dir/FUniforms.cpp.o
+[70/128] Building CXX object CMakeFiles/gl2jni.dir/FVec2.cpp.o
+[71/128] Building CXX object CMakeFiles/gl2jni.dir/FVec3.cpp.o
+[72/128] Building CXX object CMakeFiles/gl2jni.dir/FWindow.cpp.o
+[73/128] Building CXX object CMakeFiles/gl2jni.dir/FXML.cpp.o
+[74/128] Building CXX object CMakeFiles/gl2jni.dir/GFXApp.cpp.o
+[75/128] Building CXX object CMakeFiles/gl2jni.dir/GraphicsInterface.cpp.o
+[76/128] Building CXX object CMakeFiles/gl2jni.dir/LandingScene.cpp.o
+[77/128] Building CXX object CMakeFiles/gl2jni.dir/OpenGLEngine.cpp.o
+[78/128] Building CXX object CMakeFiles/gl2jni.dir/os_core_app_shell_android.cpp.o
+[79/128] Building CXX object CMakeFiles/gl2jni.dir/os_core_graphics.cpp.o
+[80/128] Building CXX object CMakeFiles/gl2jni.dir/os_core_includes.cpp.o
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FString.cpp:1144:34: warning: implicit conversion of NULL constant to 'char' [-Wnull-conversion]
+        aChunk->mData[aLength] = NULL;
+                               ~ ^~~~
+                                 '\0'
+1 warning generated.
+[81/128] Building CXX object CMakeFiles/gl2jni.dir/os_core_music_android.cpp.o
+[82/128] Building CXX object CMakeFiles/gl2jni.dir/os_core_outlets_android.cpp.o
+[83/128] Building CXX object CMakeFiles/gl2jni.dir/os_core_social.cpp.o
+[84/128] Building CXX object CMakeFiles/gl2jni.dir/os_core_sound_android.cpp.o
+[85/128] Building CXX object CMakeFiles/gl2jni.dir/os_core_web.cpp.o
+[86/128] Building CXX object CMakeFiles/gl2jni.dir/OSMusicBuffer.cpp.o
+[87/128] Building CXX object CMakeFiles/gl2jni.dir/OSMusicPlayer.cpp.o
+[88/128] Building CXX object CMakeFiles/gl2jni.dir/OSSoundBuffer.cpp.o
+[89/128] Building CXX object CMakeFiles/gl2jni.dir/OSSoundBufferPool.cpp.o
+[90/128] Building CXX object CMakeFiles/gl2jni.dir/PhongConfiguration.cpp.o
+[91/128] Building CXX object CMakeFiles/gl2jni.dir/PlatformGraphicsInterface.cpp.o
+[92/128] Building CXX object CMakeFiles/gl2jni.dir/ProgressBar.cpp.o
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/LandingScene.cpp:172:10: warning: unused variable 'aShift' [-Wunused-variable]
+    bool aShift = gKeyDownShift;
+         ^
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/LandingScene.cpp:174:10: warning: unused variable 'aAlt' [-Wunused-variable]
+    bool aAlt = gKeyDownAlt;
+         ^
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/LandingScene.cpp:173:10: warning: unused variable 'aCtrl' [-Wunused-variable]
+    bool aCtrl = gKeyDownCtrl;
+         ^
+3 warnings generated.
+[93/128] Building CXX object CMakeFiles/gl2jni.dir/ShaderProgram.cpp.o
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/OpenGLEngine.cpp:60:5: warning: delete called on non-final 'ShaderProgram' that has virtual functions but non-virtual destructor [-Wdelete-non-virtual-dtor]
+    delete mShaderProgramShape2D;
+    ^
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/OpenGLEngine.cpp:63:5: warning: delete called on non-final 'ShaderProgramShape3D' that has virtual functions but non-virtual destructor [-Wdelete-non-virtual-dtor]
+    delete mShaderProgramShape3D;
+    ^
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/OpenGLEngine.cpp:66:5: warning: delete called on non-final 'ShaderProgramSprite' that has virtual functions but non-virtual destructor [-Wdelete-non-virtual-dtor]
+    delete mShaderProgramSprite;
+    ^
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/OpenGLEngine.cpp:69:5: warning: delete called on non-final 'ShaderProgramSpriteWhite' that has virtual functions but non-virtual destructor [-Wdelete-non-virtual-dtor]
+    delete mShaderProgramSpriteWhite;
+    ^
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/OpenGLEngine.cpp:72:5: warning: delete called on non-final 'ShaderProgramShapeNode' that has virtual functions but non-virtual destructor [-Wdelete-non-virtual-dtor]
+    delete mShaderProgramShapeNode;
+    ^
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/OpenGLEngine.cpp:75:5: warning: delete called on non-final 'ShaderProgramShapeNodeSprite' that has virtual functions but non-virtual destructor [-Wdelete-non-virtual-dtor]
+    delete mShaderProgramShapeNodeSprite;
+    ^
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/OpenGLEngine.cpp:78:5: warning: delete called on non-final 'ShaderProgramSpriteNode' that has virtual functions but non-virtual destructor [-Wdelete-non-virtual-dtor]
+    delete mShaderProgramSpriteNode;
+    ^
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/OpenGLEngine.cpp:81:5: warning: delete called on non-final 'ShaderProgramSimpleModel' that has virtual functions but non-virtual destructor [-Wdelete-non-virtual-dtor]
+    delete mShaderProgramSimpleModel;
+    ^
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/OpenGLEngine.cpp:84:5: warning: delete called on non-final 'ShaderProgramSimpleModelIndexed' that has virtual functions but non-virtual destructor [-Wdelete-non-virtual-dtor]
+    delete mShaderProgramSimpleModelIndexed;
+    ^
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/OpenGLEngine.cpp:87:5: warning: delete called on non-final 'ShaderProgramModelIndexed' that has virtual functions but non-virtual destructor [-Wdelete-non-virtual-dtor]
+    delete mShaderProgramModelIndexed;
+    ^
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/OpenGLEngine.cpp:90:5: warning: delete called on non-final 'ShaderProgramModelIndexedLightedAmbient' that has virtual functions but non-virtual destructor [-Wdelete-non-virtual-dtor]
+    delete mShaderProgramModelIndexedLightedAmbient;
+    ^
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/OpenGLEngine.cpp:93:5: warning: delete called on non-final 'ShaderProgramModelIndexedLightedDiffuse' that has virtual functions but non-virtual destructor [-Wdelete-non-virtual-dtor]
+    delete mShaderProgramModelIndexedLightedDiffuse;
+    ^
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/OpenGLEngine.cpp:96:5: warning: delete called on non-final 'ShaderProgramModelIndexedLightedPhong' that has virtual functions but non-virtual destructor [-Wdelete-non-virtual-dtor]
+    delete mShaderProgramModelIndexedLightedPhong;
+    ^
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/OpenGLEngine.cpp:99:5: warning: delete called on non-final 'ShaderProgramModelIndexedLightedPhong' that has virtual functions but non-virtual destructor [-Wdelete-non-virtual-dtor]
+    delete mShaderProgramModelIndexedLightedPhongOverlay;
+    ^
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/OpenGLEngine.cpp:102:5: warning: delete called on non-final 'ShaderProgramModelIndexedLightedSimpleSpotlight' that has virtual functions but non-virtual destructor [-Wdelete-non-virtual-dtor]
+    delete mShaderProgramModelIndexedLightedSimpleSpotlight;
+    ^
+15 warnings generated.
+[94/128] Building CXX object CMakeFiles/gl2jni.dir/ShaderProgramModelIndexed.cpp.o
+[95/128] Building CXX object CMakeFiles/gl2jni.dir/ShaderProgramModelIndexedLightedAmbient.cpp.o
+[96/128] Building CXX object CMakeFiles/gl2jni.dir/ShaderProgramModelIndexedLightedDiffuse.cpp.o
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/OSMusicPlayer.cpp:99:1: warning: control reaches end of non-void function [-Wreturn-type]
+}
+^
+1 warning generated.
+[97/128] Building CXX object CMakeFiles/gl2jni.dir/ShaderProgramModelIndexedLightedPhong.cpp.o
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/os_core_sound_android.cpp:129:9: warning: unused variable 'aLoadedInstanceCount' [-Wunused-variable]
+    int aLoadedInstanceCount = 0;
+        ^
+1 warning generated.
+[98/128] Building CXX object CMakeFiles/gl2jni.dir/ShaderProgramModelIndexedLightedSimpleSpotlight.cpp.o
+[99/128] Building CXX object CMakeFiles/gl2jni.dir/ShaderProgramShape3D.cpp.o
+[100/128] Building CXX object CMakeFiles/gl2jni.dir/ShaderProgramShapeNode.cpp.o
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/os_core_graphics.cpp:37:45: warning: unused variable 'gGraphicsThread' [-Wunused-variable]
+static int                                  gGraphicsThread = -1;
+                                            ^
+1 warning generated.
+[101/128] Building CXX object CMakeFiles/gl2jni.dir/ShaderProgramShapeNodeSprite.cpp.o
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/os_core_outlets_android.cpp:151:39: warning: format specifies type 'unsigned int' but the argument has type 'void *' [-Wformat]
+    printf("Detaching Threat [%X]\n", pArg);
+                              ~~      ^~~~
+1 warning generated.
+[102/128] Building CXX object CMakeFiles/gl2jni.dir/ShaderProgramSimpleModel.cpp.o
+[103/128] Building CXX object CMakeFiles/gl2jni.dir/ShaderProgramSimpleModelIndexed.cpp.o
+[104/128] Building CXX object CMakeFiles/gl2jni.dir/ShaderProgramSprite.cpp.o
+[105/128] Building CXX object CMakeFiles/gl2jni.dir/ShaderProgramSpriteNode.cpp.o
+[106/128] Building CXX object CMakeFiles/gl2jni.dir/ShaderProgramSpriteWhite.cpp.o
+[107/128] Building CXX object CMakeFiles/gl2jni.dir/ToolMenu.cpp.o
+[108/128] Building CXX object CMakeFiles/gl2jni.dir/ToolMenuHeader.cpp.o
+[109/128] Building CXX object CMakeFiles/gl2jni.dir/ToolMenuPanel.cpp.o
+[110/128] Building CXX object CMakeFiles/gl2jni.dir/ToolMenuPanelHeader.cpp.o
+[111/128] Building CXX object CMakeFiles/gl2jni.dir/ToolMenuSection.cpp.o
+[112/128] Building CXX object CMakeFiles/gl2jni.dir/ToolMenuSectionRow.cpp.o
+[113/128] Building CXX object CMakeFiles/gl2jni.dir/UIAlignmentPicker.cpp.o
+[114/128] Building CXX object CMakeFiles/gl2jni.dir/UIAlignmentPickerButton.cpp.o
+[115/128] Building CXX object CMakeFiles/gl2jni.dir/UIButton.cpp.o
+[116/128] Building CXX object CMakeFiles/gl2jni.dir/UICheckBox.cpp.o
+[117/128] Building CXX object CMakeFiles/gl2jni.dir/UIElement.cpp.o
+[118/128] Building CXX object CMakeFiles/gl2jni.dir/UIImagePicker.cpp.o
+[119/128] Building CXX object CMakeFiles/gl2jni.dir/UIImagePickerCell.cpp.o
+[120/128] Building CXX object CMakeFiles/gl2jni.dir/UILabel.cpp.o
+[121/128] Building CXX object CMakeFiles/gl2jni.dir/UIRoundedRect.cpp.o
+[122/128] Building CXX object CMakeFiles/gl2jni.dir/UISegment.cpp.o
+[123/128] Building CXX object CMakeFiles/gl2jni.dir/UISegmentButton.cpp.o
+[124/128] Building CXX object CMakeFiles/gl2jni.dir/UISlider.cpp.o
+[125/128] Building CXX object CMakeFiles/gl2jni.dir/UIStepper.cpp.o
+[126/128] Building CXX object CMakeFiles/gl2jni.dir/UITextBox.cpp.o
+[127/128] Building CXX object CMakeFiles/gl2jni.dir/Util_ScreenFrame.cpp.o
+[128/128] Linking CXX shared library "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/build/intermediates/cmake/debug/obj/x86/libgl2jni.so"

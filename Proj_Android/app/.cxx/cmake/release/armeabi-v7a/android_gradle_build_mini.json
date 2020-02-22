@@ -1,0 +1,16 @@
+{
+  "buildFiles": [
+    "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "/Users/nraptis/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/nraptis/Desktop/Metal\\ Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a --target clean"
+  ],
+  "libraries": {
+    "gl2jni-Release-armeabi-v7a": {
+      "artifactName": "gl2jni",
+      "buildCommand": "/Users/nraptis/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/nraptis/Desktop/Metal\\ Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a --target gl2jni",
+      "abi": "armeabi-v7a",
+      "output": "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/build/intermediates/cmake/release/obj/armeabi-v7a/libgl2jni.so"
+    }
+  }
+}

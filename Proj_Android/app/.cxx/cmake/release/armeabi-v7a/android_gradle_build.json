@@ -1,0 +1,713 @@
+
+{
+	"buildFiles" : 
+	[
+		"/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/CMakeLists.txt"
+	],
+	"cleanCommands" : 
+	[
+		"/Users/nraptis/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/nraptis/Desktop/Metal\\ Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a --target clean"
+	],
+	"cppFileExtensions" : [ "cpp" ],
+	"libraries" : 
+	{
+		"gl2jni-Release-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "gl2jni",
+			"buildCommand" : "/Users/nraptis/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/nraptis/Desktop/Metal\\ Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a --target gl2jni",
+			"buildType" : "release",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/__DROID.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/AssetWadGameInterface.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/core_app_shell.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/core_social.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/core_web.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/DragableCanvas.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FAchievement.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FAchievementController.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FAchievementGroup.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FAnimation.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FApp.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FAssetResolutionConfigurator.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FAssetWad.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FBuffer.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FBufferCache.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FButton.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FCanvas.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FColor.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FDrawQuad.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FFile.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FFileTable.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FFloatBufferCache.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FFloatList.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FFont.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FGestureCanvas.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FHashMap.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FImage.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FImageBundler.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FIndexBufferCache.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FIndexList.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FIntList.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FJoystick.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FJSON.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FLight.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FLine.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FList.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FloatingCamera.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FMath.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FMatrix.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FModelData.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FModelDataPacked.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FModelDataPackedSequence.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FNotificationCenter.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FObject.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FParticle.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FPointList.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FPolyPath.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FPrimitive.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FQuad.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FRandomizer.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FRect.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FResource.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FScrollCanvas.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FScrollCanvasGeneric.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FScrollCanvasPaged.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FSize.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FSlider.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FSound.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FSpline.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FSprite.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FSpriteCanvas.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FSpriteSequence.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FString.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FTexture.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FTextureCache.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FTextureSnake.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FTextureSnakeWithBookend.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FTouchManager.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FUniforms.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FVec2.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FVec3.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FWindow.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/FXML.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/GFXApp.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/GraphicsInterface.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/LandingScene.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/OpenGLEngine.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/os_core_app_shell_android.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/os_core_graphics.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/os_core_includes.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/os_core_music_android.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/os_core_outlets_android.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/os_core_social.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/os_core_sound_android.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/os_core_web.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/OSMusicBuffer.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/OSMusicPlayer.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/OSSoundBuffer.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/OSSoundBufferPool.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/PhongConfiguration.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/PlatformGraphicsInterface.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/ProgressBar.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/ToolMenu.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/ToolMenuHeader.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/ToolMenuPanel.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/ToolMenuPanelHeader.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/ToolMenuSection.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/ToolMenuSectionRow.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/UIAlignmentPicker.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/UIAlignmentPickerButton.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/UIButton.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/UICheckBox.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/UIElement.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/UIImagePicker.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/UIImagePickerCell.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/UILabel.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/UIRoundedRect.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/UISegment.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/UISegmentButton.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/UISlider.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/UIStepper.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/UITextBox.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dgl2jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++14 -Wall -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/Util_ScreenFrame.cpp",
+					"workingDirectory" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/release/armeabi-v7a"
+				}
+			],
+			"output" : "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/build/intermediates/cmake/release/obj/armeabi-v7a/libgl2jni.so",
+			"toolchain" : "2252786791216388517"
+		}
+	},
+	"toolchains" : 
+	{
+		"2252786791216388517" : 
+		{
+			"cCompilerExecutable" : "/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang",
+			"cppCompilerExecutable" : "/Users/nraptis/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++"
+		}
+	}
+}

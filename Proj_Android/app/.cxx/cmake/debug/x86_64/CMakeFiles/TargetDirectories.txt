@@ -1,0 +1,3 @@
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/debug/x86_64/CMakeFiles/edit_cache.dir
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/debug/x86_64/CMakeFiles/rebuild_cache.dir
+/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/debug/x86_64/CMakeFiles/gl2jni.dir

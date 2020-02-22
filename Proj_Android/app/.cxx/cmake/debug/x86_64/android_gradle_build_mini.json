@@ -1,0 +1,16 @@
+{
+  "buildFiles": [
+    "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/src/main/cpp/CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "/Users/nraptis/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/nraptis/Desktop/Metal\\ Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/debug/x86_64 --target clean"
+  ],
+  "libraries": {
+    "gl2jni-Debug-x86_64": {
+      "artifactName": "gl2jni",
+      "buildCommand": "/Users/nraptis/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/nraptis/Desktop/Metal\\ Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/.cxx/cmake/debug/x86_64 --target gl2jni",
+      "abi": "x86_64",
+      "output": "/Users/nraptis/Desktop/Metal Engine/Metal_OpenGL_MobileGameEngine/Proj_Android/app/build/intermediates/cmake/debug/obj/x86_64/libgl2jni.so"
+    }
+  }
+}
