@@ -67,6 +67,20 @@ void FTextureCache::ReloadAllTextures() {
     }
 }
 
+void FTextureCache::PrintAllLoadedTextures() {
+    
+    printf("***\n***\nrintAllLoadedTextures()\n***\n");
+    EnumList(FTextureCacheNode, aNode, mNodeList) {
+        if (aNode->mTexture != NULL) {
+            if (aNode->mTexture->mBindIndex != -1) {
+                printf("In Mem: [%s]\n", aNode->mTexture->mFileName.c());
+            }
+        }
+    }
+    
+    
+}
+
 FTextureCacheNode *FTextureCache::GetNodeForTexture(FTexture *pTexture) {
     FTextureCacheNode *aResult = 0;
     if (pTexture) {

@@ -184,7 +184,7 @@ public:
     virtual void                                SetFrame(float pX, float pY, float pWidth, float pHeight);
     inline void                                 SetFrame(FRect pRect){SetFrame(pRect.mX, pRect.mY, pRect.mWidth, pRect.mHeight);}
     
-    inline void                                 SetSize(float pWidth, float pHeight) { SetFrame(GetX(), GetY(), pWidth, pHeight); }
+    inline void                                 SetSize(float pWidth, float pHeight) { SetWidth(pWidth); SetHeight(pHeight); }
     inline void                                 SetSize(FSprite *pSprite){ if (pSprite) SetSize(pSprite->mWidth, pSprite->mHeight); }
     inline void                                 SetSize(FSprite &pSprite) { SetSize(&pSprite); }
 

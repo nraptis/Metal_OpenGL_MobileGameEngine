@@ -25,6 +25,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (float) getScreenScale;
 
+//+ (RootViewController *)generateRoot
+//[[RootViewController alloc] init];
+
+
 @end
 
 NS_ASSUME_NONNULL_END

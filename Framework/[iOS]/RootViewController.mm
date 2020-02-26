@@ -49,7 +49,6 @@ RootViewController *gRootBase = NULL;
     self.screenScale = [UIScreen mainScreen].scale;
 }
 
-
 - (void)setup {
     
     self.view.frame = CGRectMake(0.0f, 0.0f, kDeviceWidth, kDeviceHeight);

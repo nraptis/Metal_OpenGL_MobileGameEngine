@@ -310,7 +310,6 @@ void FApp::BaseDraw() {
     Graphics::MatrixModelViewReset();
     DrawOver();
     
-    /*
     
     if (Graphics::RenderPass() == GFX_RENDER_PASS_2D_MAIN) {
         Graphics::MatrixProjectionResetOrtho();
@@ -328,7 +327,6 @@ void FApp::BaseDraw() {
         mSysFont.Center(aScaleString, gDeviceWidth2, gDeviceHeight - 24.0f - 20.0f);
     }
     
-    */
     
     if (mDarkMode == true) {
         Graphics::PipelineStateSetShape2DAlphaBlending();

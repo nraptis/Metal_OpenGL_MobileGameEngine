@@ -37,8 +37,6 @@ float gMusicVolume = 1.0f;
 bool gSoundEnabled = true;
 bool gMusicEnabled = true;
 
-
-
 bool gAdBannerVisible = false;
 
 const char *gKeyName[256];
@@ -76,7 +74,11 @@ void AppShellInitialize(int pEnvironment) {
     
 	os_getAllResources(gDirBundle.c(), &aResourceList);
 	os_getAllResources(gDirDocuments.c(), &aResourceList);
-
+    
+    //EnumList(FString, aPath, aResourceList) {
+    //    printf("Res: %s\n", aPath->c());
+    //}
+    
 	EnumList(FString, aPath, aResourceList)gRes.AddResource(aPath->c());
 	FreeList(FString, aResourceList);
     

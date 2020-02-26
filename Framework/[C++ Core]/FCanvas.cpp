@@ -112,12 +112,24 @@ void FCanvas::Notify(void *pSender, const char *pNotification) { }
 void FCanvas::DrawManual() {
     if (mDidUpdate == true && mHidden == false && mKill == 0) {
         DrawTransform();
+        
+        if (mClipEnabled) {
+            Graphics::ClipEnable();
+            Graphics::Clip(mTransformAbsolute.mCornerX[0],
+                           mTransformAbsolute.mCornerY[0],
+                           mWidth * mTransformAbsolute.mScale * mTransformAbsolute.mScaleX,
+                           mHeight * mTransformAbsolute.mScale * mTransformAbsolute.mScaleY);
+        }
+        
         Draw();
         EnumList(FCanvas, aCanvas, mChildren) {
             if (aCanvas->mDrawManual == false) {
                 aCanvas->DrawManual();
             }
         }
+        
+        if (mClipEnabled || mClipDisabled) { Graphics::ClipDisable(); }
+        
     }
 }
 
