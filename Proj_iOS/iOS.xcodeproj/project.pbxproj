@@ -7,27 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D4D056423B9794000731CFB /* OpenGLViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0D4D056023B9793F00731CFB /* OpenGLViewController.mm */; };
-		0D4D056523B9794000731CFB /* PlatformGraphicsInterface.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0D4D056123B9793F00731CFB /* PlatformGraphicsInterface.mm */; };
-		0D4D056623B9794000731CFB /* OpenGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0D4D056323B9793F00731CFB /* OpenGLView.mm */; };
 		0DA5B90623B92912004681E9 /* FloatingCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DA5B8FA23B92912004681E9 /* FloatingCamera.cpp */; };
 		0DA5B90723B92912004681E9 /* PhongConfiguration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DA5B8FB23B92912004681E9 /* PhongConfiguration.cpp */; };
 		0DA5B90823B92912004681E9 /* GFXApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DA5B8FC23B92912004681E9 /* GFXApp.cpp */; };
 		0DA5B90923B92912004681E9 /* AssetWadGameInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DA5B8FF23B92912004681E9 /* AssetWadGameInterface.cpp */; };
 		0DA5B90A23B92912004681E9 /* ProgressBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DA5B90023B92912004681E9 /* ProgressBar.cpp */; };
 		0DA5B90B23B92912004681E9 /* LandingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DA5B90123B92912004681E9 /* LandingScene.cpp */; };
-		0DA5BB0323B9291A004681E9 /* os_core_outlets_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA5BA1F23B9291A004681E9 /* os_core_outlets_ios.mm */; };
-		0DA5BB0423B9291A004681E9 /* os_core_app_shell_ios.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DA5BA2023B9291A004681E9 /* os_core_app_shell_ios.cpp */; };
-		0DA5BB0523B9291A004681E9 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA5BA2123B9291A004681E9 /* RootViewController.mm */; };
-		0DA5BB0623B9291A004681E9 /* RecursiveLockWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA5BA2223B9291A004681E9 /* RecursiveLockWrapper.m */; };
-		0DA5BB0723B9291A004681E9 /* os_core_social.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA5BA2523B9291A004681E9 /* os_core_social.mm */; };
-		0DA5BB0B23B9291A004681E9 /* os_core_includes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DA5BA2D23B9291A004681E9 /* os_core_includes.cpp */; };
-		0DA5BB0C23B9291A004681E9 /* os_core_sound_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA5BA2F23B9291A004681E9 /* os_core_sound_ios.mm */; };
-		0DA5BB0D23B9291A004681E9 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA5BA3023B9291A004681E9 /* main.mm */; };
-		0DA5BB1123B9291A004681E9 /* os_core_web.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DA5BA3B23B9291A004681E9 /* os_core_web.cpp */; };
-		0DA5BB1223B9291A004681E9 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA5BA3C23B9291A004681E9 /* AppDelegate.mm */; };
-		0DA5BB1323B9291A004681E9 /* os_core_music_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA5BA3F23B9291A004681E9 /* os_core_music_ios.mm */; };
-		0DA5BB1423B9291A004681E9 /* OSMusicPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA5BA4323B9291A004681E9 /* OSMusicPlayer.mm */; };
 		0DA5BB9D23B9291F004681E9 /* roboto_260_font.kern in Resources */ = {isa = PBXBuildFile; fileRef = 0DA5BB3C23B9291E004681E9 /* roboto_260_font.kern */; };
 		0DA5BB9E23B9291F004681E9 /* roboto_bold_300_font.kern in Resources */ = {isa = PBXBuildFile; fileRef = 0DA5BB3D23B9291E004681E9 /* roboto_bold_300_font.kern */; };
 		0DA5BB9F23B9291F004681E9 /* bndl_roboto_bold_260_data.json in Resources */ = {isa = PBXBuildFile; fileRef = 0DA5BB3E23B9291E004681E9 /* bndl_roboto_bold_260_data.json */; };
@@ -256,6 +241,23 @@
 		0DDA7CA123CD10D3001850EB /* ShaderProgramSimpleModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7C1B23CD10D3001850EB /* ShaderProgramSimpleModel.cpp */; };
 		0DDA7CA223CD10D3001850EB /* ShaderProgramSpriteNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7C1E23CD10D3001850EB /* ShaderProgramSpriteNode.cpp */; };
 		0DDA7CA323CD10D3001850EB /* ShaderProgramShapeNodeSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDA7C2023CD10D3001850EB /* ShaderProgramShapeNodeSprite.cpp */; };
+		0DDCC9F9240771850018E7FB /* AdvertisingRoot.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DDCC9F6240771850018E7FB /* AdvertisingRoot.mm */; };
+		0DDCC9FA240771850018E7FB /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DDCC9F8240771850018E7FB /* AppDelegate.mm */; };
+		0DDCCA21240771AB0018E7FB /* os_core_outlets_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DDCC9FC240771AB0018E7FB /* os_core_outlets_ios.mm */; };
+		0DDCCA22240771AB0018E7FB /* os_core_app_shell_ios.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDCC9FD240771AB0018E7FB /* os_core_app_shell_ios.cpp */; };
+		0DDCCA23240771AB0018E7FB /* AppDelegateBase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DDCC9FE240771AB0018E7FB /* AppDelegateBase.mm */; };
+		0DDCCA24240771AB0018E7FB /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DDCC9FF240771AB0018E7FB /* RootViewController.mm */; };
+		0DDCCA25240771AB0018E7FB /* RecursiveLockWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDCCA00240771AB0018E7FB /* RecursiveLockWrapper.m */; };
+		0DDCCA26240771AB0018E7FB /* os_core_social.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DDCCA02240771AB0018E7FB /* os_core_social.mm */; };
+		0DDCCA2A240771AB0018E7FB /* os_core_includes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDCCA0A240771AB0018E7FB /* os_core_includes.cpp */; };
+		0DDCCA2B240771AB0018E7FB /* os_core_sound_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DDCCA0D240771AB0018E7FB /* os_core_sound_ios.mm */; };
+		0DDCCA2C240771AB0018E7FB /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DDCCA0E240771AB0018E7FB /* main.mm */; };
+		0DDCCA2D240771AB0018E7FB /* OpenGLViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DDCCA15240771AB0018E7FB /* OpenGLViewController.mm */; };
+		0DDCCA2E240771AB0018E7FB /* PlatformGraphicsInterface.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DDCCA16240771AB0018E7FB /* PlatformGraphicsInterface.mm */; };
+		0DDCCA2F240771AB0018E7FB /* OpenGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DDCCA18240771AB0018E7FB /* OpenGLView.mm */; };
+		0DDCCA30240771AB0018E7FB /* os_core_web.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DDCCA19240771AB0018E7FB /* os_core_web.cpp */; };
+		0DDCCA31240771AB0018E7FB /* os_core_music_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DDCCA1C240771AB0018E7FB /* os_core_music_ios.mm */; };
+		0DDCCA32240771AB0018E7FB /* OSMusicPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DDCCA20240771AB0018E7FB /* OSMusicPlayer.mm */; };
 		0DE4359823B9609D001B117B /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DE4359723B9609D001B117B /* OpenAL.framework */; };
 		0DE4359A23B960C7001B117B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DE4359923B960C7001B117B /* AudioToolbox.framework */; };
 		0DF714722365132F00BD573D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DF714712365132F00BD573D /* Assets.xcassets */; };
@@ -263,12 +265,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0D4D055E23B9793F00731CFB /* OpenGLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLViewController.h; sourceTree = "<group>"; };
-		0D4D055F23B9793F00731CFB /* OpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLView.h; sourceTree = "<group>"; };
-		0D4D056023B9793F00731CFB /* OpenGLViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenGLViewController.mm; sourceTree = "<group>"; };
-		0D4D056123B9793F00731CFB /* PlatformGraphicsInterface.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlatformGraphicsInterface.mm; sourceTree = "<group>"; };
-		0D4D056223B9793F00731CFB /* PlatformGraphicsInterface.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlatformGraphicsInterface.hpp; sourceTree = "<group>"; };
-		0D4D056323B9793F00731CFB /* OpenGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenGLView.mm; sourceTree = "<group>"; };
 		0DA5B8FA23B92912004681E9 /* FloatingCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FloatingCamera.cpp; sourceTree = "<group>"; };
 		0DA5B8FB23B92912004681E9 /* PhongConfiguration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhongConfiguration.cpp; sourceTree = "<group>"; };
 		0DA5B8FC23B92912004681E9 /* GFXApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GFXApp.cpp; sourceTree = "<group>"; };
@@ -281,29 +277,6 @@
 		0DA5B90323B92912004681E9 /* FloatingCamera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FloatingCamera.hpp; sourceTree = "<group>"; };
 		0DA5B90423B92912004681E9 /* PhongConfiguration.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PhongConfiguration.hpp; sourceTree = "<group>"; };
 		0DA5B90523B92912004681E9 /* GFXApp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GFXApp.hpp; sourceTree = "<group>"; };
-		0DA5BA1F23B9291A004681E9 /* os_core_outlets_ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = os_core_outlets_ios.mm; sourceTree = "<group>"; };
-		0DA5BA2023B9291A004681E9 /* os_core_app_shell_ios.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = os_core_app_shell_ios.cpp; sourceTree = "<group>"; };
-		0DA5BA2123B9291A004681E9 /* RootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RootViewController.mm; sourceTree = "<group>"; };
-		0DA5BA2223B9291A004681E9 /* RecursiveLockWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecursiveLockWrapper.m; sourceTree = "<group>"; };
-		0DA5BA2323B9291A004681E9 /* os_core_web.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = os_core_web.h; sourceTree = "<group>"; };
-		0DA5BA2423B9291A004681E9 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		0DA5BA2523B9291A004681E9 /* os_core_social.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = os_core_social.mm; sourceTree = "<group>"; };
-		0DA5BA2D23B9291A004681E9 /* os_core_includes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = os_core_includes.cpp; sourceTree = "<group>"; };
-		0DA5BA2E23B9291A004681E9 /* os_core_social.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = os_core_social.h; sourceTree = "<group>"; };
-		0DA5BA2F23B9291A004681E9 /* os_core_sound_ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = os_core_sound_ios.mm; sourceTree = "<group>"; };
-		0DA5BA3023B9291A004681E9 /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
-		0DA5BA3123B9291A004681E9 /* RecursiveLockWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecursiveLockWrapper.h; sourceTree = "<group>"; };
-		0DA5BA3223B9291A004681E9 /* os_core_outlets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = os_core_outlets.h; sourceTree = "<group>"; };
-		0DA5BA3323B9291A004681E9 /* os_core_app_shell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = os_core_app_shell.h; sourceTree = "<group>"; };
-		0DA5BA3B23B9291A004681E9 /* os_core_web.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = os_core_web.cpp; sourceTree = "<group>"; };
-		0DA5BA3C23B9291A004681E9 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
-		0DA5BA3D23B9291A004681E9 /* OSMusicPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSMusicPlayer.h; sourceTree = "<group>"; };
-		0DA5BA3E23B9291A004681E9 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		0DA5BA3F23B9291A004681E9 /* os_core_music_ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = os_core_music_ios.mm; sourceTree = "<group>"; };
-		0DA5BA4023B9291A004681E9 /* os_core_includes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = os_core_includes.h; sourceTree = "<group>"; };
-		0DA5BA4123B9291A004681E9 /* os_core_music.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = os_core_music.h; sourceTree = "<group>"; };
-		0DA5BA4223B9291A004681E9 /* os_core_sound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = os_core_sound.h; sourceTree = "<group>"; };
-		0DA5BA4323B9291A004681E9 /* OSMusicPlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OSMusicPlayer.mm; sourceTree = "<group>"; };
 		0DA5BB3C23B9291E004681E9 /* roboto_260_font.kern */ = {isa = PBXFileReference; lastKnownFileType = file; path = roboto_260_font.kern; sourceTree = "<group>"; };
 		0DA5BB3D23B9291E004681E9 /* roboto_bold_300_font.kern */ = {isa = PBXFileReference; lastKnownFileType = file; path = roboto_bold_300_font.kern; sourceTree = "<group>"; };
 		0DA5BB3E23B9291E004681E9 /* bndl_roboto_bold_260_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bndl_roboto_bold_260_data.json; sourceTree = "<group>"; };
@@ -641,6 +614,39 @@
 		0DDA7C1E23CD10D3001850EB /* ShaderProgramSpriteNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderProgramSpriteNode.cpp; sourceTree = "<group>"; };
 		0DDA7C1F23CD10D3001850EB /* os_core_graphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = os_core_graphics.h; sourceTree = "<group>"; };
 		0DDA7C2023CD10D3001850EB /* ShaderProgramShapeNodeSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderProgramShapeNodeSprite.cpp; sourceTree = "<group>"; };
+		0DDCC9F5240771850018E7FB /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		0DDCC9F6240771850018E7FB /* AdvertisingRoot.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AdvertisingRoot.mm; sourceTree = "<group>"; };
+		0DDCC9F7240771850018E7FB /* AdvertisingRoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvertisingRoot.h; sourceTree = "<group>"; };
+		0DDCC9F8240771850018E7FB /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
+		0DDCC9FC240771AB0018E7FB /* os_core_outlets_ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = os_core_outlets_ios.mm; sourceTree = "<group>"; };
+		0DDCC9FD240771AB0018E7FB /* os_core_app_shell_ios.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = os_core_app_shell_ios.cpp; sourceTree = "<group>"; };
+		0DDCC9FE240771AB0018E7FB /* AppDelegateBase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegateBase.mm; sourceTree = "<group>"; };
+		0DDCC9FF240771AB0018E7FB /* RootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RootViewController.mm; sourceTree = "<group>"; };
+		0DDCCA00240771AB0018E7FB /* RecursiveLockWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecursiveLockWrapper.m; sourceTree = "<group>"; };
+		0DDCCA01240771AB0018E7FB /* os_core_web.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = os_core_web.h; sourceTree = "<group>"; };
+		0DDCCA02240771AB0018E7FB /* os_core_social.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = os_core_social.mm; sourceTree = "<group>"; };
+		0DDCCA0A240771AB0018E7FB /* os_core_includes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = os_core_includes.cpp; sourceTree = "<group>"; };
+		0DDCCA0B240771AB0018E7FB /* os_core_social.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = os_core_social.h; sourceTree = "<group>"; };
+		0DDCCA0C240771AB0018E7FB /* AppDelegateBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegateBase.h; sourceTree = "<group>"; };
+		0DDCCA0D240771AB0018E7FB /* os_core_sound_ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = os_core_sound_ios.mm; sourceTree = "<group>"; };
+		0DDCCA0E240771AB0018E7FB /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
+		0DDCCA0F240771AB0018E7FB /* RecursiveLockWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecursiveLockWrapper.h; sourceTree = "<group>"; };
+		0DDCCA10240771AB0018E7FB /* os_core_outlets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = os_core_outlets.h; sourceTree = "<group>"; };
+		0DDCCA11240771AB0018E7FB /* os_core_app_shell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = os_core_app_shell.h; sourceTree = "<group>"; };
+		0DDCCA13240771AB0018E7FB /* OpenGLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLViewController.h; sourceTree = "<group>"; };
+		0DDCCA14240771AB0018E7FB /* OpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLView.h; sourceTree = "<group>"; };
+		0DDCCA15240771AB0018E7FB /* OpenGLViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenGLViewController.mm; sourceTree = "<group>"; };
+		0DDCCA16240771AB0018E7FB /* PlatformGraphicsInterface.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlatformGraphicsInterface.mm; sourceTree = "<group>"; };
+		0DDCCA17240771AB0018E7FB /* PlatformGraphicsInterface.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlatformGraphicsInterface.hpp; sourceTree = "<group>"; };
+		0DDCCA18240771AB0018E7FB /* OpenGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenGLView.mm; sourceTree = "<group>"; };
+		0DDCCA19240771AB0018E7FB /* os_core_web.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = os_core_web.cpp; sourceTree = "<group>"; };
+		0DDCCA1A240771AB0018E7FB /* OSMusicPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSMusicPlayer.h; sourceTree = "<group>"; };
+		0DDCCA1B240771AB0018E7FB /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		0DDCCA1C240771AB0018E7FB /* os_core_music_ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = os_core_music_ios.mm; sourceTree = "<group>"; };
+		0DDCCA1D240771AB0018E7FB /* os_core_includes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = os_core_includes.h; sourceTree = "<group>"; };
+		0DDCCA1E240771AB0018E7FB /* os_core_music.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = os_core_music.h; sourceTree = "<group>"; };
+		0DDCCA1F240771AB0018E7FB /* os_core_sound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = os_core_sound.h; sourceTree = "<group>"; };
+		0DDCCA20240771AB0018E7FB /* OSMusicPlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OSMusicPlayer.mm; sourceTree = "<group>"; };
 		0DE4359723B9609D001B117B /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		0DE4359923B960C7001B117B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		0DF714622365132E00BD573D /* iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -664,19 +670,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0D4D055D23B9793F00731CFB /* [OpenGL] */ = {
-			isa = PBXGroup;
-			children = (
-				0D4D055F23B9793F00731CFB /* OpenGLView.h */,
-				0D4D056323B9793F00731CFB /* OpenGLView.mm */,
-				0D4D055E23B9793F00731CFB /* OpenGLViewController.h */,
-				0D4D056023B9793F00731CFB /* OpenGLViewController.mm */,
-				0D4D056223B9793F00731CFB /* PlatformGraphicsInterface.hpp */,
-				0D4D056123B9793F00731CFB /* PlatformGraphicsInterface.mm */,
-			);
-			path = "[OpenGL]";
-			sourceTree = "<group>";
-		};
 		0DA5B8F923B92912004681E9 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -700,43 +693,12 @@
 		0DA5B90C23B9291A004681E9 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				0DDCC9FB240771AB0018E7FB /* [iOS] */,
 				0DCAFFC423FE3044004BE4F0 /* [C++ Core] */,
 				0DDA7BE723CD10D3001850EB /* [OpenGL] */,
-				0DA5BA1E23B9291A004681E9 /* [iOS] */,
 			);
 			name = Framework;
 			path = ../Framework;
-			sourceTree = "<group>";
-		};
-		0DA5BA1E23B9291A004681E9 /* [iOS] */ = {
-			isa = PBXGroup;
-			children = (
-				0D4D055D23B9793F00731CFB /* [OpenGL] */,
-				0DA5BA2423B9291A004681E9 /* AppDelegate.h */,
-				0DA5BA3C23B9291A004681E9 /* AppDelegate.mm */,
-				0DA5BA3023B9291A004681E9 /* main.mm */,
-				0DA5BA2023B9291A004681E9 /* os_core_app_shell_ios.cpp */,
-				0DA5BA3323B9291A004681E9 /* os_core_app_shell.h */,
-				0DA5BA2D23B9291A004681E9 /* os_core_includes.cpp */,
-				0DA5BA4023B9291A004681E9 /* os_core_includes.h */,
-				0DA5BA3F23B9291A004681E9 /* os_core_music_ios.mm */,
-				0DA5BA4123B9291A004681E9 /* os_core_music.h */,
-				0DA5BA1F23B9291A004681E9 /* os_core_outlets_ios.mm */,
-				0DA5BA3223B9291A004681E9 /* os_core_outlets.h */,
-				0DA5BA2E23B9291A004681E9 /* os_core_social.h */,
-				0DA5BA2523B9291A004681E9 /* os_core_social.mm */,
-				0DA5BA2F23B9291A004681E9 /* os_core_sound_ios.mm */,
-				0DA5BA4223B9291A004681E9 /* os_core_sound.h */,
-				0DA5BA3B23B9291A004681E9 /* os_core_web.cpp */,
-				0DA5BA2323B9291A004681E9 /* os_core_web.h */,
-				0DA5BA3D23B9291A004681E9 /* OSMusicPlayer.h */,
-				0DA5BA4323B9291A004681E9 /* OSMusicPlayer.mm */,
-				0DA5BA3123B9291A004681E9 /* RecursiveLockWrapper.h */,
-				0DA5BA2223B9291A004681E9 /* RecursiveLockWrapper.m */,
-				0DA5BA3E23B9291A004681E9 /* RootViewController.h */,
-				0DA5BA2123B9291A004681E9 /* RootViewController.mm */,
-			);
-			path = "[iOS]";
 			sourceTree = "<group>";
 		};
 		0DA5BB3A23B9291E004681E9 /* Assets */ = {
@@ -1155,11 +1117,67 @@
 			path = Shaders;
 			sourceTree = "<group>";
 		};
+		0DDCC9F4240771850018E7FB /* [Custom Root] */ = {
+			isa = PBXGroup;
+			children = (
+				0DDCC9F7240771850018E7FB /* AdvertisingRoot.h */,
+				0DDCC9F6240771850018E7FB /* AdvertisingRoot.mm */,
+				0DDCC9F5240771850018E7FB /* AppDelegate.h */,
+				0DDCC9F8240771850018E7FB /* AppDelegate.mm */,
+			);
+			path = "[Custom Root]";
+			sourceTree = "<group>";
+		};
+		0DDCC9FB240771AB0018E7FB /* [iOS] */ = {
+			isa = PBXGroup;
+			children = (
+				0DDCCA12240771AB0018E7FB /* [OpenGL] */,
+				0DDCCA0C240771AB0018E7FB /* AppDelegateBase.h */,
+				0DDCC9FE240771AB0018E7FB /* AppDelegateBase.mm */,
+				0DDCCA0E240771AB0018E7FB /* main.mm */,
+				0DDCC9FD240771AB0018E7FB /* os_core_app_shell_ios.cpp */,
+				0DDCCA11240771AB0018E7FB /* os_core_app_shell.h */,
+				0DDCCA0A240771AB0018E7FB /* os_core_includes.cpp */,
+				0DDCCA1D240771AB0018E7FB /* os_core_includes.h */,
+				0DDCCA1C240771AB0018E7FB /* os_core_music_ios.mm */,
+				0DDCCA1E240771AB0018E7FB /* os_core_music.h */,
+				0DDCC9FC240771AB0018E7FB /* os_core_outlets_ios.mm */,
+				0DDCCA10240771AB0018E7FB /* os_core_outlets.h */,
+				0DDCCA0B240771AB0018E7FB /* os_core_social.h */,
+				0DDCCA02240771AB0018E7FB /* os_core_social.mm */,
+				0DDCCA0D240771AB0018E7FB /* os_core_sound_ios.mm */,
+				0DDCCA1F240771AB0018E7FB /* os_core_sound.h */,
+				0DDCCA19240771AB0018E7FB /* os_core_web.cpp */,
+				0DDCCA01240771AB0018E7FB /* os_core_web.h */,
+				0DDCCA1A240771AB0018E7FB /* OSMusicPlayer.h */,
+				0DDCCA20240771AB0018E7FB /* OSMusicPlayer.mm */,
+				0DDCCA0F240771AB0018E7FB /* RecursiveLockWrapper.h */,
+				0DDCCA00240771AB0018E7FB /* RecursiveLockWrapper.m */,
+				0DDCCA1B240771AB0018E7FB /* RootViewController.h */,
+				0DDCC9FF240771AB0018E7FB /* RootViewController.mm */,
+			);
+			path = "[iOS]";
+			sourceTree = "<group>";
+		};
+		0DDCCA12240771AB0018E7FB /* [OpenGL] */ = {
+			isa = PBXGroup;
+			children = (
+				0DDCCA13240771AB0018E7FB /* OpenGLViewController.h */,
+				0DDCCA14240771AB0018E7FB /* OpenGLView.h */,
+				0DDCCA15240771AB0018E7FB /* OpenGLViewController.mm */,
+				0DDCCA16240771AB0018E7FB /* PlatformGraphicsInterface.mm */,
+				0DDCCA17240771AB0018E7FB /* PlatformGraphicsInterface.hpp */,
+				0DDCCA18240771AB0018E7FB /* OpenGLView.mm */,
+			);
+			path = "[OpenGL]";
+			sourceTree = "<group>";
+		};
 		0DF714592365132E00BD573D = {
 			isa = PBXGroup;
 			children = (
 				0DA5B8F923B92912004681E9 /* Classes */,
 				0DA5BB3A23B9291E004681E9 /* Assets */,
+				0DDCC9F4240771850018E7FB /* [Custom Root] */,
 				0DA5B90C23B9291A004681E9 /* Framework */,
 				0DF714642365132E00BD573D /* iOS */,
 				0DF714632365132E00BD573D /* Products */,
@@ -1382,27 +1400,29 @@
 				0DCA00B923FE3045004BE4F0 /* UIElement.cpp in Sources */,
 				0DDA7C9F23CD10D3001850EB /* ShaderProgramModelIndexedLightedDiffuse.cpp in Sources */,
 				0DA5B90623B92912004681E9 /* FloatingCamera.cpp in Sources */,
+				0DDCCA2E240771AB0018E7FB /* PlatformGraphicsInterface.mm in Sources */,
 				0DCA008A23FE3045004BE4F0 /* FMath.cpp in Sources */,
 				0DCA008523FE3045004BE4F0 /* FAssetWad.cpp in Sources */,
 				0DCA00B423FE3045004BE4F0 /* FPointList.cpp in Sources */,
 				0DCA00B123FE3045004BE4F0 /* FSpriteSequence.cpp in Sources */,
 				0DCA00BC23FE3045004BE4F0 /* UIButton.cpp in Sources */,
 				0DCA00AB23FE3045004BE4F0 /* FCanvas.cpp in Sources */,
+				0DDCCA24240771AB0018E7FB /* RootViewController.mm in Sources */,
 				0DCA00B723FE3045004BE4F0 /* FIndexList.cpp in Sources */,
 				0DCA00B523FE3045004BE4F0 /* FSprite.cpp in Sources */,
 				0DCA00D623FE3045004BE4F0 /* FBuffer.cpp in Sources */,
+				0DDCCA2A240771AB0018E7FB /* os_core_includes.cpp in Sources */,
 				0DCA00A823FE3045004BE4F0 /* FVec3.cpp in Sources */,
-				0D4D056623B9794000731CFB /* OpenGLView.mm in Sources */,
 				0DCA007F23FE3045004BE4F0 /* FHashMap.cpp in Sources */,
 				0DDA7CA123CD10D3001850EB /* ShaderProgramSimpleModel.cpp in Sources */,
 				0DA5B90923B92912004681E9 /* AssetWadGameInterface.cpp in Sources */,
 				0DCA00D423FE3045004BE4F0 /* FModelDataPackedSequence.cpp in Sources */,
+				0DDCCA32240771AB0018E7FB /* OSMusicPlayer.mm in Sources */,
 				0DCA00A223FE3045004BE4F0 /* FResource.cpp in Sources */,
 				0DCA00A923FE3045004BE4F0 /* FVec2.cpp in Sources */,
 				0DCA00CC23FE3045004BE4F0 /* UIImagePickerCell.cpp in Sources */,
 				0DDA7C9E23CD10D3001850EB /* ShaderProgramModelIndexedLightedAmbient.cpp in Sources */,
 				0DCA00A023FE3045004BE4F0 /* FSize.cpp in Sources */,
-				0DA5BB1323B9291A004681E9 /* os_core_music_ios.mm in Sources */,
 				0DCA00BB23FE3045004BE4F0 /* UITextBox.cpp in Sources */,
 				0DCA00C023FE3045004BE4F0 /* UIAlignmentPickerButton.cpp in Sources */,
 				0DCA009423FE3045004BE4F0 /* FJoystick.cpp in Sources */,
@@ -1411,29 +1431,31 @@
 				0DCA00D723FE3045004BE4F0 /* FApp.cpp in Sources */,
 				0DCA00BA23FE3045004BE4F0 /* UISegment.cpp in Sources */,
 				0DDA7C8023CD10D3001850EB /* OpenGLEngine.cpp in Sources */,
+				0DDCCA2B240771AB0018E7FB /* os_core_sound_ios.mm in Sources */,
 				0DCA00DA23FE3045004BE4F0 /* FString.cpp in Sources */,
+				0DDCC9F9240771850018E7FB /* AdvertisingRoot.mm in Sources */,
 				0DCA008C23FE3045004BE4F0 /* FFloatBufferCache.cpp in Sources */,
 				0DCA00C623FE3045004BE4F0 /* UIRoundedRect.cpp in Sources */,
+				0DDCCA2D240771AB0018E7FB /* OpenGLViewController.mm in Sources */,
 				0DCA008E23FE3045004BE4F0 /* FPrimitive.cpp in Sources */,
 				0DCA009323FE3045004BE4F0 /* FSlider.cpp in Sources */,
 				0DCA009723FE3045004BE4F0 /* core_web.cpp in Sources */,
-				0DA5BB1423B9291A004681E9 /* OSMusicPlayer.mm in Sources */,
 				0DCA00CA23FE3045004BE4F0 /* ToolMenuPanelHeader.cpp in Sources */,
 				0DCA00D523FE3045004BE4F0 /* FFile.cpp in Sources */,
+				0DDCCA25240771AB0018E7FB /* RecursiveLockWrapper.m in Sources */,
 				0DCA00BD23FE3045004BE4F0 /* UISegmentButton.cpp in Sources */,
+				0DDCCA2C240771AB0018E7FB /* main.mm in Sources */,
 				0DCA00A323FE3045004BE4F0 /* FModelDataPacked.cpp in Sources */,
 				0DCA008223FE3045004BE4F0 /* FAchievementGroup.cpp in Sources */,
 				0DCA00AC23FE3045004BE4F0 /* GraphicsInterface.cpp in Sources */,
 				0DCA00C223FE3045004BE4F0 /* ToolMenuSectionRow.cpp in Sources */,
 				0DCA00CB23FE3045004BE4F0 /* UISlider.cpp in Sources */,
 				0DCA009B23FE3045004BE4F0 /* FTexture.cpp in Sources */,
-				0DA5BB0323B9291A004681E9 /* os_core_outlets_ios.mm in Sources */,
 				0DCA00C923FE3045004BE4F0 /* UIStepper.cpp in Sources */,
 				0DCA00B223FE3045004BE4F0 /* FTextureSnake.cpp in Sources */,
 				0DCA008923FE3045004BE4F0 /* FAchievement.cpp in Sources */,
+				0DDCCA21240771AB0018E7FB /* os_core_outlets_ios.mm in Sources */,
 				0DCA008023FE3045004BE4F0 /* FTextureCache.cpp in Sources */,
-				0D4D056423B9794000731CFB /* OpenGLViewController.mm in Sources */,
-				0DA5BB0723B9291A004681E9 /* os_core_social.mm in Sources */,
 				0DCA00AF23FE3045004BE4F0 /* FXML.cpp in Sources */,
 				0DCA008423FE3045004BE4F0 /* FQuad.cpp in Sources */,
 				0DA5B90823B92912004681E9 /* GFXApp.cpp in Sources */,
@@ -1443,10 +1465,12 @@
 				0DCA00D923FE3045004BE4F0 /* core_app_shell.cpp in Sources */,
 				0DDA7C9D23CD10D3001850EB /* ShaderProgram.cpp in Sources */,
 				0DDA7C7F23CD10D3001850EB /* ShaderProgramModelIndexedLightedPhong.cpp in Sources */,
-				0DA5BB0423B9291A004681E9 /* os_core_app_shell_ios.cpp in Sources */,
+				0DDCCA30240771AB0018E7FB /* os_core_web.cpp in Sources */,
 				0DDA7C8323CD10D3001850EB /* ShaderProgramModelIndexedLightedSimpleSpotlight.cpp in Sources */,
 				0DCA00BE23FE3045004BE4F0 /* UICheckBox.cpp in Sources */,
+				0DDCCA23240771AB0018E7FB /* AppDelegateBase.mm in Sources */,
 				0DCA00A623FE3045004BE4F0 /* FColor.cpp in Sources */,
+				0DDCCA26240771AB0018E7FB /* os_core_social.mm in Sources */,
 				0DCA009223FE3045004BE4F0 /* FAchievementController.cpp in Sources */,
 				0DCA00C123FE3045004BE4F0 /* ToolMenuHeader.cpp in Sources */,
 				0DDA7CA323CD10D3001850EB /* ShaderProgramShapeNodeSprite.cpp in Sources */,
@@ -1454,42 +1478,38 @@
 				0DDA7C8423CD10D3001850EB /* ShaderProgramShape3D.cpp in Sources */,
 				0DCA008123FE3045004BE4F0 /* FModelData.cpp in Sources */,
 				0DCA00D023FE3045004BE4F0 /* FUniforms.cpp in Sources */,
-				0DA5BB0D23B9291A004681E9 /* main.mm in Sources */,
-				0DA5BB0C23B9291A004681E9 /* os_core_sound_ios.mm in Sources */,
 				0DCA00C323FE3045004BE4F0 /* DragableCanvas.cpp in Sources */,
 				0DCA008B23FE3045004BE4F0 /* FBufferCache.cpp in Sources */,
 				0DCA009023FE3045004BE4F0 /* FTextureSnakeWithBookend.cpp in Sources */,
 				0DCA008323FE3045004BE4F0 /* FIntList.cpp in Sources */,
-				0DA5BB1223B9291A004681E9 /* AppDelegate.mm in Sources */,
-				0D4D056523B9794000731CFB /* PlatformGraphicsInterface.mm in Sources */,
 				0DCA00D223FE3045004BE4F0 /* FFloatList.cpp in Sources */,
 				0DCA009E23FE3045004BE4F0 /* FSpline.cpp in Sources */,
 				0DA5B90A23B92912004681E9 /* ProgressBar.cpp in Sources */,
 				0DCA009523FE3045004BE4F0 /* FScrollCanvasPaged.cpp in Sources */,
+				0DDCCA2F240771AB0018E7FB /* OpenGLView.mm in Sources */,
+				0DDCCA31240771AB0018E7FB /* os_core_music_ios.mm in Sources */,
 				0DCA00D323FE3045004BE4F0 /* FList.cpp in Sources */,
 				0DCA00C523FE3045004BE4F0 /* ToolMenu.cpp in Sources */,
 				0DCA00CF23FE3045004BE4F0 /* FPolyPath.cpp in Sources */,
 				0DDA7CA023CD10D3001850EB /* ShaderProgramSprite.cpp in Sources */,
 				0DCA008F23FE3045004BE4F0 /* FSound.cpp in Sources */,
-				0DA5BB0B23B9291A004681E9 /* os_core_includes.cpp in Sources */,
 				0DCA00A723FE3045004BE4F0 /* FJSON.cpp in Sources */,
 				0DCA009623FE3045004BE4F0 /* core_social.cpp in Sources */,
 				0DCA008823FE3045004BE4F0 /* FTouchManager.cpp in Sources */,
+				0DDCCA22240771AB0018E7FB /* os_core_app_shell_ios.cpp in Sources */,
 				0DCA008623FE3045004BE4F0 /* FImageBundler.cpp in Sources */,
 				0DCA00C723FE3045004BE4F0 /* UIImagePicker.cpp in Sources */,
+				0DDCC9FA240771850018E7FB /* AppDelegate.mm in Sources */,
 				0DCA009123FE3045004BE4F0 /* FScrollCanvasGeneric.cpp in Sources */,
 				0DCA00B623FE3045004BE4F0 /* FObject.cpp in Sources */,
-				0DA5BB1123B9291A004681E9 /* os_core_web.cpp in Sources */,
 				0DCA00CD23FE3045004BE4F0 /* ToolMenuPanel.cpp in Sources */,
 				0DCA009823FE3045004BE4F0 /* FSpriteCanvas.cpp in Sources */,
 				0DDA7C7C23CD10D3001850EB /* ShaderProgramSpriteWhite.cpp in Sources */,
 				0DCA00C823FE3045004BE4F0 /* Util_ScreenFrame.cpp in Sources */,
-				0DA5BB0623B9291A004681E9 /* RecursiveLockWrapper.m in Sources */,
 				0DCA00AE23FE3045004BE4F0 /* FLight.cpp in Sources */,
 				0DCA009C23FE3045004BE4F0 /* FGestureCanvas.cpp in Sources */,
 				0DDA7C7E23CD10D3001850EB /* ShaderProgramSimpleModelIndexed.cpp in Sources */,
 				0DCA00C423FE3045004BE4F0 /* ToolMenuSection.cpp in Sources */,
-				0DA5BB0523B9291A004681E9 /* RootViewController.mm in Sources */,
 				0DCA00D123FE3045004BE4F0 /* FRect.cpp in Sources */,
 				0DA5B90723B92912004681E9 /* PhongConfiguration.cpp in Sources */,
 				0DDA7C7D23CD10D3001850EB /* ShaderProgramModelIndexed.cpp in Sources */,

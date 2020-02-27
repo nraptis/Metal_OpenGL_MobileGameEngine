@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  AppDelegateBase.h
 //  MetalLearning
 //
 //  Created by Nicholas Raptis on 1/17/19.
@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "RootViewController.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegateBase : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) RootViewController *rootViewController;
+
+- (RootViewController *)getRoot;
 
 @end
 

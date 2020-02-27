@@ -1,12 +1,12 @@
 //
-//  AppDelegate.m
+//  AppDelegateBase.m
 //  MetalLearning
 //
 //  Created by Nicholas Raptis on 1/17/19.
 //  Copyright © 2019 Nicholas Raptis. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "AppDelegateBase.h"
 #import "core_app_shell.hpp"
 #import <AVFoundation/AVFoundation.h>
 
@@ -25,11 +25,11 @@ int kDeviceWidth = 320;
 int kDeviceHeight = 320;
 bool kDeviceActive = false;
 
-@interface AppDelegate ()
+@interface AppDelegateBase ()
 
 @end
 
-@implementation AppDelegate
+@implementation AppDelegateBase
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -116,7 +116,7 @@ bool kDeviceActive = false;
     
     //AppShellSetImageFileScale(2);
     
-    _rootViewController = [[RootViewController alloc] init];
+    _rootViewController = [self getRoot];
     _window.rootViewController = _rootViewController;
     [_window makeKeyAndVisible];
     
@@ -205,7 +205,10 @@ bool kDeviceActive = false;
     [_rootViewController inactive];
     AppShellPause();
     AppShellExit();
-    
+}
+
+- (RootViewController *)getRoot {
+    return [[RootViewController alloc] init];
 }
 
 @end
