@@ -107,6 +107,15 @@ void FFont::Draw(const char *pText, float pX, float pY, float pScale) {
     }
 }
 
+void FFont::DrawCenteredVertically(const char *pText, float pX, float pY) {
+    DrawCenteredVertically(pText, pX, pY, 1.0f);
+}
+
+void FFont::DrawCenteredVertically(const char *pText, float pX, float pY, float pScale) {
+    Draw(pText, pX, pY - (mPointSize * (mDataScale * pScale * gSpriteDrawScale) * 0.5f), pScale);
+}
+
+
 void FFont::WrapLeft(const char *pText, float pX, float pY, float pAreaWidth, float pLineHeight, float pScale) {
     
     if (pAreaWidth < 16.0f) { return; }
@@ -124,10 +133,7 @@ void FFont::WrapLeft(const char *pText, float pX, float pY, float pAreaWidth, fl
     int aLength = FString::Length(pText);
     if (aLength > 0) {
         
-        
-        
         int aIndex = 0;
-        
         
         while (aIndex < aLength) {
             
@@ -615,13 +621,6 @@ void FFont::LoadNew(const char *pDataFile, const char *pImagePrefix, const char 
     unsigned char aScanChar = 0;
     int aReadIndex = -1;
     
-    
-    //unsigned char aReadChar = 0;
-    //unsigned short aReadShort = 0;
-    
-    int aMaxScale = 1;
-    FTexture *aTexture = NULL;
-    
     for (int aLoopIndex = 0;aLoopIndex < aCharCount;aLoopIndex++) {
         aScanChar = aLoadFile.ReadChar();
         aReadIndex = aScanChar;
@@ -636,14 +635,6 @@ void FFont::LoadNew(const char *pDataFile, const char *pImagePrefix, const char 
         if (aCharAllowed[aReadIndex]) {
             FString aPath = FString(pImagePrefix) + FString(aScanChar);
             mCharacterSprite[aReadIndex].Load(aPath);
-            
-            aTexture = mCharacterSprite[aReadIndex].mTexture;
-            
-            if (aTexture != NULL) {
-                if (aTexture->mScale > aMaxScale) {
-                    aMaxScale = aTexture->mScale;
-                }
-            }
         } else {
             mCharacterStrideX[aReadIndex] = 0.0f;
             mCharacterOffsetX[aReadIndex] = 0.0f;
@@ -716,16 +707,17 @@ void FFont::Load(const char *pDataFile, const char *pImagePrefix, const char *pC
     
     float aFactor = (gSpriteDrawScale / 4.0f);
     
+    mPointSize *= aFactor;
     
-        for (int i=0;i<256;i++) {
-            mCharacterStrideX[i] *= aFactor;
-            mCharacterOffsetX[i] *= aFactor;
+    for (int i=0;i<256;i++) {
+        mCharacterStrideX[i] *= aFactor;
+        mCharacterOffsetX[i] *= aFactor;
+    }
+    for (int i=0;i<256;i++) {
+        for (int n=0;n<256;n++) {
+            mKern[i][n] *= aFactor;
         }
-        for (int i=0;i<256;i++) {
-            for (int n=0;n<256;n++) {
-                mKern[i][n] *= aFactor;
-            }
-        }
+    }
     
 }
 

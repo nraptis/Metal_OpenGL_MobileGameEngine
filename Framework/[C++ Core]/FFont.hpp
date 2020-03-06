@@ -51,10 +51,17 @@ public:
     
 
     void                            Draw(const char *pText, float pX, float pY);
-    void                            Draw(FString pText, float pX, float pY){Draw((const char *)pText.c(), pX, pY);}
+    void                            Draw(FString pText, float pX, float pY) { Draw((const char *)pText.c(), pX, pY); }
 
     void                            Draw(const char *pText, float pX, float pY, float pScale);
     void                            Draw(FString pText, float pX, float pY, float pScale) { Draw((const char *)pText.c(), pX, pY, pScale); }
+    
+    void                            DrawCenteredVertically(const char *pText, float pX, float pY);
+    void                            DrawCenteredVertically(FString pText, float pX, float pY) { DrawCenteredVertically((const char *)pText.c(), pX, pY); }
+
+    void                            DrawCenteredVertically(const char *pText, float pX, float pY, float pScale);
+    void                            DrawCenteredVertically(FString pText, float pX, float pY, float pScale) { DrawCenteredVertically((const char *)pText.c(), pX, pY, pScale); }
+    
     
     void                            Right(const char *pText, float pX, float pY);
     void                            Right(FString pText, float pX, float pY) { Right((const char *)pText.c(), pX, pY); }
