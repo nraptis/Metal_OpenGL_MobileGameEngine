@@ -69,7 +69,7 @@ void FTextureCache::ReloadAllTextures() {
 
 void FTextureCache::PrintAllLoadedTextures() {
     
-    printf("***\n***\nrintAllLoadedTextures()\n***\n");
+    printf("***\n***\nPrintAllLoadedTextures()\n***\n");
     EnumList(FTextureCacheNode, aNode, mNodeList) {
         if (aNode->mTexture != NULL) {
             if (aNode->mTexture->mBindIndex != -1) {
