@@ -77,6 +77,10 @@ float FaceTarget(float pOriginX, float pOriginY, float pTargetX, float pTargetY)
     return RADIANS_TO_DEGREES(-atan2f(pOriginX - pTargetX, pOriginY - pTargetY));
 }
 
+float FaceTargetFlipped(float pOriginX, float pOriginY, float pTargetX, float pTargetY) {
+    return RADIANS_TO_DEGREES(-atan2f(-(pOriginX - pTargetX), -(pOriginY - pTargetY)));
+}
+
 float Clamp(float pNum, float pMin, float pMax) {
     float aResult = pNum;
     if (aResult < pMin) { aResult = pMin; }
