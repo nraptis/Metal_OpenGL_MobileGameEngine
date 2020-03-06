@@ -657,18 +657,18 @@ void FImage::FixTileBorders(int pX, int pY, int pWidth, int pHeight) {
         int aX = pX;
         int aY = pY;
         
-        aData[aX - 1][aY - 1] = aData[aX][aY];
+        aData[aY - 1][aX - 1] = aData[aY][aX];
         
         aX = pX + pWidth - 1;
         aY = pY;
         
-        aData[aX + 1][aY - 1] = aData[aX][aY];
+        aData[aY - 1][aX + 1] = aData[aY][aX];
         
         aY = pY + pHeight - 1;
-        aData[aX + 1][aY + 1] = aData[aX][aY];
+        aData[aY + 1][aX + 1] = aData[aY][aX];
         
         aX = pX;
-        aData[aX - 1][aY + 1] = aData[aX][aY];
+        aData[aY + 1][aX - 1] = aData[aY][aX];
         
         delete [] aData;
     }
