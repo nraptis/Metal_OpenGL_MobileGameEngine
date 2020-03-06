@@ -96,6 +96,9 @@ extern float gSafeAreaInsetBottom;
 extern float gSafeAreaInsetLeft;
 
 extern bool gAdBannerVisible;
+extern float gAdBannerWidth;
+extern float gAdBannerHeight;
+
 
 extern bool gSoundEnabled;
 extern float gSoundVolume;
