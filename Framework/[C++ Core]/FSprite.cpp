@@ -578,6 +578,7 @@ void FSprite::DrawEndCappedTripletH(float pX, float pY, float pInsetLeft, float 
     cSliceTextureRect.SetQuad(aX1, aY1, aX2, aY2, aX3, aY3, aX4, aY4);
     Graphics::DrawSprite(cSliceTextureRect.mPositions, cSliceTextureRect.mTextureCoords, mTexture);
     
+    
 }
 
 void FSprite::DrawTripletHProgress(float pX, float pY, float pInsetLeft, float pInsetRight, float pLength,
