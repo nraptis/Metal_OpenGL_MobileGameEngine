@@ -86,35 +86,29 @@ FString::~FString()
 	Free();
 }
 
-void FString::AddCommas()
-{
-	if(mLength > 3)
-	{
-		int aLength=mLength+mLength;
-		char *aNew=new char[aLength+1];
-		
-		aLength=0;
-		
-		for(int i=mLength-1, k=0;i>=0;i--)
-		{
-            
-			aNew[aLength]=mData[i];
+static char cCommaChar[128];
+void FString::AddCommas() {
+	if (mLength > 3) {
+		int aLength = 0;
+        
+        int i = mLength - 1;
+        if (i > 96) { i = 96; }
+        int k = 0;
+        
+		while (i >= 0) {
+			cCommaChar[aLength] = mData[i];
 			aLength++;
-            
 			k++;
-			if(k==3 && i > 0)
-			{
-				aNew[aLength]=',';
+			if ((k == 3) && (i > 0)) {
+				cCommaChar[aLength] = ',';
 				aLength++;
-				k=0;
+				k = 0;
 			}
+            i--;
 		}
-		
-		delete[]mData;
-		mData=aNew;
-		mLength=aLength;
-		mData[mLength] = 0;
-		Reverse();
+        cCommaChar[aLength] = 0;
+        Set(cCommaChar);
+        Reverse();
 	}
 }
 
