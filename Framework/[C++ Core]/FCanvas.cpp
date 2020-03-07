@@ -1199,9 +1199,11 @@ bool FCanvasAnimation::Update() {
 
     mTimerTick++;
     if (mTime > 0) {
-        aAnimationPercent = mPercent[mTimerTick];
         if (mTimerTick >= mTime) {
+            aAnimationPercent = 1.0f;
             aComplete = true;
+        } else {
+            aAnimationPercent = mPercent[mTimerTick];
         }
     } else {
         aComplete = true;
