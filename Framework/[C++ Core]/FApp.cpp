@@ -333,7 +333,7 @@ void FApp::BaseDraw() {
         Graphics::PipelineStateSetShape2DAlphaBlending();
         
 #if (CURRENT_ENV == ENV_IOS)
-        Graphics::SetColor(0.0075f, 0.0075f, 0.0075f, 0.725f);
+        Graphics::SetColor(0.0075f, 0.0075f, 0.0075f, 0.785f);
 #else
         Graphics::SetColor(0.0075f, 0.0075f, 0.0075f, 0.825f);
 #endif
@@ -417,10 +417,12 @@ void FApp::BaseLoad() {
 }
 
 void FApp::BaseLoadComplete() {
+    ThrottleLock();
     mIsLoading = false;
     mIsLoadingComplete = true;
     mDidUnload = false;
     LoadComplete();
+    ThrottleUnlock();
 }
 
 void FApp::BaseUnload() {
