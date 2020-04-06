@@ -127,7 +127,7 @@ void FFont::WrapLeft(const char *pText, float pX, float pY, float pAreaWidth, fl
     int aCharIndexPrev = -1;
     float aKern = 0.0f;
     float aScale = (mDataScale * pScale);
-    float aPointSize = mPointSize * mDataScale * pScale;
+    float aPointSize = mPointSize * mDataScale * pScale * gSpriteDrawScale;
     float aSpriteScale = mSpriteScale * pScale;
     
     int aLength = FString::Length(pText);
