@@ -21,10 +21,12 @@ void FObject::Kill() {
     }
 }
 
-FObjectList::FObjectList() { }
+FObjectList::FObjectList() {
+    
+}
 
 FObjectList::~FObjectList() {
-    Free();
+    
 }
 
 void FObjectList::Add(void *pObject) {
