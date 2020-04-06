@@ -127,7 +127,7 @@ void FWindow::Update() {
                 }
             }
         }
-
+        
         //"Layout" everything from layout-bucket, and they all
         //need to update their transform...
         if (!mLayoutBucket.IsEmpty()) {

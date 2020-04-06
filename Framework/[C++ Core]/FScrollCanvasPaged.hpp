@@ -34,8 +34,6 @@ public:
     virtual void                                    DidLandOnPage(int pPage);
     virtual void                                    DidDragToPage(int pPage);
     
-    void                                            JumpToPage(int pPage);
-    
     
     
     bool                                            mVertical;
