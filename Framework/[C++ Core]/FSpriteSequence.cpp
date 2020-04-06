@@ -189,6 +189,8 @@ void FSpriteSequence::Load(const char *pFilePrefix, int pStartIndex, int pEndInd
             
             aSprite->Load(aPath);
             if (aSprite->DidLoad()) {
+                //printf("Loaded First: [%s]\n", aSprite->mFileName.c());
+                
                 mList += aSprite;
                 aSprite = new FSprite();
                 aSprite->mAddToSpriteList = false;
@@ -212,6 +214,8 @@ void FSpriteSequence::Load(const char *pFilePrefix, int pStartIndex, int pEndInd
                     
                     aSprite->Load(aPath);
                     if (aSprite->DidLoad()) {
+                        //printf("Loaded Next: [%s]\n", aSprite->mFileName.c());
+                        
                         mList += aSprite;
                         aSprite = new FSprite();
                         aSprite->mAddToSpriteList = false;
