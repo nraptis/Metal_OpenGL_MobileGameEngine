@@ -162,8 +162,8 @@ void FTouchManager::Update() {
     }
 
     for (int i = 0; i < mKeyQueueLength; i++) {
-        if(mKeyActionType[i] == 1)gAppBase->ProcessKeyDown(mKeyQueue[i]);
-        if(mKeyActionType[i] == -1)gAppBase->ProcessKeyUp(mKeyQueue[i]);
+        if (mKeyActionType[i] == 1) { gAppBase->ProcessKeyDown(mKeyQueue[i]); }
+        if (mKeyActionType[i] == -1) { gAppBase->ProcessKeyUp(mKeyQueue[i]); }
     }
     mKeyQueueLength = 0;
 
@@ -469,6 +469,11 @@ void FTouchManager::FlushTouches() {
 
 void FTouchManager::EnqueueKeyDown(int pKey) {
 	if (mKeyQueueLength < 256) {
+        for (int i=0;i<mKeyQueueLength;i++) {
+            if ((mKeyQueue[i]) == pKey && (mKeyActionType[i] == 1)) {
+                return;
+            }
+        }
 		mKeyQueue[mKeyQueueLength] = pKey;
 		mKeyActionType[mKeyQueueLength] = 1;
 		mKeyQueueLength++;
@@ -477,11 +482,13 @@ void FTouchManager::EnqueueKeyDown(int pKey) {
 
 void FTouchManager::EnqueueKeyUp(int pKey) {
 	if (mKeyQueueLength < 256) {
+        for (int i=0;i<mKeyQueueLength;i++) {
+            if ((mKeyQueue[i]) == pKey && (mKeyActionType[i] == -1)) {
+                return;
+            }
+        }
 		mKeyQueue[mKeyQueueLength] = pKey;
 		mKeyActionType[mKeyQueueLength] = -1;
 		mKeyQueueLength++;
 	}
 }
-
-
-
