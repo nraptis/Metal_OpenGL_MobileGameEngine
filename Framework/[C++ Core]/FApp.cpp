@@ -151,10 +151,20 @@ void FApp::BaseFrame() {
         Log("BASE FRAME... gGraphicsInterface == NULL!!!\n\n");
     }
 
-    if (mDidInitialize == false) {
-        Log("BASE FRAME... mDidInitialize == false!!!\n\n");
+    while (mDidInitialize == false) {
+        Log("Waiting for An Initialize...\n");
+        
+        ThrottleLock();
         BaseInitialize();
+        ThrottleUnlock();
     }
+    
+    //if (mDidInitialize == false) {
+    //    Log("BASE FRAME... mDidInitialize == false!!!\n\n");
+    //    ThrottleLock();
+    //    BaseInitialize();
+    //    ThrottleUnlock();
+    //}
     
     gBufferCache.Reset();
     
