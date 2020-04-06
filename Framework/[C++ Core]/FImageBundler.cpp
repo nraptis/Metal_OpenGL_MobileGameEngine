@@ -330,7 +330,7 @@ void FImageBundler::Save(char *pName) {
         aSaveNode->mArea=aSaveNode->mWidth*aSaveNode->mHeight;
     }
     
-    Log("\n***\nFound %d Images and %d High Rez\n***\n", aLowRezCount, aDoubleRezCount);
+    Log("\n***\nFound %d Images and [%d 2x] [%d 3x] [%d 4x] \n***\n", aLowRezCount, aDoubleRezCount, aTripleRezCount, aQuadrupleRezCount);
     
     for(int i=0;i<aNodeCount;i++)
     {
