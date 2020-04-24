@@ -68,16 +68,14 @@ public:
     
 
 	FString							GetNumber(int thePosition);
-    inline FString					GetNumber(){return GetNumber(0);}
-    inline FString					GetNextNumber(){return GetNumber((int)(mCursor-mData));}
+    inline FString					GetNumber() { return GetNumber(0); }
+    inline FString					GetNextNumber() { return GetNumber((int)(mCursor - mData)); }
     
-	
+    inline int						GetNumberI() { FString aString = GetNumber(); return aString.ToInt(); }
+    inline int						GetNextNumberI(){FString aString = GetNextNumber(); return aString.ToInt(); }
     
-    inline int						GetNumberI(){FString aString = GetNumber(); return aString.ToInt();}
-    inline int						GetNextNumberI(){FString aString = GetNextNumber(); return aString.ToInt();}
-    
-    inline float					GetNumberF(){FString aString = GetNumber(); return aString.ToFloat();}
-    inline float					GetNextNumberF(){FString aString = GetNextNumber(); return aString.ToFloat();}
+    inline float					GetNumberF() { FString aString = GetNumber(); return aString.ToFloat(); }
+    inline float					GetNextNumberF() { FString aString = GetNextNumber(); return aString.ToFloat(); }
     
     
     
