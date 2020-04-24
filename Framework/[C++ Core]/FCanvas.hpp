@@ -264,6 +264,16 @@ public:
     bool                                        mDeleteWhenKilled;
 
     bool                                        mDidUpdate;
+    int                                         mUpdateID;
+    
+    // This is kind of stupid, some mac computers send key down twice, some kind of hanging debugger.
+    // Hopefully block 2 immediate same key presses...
+    int                                         mLastKeyDown;
+    int                                         mLastKeyDownUpdateID;
+    
+    int                                         mLastKeyUp;
+    int                                         mLastKeyUpUpdateID;
+    
 
     //Since our children could change during certain operations such
     //as update or mouse down, we copy them to this buffer before
