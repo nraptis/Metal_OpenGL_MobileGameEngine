@@ -190,87 +190,86 @@ void FModelDataPackedSequence::LoadOBJSequence(const char *pFile, int pStartInde
     FString aNumberStringUnpadded;
     FString aNumberStringPadded;
     FString aPath;
-    
     FString aZeroString;
     
-        for (int aLeadingZeroes = 1;(aLeadingZeroes < 7) && (aSuccess == false);aLeadingZeroes++) {
-            aNumberStringUnpadded.ParseInt(pStartIndex);
-            if (aNumberStringUnpadded.mLength < aLeadingZeroes) {
-                aZeroString.Reset();
-                aZeroString.Insert('0', (aLeadingZeroes - aNumberStringUnpadded.mLength), 0);
-                aNumberStringPadded.Reset();
-                aNumberStringPadded.Append(aZeroString);
-                aNumberStringPadded.Append(aNumberStringUnpadded);
-            } else {
-                aNumberStringPadded.Set(aNumberStringUnpadded);
-            }
-            
-            aPath.Reset();
-            aPath.Append(aFileBase);
-            aPath.Append(aNumberStringPadded);
-            aPath.Append(".obj");
-            
-            aFile.Clear();
-            
-            aResourcePath = gRes.GetResourcePathOfType(aPath.c(), RESOURCE_TYPE_MODEL_OBJ);
-            while ((aResourcePath != NULL)) {
-                aFile.LoadDirect((char *)aResourcePath);
-                if (aFile.mLength > 0) { break; }
-                aResourcePath = gRes.GetNextResourcePath();
-            }
-            if (aFile.mLength == 0) {
-                aFile.Load(aPath.c());
-            }
-            
-            if (aFile.mLength != 0) {
-                FModelData *aData = new FModelData();
-                aData->LoadOBJ(&aFile);
-                aModelList.Add(aData);
-                aSuccess = true;
-            }
-            
-            if (aSuccess) {
-                int aIndex = pStartIndex + 1;
-                while (aIndex <= pEndIndex) {
-                    aNumberStringUnpadded.ParseInt(aIndex);
-                    if (aNumberStringUnpadded.mLength < aLeadingZeroes) {
-                        aZeroString.Reset();
-                        aZeroString.Insert('0', (aLeadingZeroes - aNumberStringUnpadded.mLength), 0);
-                        aNumberStringPadded.Reset();
-                        aNumberStringPadded.Append(aZeroString);
-                        aNumberStringPadded.Append(aNumberStringUnpadded);
-                    } else {
-                        aNumberStringPadded.Set(aNumberStringUnpadded);
-                    }
-                    
-                    aPath.Reset();
-                    aPath.Append(aFileBase);
-                    aPath.Append(aNumberStringPadded);
-                    aPath.Append(".obj");
-                    
-                    aFile.Clear();
-                    
-                    aResourcePath = gRes.GetResourcePathOfType(aPath.c(), RESOURCE_TYPE_MODEL_OBJ);
-                    while ((aResourcePath != NULL)) {
-                        aFile.LoadDirect((char *)aResourcePath);
-                        if (aFile.mLength > 0) { break; }
-                        aResourcePath = gRes.GetNextResourcePath();
-                    }
-                    if (aFile.mLength == 0) {
-                        aFile.Load(aPath.c());
-                    }
-                    
-                    if (aFile.mLength != 0) {
-                        FModelData *aData = new FModelData();
-                        aData->LoadOBJ(&aFile);
-                        aModelList.Add(aData);
-                        aIndex++;
-                    } else {
-                        break;
-                    }
+    for (int aLeadingZeroes = 1;(aLeadingZeroes < 7) && (aSuccess == false);aLeadingZeroes++) {
+        aNumberStringUnpadded.ParseInt(pStartIndex);
+        if (aNumberStringUnpadded.mLength < aLeadingZeroes) {
+            aZeroString.Reset();
+            aZeroString.Insert('0', (aLeadingZeroes - aNumberStringUnpadded.mLength), 0);
+            aNumberStringPadded.Reset();
+            aNumberStringPadded.Append(aZeroString);
+            aNumberStringPadded.Append(aNumberStringUnpadded);
+        } else {
+            aNumberStringPadded.Set(aNumberStringUnpadded);
+        }
+        
+        aPath.Reset();
+        aPath.Append(aFileBase);
+        aPath.Append(aNumberStringPadded);
+        aPath.Append(".obj");
+        
+        aFile.Clear();
+        
+        aResourcePath = gRes.GetResourcePathOfType(aPath.c(), RESOURCE_TYPE_MODEL_OBJ);
+        while ((aResourcePath != NULL)) {
+            aFile.LoadDirect((char *)aResourcePath);
+            if (aFile.mLength > 0) { break; }
+            aResourcePath = gRes.GetNextResourcePath();
+        }
+        if (aFile.mLength == 0) {
+            aFile.Load(aPath.c());
+        }
+        
+        if (aFile.mLength != 0) {
+            FModelData *aData = new FModelData();
+            aData->LoadOBJ(&aFile);
+            aModelList.Add(aData);
+            aSuccess = true;
+        }
+        
+        if (aSuccess) {
+            int aIndex = pStartIndex + 1;
+            while (aIndex <= pEndIndex) {
+                aNumberStringUnpadded.ParseInt(aIndex);
+                if (aNumberStringUnpadded.mLength < aLeadingZeroes) {
+                    aZeroString.Reset();
+                    aZeroString.Insert('0', (aLeadingZeroes - aNumberStringUnpadded.mLength), 0);
+                    aNumberStringPadded.Reset();
+                    aNumberStringPadded.Append(aZeroString);
+                    aNumberStringPadded.Append(aNumberStringUnpadded);
+                } else {
+                    aNumberStringPadded.Set(aNumberStringUnpadded);
+                }
+                
+                aPath.Reset();
+                aPath.Append(aFileBase);
+                aPath.Append(aNumberStringPadded);
+                aPath.Append(".obj");
+                
+                aFile.Clear();
+                
+                aResourcePath = gRes.GetResourcePathOfType(aPath.c(), RESOURCE_TYPE_MODEL_OBJ);
+                while ((aResourcePath != NULL)) {
+                    aFile.LoadDirect((char *)aResourcePath);
+                    if (aFile.mLength > 0) { break; }
+                    aResourcePath = gRes.GetNextResourcePath();
+                }
+                if (aFile.mLength == 0) {
+                    aFile.Load(aPath.c());
+                }
+                
+                if (aFile.mLength != 0) {
+                    FModelData *aData = new FModelData();
+                    aData->LoadOBJ(&aFile);
+                    aModelList.Add(aData);
+                    aIndex++;
+                } else {
+                    break;
                 }
             }
         }
+    }
     
     if (aModelList.mCount > 0) {
         
@@ -341,13 +340,10 @@ void FModelDataPackedSequence::LoadOBJBillboardSequence(const char *pFile, FSpri
         }
     }
     
-    
     for (int i=0;i<pSpriteSequence->mList.mCount;i++) {
         
         FSprite *aSprite = ((FSprite *)pSpriteSequence->mList[i]);
-        
         if (aSprite->DidLoad()) {
-            
             float aStartU = aSprite->mTextureRect.GetStartU();
             float aStartV = aSprite->mTextureRect.GetStartV();
             float aEndU = aSprite->mTextureRect.GetEndU();
