@@ -97,7 +97,7 @@ void UISegment::SetTitle(int pSegment, const char *pText) {
     }
 }
 
-void UISegment::SetTitles(const char *pTitle1, const char *pTitle2, const char *pTitle3, const char *pTitle4, const char *pTitle5, const char *pTitle6, const char *pTitle7, const char *pTitle8, const char *pTitle9, const char *pTitle10, const char *pTitle11) {
+void UISegment::SetTitles(const char *pTitle1, const char *pTitle2, const char *pTitle3, const char *pTitle4, const char *pTitle5, const char *pTitle6, const char *pTitle7, const char *pTitle8, const char *pTitle9, const char *pTitle10, const char *pTitle11, const char *pTitle12, const char *pTitle13, const char *pTitle14) {
     SetTitle(0, pTitle1);
     SetTitle(1, pTitle2);
     SetTitle(2, pTitle3);
@@ -108,7 +108,10 @@ void UISegment::SetTitles(const char *pTitle1, const char *pTitle2, const char *
     SetTitle(7, pTitle8);
     SetTitle(8, pTitle9);
     SetTitle(9, pTitle10);
-    SetTitle(10, pTitle10);
+    SetTitle(10, pTitle11);
+    SetTitle(11, pTitle12);
+    SetTitle(12, pTitle13);
+    SetTitle(13, pTitle14);
 }
 
 void UISegment::SetTarget(int *pTarget) {
