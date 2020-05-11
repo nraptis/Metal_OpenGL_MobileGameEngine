@@ -86,35 +86,29 @@ FString::~FString()
 	Free();
 }
 
-void FString::AddCommas()
-{
-	if(mLength > 3)
-	{
-		int aLength=mLength+mLength;
-		char *aNew=new char[aLength+1];
-		
-		aLength=0;
-		
-		for(int i=mLength-1, k=0;i>=0;i--)
-		{
-            
-			aNew[aLength]=mData[i];
+static char cCommaChar[128];
+void FString::AddCommas() {
+	if (mLength > 3) {
+		int aLength = 0;
+        
+        int i = mLength - 1;
+        if (i > 96) { i = 96; }
+        int k = 0;
+        
+		while (i >= 0) {
+			cCommaChar[aLength] = mData[i];
 			aLength++;
-            
 			k++;
-			if(k==3 && i > 0)
-			{
-				aNew[aLength]=',';
+			if ((k == 3) && (i > 0)) {
+				cCommaChar[aLength] = ',';
 				aLength++;
-				k=0;
+				k = 0;
 			}
+            i--;
 		}
-		
-		delete[]mData;
-		mData=aNew;
-		mLength=aLength;
-		mData[mLength] = 0;
-		Reverse();
+        cCommaChar[aLength] = 0;
+        Set(cCommaChar);
+        Reverse();
 	}
 }
 
@@ -1655,57 +1649,34 @@ void FString::ParseChar(char *theChar)
 	Set((const char *)theChar);
 }
 
-void FString::ParseInt(int pNumber)
-{
-    static char cStringNumberChar[64];
-    static int cStringNumberInt[64];
-    
+static char cStringNumberChar[128];
+static int cStringNumberInt[128];
+void FString::ParseInt(int pNumber) {
     int aWriteLength = 0;
     int aNumberLength = 0;
-    
-    if(pNumber < 0)
-    {
+    if (pNumber < 0) {
         cStringNumberChar[0] = '-';
         aWriteLength = 1;
         pNumber = (-pNumber);
     }
     
-    
-    
-    if(pNumber == 0)
-    {
+    if (pNumber == 0) {
         cStringNumberInt[0] = 0;
         aNumberLength = 1;
-    }
-    else
-    {
-        while(pNumber != 0)
-        {
+    } else {
+        while (pNumber != 0) {
             cStringNumberInt[aNumberLength] = (pNumber % 10);
             pNumber = (pNumber / 10);
             aNumberLength++;
         }
     }
     
-    
-    //int aCommaCount = 0;
-    //int aCommaIndex = 0;
-    
-    while(aNumberLength > 0)
-    {
-        aNumberLength--;
+    while (aNumberLength > 0) {
+        --aNumberLength;
         cStringNumberChar[aWriteLength] = ('0' + cStringNumberInt[aNumberLength]);
-        
-        //if((pCommas == true) && ()
-        
-        
         aWriteLength++;
     }
-
     cStringNumberChar[aWriteLength] = 0;
-
-    aWriteLength++;
-
 	Set(cStringNumberChar);
 }
 
@@ -1727,7 +1698,7 @@ void FString::ParseFloat(float pFloat, int pDecimalCount) {
     
 	int aWholeNumber = (int)pFloat;
 	double aFraction = pFloat - (float)aWholeNumber;
-    int aWholeDigits=0;
+    int aWholeDigits = 0;
     
     int aMultiply=10;
     int aHold=pDecimalCount;
@@ -1738,17 +1709,17 @@ void FString::ParseFloat(float pFloat, int pDecimalCount) {
     aFraction *= (float)aMultiply;
     int aFractionNumber = (int)aFraction;
     int aLastDigit = ((int)aFractionNumber) % 10;
-    aFractionNumber/=10;
+    aFractionNumber /= 10;
     
     //.567[8] = .568
-    if (aLastDigit>=5) aFractionNumber++;
+    if (aLastDigit >= 5) { aFractionNumber++; }
     
     //.9999999[9] = 1
     if (aFractionNumber >= (aMultiply / 10)) {
         aFractionNumber=0;
         aWholeNumber++;
     }
-    aHold=aWholeNumber;
+    aHold = aWholeNumber;
     while (aHold) {
         aWholeDigits++;
         aHold /= 10;
@@ -1756,33 +1727,36 @@ void FString::ParseFloat(float pFloat, int pDecimalCount) {
     if (aWholeDigits == 0) { aWholeDigits = 1; }
     mLength = aWholeDigits + 1 + pDecimalCount;
     if (aSign) { mLength += 1; }
-    mData = new char[mLength+1];
+    //mData = new char[mLength + 1];
+    
+    
     if (aSign) {
-        mData[0] = '-';
+        cStringNumberChar[0] = '-';
         for (int i=aWholeDigits-1;i>=0;i--) {
-            mData[i+1]=((char)(aWholeNumber%10))+'0';
+            cStringNumberChar[i + 1] = ((char)(aWholeNumber % 10)) + '0';
             aWholeNumber/=10;
         }
         aWholeDigits++;
-        mData[aWholeDigits]='.';
+        cStringNumberChar[aWholeDigits]='.';
         for (int i=mLength-1;i>aWholeDigits;i--) {
-            mData[i]=((char)(aFractionNumber%10))+'0';
+            cStringNumberChar[i] = ((char)(aFractionNumber % 10)) + '0';
             aFractionNumber/=10;
         }
     } else {
         for (int i=aWholeDigits-1;i>=0;i--) {
-            mData[i]=((char)(aWholeNumber%10))+'0';
+            cStringNumberChar[i] = ((char)(aWholeNumber % 10)) + '0';
             aWholeNumber/=10;
         }
-        mData[aWholeDigits] = '.';
+        cStringNumberChar[aWholeDigits] = '.';
         for (int i=mLength-1;i>aWholeDigits;i--) {
-            mData[i]=((char)(aFractionNumber%10))+'0';
+            cStringNumberChar[i] = ((char)(aFractionNumber % 10)) + '0';
             aFractionNumber/=10;
         }
     }
     
-    mData[mLength] = 0;
-	mSize = mLength;
+    cStringNumberChar[mLength] = 0;
+    Set(cStringNumberChar);
+	//mSize = mLength;
 }
 
 

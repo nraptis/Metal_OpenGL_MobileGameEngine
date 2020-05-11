@@ -30,39 +30,7 @@ FFont::~FFont() {
     
 }
 
-void FFont::LoadRange(const char *pFilePrefix, char pStart, char pEnd) {
-    int aStart = (int)((unsigned char)pStart);
-    int aEnd = (int)((unsigned char)pEnd);
-    if (aStart > aEnd) {
-        int aHold=aStart;
-        aStart=aEnd;
-        aEnd=aHold;
-    }
-
-    bool aKludgePointSize = false;
-    if (mPointSize <= 2.0) {
-        aKludgePointSize = true;
-    }
-
-    for (int i=aStart;i<=aEnd;i++) {
-        FString aCharString = FString(i);
-        FString aPathString = FString(pFilePrefix) + aCharString;
-        
-        mCharacterSprite[i].Load(aPathString.c());
-
-        Log("Font[%s] = (%f x %f)\n", pFilePrefix, mCharacterSprite[i].mWidth, mCharacterSprite[i].mHeight);
-        if(mCharacterStrideX[i] <= 0.0f)mCharacterStrideX[i] = mCharacterSprite[i].mWidth;
-
-        if (aKludgePointSize && mPointSize < mCharacterSprite[i].mHeight) {
-            mPointSize = mCharacterSprite[i].mHeight;
-        }
-
-        mCharacterStrideX[i] = mCharacterSprite[i].mWidth;
-    }
-    if(mPrefix.mLength == 0)mPrefix = pFilePrefix;
-}
-
-void FFont::Load(char *pFilePrefix, char *pCharacters) {
+void FFont::LoadDeprecated(char *pFilePrefix, char *pCharacters) {
     if(pFilePrefix == 0)pFilePrefix = mPrefix.c();
     FString aPrefixString = FString(pFilePrefix);
     FString aPath;
@@ -85,17 +53,6 @@ void FFont::Load(char *pFilePrefix, char *pCharacters) {
     }
 }
 
-void FFont::LoadAlphaNumeric(const char *pFilePrefix)
-{
-    LoadRange(pFilePrefix, 'a', 'z');
-    LoadRange(pFilePrefix, 'A', 'Z');
-    LoadRange(pFilePrefix, '0', '9');
-}
-
-void FFont::LoadScore(const char *pFilePrefix) {
-    Load(pFilePrefix, "0123456789,.()!#$%*-+=");
-}
-
 void FFont::Unload() {
     mPointSize = 0.0f;
     for (int i=0;i<256;i++) {
@@ -112,7 +69,6 @@ void FFont::Unload() {
     mDataScale = 1.0f;
     mSpriteScale = 1.0f;
     mGlobalSqueeze = 0.0f;
-    
 }
 
 void FFont::Draw(const char *pText, float pX, float pY) {
@@ -127,7 +83,7 @@ void FFont::Draw(const char *pText, float pX, float pY, float pScale) {
     int aCharIndexPrev = -1;
     float aKern = 0.0f;
     float aScale = (mDataScale * pScale);
-    float aPointSize = mPointSize * mDataScale * pScale;
+    float aPointSize = mPointSize * mDataScale * pScale * gSpriteDrawScale;
     float aSpriteScale = mSpriteScale * pScale;
     if (pText) {
         unsigned char *aPtr = (unsigned char *)pText;
@@ -136,8 +92,12 @@ void FFont::Draw(const char *pText, float pX, float pY, float pScale) {
             aCharIndexPrev = aCharIndex;
             aChar = *aPtr;
             aCharIndex = aChar;
-            if(aCharIndexPrev != -1)aKern = mKern[aCharIndexPrev][aCharIndex];
+            if (aCharIndexPrev != -1) {
+                aKern = mKern[aCharIndexPrev][aCharIndex];
+            }
+            
             float aSpriteWidth = mCharacterSprite[aCharIndex].mWidth * aSpriteScale;
+            
             mCharacterSprite[aCharIndex].Draw(aDrawX + ((mCharacterOffsetX[aCharIndex] + aKern) * aScale) + aSpriteWidth  * 0.5f, aDrawY + aPointSize / 2.0f, aSpriteScale, 0.0f);
             //mCharacterSprite[aCharIndex].Draw(aDrawX + ((mCharacterOffsetX[aCharIndex] + aKern) * aScale), aDrawY + aPointSize / 2.0f, aSpriteScale, 0.0f);
             
@@ -146,6 +106,15 @@ void FFont::Draw(const char *pText, float pX, float pY, float pScale) {
         }
     }
 }
+
+void FFont::DrawCenteredVertically(const char *pText, float pX, float pY) {
+    DrawCenteredVertically(pText, pX, pY, 1.0f);
+}
+
+void FFont::DrawCenteredVertically(const char *pText, float pX, float pY, float pScale) {
+    Draw(pText, pX, pY - (mPointSize * (mDataScale * pScale * gSpriteDrawScale) * 0.5f), pScale);
+}
+
 
 void FFont::WrapLeft(const char *pText, float pX, float pY, float pAreaWidth, float pLineHeight, float pScale) {
     
@@ -158,16 +127,13 @@ void FFont::WrapLeft(const char *pText, float pX, float pY, float pAreaWidth, fl
     int aCharIndexPrev = -1;
     float aKern = 0.0f;
     float aScale = (mDataScale * pScale);
-    float aPointSize = mPointSize * mDataScale * pScale;
+    float aPointSize = mPointSize * mDataScale * pScale * gSpriteDrawScale;
     float aSpriteScale = mSpriteScale * pScale;
     
     int aLength = FString::Length(pText);
     if (aLength > 0) {
         
-        
-        
         int aIndex = 0;
-        
         
         while (aIndex < aLength) {
             
@@ -323,7 +289,25 @@ void FFont::Center(const char *pText, float pX, float pY) {
 
 void FFont::Center(const char *pText, float pX, float pY, float pScale) {
     float aWidth = Width(pText, pScale);
-    Draw(pText, pX - aWidth * 0.5f, pY - (mPointSize * (mDataScale * pScale) * 0.5f), pScale);
+    Draw(pText, pX - aWidth * 0.5f, pY - (mPointSize * (mDataScale * pScale * gSpriteDrawScale) * 0.5f), pScale);
+}
+
+void FFont::CenterAlt(const char *pText, float pX, float pY) {
+    CenterAlt(pText, pX, pY, 1.0f);
+}
+
+void FFont::CenterAlt(const char *pText, float pX, float pY, float pScale) {
+    
+    float aShift = 0.0f;
+    if ((pText != NULL) && (*pText != 0)) {
+        int aStartIndex = (int)((unsigned char)(*pText));
+        if (aStartIndex >= 0 && aStartIndex < 256) {
+            aShift = ((int)(mCharacterSprite[aStartIndex].mWidth / 2.0f));
+        }
+    }
+    
+    float aWidth = Width(pText, pScale);
+    Draw(pText, pX - aWidth * 0.5f - aShift, pY - (mPointSize * (mDataScale * pScale * gSpriteDrawScale) * 0.5f), pScale);
 }
 
 void FFont::Right(const char *pText, float pX, float pY, float pScale) {
@@ -582,15 +566,18 @@ void FFont::LoadNew(const char *pDataFile, const char *pImagePrefix, const char 
         unsigned char *aPtr = ((unsigned char *)pCharacters);
         int aLen = FString::Length(pCharacters);
         
-        if(aLen > 0)
-        {
-            for(int i=0;i<256;i++)aCharAllowed[i] = 0;
+        if (aLen > 0) {
+            for (int i=0;i<256;i++) {
+                aCharAllowed[i] = 0;
+            }
             int aCharIndex = -1;
-            while(((*aPtr) != 0) && (aLen > 0))
-            {
+            while (((*aPtr) != 0) && (aLen > 0)) {
                 unsigned char aReadChar = *aPtr;aCharIndex = aReadChar;
-                if((aCharIndex >= 0) && (aCharIndex < 256))aCharAllowed[aCharIndex] = true;
-                aPtr++;aLen--;
+                if ((aCharIndex >= 0) && (aCharIndex < 256)) {
+                    aCharAllowed[aCharIndex] = true;
+                }
+                aPtr++;
+                aLen--;
             }
         }
     }
@@ -611,7 +598,9 @@ void FFont::LoadNew(const char *pDataFile, const char *pImagePrefix, const char 
     FString aPath = FString(pDataFile);
     aPath.RemoveExtension();
     
-    if(aLoadFile.mLength <= 0)aLoadFile.Load(aPath + FString(".dat"));
+    if (aLoadFile.mLength <= 0) aLoadFile.Load(aPath + FString(".dat"));
+    if (aLoadFile.mLength <= 0) aLoadFile.Load(aPath + FString(".kern"));
+    
 
     
     mPointSize = ((float)(aLoadFile.ReadShort()));
@@ -631,11 +620,6 @@ void FFont::LoadNew(const char *pDataFile, const char *pImagePrefix, const char 
     
     unsigned char aScanChar = 0;
     int aReadIndex = -1;
-    
-    
-    //unsigned char aReadChar = 0;
-    //unsigned short aReadShort = 0;
-    
     
     for (int aLoopIndex = 0;aLoopIndex < aCharCount;aLoopIndex++) {
         aScanChar = aLoadFile.ReadChar();
@@ -670,7 +654,9 @@ void FFont::LoadNew(const char *pDataFile, const char *pImagePrefix, const char 
         int aKernAmount = 0;
         
         int aTotalKernCount = ((int)(aLoadFile.ReadShort()));
-        if(aTotalKernCount > 40000)aTotalKernCount = 40000;
+        if (aTotalKernCount > 40000) {
+            aTotalKernCount = 40000;
+        }
         
         int aCharKernCount = 0;
         int aLoopIndex = 0;
@@ -707,10 +693,33 @@ void FFont::LoadNew(const char *pDataFile, const char *pImagePrefix, const char 
 }
 
 void FFont::LoadNew(const char *pDataFile, const char *pImagePrefix) {
-    LoadNew(pDataFile, pImagePrefix, 0);
+    LoadNew(pDataFile, pImagePrefix, NULL);
 }
 
-
+void FFont::Load(const char *pDataFile, const char *pImagePrefix, const char *pCharacters) {
+    
+    LoadNew(pDataFile, pImagePrefix, pCharacters);
+    
+    //4.0 => 1.0
+    
+    
+    //1.0 => 0.25
+    
+    float aFactor = (gSpriteDrawScale / 4.0f);
+    
+    mPointSize *= aFactor;
+    
+    for (int i=0;i<256;i++) {
+        mCharacterStrideX[i] *= aFactor;
+        mCharacterOffsetX[i] *= aFactor;
+    }
+    for (int i=0;i<256;i++) {
+        for (int n=0;n<256;n++) {
+            mKern[i][n] *= aFactor;
+        }
+    }
+    
+}
 
 
 void FFont::BitmapDataBatch(const char *pDataPath, const char *pImagePath,

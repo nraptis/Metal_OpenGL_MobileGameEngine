@@ -37,9 +37,9 @@ float gMusicVolume = 1.0f;
 bool gSoundEnabled = true;
 bool gMusicEnabled = true;
 
-
-
 bool gAdBannerVisible = false;
+float gAdBannerWidth = 0.0f;
+float gAdBannerHeight = 0.0f;
 
 const char *gKeyName[256];
 bool gKeyPressed[256];
@@ -76,7 +76,11 @@ void AppShellInitialize(int pEnvironment) {
     
 	os_getAllResources(gDirBundle.c(), &aResourceList);
 	os_getAllResources(gDirDocuments.c(), &aResourceList);
-
+    
+    //EnumList(FString, aPath, aResourceList) {
+    //    printf("Res: %s\n", aPath->c());
+    //}
+    
 	EnumList(FString, aPath, aResourceList)gRes.AddResource(aPath->c());
 	FreeList(FString, aResourceList);
     
@@ -326,6 +330,8 @@ void AppShellSetDeviceSize(int pWidth, int pHeight) {
     //TODO: Remove Kludge
     //
     //AppShellSetSafeAreaInsets(24.0f, 5.0f, 90.0f, 5.0f);
+    AppShellSetSafeAreaInsets(0.0f, 0.0f, 0.0f, 0.0f);
+    
     //
     //
 }

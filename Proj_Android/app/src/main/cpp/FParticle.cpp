@@ -63,10 +63,18 @@ void FParticle::BaseInitialize()
     mGravityYAdd = 0.0f;
     mSpeedAccel = 1.0f;
     
+    
     mDelayAlphaSpeedAddTime = 0;
     mDelayAlphaSpeedAdd = 0.0f;
+    
     mDelayScaleSpeedAddTime = 0;
     mDelayScaleSpeedAdd = 0.0f;
+    
+    mDelayAlphaSpeedTime = 0;
+    mDelayAlphaSpeed = 0.0f;
+
+    mDelayScaleSpeedTime = 0;
+    mDelayScaleSpeed = 0.0f;
     
     mScale = 1.0f;
     mScaleSpeed = 0.0f;
@@ -102,10 +110,10 @@ void FParticle::Update()
     } else {
         mTimerAlive++;
         
-        if (mRedSpeed != 0.0f) { mRed -= mRedSpeed; }
-        if (mGreenSpeed != 0.0f) { mGreen -= mGreenSpeed; }
-        if (mBlueSpeed != 0.0f) { mBlue -= mBlueSpeed; }
-        if (mAlphaSpeed != 0.0f) { mAlpha -= mAlphaSpeed; }
+        if (mRedSpeed != 0.0f) { mRed += mRedSpeed; }
+        if (mGreenSpeed != 0.0f) { mGreen += mGreenSpeed; }
+        if (mBlueSpeed != 0.0f) { mBlue += mBlueSpeed; }
+        if (mAlphaSpeed != 0.0f) { mAlpha += mAlphaSpeed; }
         
         if (mXSpeed != 0.0f) { mX += mXSpeed; }
         if (mYSpeed != 0.0f) { mY += mYSpeed; }
@@ -128,24 +136,27 @@ void FParticle::Update()
         
         
         if (mDelayScaleSpeedAdd != 0.0f) {
-            if(mTimerAlive >= mDelayScaleSpeedAddTime) {
-                mScaleSpeed += mDelayScaleSpeedAdd;
-            }
+            if (mTimerAlive >= mDelayScaleSpeedAddTime) { mScaleSpeed += mDelayScaleSpeedAdd; }
         }
         
         if (mDelayAlphaSpeedAdd != 0.0f) {
-            if(mTimerAlive >= mDelayAlphaSpeedAddTime) {
-                mAlphaSpeed += mDelayAlphaSpeedAdd;
-            }
+            if (mTimerAlive >= mDelayAlphaSpeedAddTime) { mAlphaSpeed += mDelayAlphaSpeedAdd; }
+        }
+        
+        if (mDelayAlphaSpeed != 0.0f) {
+            if (mTimerAlive >= mDelayAlphaSpeedTime) { mAlpha += mDelayAlphaSpeed; }
+        }
+        
+        if (mDelayScaleSpeed != 0.0f) {
+            if (mTimerAlive >= mDelayScaleSpeedTime) { mScale += mDelayScaleSpeed; }
         }
         
         if (mAlpha <= 0.0f) { Kill(); }
         if (mScale <= 0.0f) { Kill(); }
         if (mTimerAlive >= mTimeKill) { Kill(); }
         
-        if ((mSpriteSequence != 0) && (mFrameMax > 0.0f)) {
+        if ((mSpriteSequence != NULL) && (mFrameMax > 0.0f)) {
             mFrame += mFrameSpeed;
-            
             if (mFrame > mFrameMax) {
                 if (mFrameLoop) {
                     mFrame -= mFrameMax;
@@ -166,22 +177,22 @@ void FParticle::Update()
 }
 
 void FParticle::Draw() {
+    
     float aRed = mRed;
-    if(aRed > 1.0f)aRed = 1.0f;
-    if(aRed < 0.0f)aRed = 0.0f;
+    if (aRed > 1.0f) { aRed = 1.0f; }
+    if (aRed < 0.0f) { aRed = 0.0f; }
     
     float aGreen = mGreen;
-    if(aGreen > 1.0f)aGreen = 1.0f;
-    if(aGreen < 0.0f)aGreen = 0.0f;
+    if (aGreen > 1.0f) { aGreen = 1.0f; }
+    if (aGreen < 0.0f) { aGreen = 0.0f; }
     
     float aBlue = mBlue;
-    if(aBlue > 1.0f)aBlue = 1.0f;
-    if(aBlue < 0.0f)aBlue = 0.0f;
+    if (aBlue > 1.0f) { aBlue = 1.0f; }
+    if (aBlue < 0.0f) { aBlue = 0.0f; }
     
     float aAlpha = mAlpha;
-    if(aAlpha > 1.0f)aAlpha = 1.0f;
-    if(aAlpha < 0.0f)aAlpha = 0.0f;
-
+    if (aAlpha > 1.0f) { aAlpha = 1.0f; }
+    if (aAlpha < 0.0f) { aAlpha = 0.0f; }
     
     float aRotation = mRotation;
 
@@ -199,23 +210,23 @@ void FParticle::Draw() {
 
 void FParticle::Draw(FSprite *pSprite)
 {
-    if(pSprite && (mTimerDelay <= 0))
-    {
+    if ((pSprite != NULL) && (mTimerDelay <= 0)) {
+        
         float aRed = mRed;
-        if(aRed > 1.0f)aRed = 1.0f;
-        if(aRed < 0.0f)aRed = 0.0f;
+        if (aRed > 1.0f) { aRed = 1.0f; }
+        if (aRed < 0.0f) { aRed = 0.0f; }
         
         float aGreen = mGreen;
-        if(aGreen > 1.0f)aGreen = 1.0f;
-        if(aGreen < 0.0f)aGreen = 0.0f;
+        if (aGreen > 1.0f) { aGreen = 1.0f; }
+        if (aGreen < 0.0f) { aGreen = 0.0f; }
         
         float aBlue = mBlue;
-        if(aBlue > 1.0f)aBlue = 1.0f;
-        if(aBlue < 0.0f)aBlue = 0.0f;
+        if (aBlue > 1.0f) { aBlue = 1.0f; }
+        if (aBlue < 0.0f) { aBlue = 0.0f; }
         
         float aAlpha = mAlpha;
-        if(aAlpha > 1.0f)aAlpha = 1.0f;
-        if(aAlpha < 0.0f)aAlpha = 0.0f;
+        if (aAlpha > 1.0f) { aAlpha = 1.0f; }
+        if (aAlpha < 0.0f) { aAlpha = 0.0f; }
         
         Graphics::SetColor(aRed, aGreen, aBlue, aAlpha);
         
@@ -249,37 +260,28 @@ void FParticle::DrawOffset(FSprite *pSprite, float pShiftX, float pShiftY)
     }
 }
 
-void FParticle::Draw(FSpriteSequence *pSpriteSequence)
-{
-    //Draw(pSpriteSequence->GetSprite(mFrame));
+void FParticle::Draw(FSpriteSequence *pSpriteSequence) {
     Draw(pSpriteSequence->GetSprite(0.0f));
 }
 
-void FParticle::SetSprite(FSprite *pSprite)
-{
+void FParticle::SetSprite(FSprite *pSprite) {
     mSprite = pSprite;
 }
 
-void FParticle::SetSpriteSequence(FSpriteSequence *pSpriteSequence)
-{
+void FParticle::SetSpriteSequence(FSpriteSequence *pSpriteSequence) {
     mSpriteSequence = pSpriteSequence;
-    
-    if(mSpriteSequence)
-    {
+    if (mSpriteSequence != NULL) {
         mFrameMax = mSpriteSequence->GetMaxFrame();
     }
 }
 
-void FParticle::SetSpriteRandom(FSpriteSequence *pSpriteSequence)
-{
-    if(pSpriteSequence)
-    {
+void FParticle::SetSpriteRandom(FSpriteSequence *pSpriteSequence) {
+    if (pSpriteSequence != NULL) {
         SetSprite(pSpriteSequence->GetRandom());
     }
 }
 
-void FParticle::SetDelay(int pDelayTime)
-{
+void FParticle::SetDelay(int pDelayTime) {
     mTimerDelay = pDelayTime;
 }
 
@@ -297,8 +299,7 @@ void FParticle::SetSpeed(float pXSpeed, float pYSpeed) {
     mYSpeed = pYSpeed;
 }
 
-void FParticle::SetSpeed(float pSpeed)
-{
+void FParticle::SetSpeed(float pSpeed) {
     SetSpeedDirectional(gRand.R(), pSpeed);
 }
 
@@ -307,55 +308,46 @@ void FParticle::SetSpeedDirectional(float pDegrees) {
     mYSpeed = -Cos(pDegrees);
 }
 
-void FParticle::SetSpeedDirectional(float pDegrees, float pMagnitude)
-{
+void FParticle::SetSpeedDirectional(float pDegrees, float pMagnitude) {
     mXSpeed = Sin(pDegrees) * pMagnitude;
     mYSpeed = (-Cos(pDegrees)) * pMagnitude;
 }
 
-void FParticle::SetAccel(float pAccel)
-{
+void FParticle::SetAccel(float pAccel) {
 	mSpeedAccel = pAccel;
 }
 
-void FParticle::SetScale(float pScale)
-{
+void FParticle::SetScale(float pScale) {
     mScale = pScale;
 }
 
-void FParticle::SetScale(float pScale, float pScaleSpeed)
-{
+void FParticle::SetScale(float pScale, float pScaleSpeed) {
     mScale = pScale;
     mScaleSpeed = pScaleSpeed;
 }
 
-void FParticle::SetScale(float pScale, float pScaleSpeed, float pScaleAccel)
-{
+void FParticle::SetScale(float pScale, float pScaleSpeed, float pScaleAccel) {
     mScale = pScale;
     mScaleSpeed = pScaleSpeed;
     mScaleAccel = pScaleAccel;
 }
 
-void FParticle::SetScaleRandom(float pScale, float pSpan)
-{
+void FParticle::SetScaleRandom(float pScale, float pSpan) {
     mScale = gRand.GetFloatWithSpan(pScale, pSpan);
 }
 
-void FParticle::SetScaleRandom(float pScale, float pScaleSpeed, float pSpan)
-{
+void FParticle::SetScaleRandom(float pScale, float pScaleSpeed, float pSpan) {
     mScale = gRand.GetFloatWithSpan(pScale, pSpan);
     mScaleSpeed = pScaleSpeed;
 }
 
-void FParticle::SetScaleRandom(float pScale, float pScaleSpeed, float pScaleAccel, float pSpan)
-{
+void FParticle::SetScaleRandom(float pScale, float pScaleSpeed, float pScaleAccel, float pSpan) {
     mScale = gRand.GetFloatWithSpan(pScale, pSpan);
     mScaleSpeed = pScaleSpeed;
     mScaleAccel = pScaleAccel;
 }
 
-void FParticle::SetRotation()
-{
+void FParticle::SetRotation() {
     mRotation = gRand.GetRotation();
 }
 
@@ -526,14 +518,24 @@ void FParticle::SetFrame(float pFrame, float pFrameSpeed, bool pFrameLoop) {
 }
 
 
-void FParticle::SetDelayAlphaSpeed(int pTime, float pAlphaSpeedAdd) {
+void FParticle::SetDelayAlphaAddSpeed(int pTime, float pAlphaSpeedAdd) {
     mDelayAlphaSpeedAddTime = pTime;
     mDelayAlphaSpeedAdd = pAlphaSpeedAdd;
 }
 
-void FParticle::SetDelayScaleSpeed(int pTime, float pScaleSpeedAdd) {
+void FParticle::SetDelayScaleAddSpeed(int pTime, float pScaleSpeedAdd) {
     mDelayScaleSpeedAddTime = pTime;
     mDelayScaleSpeedAdd = pScaleSpeedAdd;
+}
+
+void FParticle::SetDelayAlphaSpeed(int pTime, float pAlphaSpeed) {
+    mDelayAlphaSpeedTime = pTime;
+    mDelayAlphaSpeed = pAlphaSpeed;
+}
+
+void FParticle::SetDelayScaleSpeed(int pTime, float pScaleSpeed) {
+    mDelayScaleSpeedTime = pTime;
+    mDelayScaleSpeed = pScaleSpeed;
 }
 
 void FParticle::Fling(float pDirX, float pDirY, float pPower, float pPunch) {

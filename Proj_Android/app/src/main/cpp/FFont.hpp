@@ -51,10 +51,17 @@ public:
     
 
     void                            Draw(const char *pText, float pX, float pY);
-    void                            Draw(FString pText, float pX, float pY){Draw((const char *)pText.c(), pX, pY);}
+    void                            Draw(FString pText, float pX, float pY) { Draw((const char *)pText.c(), pX, pY); }
 
     void                            Draw(const char *pText, float pX, float pY, float pScale);
     void                            Draw(FString pText, float pX, float pY, float pScale) { Draw((const char *)pText.c(), pX, pY, pScale); }
+    
+    void                            DrawCenteredVertically(const char *pText, float pX, float pY);
+    void                            DrawCenteredVertically(FString pText, float pX, float pY) { DrawCenteredVertically((const char *)pText.c(), pX, pY); }
+
+    void                            DrawCenteredVertically(const char *pText, float pX, float pY, float pScale);
+    void                            DrawCenteredVertically(FString pText, float pX, float pY, float pScale) { DrawCenteredVertically((const char *)pText.c(), pX, pY, pScale); }
+    
     
     void                            Right(const char *pText, float pX, float pY);
     void                            Right(FString pText, float pX, float pY) { Right((const char *)pText.c(), pX, pY); }
@@ -77,10 +84,16 @@ public:
 
     void                            Center(const char *pText, float pX, float pY);
     void                            Center(const char *pText, float pX, float pY, float pScale);
-
     void                            Center(FString pText, float pX, float pY) { Center((const char *)pText.c(), pX, pY); }
     void                            Center(FString pText, float pX, float pY, float pScale) { Center((const char *)pText.c(), pX, pY, pScale); }
-
+    
+    
+    void                            CenterAlt(const char *pText, float pX, float pY);
+    void                            CenterAlt(const char *pText, float pX, float pY, float pScale);
+    void                            CenterAlt(FString pText, float pX, float pY) { CenterAlt((const char *)pText.c(), pX, pY); }
+    void                            CenterAlt(FString pText, float pX, float pY, float pScale) { CenterAlt((const char *)pText.c(), pX, pY, pScale); }
+    
+    
 
     static FString                  CharToReadable(char c);
     static FString                  CharToFileSafe(char c);
@@ -104,14 +117,10 @@ public:
     float                           PlotWidth(char *pText, float *pArray);
     float                           PlotWidthCentered(char *pText, float *pArray);
     
-    void                            LoadRange(const char *pFilePrefix, char pStart, char pEnd);
-    
-    void                            LoadAlphaNumeric(const char *pFilePrefix);
-    void                            LoadScore(const char *pFilePrefix);
-    void                            Load(char *pFilePrefix, char *pCharacters);
-    inline void                     Load(const char *pFilePrefix, char *pCharacters){Load((char *)pFilePrefix, (char *)pCharacters);}
-    inline void                     Load(char *pFilePrefix, const char *pCharacters){Load((char *)pFilePrefix, (char *)pCharacters);}
-    inline void                     Load(const char *pFilePrefix, const char *pCharacters){Load((char *)pFilePrefix, (char *)pCharacters);}
+    void                            LoadDeprecated(char *pFilePrefix, char *pCharacters);
+    inline void                     LoadDeprecated(const char *pFilePrefix, char *pCharacters) { LoadDeprecated((char *)pFilePrefix, (char *)pCharacters); }
+    inline void                     LoadDeprecated(char *pFilePrefix, const char *pCharacters) { LoadDeprecated((char *)pFilePrefix, (char *)pCharacters); }
+    inline void                     LoadDeprecated(const char *pFilePrefix, const char *pCharacters) { LoadDeprecated((char *)pFilePrefix, (char *)pCharacters); }
     
     void                            Unload();
     
@@ -131,6 +140,10 @@ public:
 
     void                            LoadNew(const char *pDataFile, const char *pImagePrefix);
     void                            LoadNew(const char *pDataFile, const char *pImagePrefix, const char *pCharacters);
+    
+    void                            Load(const char *pDataFile, const char *pImagePrefix, const char *pCharacters);
+    
+    
 
     void                            PrintLoaded();
 };

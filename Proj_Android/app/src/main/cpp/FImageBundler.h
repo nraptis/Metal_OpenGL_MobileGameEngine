@@ -85,11 +85,8 @@ public:
 	FString                         mName;
 };
 
-class FImageBundler
-{
-    
+class FImageBundler {
 public:
-	
 	FImageBundler();
 	~FImageBundler();
 	

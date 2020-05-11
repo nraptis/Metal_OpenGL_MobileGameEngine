@@ -50,6 +50,9 @@ public:
     void                                        TextureBindAdd(FTexture *pTexture);
     void                                        TextureBindRemove(FTexture *pTexture);
     
+    void                                        PrintAllLoadedTextures();
+    
+    
     FFileTable                                  mTableNodes;
     FList                                       mNodeList;
     

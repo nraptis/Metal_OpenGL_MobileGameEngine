@@ -88,9 +88,12 @@ public:
     //inline void                             DrawScaled(FVec2 pPosition, float pScale) { DrawScaled(pPosition.mX,pPosition.mY, pScale); }
     //inline void                             DrawScaled(FVec2 pPosition, float pScaleX, float pScaleY){DrawScaled(pPosition.mX,pPosition.mY, pScaleX, pScaleY);}
     
+    void                                    DrawRepeatingH(float pX, float pY, float pLength);
+    void                                    DrawRepeatingV(float pX, float pY, float pHeight);
+    
     
     void                                    DrawRotated(float pX, float pY, float pRotation);
-    inline void                             DrawRotated(FVec2 pPosition, float pRotation){DrawRotated(pPosition.mX,pPosition.mY, pRotation);}
+    inline void                             DrawRotated(FVec2 pPosition, float pRotation) { DrawRotated(pPosition.mX,pPosition.mY, pRotation); }
 
     void                                    DrawAngleRange(float pX, float pY, float pScale, float pRotation, float pAngleStart, float pAngleEnd);
 

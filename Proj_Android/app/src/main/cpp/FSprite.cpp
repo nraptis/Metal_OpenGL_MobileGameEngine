@@ -247,39 +247,15 @@ void FSprite::Load(FTexture *pTexture, int pX, int pY, int pWidth, int pHeight) 
 }
 
 void FSprite::WriteBuffers() {
-    
     Graphics::BufferArrayWrite(mBufferPositions, mTextureRect.mPositions, sizeof(mTextureRect.mPositions));
     Graphics::BufferArrayWrite(mBufferTextureCoords, mTextureRect.mTextureCoords, sizeof(mTextureRect.mTextureCoords));
-    
-    
-    /*
-    cVertexCache.Get(sizeof(float) * 8);
-    if (cVertexCache.mResult.mSuccess) {
-        FBuffer *aPositionsBuffer = cVertexCache.mResult.mBuffer;
-        int aPositionsBufferOffset = cVertexCache.mResult.mBufferOffset;
-        BufferArrayWrite(aPositionsBuffer, pPositions, aPositionsBufferOffset, sizeof(float) * 8);
-        ArrayBufferPositions(aPositionsBuffer, aPositionsBufferOffset);
-    }
-    
-    cVertexCache.Get(sizeof(float) * 8);
-    if (cVertexCache.mResult.mSuccess) {
-        FBuffer *aTextureCoordsBuffer = cVertexCache.mResult.mBuffer;
-        int aTextureCoordsBufferOffset = cVertexCache.mResult.mBufferOffset;
-        BufferArrayWrite(aTextureCoordsBuffer, pTextureCoords, aTextureCoordsBufferOffset, sizeof(float) * 8);
-        ArrayBufferTextureCoords(aTextureCoordsBuffer, aTextureCoordsBufferOffset);
-    }
-    */
-    
-    
-    //FBuffer                                 *mBufferPosition;
-    //FBuffer                                 *mBufferTextureCoords;
-    
-    
 }
 
 bool FSprite::DidLoad() {
     bool aResult = true;
-    if (mTexture == NULL) aResult = false;
+    if (mTexture == NULL) {
+        aResult = false;
+    }
     if ((mWidth <= 0.0f) || (mHeight <= 0.0f)) {
         aResult = false;
     }
@@ -316,9 +292,6 @@ float FSprite::ScaleFitV(float pHeight, float pOffset) {
 }
 
 void FSprite::Draw() {
-    //
-    
-    //Graphics::DrawSprite(mTextureRect.mPositions, mTextureRect.mTextureCoords, mTexture);
     
     if (mTexture != NULL && mBufferPositions != NULL && mBufferTextureCoords != NULL) {
         if (mBufferPositions->mBindIndex != -1 && mBufferTextureCoords->mBindIndex != -1) {
@@ -329,20 +302,6 @@ void FSprite::Draw() {
             Graphics::DrawTriangleStrips(4);
         }
     }
-    
-    
-    /*
-    if (mBufferIndexPosition == -1) {
-        WriteBuffers();
-    }
-    //
-    if (mBufferIndexPosition != -1) {
-        BindBuffers();
-        Graphics::TextureBind(mTexture);
-        Graphics::DrawTriangleStrips(4);
-    }
-    //
-    */
 }
 
 void FSprite::Center(float pX, float pY) {
@@ -356,7 +315,6 @@ void FSprite::Center(float pX, float pY) {
 }
 
 void FSprite::Draw(float pX, float pY) {
-    
     Graphics::MatrixModelViewGet(&cSpriteMatrixHold);
     cSpriteMatrixModelView.Set(cSpriteMatrixHold);
     cSpriteMatrixModelView.Translate(pX + mWidth / 2.0f, pY + mHeight / 2.0f);
@@ -496,10 +454,8 @@ void FSprite::DrawTripletH(float pX, float pY, float pInsetLeft, float pInsetRig
     float aTripletCenterU1 = aStartU;
     float aTripletCenterU2 = aEndU;
     
-    
     aTripletCenterU1 = pInsetLeft / mWidth;
     aTripletCenterU2 = (mWidth - pInsetRight) / mWidth;
-    
     aTripletCenterU1 = (aStartU + ((aEndU - aStartU) * aTripletCenterU1));
     aTripletCenterU2 = (aStartU + ((aEndU - aStartU) * aTripletCenterU2));
     
@@ -544,8 +500,6 @@ void FSprite::DrawTripletH(float pX, float pY, float pInsetLeft, float pInsetRig
 
 void FSprite::DrawEndCappedTripletH(float pX, float pY, float pInsetLeft, float pInsetRight, float pLength) {
     
-    
-    
     if (mWidth <= 2.0f) { return; }
     if (pLength <= 2.0f) { return; }
     
@@ -563,7 +517,6 @@ void FSprite::DrawEndCappedTripletH(float pX, float pY, float pInsetLeft, float 
     
     float aTripletCenterU1 = aStartU;
     float aTripletCenterU2 = aEndU;
-    
     
     aTripletCenterU1 = pInsetLeft / mWidth;
     aTripletCenterU2 = (mWidth - pInsetRight) / mWidth;
@@ -624,20 +577,6 @@ void FSprite::DrawEndCappedTripletH(float pX, float pY, float pInsetLeft, float 
     cSliceTextureRect.SetUVQuad(aTripletCenterU1, aStartV, aTripletCenterU2, aEndV);
     cSliceTextureRect.SetQuad(aX1, aY1, aX2, aY2, aX3, aY3, aX4, aY4);
     Graphics::DrawSprite(cSliceTextureRect.mPositions, cSliceTextureRect.mTextureCoords, mTexture);
-    
-    /*
-    aX1 = aTripletCenterX1;
-    aX2 = aTripletCenterX2;
-    aX3 = aX1;
-    aX4 = aX2;
-    
-    if (pDrawMiddle) {
-        cSliceTextureRect.SetUVQuad(aTripletCenterU1, aStartV, aTripletCenterU2, aEndV);
-        cSliceTextureRect.SetQuad(aX1, aY1, aX2, aY2, aX3, aY3, aX4, aY4);
-        Graphics::DrawSprite(cSliceTextureRect.mPositions, cSliceTextureRect.mTextureCoords, mTexture);
-    }
-    */
-    
     
     
 }
@@ -960,8 +899,7 @@ void FSprite::DrawAngleRange(float pX, float pY, float pScale, float pRotation, 
         
         aPlaneLength = (aLineDirX * aLineDirX) + (aLineDirY * aLineDirY);
         
-        if(aPlaneLength > 0.01f)
-        {
+        if (aPlaneLength > 0.01f) {
             aPlaneLength = sqrtf(aPlaneLength);
             
             aLineDirX /= aPlaneLength;
@@ -1008,13 +946,20 @@ void FSprite::DrawAngleRange(float pX, float pY, float pScale, float pRotation, 
     float aEdgeU2 = aStartU + ((aEdgeX2 - aStartX) / aXRange) * aURange;
     float aEdgeV2 = aStartV + ((aEdgeY2 - aStartY) / aYRange) * aVRange;
     
-    float aOctantX[8] = {0.0f, aEndX, aEndX, aEndX, 0.0f, aStartX, aStartX, aStartX};
-    float aOctantY[8] = {aStartY, aStartY, 0.0f, aEndY, aEndY, aEndY, 0.0f, aStartY};
-    float aOctantU[8] = {aCenterU,aEndU,aEndU,aEndU,aCenterU,aStartU, aStartU, aStartU};
-    float aOctantV[8] = {aStartV, aStartV, aCenterV, aEndV, aEndV, aEndV, aCenterV, aStartV};
-    bool aOctantDraw[8] = {false, false, false, false, false, false, false, false};
+    float aOctantX[8] = { 0.0f, aEndX, aEndX, aEndX, 0.0f, aStartX, aStartX, aStartX };
+    float aOctantY[8] = { aStartY, aStartY, 0.0f, aEndY, aEndY, aEndY, 0.0f, aStartY };
+    float aOctantU[8] = { aCenterU,aEndU,aEndU,aEndU,aCenterU,aStartU, aStartU, aStartU };
+    float aOctantV[8] = { aStartV, aStartV, aCenterV, aEndV, aEndV, aEndV, aCenterV, aStartV };
+    bool aOctantDraw[8] = { false, false, false, false, false, false, false, false };
     
-    aOctantDraw[0] = false;aOctantDraw[1] = false;aOctantDraw[2] = false;aOctantDraw[3] = false;aOctantDraw[4] = false;aOctantDraw[5] = false;aOctantDraw[6] = false;aOctantDraw[7] = false;
+    aOctantDraw[0] = false;
+    aOctantDraw[1] = false;
+    aOctantDraw[2] = false;
+    aOctantDraw[3] = false;
+    aOctantDraw[4] = false;
+    aOctantDraw[5] = false;
+    aOctantDraw[6] = false;
+    aOctantDraw[7] = false;
     
     int aOctantStart = 7;
     int aOctantEnd = 7;
@@ -1158,8 +1103,6 @@ void FSprite::DrawScaled(float pX, float pY, float pScaleX, float pScaleY) {
 }
 
 void FSprite::DrawScaled(float pX, float pY, float pScaleX, float pScaleY, float pRotation) {
-    //Graphics::DrawSprite(pX, pY, pScaleX, pScaleY, 1.0f, pRotation, mTextureRect.mPositions, mTextureRect.mTextureCoords, mTexture);
-    
     Graphics::MatrixModelViewGet(&cSpriteMatrixHold);
     cSpriteMatrixModelView.Set(cSpriteMatrixHold);
     cSpriteMatrixModelView.Translate(pX, pY);
@@ -1168,7 +1111,74 @@ void FSprite::DrawScaled(float pX, float pY, float pScaleX, float pScaleY, float
     Graphics::MatrixModelViewSet(cSpriteMatrixModelView);
     Draw();
     Graphics::MatrixModelViewSet(cSpriteMatrixHold);
-    
+}
+
+void FSprite::DrawRepeatingH(float pX, float pY, float pLength) {
+    if ((mTexture != NULL) && (mBufferPositions != NULL) && (mBufferTextureCoords != NULL) && (pLength > 0.0f)) {
+        float aWidth = (mTextureRect.GetEndX() - mTextureRect.GetStartX());
+        float aHeight = (mTextureRect.GetEndY() - mTextureRect.GetStartY());
+        float aStartU = mTextureRect.GetStartU();
+        float aEndU = mTextureRect.GetEndU();
+        float aStartV = mTextureRect.GetStartV();
+        float aEndV = mTextureRect.GetEndV();
+        float aPercent = 0.0f;
+        float aBottomY = pY + aHeight;
+        if ((mBufferPositions->mBindIndex != -1) && (mBufferTextureCoords->mBindIndex != -1) && (aWidth >= 1.0f) && (aHeight >= 1.0f)) {
+            float aEndX = pX + pLength;
+            float aX = pX;
+            float aNextX = 0.0f;
+            while (1) {
+                aNextX = (aX + aWidth);
+                if (aNextX > aEndX) {
+                    aPercent = (aEndX - aX) / (aNextX - aX);
+                    aEndU = aStartU + (aEndU - aStartU) * aPercent;
+                    cSliceTextureRect.SetUVQuad(aStartU, aStartV, aEndU, aEndV);
+                    cSliceTextureRect.SetQuad(aX, pY, aEndX, aBottomY);
+                    Graphics::DrawSprite(cSliceTextureRect.mPositions, cSliceTextureRect.mTextureCoords, mTexture);
+                    return;
+                } else {
+                    cSliceTextureRect.SetUVQuad(aStartU, aStartV, aEndU, aEndV);
+                    cSliceTextureRect.SetQuad(aX, pY, aNextX, aBottomY);
+                    Graphics::DrawSprite(cSliceTextureRect.mPositions, cSliceTextureRect.mTextureCoords, mTexture);
+                }
+                aX = aNextX;
+            }
+        }
+    }
+}
+
+void FSprite::DrawRepeatingV(float pX, float pY, float pHeight) {
+    if ((mTexture != NULL) && (mBufferPositions != NULL) && (mBufferTextureCoords != NULL) && (pHeight > 0.0f)) {
+        float aWidth = (mTextureRect.GetEndX() - mTextureRect.GetStartX());
+        float aHeight = (mTextureRect.GetEndY() - mTextureRect.GetStartY());
+        float aStartU = mTextureRect.GetStartU();
+        float aEndU = mTextureRect.GetEndU();
+        float aStartV = mTextureRect.GetStartV();
+        float aEndV = mTextureRect.GetEndV();
+        float aPercent = 0.0f;
+        float aRightX = pX + aWidth;
+        if ((mBufferPositions->mBindIndex != -1) && (mBufferTextureCoords->mBindIndex != -1) && (aWidth >= 1.0f) && (aHeight >= 1.0f)) {
+            float aEndY = pY + pHeight;
+            float aY = pY;
+            float aNextY = 0.0f;
+            while (1) {
+                aNextY = (aY + aHeight);
+                if (aNextY > aEndY) {
+                    aPercent = (aEndY - aY) / (aNextY - aY);
+                    aEndV = aStartV + (aEndV - aStartV) * aPercent;
+                    cSliceTextureRect.SetUVQuad(aStartU, aStartV, aEndU, aEndV);
+                    cSliceTextureRect.SetQuad(pX, aY, aRightX, aEndY);
+                    Graphics::DrawSprite(cSliceTextureRect.mPositions, cSliceTextureRect.mTextureCoords, mTexture);
+                    return;
+                } else {
+                    cSliceTextureRect.SetUVQuad(aStartU, aStartV, aEndU, aEndV);
+                    cSliceTextureRect.SetQuad(pX, aY, aRightX, aNextY);
+                    Graphics::DrawSprite(cSliceTextureRect.mPositions, cSliceTextureRect.mTextureCoords, mTexture);
+                }
+                aY = aNextY;
+            }
+        }
+    }
 }
 
 void FSprite::DrawRotated(float pX, float pY, float pRotation) {

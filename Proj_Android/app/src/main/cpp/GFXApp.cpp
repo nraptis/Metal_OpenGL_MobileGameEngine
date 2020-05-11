@@ -37,7 +37,7 @@ void GFXApp::Load() {
     
     mButterflyBodySequence.LoadOBJSequence("butterfly_body_", 0, 19);
     mButterflyWingSequence.LoadOBJSequence("butterfly_wings_", 0, 19);
-    mButterflyMap.Load("butterfly_map");
+    
 }
 
 void GFXApp::Unload() {
@@ -177,6 +177,9 @@ void GFXApp::ExecuteWadReload() {
     
     gWadGameInterface.Unload();
     gWadGameInterface.Load();
+    
+    mButterflyMap.Kill();
+    mButterflyMap.Load("butterfly_map");
     
     Log("*** End:: GFXApp::ExecuteWadReload()\n");
 }

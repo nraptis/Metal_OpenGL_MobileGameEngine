@@ -151,10 +151,20 @@ void FApp::BaseFrame() {
         Log("BASE FRAME... gGraphicsInterface == NULL!!!\n\n");
     }
 
-    if (mDidInitialize == false) {
-        Log("BASE FRAME... mDidInitialize == false!!!\n\n");
+    while (mDidInitialize == false) {
+        Log("Waiting for An Initialize...\n");
+        
+        ThrottleLock();
         BaseInitialize();
+        ThrottleUnlock();
     }
+    
+    //if (mDidInitialize == false) {
+    //    Log("BASE FRAME... mDidInitialize == false!!!\n\n");
+    //    ThrottleLock();
+    //    BaseInitialize();
+    //    ThrottleUnlock();
+    //}
     
     gBufferCache.Reset();
     
@@ -310,8 +320,8 @@ void FApp::BaseDraw() {
     Graphics::MatrixModelViewReset();
     DrawOver();
     
-    /*
     
+    /*
     if (Graphics::RenderPass() == GFX_RENDER_PASS_2D_MAIN) {
         Graphics::MatrixProjectionResetOrtho();
         Graphics::MatrixModelViewReset();
@@ -327,24 +337,22 @@ void FApp::BaseDraw() {
         FString aScaleString = FString("SCL: ") + FString(gSpriteDrawScale) + FString(", ") + FString("REZ: ") + FString(gImageResolutionScale);
         mSysFont.Center(aScaleString, gDeviceWidth2, gDeviceHeight - 24.0f - 20.0f);
     }
-    
     */
     
     if (mDarkMode == true) {
         Graphics::PipelineStateSetShape2DAlphaBlending();
-        //Graphics::SetColor(0.0075f, 0.0075f, 0.0075f, 0.93f);
-        //Graphics::SetColor(0.0075f, 0.0075f, 0.0075f, 0.90f);
         
 #if (CURRENT_ENV == ENV_IOS)
-        Graphics::SetColor(0.0075f, 0.0075f, 0.0075f, 0.825f);
+        Graphics::SetColor(0.0075f, 0.0075f, 0.0075f, 0.785f);
 #else
-        Graphics::SetColor(0.0075f, 0.0075f, 0.0075f, 0.76f);
+        Graphics::SetColor(0.0075f, 0.0075f, 0.0075f, 0.825f);
 #endif
         
         Graphics::DrawRect(0.0f, 0.0f, gDeviceWidth, gDeviceHeight);
         Graphics::SetColor();
         
     }
+    
 }
 
 void FApp::BaseLoad() {
@@ -419,10 +427,12 @@ void FApp::BaseLoad() {
 }
 
 void FApp::BaseLoadComplete() {
+    ThrottleLock();
     mIsLoading = false;
     mIsLoadingComplete = true;
     mDidUnload = false;
     LoadComplete();
+    ThrottleUnlock();
 }
 
 void FApp::BaseUnload() {

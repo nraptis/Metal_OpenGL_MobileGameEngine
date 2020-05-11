@@ -107,8 +107,13 @@ public:
     void                                        SetFrame(float pFrame, float pFrameSpeed, bool pFrameLoop);
     
     
-    void                                        SetDelayAlphaSpeed(int pTime, float pAlphaSpeedAdd);
-    void                                        SetDelayScaleSpeed(int pTime, float pScaleSpeedAdd);
+    void                                        SetDelayAlphaAddSpeed(int pTime, float pAlphaSpeedAdd);
+    void                                        SetDelayScaleAddSpeed(int pTime, float pScaleSpeedAdd);
+    
+    void                                        SetDelayAlphaSpeed(int pTime, float pAlphaSpeed);
+    void                                        SetDelayScaleSpeed(int pTime, float pScaleSpeed);
+    
+    
     
     void                                        SetRR();
     void                                        SetRR(float pRotationSpeed);
@@ -158,8 +163,18 @@ public:
     int                                         mDelayAlphaSpeedAddTime;
     float                                       mDelayAlphaSpeedAdd;
     
+    
     int                                         mDelayScaleSpeedAddTime;
     float                                       mDelayScaleSpeedAdd;
+    
+    
+    int                                         mDelayAlphaSpeedTime;
+    float                                       mDelayAlphaSpeed;
+    
+    int                                         mDelayScaleSpeedTime;
+    float                                       mDelayScaleSpeed;
+    
+    
     
     float                                       mFrame;
     float                                       mFrameSpeed;

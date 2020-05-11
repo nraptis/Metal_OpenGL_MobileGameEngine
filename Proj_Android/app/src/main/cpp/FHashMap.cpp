@@ -131,11 +131,11 @@ void FHashMap::Remove(void *pKey) {
 }
 
 void FHashMap::ListAdd(FHashMapNode *pNode) {
-    pNode->mListNext = 0;
-    if (mListHead == 0) {
+    pNode->mListNext = NULL;
+    if (mListHead == NULL) {
         mListHead = pNode;
         mListTail = pNode;
-        pNode->mListPrev = 0;
+        pNode->mListPrev = NULL;
     } else {
         pNode->mListPrev = mListTail;
         mListTail->mListNext = pNode;
@@ -147,20 +147,20 @@ void FHashMap::ListRemove(FHashMapNode *pNode) {
     if (pNode == mListHead) {
         if (mListHead->mListNext) {
             mListHead = mListHead->mListNext;
-            mListHead->mListPrev = 0;
+            mListHead->mListPrev = NULL;
         } else {
-            mListTail = 0;
-            mListHead = 0;
+            mListTail = NULL;
+            mListHead = NULL;
         }
     } else if(pNode == mListTail) {
         mListTail = mListTail->mListPrev;
-        mListTail->mListNext = 0;
+        mListTail->mListNext = NULL;
     } else {
         pNode->mListPrev->mListNext = pNode->mListNext;
         pNode->mListNext->mListPrev = pNode->mListPrev;
     }
-    pNode->mListPrev = 0;
-    pNode->mListNext = 0;
+    pNode->mListPrev = NULL;
+    pNode->mListNext = NULL;
 }
 
 bool FHashMap::IsEmpty() {
@@ -463,11 +463,11 @@ void FIntMap::Remove(int pKey) {
 }
 
 void FIntMap::ListAdd(FIntMapNode *pNode) {
-    pNode->mListNext = 0;
-    if (mListHead == 0) {
+    pNode->mListNext = NULL;
+    if (mListHead == NULL) {
         mListHead = pNode;
         mListTail = pNode;
-        pNode->mListPrev = 0;
+        pNode->mListPrev = NULL;
     } else {
         pNode->mListPrev = mListTail;
         mListTail->mListNext = pNode;
@@ -479,20 +479,20 @@ void FIntMap::ListRemove(FIntMapNode *pNode) {
     if (pNode == mListHead) {
         if (mListHead->mListNext) {
             mListHead = mListHead->mListNext;
-            mListHead->mListPrev = 0;
+            mListHead->mListPrev = NULL;
         } else {
-            mListTail = 0;
-            mListHead = 0;
+            mListTail = NULL;
+            mListHead = NULL;
         }
     } else if(pNode == mListTail) {
         mListTail = mListTail->mListPrev;
-        mListTail->mListNext = 0;
+        mListTail->mListNext = NULL;
     } else {
         pNode->mListPrev->mListNext = pNode->mListNext;
         pNode->mListNext->mListPrev = pNode->mListPrev;
     }
-    pNode->mListPrev = 0;
-    pNode->mListNext = 0;
+    pNode->mListPrev = NULL;
+    pNode->mListNext = NULL;
 }
 
 bool FIntMap::IsEmpty() {
@@ -740,11 +740,11 @@ void FStringMap::Remove(const char *pKey) {
 }
 
 void FStringMap::ListAdd(FStringMapNode *pNode) {
-    pNode->mListNext = 0;
+    pNode->mListNext = NULL;
     if (mListHead == 0) {
         mListHead = pNode;
         mListTail = pNode;
-        pNode->mListPrev = 0;
+        pNode->mListPrev = NULL;
     } else {
         pNode->mListPrev = mListTail;
         mListTail->mListNext = pNode;
@@ -756,20 +756,20 @@ void FStringMap::ListRemove(FStringMapNode *pNode) {
     if (pNode == mListHead) {
         if (mListHead->mListNext) {
             mListHead = mListHead->mListNext;
-            mListHead->mListPrev = 0;
+            mListHead->mListPrev = NULL;
         } else {
-            mListTail = 0;
-            mListHead = 0;
+            mListTail = NULL;
+            mListHead = NULL;
         }
     } else if(pNode == mListTail) {
         mListTail = mListTail->mListPrev;
-        mListTail->mListNext = 0;
+        mListTail->mListNext = NULL;
     } else {
         pNode->mListPrev->mListNext = pNode->mListNext;
         pNode->mListNext->mListPrev = pNode->mListPrev;
     }
-    pNode->mListPrev = 0;
-    pNode->mListNext = 0;
+    pNode->mListPrev = NULL;
+    pNode->mListNext = NULL;
 }
 
 bool FStringMap::IsEmpty() {

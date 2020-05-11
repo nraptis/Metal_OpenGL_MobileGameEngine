@@ -53,6 +53,15 @@ FCanvas::FCanvas() {
     mMouseLeftDownInside = false;
     mMouseMiddleDownInside = false;
     mMouseRightDownInside = false;
+    
+    mUpdateID = 0;
+    
+    mLastKeyDown = -1;
+    mLastKeyDownUpdateID = -1;
+    
+    mLastKeyUp = -1;
+    mLastKeyUpUpdateID = -1;
+    
 
     SetTransformAnchor(gRand.GetFloat(), gRand.GetFloat());
 
@@ -112,12 +121,24 @@ void FCanvas::Notify(void *pSender, const char *pNotification) { }
 void FCanvas::DrawManual() {
     if (mDidUpdate == true && mHidden == false && mKill == 0) {
         DrawTransform();
+        
+        if (mClipEnabled) {
+            Graphics::ClipEnable();
+            Graphics::Clip(mTransformAbsolute.mCornerX[0],
+                           mTransformAbsolute.mCornerY[0],
+                           mWidth * mTransformAbsolute.mScale * mTransformAbsolute.mScaleX,
+                           mHeight * mTransformAbsolute.mScale * mTransformAbsolute.mScaleY);
+        }
+        
         Draw();
         EnumList(FCanvas, aCanvas, mChildren) {
             if (aCanvas->mDrawManual == false) {
                 aCanvas->DrawManual();
             }
         }
+        
+        if (mClipEnabled || mClipDisabled) { Graphics::ClipDisable(); }
+        
     }
 }
 
@@ -432,6 +453,11 @@ void FCanvas::BaseUpdate() {
         if (aCanvas->mKill == 0) {
             aCanvas->BaseUpdate();
         }
+    }
+    
+    mUpdateID++;
+    if (mUpdateID > 0x7FFFFFF) {
+        mUpdateID = 0;
     }
 }
 
@@ -857,6 +883,16 @@ void FCanvas::BaseTouchFlush() {
 }
 
 void FCanvas::BaseKeyDown(int pKey) {
+    
+    if ((mLastKeyDown == pKey) && (mLastKeyDownUpdateID == mUpdateID)) {
+        Log("[[TRAPPED KEY DOWN, %d:%d]]\n", pKey, mUpdateID);
+        return;
+    }
+    
+    mLastKeyDown = pKey;
+    mLastKeyUpUpdateID = mUpdateID;
+
+    
     KeyDown(pKey);
     
     if (mWindow != NULL && mWindow->mSelectedCanvas == this && mExclusiveKeyDownCaptureWhenSelected == true) {
@@ -872,6 +908,14 @@ void FCanvas::BaseKeyDown(int pKey) {
 
 void FCanvas::BaseKeyUp(int pKey) {
     KeyUp(pKey);
+    
+    if ((mLastKeyUp == pKey) && (mLastKeyUpUpdateID == mUpdateID)) {
+        Log("[[TRAPPED KEY UP, %d:%d]]\n", pKey, mUpdateID);
+        return;
+    }
+    
+    mLastKeyUp = pKey;
+    mLastKeyUpUpdateID = mUpdateID;
     
     if (mWindow != NULL && mWindow->mSelectedCanvas == this && mExclusiveKeyUpCaptureWhenSelected == true) {
         return;
@@ -1008,11 +1052,11 @@ void FCanvasBucket::Remove(FCanvas *pCanvas) {
 }
 
 void FCanvasBucket::ListAdd(FCanvasBucketNode *pNode) {
-    pNode->mListNext = 0;
-    if (mListHead == 0) {
+    pNode->mListNext = NULL;
+    if (mListHead == NULL) {
         mListHead = pNode;
         mListTail = pNode;
-        pNode->mListPrev = 0;
+        pNode->mListPrev = NULL;
     } else {
         pNode->mListPrev = mListTail;
         mListTail->mListNext = pNode;
@@ -1024,20 +1068,20 @@ void FCanvasBucket::ListRemove(FCanvasBucketNode *pNode) {
     if (pNode == mListHead) {
         if (mListHead->mListNext) {
             mListHead = mListHead->mListNext;
-            mListHead->mListPrev = 0;
+            mListHead->mListPrev = NULL;
         } else {
-            mListTail = 0;
-            mListHead = 0;
+            mListTail = NULL;
+            mListHead = NULL;
         }
     } else if(pNode == mListTail) {
         mListTail = mListTail->mListPrev;
-        mListTail->mListNext = 0;
+        mListTail->mListNext = NULL;
     } else {
         pNode->mListPrev->mListNext = pNode->mListNext;
         pNode->mListNext->mListPrev = pNode->mListPrev;
     }
-    pNode->mListPrev = 0;
-    pNode->mListNext = 0;
+    pNode->mListPrev = NULL;
+    pNode->mListNext = NULL;
 }
 
 bool FCanvasBucket::IsEmpty() {
@@ -1187,9 +1231,11 @@ bool FCanvasAnimation::Update() {
 
     mTimerTick++;
     if (mTime > 0) {
-        aAnimationPercent = mPercent[mTimerTick];
         if (mTimerTick >= mTime) {
+            aAnimationPercent = 1.0f;
             aComplete = true;
+        } else {
+            aAnimationPercent = mPercent[mTimerTick];
         }
     } else {
         aComplete = true;

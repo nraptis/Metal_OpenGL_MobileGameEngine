@@ -21,7 +21,7 @@ void FList::Clear() {
 void FList::Size(int pSize) {
 	if (pSize <= 0) {
 		Clear();
-	} else if(pSize != mSize) {
+	} else if (pSize != mSize) {
 		void **aNewData = new void*[pSize];
         if (mCount > pSize) {
             mCount = pSize;

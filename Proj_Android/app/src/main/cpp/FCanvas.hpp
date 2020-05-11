@@ -184,7 +184,7 @@ public:
     virtual void                                SetFrame(float pX, float pY, float pWidth, float pHeight);
     inline void                                 SetFrame(FRect pRect){SetFrame(pRect.mX, pRect.mY, pRect.mWidth, pRect.mHeight);}
     
-    inline void                                 SetSize(float pWidth, float pHeight) { SetFrame(GetX(), GetY(), pWidth, pHeight); }
+    inline void                                 SetSize(float pWidth, float pHeight) { SetWidth(pWidth); SetHeight(pHeight); }
     inline void                                 SetSize(FSprite *pSprite){ if (pSprite) SetSize(pSprite->mWidth, pSprite->mHeight); }
     inline void                                 SetSize(FSprite &pSprite) { SetSize(&pSprite); }
 
@@ -264,6 +264,16 @@ public:
     bool                                        mDeleteWhenKilled;
 
     bool                                        mDidUpdate;
+    int                                         mUpdateID;
+    
+    // This is kind of stupid, some mac computers send key down twice, some kind of hanging debugger.
+    // Hopefully block 2 immediate same key presses...
+    int                                         mLastKeyDown;
+    int                                         mLastKeyDownUpdateID;
+    
+    int                                         mLastKeyUp;
+    int                                         mLastKeyUpUpdateID;
+    
 
     //Since our children could change during certain operations such
     //as update or mouse down, we copy them to this buffer before

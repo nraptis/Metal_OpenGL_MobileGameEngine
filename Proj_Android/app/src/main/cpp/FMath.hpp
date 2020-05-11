@@ -49,6 +49,9 @@ float DistanceBetweenAngles(float theDegrees1, float theDegrees2);
 float FaceTarget(float pOriginX, float pOriginY, float pTargetX = 0.0f, float pTargetY = 0.0f);
 inline float FaceTarget(FVec2 pPos, FVec2 pTarget = FVec2(0.0f, 0.0f)) { return FaceTarget(pPos.mX, pPos.mY, pTarget.mX, pTarget.mY); }
 
+float FaceTargetFlipped(float pOriginX, float pOriginY, float pTargetX = 0.0f, float pTargetY = 0.0f);
+inline float FaceTargetFlipped(FVec2 pPos, FVec2 pTarget = FVec2(0.0f, 0.0f)) { return FaceTargetFlipped(pPos.mX, pPos.mY, pTarget.mX, pTarget.mY); }
+
 FVec2 PivotPoint(FVec2 pPoint, float pDegrees, FVec2 pCenter, float pScaleX, float pScaleY);
 FVec2 PivotPoint(FVec2 pPoint, float pDegrees, FVec2 pCenter, float pScale = 1.0f);
 FVec2 PivotPoint(FVec2 pPoint, float pDegrees);
