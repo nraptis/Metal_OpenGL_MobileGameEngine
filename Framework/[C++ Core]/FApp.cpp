@@ -150,8 +150,8 @@ void FApp::BaseFrame() {
     if (gGraphicsInterface == NULL) {
         Log("BASE FRAME... gGraphicsInterface == NULL!!!\n\n");
     }
-
-    while (mDidInitialize == false) {
+    
+    if (mDidInitialize == false) {
         Log("Waiting for An Initialize...\n");
         
         ThrottleLock();
@@ -223,8 +223,6 @@ void FApp::BaseFrame() {
 
 void FApp::BaseUpdate() {
     
-    //Log("BaseUpdate(%d)\n", (int)(os_system_time() % 1000000));
-    
     if (mDidInitialize == false) {
         BaseInitialize();
     }
@@ -255,8 +253,6 @@ void FApp::BaseUpdate() {
     
     sound_update();
     music_update();
-
-    
 }
 
 void FApp::BaseDrawLoading() {
@@ -350,9 +346,7 @@ void FApp::BaseDraw() {
         
         Graphics::DrawRect(0.0f, 0.0f, gDeviceWidth, gDeviceHeight);
         Graphics::SetColor();
-        
     }
-    
 }
 
 void FApp::BaseLoad() {
@@ -850,7 +844,7 @@ void FApp::FrameController() {
     
     while (mThrottleMode == 0) {
         //Don't draw again until we pass through the update cycle... Older iOS devices
-        //seem to re-lock inunpredictable order and one thread can starve...
+        //seem to re-lock in unpredictable order and one thread can starve...
         os_sleep(5);
     }
 
@@ -894,11 +888,7 @@ void FApp::FrameController() {
             while (mFrame.mCurrentUpdateNumber < (int)mFrame.mDesiredUpdate && !mFrame.mBreakUpdate) {
                 
                 SystemProcess();
-                if (mQuit) {
-                    //ThrottleUnlock();
-                    
-                    break;
-                }
+                if (mQuit == true) { break; }
                 mFrame.mCurrentUpdateNumber++;
                 BaseUpdate();
             }
