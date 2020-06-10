@@ -86,8 +86,6 @@ void GFXApp::DrawLoading() {
     Graphics::RenderPassBegin(GFX_RENDER_PASS_2D_MAIN,
                               false, //Clear Color
                               false); //Clear Depth
-    
-    
 }
 
 void GFXApp::Draw() {
