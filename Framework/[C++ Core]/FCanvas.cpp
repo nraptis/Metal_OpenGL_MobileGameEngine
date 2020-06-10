@@ -63,7 +63,7 @@ FCanvas::FCanvas() {
     mLastKeyUpUpdateID = -1;
     
 
-    SetTransformAnchor(gRand.GetFloat(), gRand.GetFloat());
+    //SetTransformAnchor(gRand.GetFloat(), gRand.GetFloat());
 
     if (gRand.GetBool()) {
         //SetTransformRotation(gRand.GetFloat(-5.0f, 5.0f));
