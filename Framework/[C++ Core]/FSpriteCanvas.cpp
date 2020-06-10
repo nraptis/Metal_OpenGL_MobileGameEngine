@@ -35,7 +35,7 @@ void FSpriteCanvas::LayoutTransform() {
 void FSpriteCanvas::Draw() {
     
     Graphics::PipelineStateSetSpriteAlphaBlending();
-    Graphics::SetColor(0.75f);
+    Graphics::SetColor();
     
     if (mSprite != NULL) {
         mSprite->DrawQuad(0.0f, 0.0f, mWidth, mHeight);
