@@ -12,8 +12,6 @@
 FAchievement::FAchievement() {
     
     
-    
-    
     mProgress = 0;
     mProgressMax = 1;
     
@@ -31,13 +29,12 @@ void FAchievement::Reset() {
 }
 
 void FAchievement::Print() {
-    Log("%s: complete: %d (%d/%d) synced: %d\n", mName.c(), mComplete, mProgress, mProgressMax, mSynchronized);
+    Log("id: %s: complete: %d (%d/%d) synced: %d\n", mIdentifier.c(), mComplete, mProgress, mProgressMax, mSynchronized);
 }
 
 void FAchievement::Load(FJSONNode *pLoadNode) {
     if (pLoadNode != NULL) {
         mProgress = pLoadNode->GetInt("progress", 0);
-        mProgressMax = pLoadNode->GetInt("progress_max", 1);
         mComplete = pLoadNode->GetBool("complete", false);
         mSynchronized = pLoadNode->GetBool("synced", false);
     }
@@ -46,9 +43,7 @@ void FAchievement::Load(FJSONNode *pLoadNode) {
 FJSONNode *FAchievement::Save() {
     FJSONNode *aSaveNode = new FJSONNode();
     aSaveNode->mNodeType = JSON_NODE_TYPE_DICTIONARY;
-    
     if (mProgress != 0) { aSaveNode->AddDictionaryInt("progress", mProgress); }
-    if (mProgressMax != 1) { aSaveNode->AddDictionaryInt("progress_max", mProgressMax); }
     if (mComplete == true) { aSaveNode->AddDictionaryBool("complete", mComplete); }
     if (mSynchronized == true) { aSaveNode->AddDictionaryBool("synced", mSynchronized); }
     

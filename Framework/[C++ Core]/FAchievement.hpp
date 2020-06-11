@@ -17,7 +17,8 @@ public:
     FAchievement();
     ~FAchievement();
     
-    FString                                 mName;
+    FString                                 mIdentifier;
+    FString                                 mDescription;
     
     void                                    Load(FJSONNode *pLoadNode);
     FJSONNode                               *Save();

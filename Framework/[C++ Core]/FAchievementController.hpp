@@ -26,21 +26,21 @@ public:
     
     //Build the entire structure using only these two calls...
     //Build the entire structure, then call LOAD...
-    void                                AddAchievement(const char *pAchievementName, int pProgressMax);
-    void                                AddAchievement(const char *pGroupName, const char *pAchievementName, int pProgressMax);
+    void                                AddAchievement(const char *pAchievementIdentifier, const char *pAchievementDescription, int pProgressMax);
+    void                                AddAchievement(const char *pGroupName, const char *pAchievementIdentifier, const char *pAchievementDescription, int pProgressMax);
     
-    
-    FAchievement                        *GetAchievement(const char *pAchievementName);
+    //mDescription
+    FAchievement                        *GetAchievement(const char *pAchievementIdentifier);
     
 private:
     void                                ProgressAchievementObject(FAchievement *pAchievement);
     
 public:
-    void                                ProgressAchievement(const char *pAchievementName);
+    void                                ProgressAchievement(const char *pAchievementIdentifier);
     void                                ProgressGroup(const char *pGroupName);
     
     
-    void                                ResetAchievement(const char *pAchievementName);
+    void                                ResetAchievement(const char *pAchievementIdentifier);
     void                                ResetGroup(const char *pGroupName);
     
     void                                Save();

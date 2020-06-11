@@ -25,20 +25,21 @@ void FAchievementController::Clear() {
     mGroupMap.RemoveAll();
 }
 
-void FAchievementController::AddAchievement(const char *pAchievementName, int pProgressMax) {
+void FAchievementController::AddAchievement(const char *pAchievementIdentifier, const char *pAchievementDescription, int pProgressMax) {
     
-    FAchievement *aAchievement = (FAchievement *)(mAchievementMap.Get(pAchievementName));
+    FAchievement *aAchievement = (FAchievement *)(mAchievementMap.Get(pAchievementIdentifier));
     if (aAchievement == NULL) {
         aAchievement = new FAchievement();
-        mAchievementMap.Add(pAchievementName, aAchievement);
+        mAchievementMap.Add(pAchievementIdentifier, aAchievement);
         mAchievementList.Add(aAchievement);
     }
     
-    aAchievement->mName = pAchievementName;
+    aAchievement->mIdentifier = pAchievementIdentifier;
+    aAchievement->mDescription = pAchievementDescription;
     aAchievement->mProgressMax = pProgressMax;
 }
 
-void FAchievementController::AddAchievement(const char *pGroupName, const char *pAchievementName, int pProgressMax) {
+void FAchievementController::AddAchievement(const char *pGroupName, const char *pAchievementIdentifier, const char *pAchievementDescription, int pProgressMax) {
     
     FAchievementGroup *aGroup = (FAchievementGroup *)(mAchievementMap.Get(pGroupName));
     
@@ -49,9 +50,9 @@ void FAchievementController::AddAchievement(const char *pGroupName, const char *
         mGroupList.Add(aGroup);
     }
     
-    AddAchievement(pAchievementName, pProgressMax);
+    AddAchievement(pAchievementIdentifier, pAchievementDescription, pProgressMax);
     
-    FAchievement *aAchievement = GetAchievement(pAchievementName);
+    FAchievement *aAchievement = GetAchievement(pAchievementIdentifier);
     if (aAchievement == NULL) {
         Log("CRITICAL ERROR: Achievement not found???\n\n");
         return;
@@ -60,8 +61,8 @@ void FAchievementController::AddAchievement(const char *pGroupName, const char *
     aGroup->Add(aAchievement);
 }
 
-FAchievement *FAchievementController::GetAchievement(const char *pAchievementName) {
-    FAchievement *aAchievement = (FAchievement *)(mAchievementMap.Get(pAchievementName));
+FAchievement *FAchievementController::GetAchievement(const char *pAchievementIdentifier) {
+    FAchievement *aAchievement = (FAchievement *)(mAchievementMap.Get(pAchievementIdentifier));
     return aAchievement;
 }
 
@@ -82,8 +83,8 @@ void FAchievementController::ProgressAchievementObject(FAchievement *pAchievemen
     }
 }
 
-void FAchievementController::ProgressAchievement(const char *pAchievementName) {
-    FAchievement *aAchievement = GetAchievement(pAchievementName);
+void FAchievementController::ProgressAchievement(const char *pAchievementIdentifier) {
+    FAchievement *aAchievement = GetAchievement(pAchievementIdentifier);
     ProgressAchievementObject(aAchievement);
 }
 
@@ -96,9 +97,9 @@ void FAchievementController::ProgressGroup(const char *pGroupName) {
     }
 }
 
-void FAchievementController::ResetAchievement(const char *pAchievementName) {
+void FAchievementController::ResetAchievement(const char *pAchievementIdentifier) {
     
-    FAchievement *aAchievement = GetAchievement(pAchievementName);
+    FAchievement *aAchievement = GetAchievement(pAchievementIdentifier);
     if (aAchievement != NULL) {
         aAchievement->Reset();
     }
@@ -128,7 +129,7 @@ void FAchievementController::Save(const char *pFile) {
     aRoot->AddDictionary("achievement_list", aAchiementListNode);
     
     EnumList(FAchievement, aAchievement, mAchievementList) {
-        aAchiementListNode->AddDictionary(aAchievement->mName.c(), aAchievement->Save());
+        aAchiementListNode->AddDictionary(aAchievement->mIdentifier.c(), aAchievement->Save());
     }
     
     if (mRecentlyCompletedAchievementList.mCount > 0) {
@@ -137,7 +138,7 @@ void FAchievementController::Save(const char *pFile) {
         aRoot->AddDictionary("recently_completed", aRecentlyCompletedListNode);
         
         EnumList(FAchievement, aAchievement, mRecentlyCompletedAchievementList) {
-            aRecentlyCompletedListNode->ArrayAddString(aAchievement->mName);
+            aRecentlyCompletedListNode->ArrayAddString(aAchievement->mIdentifier.c());
         }
     }
     
