@@ -1,12 +1,12 @@
 #ifndef MATH_H
 #define MATH_H
 
-#define D_R 0.01745329251994329576923690768488
-#define R_D 57.2957795130823208767981548141052
+#define D_R 0.01745329251994329576923690768488f
+#define R_D 57.2957795130823208767981548141052f
 
-#define PI 3.1415926535897932384626433832795028841968
+#define PI 3.1415926535897932384626433832795028841968f
 #define PI2 (2 * PI)
-#define PI_2 (PI / 2.0f)
+#define PI_2 (PI * 0.5f)
 
 #define DOT_PRODUCT(x1,y1,x2,y2)((x1)*(x2)+(y1)*(y2))
 #define CROSS_PRODUCT(x1,y1,x2,y2)((x1)*(y2)-(x2)*(y1))
@@ -62,7 +62,7 @@ FVec3 PivotPoint(FVec3 pPoint, float pDegrees);
 
 float MinC(float pNum, float pMin);
 float MaxC(float pNum, float pMax);
-float Clamp(float pNum, float pMin=-10000000.0f, float pMax=10000000.0f);
+float Clamp(float pNum, float pMin, float pMax);
 
 //(Bx - Ax) * (Cy - Ay) - (By - Ay) * (Cx - Ax)
 int SideOfLine(float pTestX, float pTestY, float pLineX1, float pLineY1, float pLineX2, float pLineY2);

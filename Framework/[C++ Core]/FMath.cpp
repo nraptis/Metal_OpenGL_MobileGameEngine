@@ -241,11 +241,11 @@ bool Between(float x1, float y1, float x2, float y2, float x3, float y3) {
 
 bool SegmentsIntersect(FVec2 theStart1, FVec2 theEnd1, FVec2 theStart2, FVec2 theEnd2) {
     
-    if (fabsf(theStart1.mX - theEnd1.mX) <= 0.1f && fabsf(theStart1.mY - theEnd1.mY) <= 0.1f) {
+    if (fabsf(theStart1.mX - theEnd1.mX) <= 0.01f && fabsf(theStart1.mY - theEnd1.mY) <= 0.01f) {
         return false;
     }
     
-    if (fabsf(theStart2.mX - theEnd2.mX) <= 0.1f && fabsf(theStart2.mY - theEnd2.mY) <= 0.1f) {
+    if (fabsf(theStart2.mX - theEnd2.mX) <= 0.01f && fabsf(theStart2.mY - theEnd2.mY) <= 0.01f) {
         return false;
     }
         
