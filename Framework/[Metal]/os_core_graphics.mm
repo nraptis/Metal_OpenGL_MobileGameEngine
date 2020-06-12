@@ -590,11 +590,12 @@ FBuffer *Graphics::ArrayWriteData(void *pData, int pCount) {
         cVertexCache.Get(pCount);
         if (cVertexCache.mResult.mSuccess) {
             FBuffer *aDataBuffer = cVertexCache.mResult.mBuffer;
-            int aPositionsBufferOffset = cVertexCache.mResult.mBufferOffset;
-            BufferArrayWrite(aDataBuffer, pData, aPositionsBufferOffset, pCount);
-            ArrayBufferPositions(aDataBuffer, aPositionsBufferOffset);
+            int aDataBufferOffset = cVertexCache.mResult.mBufferOffset;
+            BufferArrayWrite(aDataBuffer, pData, aDataBufferOffset, pCount);
+            //ArrayBufferPositions(aDataBuffer, aDataBufferOffset);
+            ArrayBufferData(aDataBuffer, aDataBufferOffset);
             //TODO:
-            ArrayBufferData(NULL, -10000);
+            //ArrayBufferData(NULL, -10000);
             
             return aDataBuffer;
             
@@ -836,24 +837,24 @@ void Graphics::BufferSetIndicesShape() {
 }
 
 void Graphics::BufferSetIndicesShapeNode() {
-    Graphics::BufferSetPositionsIndex(GFX_BUFFER_INDEX_DATA_SHAPE_NODE);
+    Graphics::BufferSetPositionsIndex(-1);
     Graphics::BufferSetTextureCoordsIndex(-1);
     Graphics::BufferSetColorsIndex(-1);
     Graphics::BufferSetNormalsIndex(-1);
     Graphics::BufferSetTangentsIndex(-1);
     Graphics::BufferSetUNormalsIndex(-1);
-    Graphics::BufferSetDataIndex(-1);
+    Graphics::BufferSetDataIndex(GFX_BUFFER_INDEX_DATA_SHAPE_NODE);
     Graphics::BufferSetUniformsIndex(GFX_BUFFER_INDEX_UNIFORMS_SHAPE_NODE);
 }
 
 void Graphics::BufferSetIndicesShapeNodeSprite() {
-    Graphics::BufferSetPositionsIndex(GFX_BUFFER_INDEX_DATA_SHAPE_NODE);
+    Graphics::BufferSetPositionsIndex(-1);
     Graphics::BufferSetTextureCoordsIndex(-1);
     Graphics::BufferSetColorsIndex(-1);
     Graphics::BufferSetNormalsIndex(-1);
     Graphics::BufferSetTangentsIndex(-1);
     Graphics::BufferSetUNormalsIndex(-1);
-    Graphics::BufferSetDataIndex(-1);
+    Graphics::BufferSetDataIndex(GFX_BUFFER_INDEX_DATA_SHAPE_NODE);
     Graphics::BufferSetUniformsIndex(GFX_BUFFER_INDEX_UNIFORMS_SHAPE_NODE);
 }
 
