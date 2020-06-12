@@ -30,8 +30,6 @@ public:
     
 	void                            Draw(FSprite *pSprite);
 	void                            Draw(FSprite &pSprite);
-    
-    void                            DrawUncolored(FSprite *pSprite);
 
     void                            Draw();
     void                            DrawCorners();
@@ -45,8 +43,8 @@ public:
     
     void                            SetRect(float pX, float pY, float pWidth, float pHeight);
     
+    void                            SetTextureCoords(FSprite *pSprite);
     void                            SetTextureQuad(float pStartU, float pStartV, float pEndU, float pEndV);
-    void                            SetTextureRect(FSprite *pSprite, float pX, float pY, float pWidth, float pHeight);
     
     void                            Copy(FDrawQuad *pQuad);
     
@@ -219,53 +217,6 @@ public:
     inline float                    U4(){return mVertex[QUAD_INDEX_4].mU;}
     inline float                    V4(){return mVertex[QUAD_INDEX_4].mV;}
     inline float                    W4(){return mVertex[QUAD_INDEX_4].mW;}
-};
-
-
-
-class FDrawQuadRay : public FDrawQuad
-{
-public:
-    FDrawQuadRay();
-    virtual ~FDrawQuadRay();
-    
-    virtual void					Draw(FSprite *pSprite);
-    virtual void					Draw() { Draw(mSprite); }
-    
-    void                            SetStartPos(float pX, float pY);
-    void                            SetStartPos(FVec2 pPos);
-    
-    void                            SetEndPos(float pX, float pY);
-    void                            SetEndPos(FVec2 pPos);
-    
-    void                            SetAngle(float pDegrees);
-    
-    void                            SetLength(float pLength);
-    
-    void                            SetSprite(FSprite *pSprite);
-    inline void                     SetSprite(FSprite &pSprite){SetSprite(&pSprite);}
-    
-    void                            SetWidthStart(float pWidth);
-    void                            SetWidthEnd(float pWidth);
-    
-    void                            SetWidth(float pStartWidth, float pEndWidth);
-    void                            SetWidth(float pWidth);
-    
-    void                            ComputeCorners();
-    
-    FSprite                         *mSprite;
-    
-    float                           mLength;
-    float                           mAngle;
-    
-    float                           mStartWidth;
-    float                           mEndWidth;
-    
-    FVec2                           mStartPos;
-    FVec2                           mEndPos;
-    
-    FVec2                           mDir;
-    FVec2                           mNormal;
 };
 
 class FDrawQuadGrid

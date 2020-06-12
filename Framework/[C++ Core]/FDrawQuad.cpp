@@ -9,44 +9,67 @@
 #include "FDrawQuad.hpp"
 
 FDrawQuad::FDrawQuad() {
-    for (int i = 0; i < 4; i++) {
-        mVertex[i].mR = 1.0f;
-        mVertex[i].mG = 1.0f;
-        mVertex[i].mB = 1.0f;
-        mVertex[i].mA = 1.0f;
-        mVertex[i].mX = 0.0f;
-        mVertex[i].mY = 0.0f;
-        mVertex[i].mZ = 0.0f;
-        mVertex[i].mU = 0.0f;
-        mVertex[i].mV = 0.0f;
-        mVertex[i].mW = 0.0f;
-    }
+    
+    mVertex[0].mX = 0.0f;
+    mVertex[0].mY = 0.0f;
+    mVertex[0].mZ = 0.0f;
+    mVertex[0].mR = 1.0f;
+    mVertex[0].mG = 1.0f;
+    mVertex[0].mB = 1.0f;
+    mVertex[0].mA = 1.0f;
+    mVertex[0].mU = 0.0f;
+    mVertex[0].mV = 0.0f;
+    mVertex[0].mW = 0.0f;
+    
+    mVertex[1].mX = 0.0f;
+    mVertex[1].mY = 0.0f;
+    mVertex[1].mZ = 0.0f;
+    mVertex[1].mR = 1.0f;
+    mVertex[1].mG = 1.0f;
+    mVertex[1].mB = 1.0f;
+    mVertex[1].mA = 1.0f;
+    mVertex[1].mU = 1.0f;
+    mVertex[1].mV = 0.0f;
+    mVertex[1].mW = 0.0f;
+    
+    mVertex[2].mX = 0.0f;
+    mVertex[2].mY = 0.0f;
+    mVertex[2].mZ = 0.0f;
+    mVertex[2].mR = 1.0f;
+    mVertex[2].mG = 1.0f;
+    mVertex[2].mB = 1.0f;
+    mVertex[2].mA = 1.0f;
+    mVertex[2].mU = 0.0f;
+    mVertex[2].mV = 1.0f;
+    mVertex[2].mW = 0.0f;
+    
+    mVertex[3].mX = 0.0f;
+    mVertex[3].mY = 0.0f;
+    mVertex[3].mZ = 0.0f;
+    mVertex[3].mR = 1.0f;
+    mVertex[3].mG = 1.0f;
+    mVertex[3].mB = 1.0f;
+    mVertex[3].mA = 1.0f;
+    mVertex[3].mU = 1.0f;
+    mVertex[3].mV = 1.0f;
+    mVertex[3].mW = 0.0f;
 }
 
 FDrawQuad::~FDrawQuad() {
     
 }
 
-static GFX_MODEL_INDEX_TYPE cQuadIndex[6] = { 0, 1, 2, 1, 3, 2 };
+static GFX_MODEL_INDEX_TYPE cDrawQuadIndex[6] = { 0, 1, 2, 1, 3, 2 };
 void FDrawQuad::Draw(FSprite *pSprite) {
-    if (pSprite) {
-        if (pSprite->mTexture) {
-            //TODO:
-            /*
-            Graphics::EnableTextureCoordinateArray();
-            Graphics::EnableVertexArray();
-            Graphics::EnableColorArray();
-            float *aPtr = (float *)(&(mVertex[0]));
-            Graphics::ArrayVertices(aPtr, sizeof(FDrawNode), 3);
-            Graphics::ArrayCoords(aPtr + 3, sizeof(FDrawNode), 3);
-            Graphics::ArrayColor(aPtr + 6, sizeof(FDrawNode), 4);
-            Graphics::TextureEnable();
+    if ((pSprite != NULL) && (pSprite->mTexture != NULL)) {
+        float *aPtr = (float *)(&(mVertex[0]));
+        if (Graphics::ArrayWriteData(aPtr, 4 * sizeof(FDrawNode))) {
             Graphics::TextureBind(pSprite->mTexture);
-            Graphics::DrawTriangles(cQuadIndex, 6);
-            Graphics::DisableColorArray();
-            */
-        } else {
-            Draw();
+            Graphics::ArrayBufferPositions(NULL, 0);
+            Graphics::ArrayBufferTextureCoords(NULL, sizeof(float) * 3);
+            Graphics::ArrayBufferColors(NULL, sizeof(float) * 6);
+            Graphics::UniformBind();
+            Graphics::DrawTrianglesIndexed(cDrawQuadIndex, 6);
         }
     } else {
         Draw();
@@ -59,44 +82,18 @@ void FDrawQuad::Draw(FSprite &pSprite) {
 
 void FDrawQuad::Draw() {
     
-    /*
-    Graphics::EnableVertexArray();
-    Graphics::EnableColorArray();
-    Graphics::DisableTextureCoordinateArray();
-    Graphics::TextureDisable();
     float *aPtr = (float *)(&(mVertex[0]));
-    Graphics::ArrayVertices(aPtr, sizeof(FDrawNode), 3);
-    Graphics::ArrayColor(aPtr + 6, sizeof(FDrawNode), 4);
-    Graphics::DrawTriangles(cQuadIndex, 6);
-    Graphics::TextureEnable();
-    Graphics::DisableColorArray();
-    Graphics::EnableTextureCoordinateArray();
-    */
-}
-
-void FDrawQuad::DrawUncolored(FSprite *pSprite) {
-    if (pSprite) {
-        if (pSprite->mTexture) {
-            
-            /*
-            Graphics::EnableTextureCoordinateArray();
-            Graphics::EnableVertexArray();
-            float *aPtr = (float *)(&(mVertex[0]));
-            Graphics::ArrayVertices(aPtr, sizeof(FDrawNode), 3);
-            Graphics::ArrayCoords(aPtr + 3, sizeof(FDrawNode), 3);
-            Graphics::TextureEnable();
-            Graphics::TextureBind(pSprite->mTexture);
-            Graphics::DrawTriangles(cQuadIndex, 6);
-            */
-        } else {
-            Draw();
-        }
-    } else {
-        Draw();
+    if (Graphics::ArrayWriteData(aPtr, 4 * sizeof(FDrawNode))) {
+        Graphics::ArrayBufferPositions(NULL, 0);
+        Graphics::ArrayBufferTextureCoords(NULL, sizeof(float) * 3);
+        Graphics::ArrayBufferColors(NULL, sizeof(float) * 6);
+        Graphics::UniformBind();
+        Graphics::DrawTrianglesIndexed(cDrawQuadIndex, 6);
     }
 }
 
 void FDrawQuad::DrawCorners() {
+    Graphics::PipelineStateSetShape2DAlphaBlending();
     for (int i=0;i<4;i++) {
         float aX = mVertex[i].mX;
         float aY = mVertex[i].mY;
@@ -105,6 +102,7 @@ void FDrawQuad::DrawCorners() {
 }
 
 void FDrawQuad::DrawOutline() {
+    Graphics::PipelineStateSetShape2DAlphaBlending();
     for (int aStart=0, aEnd=3;aStart<4;aEnd = aStart++) {
         Graphics::DrawLine(mVertex[aEnd].mX, mVertex[aEnd].mY, mVertex[aStart].mX, mVertex[aStart].mY, 2);
     }
@@ -205,40 +203,19 @@ void FDrawQuad::RotateAndScale(float pDegrees, float pScale) {
     Scale(pScale);
 }
 
-void FDrawQuad::SetTextureRect(FSprite *pSprite, float pX, float pY, float pWidth, float pHeight) {
-    if(pSprite == 0)return;
-    float mStartU = pSprite->GetStartU();
-    float mStartV = pSprite->GetStartU();
-    float mEndU = pSprite->GetEndU();
-    float mEndV = pSprite->GetEndV();
-    float aSpriteWidth = pSprite->mWidth;
-    float aSpriteHeight = pSprite->mHeight;
-    float aSliceWidth = pWidth;
-    float aSliceHeight = pHeight;
-    if(aSliceWidth <= 2.0f)return;
-    if(aSliceHeight <= 2.0f)return;
-    if(aSpriteWidth <= 6.0f)return;
-    if(aSpriteHeight <= 6.0f)return;
-    float mImageStartX = pX;
-    float mImageStartY = pY;
-    float mImageEndX = pX + pWidth;
-    float mImageEndY = pY + pHeight;
-    float aPercentX1 = ((float)mImageStartX) / aSpriteWidth;
-    float aPercentX2 = ((float)mImageEndX) / aSpriteWidth;
-    float aPercentY1 = ((float)mImageStartY) / aSpriteHeight;
-    float aPercentY2 = ((float)mImageEndY) / aSpriteHeight;
-    float aBaseSpanU = (mEndU - mStartU);
-    float aBaseSpanV = (mEndV - mStartV);
-    float aStartU = mStartU + aBaseSpanU * aPercentX1;
-    float aStartV = mStartV + aBaseSpanV * aPercentY1;
-    float aEndU = mStartU + aBaseSpanU * aPercentX2;
-    float aEndV = mStartV + aBaseSpanV * aPercentY2;
-    SetTextureQuad(aStartU, aStartV, aEndU, aEndV);
+void FDrawQuad::SetTextureCoords(FSprite *pSprite) {
+    if (pSprite != NULL) {
+        float aStartU = pSprite->GetStartU();
+        float aStartV = pSprite->GetStartV();
+        float aEndU = pSprite->GetEndU();
+        float aEndV = pSprite->GetEndV();
+        SetTextureQuad(aStartU, aStartV, aEndU, aEndV);
+    }
 }
 
 void FDrawQuad::Rotate(float pDegrees, float pCenterX, float pCenterY) {
     if (pDegrees != 0.0f) {
-        pDegrees = pDegrees * 0.01745329251994329576923690768488;
+        pDegrees = pDegrees * D_R;
         float aX = 0.0f;
         float aY = 0.0f;
         float aDist = 0.0f;
@@ -253,8 +230,8 @@ void FDrawQuad::Rotate(float pDegrees, float pCenterX, float pCenterY) {
                 aY /= aDist;
             }
             aPivot = (pDegrees - atan2f(aX, aY));
-            mVertex[i].mX = (sin(aPivot)) * aDist + pCenterX;
-            mVertex[i].mY = (-cos(aPivot)) * aDist + pCenterY;
+            mVertex[i].mX = (sinf(aPivot)) * aDist + pCenterX;
+            mVertex[i].mY = (-cosf(aPivot)) * aDist + pCenterY;
         }
     }
 }
@@ -456,33 +433,33 @@ bool FDrawQuad::ContainsPoint(float pX, float pY)
 
 void FDrawQuad::SetTextureAspectFit(FSprite *pSprite) {
     if(pSprite) {
-        double aRectWidth = (mVertex[3].mX - mVertex[0].mX);
-        double aRectHeight = (mVertex[3].mY - mVertex[0].mY);
-        double aImageWidth = pSprite->mWidth;
-        double aImageHeight = pSprite->mHeight;
-        double aImageStartU = (double)(pSprite->GetStartU());
-        double aImageStartV = (double)(pSprite->GetStartV());
-        double aImageEndU = (double)(pSprite->GetEndU());
-        double aImageEndV = (double)(pSprite->GetEndV());
-        double aRangeU = (aImageEndU - aImageStartU);
-        double aRangeV = (aImageEndV - aImageStartV);
-        double aSizeEpsilon = 0.5f;
+        float aRectWidth = (mVertex[3].mX - mVertex[0].mX);
+        float aRectHeight = (mVertex[3].mY - mVertex[0].mY);
+        float aImageWidth = pSprite->mWidth;
+        float aImageHeight = pSprite->mHeight;
+        float aImageStartU = (pSprite->GetStartU());
+        float aImageStartV = (pSprite->GetStartV());
+        float aImageEndU = (pSprite->GetEndU());
+        float aImageEndV = (pSprite->GetEndV());
+        float aRangeU = (aImageEndU - aImageStartU);
+        float aRangeV = (aImageEndV - aImageStartV);
+        float aSizeEpsilon = 0.5f;
         SetTextureQuad(aImageStartU, aImageStartV, aImageEndU, aImageEndV);
         if((aRectWidth >= aSizeEpsilon) && (aRectHeight >= aSizeEpsilon) && (aImageWidth >= aSizeEpsilon) && (aImageHeight >= aSizeEpsilon))
         {
-            double aTextureEpsilon = 0.01f;
+            float aTextureEpsilon = 0.01f;
             if((aRangeU > aTextureEpsilon) && (aRangeV > aTextureEpsilon))
             {
                 if((aRectWidth / aRectHeight) > (aImageWidth / aImageHeight))
                 {
-                    double aNewWidth = aImageWidth * (aRectHeight / aImageHeight);
-                    double aCenterX = mVertex[0].mX + aRectWidth / 2.0f;
+                    float aNewWidth = aImageWidth * (aRectHeight / aImageHeight);
+                    float aCenterX = mVertex[0].mX + aRectWidth / 2.0f;
                     SetRect(aCenterX - aNewWidth / 2.0f, mVertex[0].mY, aNewWidth, aRectHeight);
                 }
                 else
                 {
-                    double aNewHeight = aImageHeight * (aRectWidth / aImageWidth);
-                    double aCenterY = mVertex[0].mY + aRectHeight / 2.0f;
+                    float aNewHeight = aImageHeight * (aRectWidth / aImageWidth);
+                    float aCenterY = mVertex[0].mY + aRectHeight / 2.0f;
                     SetRect(mVertex[0].mX, aCenterY - aNewHeight / 2.0f, aRectWidth, aNewHeight);
                 }
             }
@@ -494,39 +471,39 @@ void FDrawQuad::SetTextureAspectFill(FSprite *pSprite)
 {
     if(pSprite)
     {
-        double aRectWidth = (mVertex[3].mX - mVertex[0].mX);
-        double aRectHeight = (mVertex[3].mY - mVertex[0].mY);
-        double aImageWidth = pSprite->mWidth;
-        double aImageHeight = pSprite->mHeight;
-        double aImageStartU = (double)(pSprite->GetStartU());
-        double aImageStartV = (double)(pSprite->GetStartV());
-        double aImageEndU = (double)(pSprite->GetEndU());
-        double aImageEndV = (double)(pSprite->GetEndV());
-        double aRangeU = (aImageEndU - aImageStartU);
-        double aRangeV = (aImageEndV - aImageStartV);
-        double aSizeEpsilon = 0.5f;
+        float aRectWidth = (mVertex[3].mX - mVertex[0].mX);
+        float aRectHeight = (mVertex[3].mY - mVertex[0].mY);
+        float aImageWidth = pSprite->mWidth;
+        float aImageHeight = pSprite->mHeight;
+        float aImageStartU = (pSprite->GetStartU());
+        float aImageStartV = (pSprite->GetStartV());
+        float aImageEndU = (pSprite->GetEndU());
+        float aImageEndV = (pSprite->GetEndV());
+        float aRangeU = (aImageEndU - aImageStartU);
+        float aRangeV = (aImageEndV - aImageStartV);
+        float aSizeEpsilon = 0.5f;
         SetTextureQuad(aImageStartU, aImageStartV, aImageEndU, aImageEndV);
         if((aRectWidth >= aSizeEpsilon) && (aRectHeight >= aSizeEpsilon) && (aImageWidth >= aSizeEpsilon) && (aImageHeight >= aSizeEpsilon))
         {
-            double aTextureEpsilon = 0.01f;
+            float aTextureEpsilon = 0.01f;
             if((aRangeU > aTextureEpsilon) && (aRangeV > aTextureEpsilon))
             {
                 if((aRectWidth / aRectHeight) < (aImageWidth / aImageHeight))
                 {
-                    double aExpandedWidth = aImageWidth * (aRectHeight / aImageHeight);
-                    double aPercent = 1.0 - ((aExpandedWidth - (aRectWidth)) / aExpandedWidth);
-                    double aCenterU = aImageStartU + (aImageEndU - aImageStartU) / 2.0;
-                    double aPunchU = (aRangeU * aPercent) / 2.0;
+                    float aExpandedWidth = aImageWidth * (aRectHeight / aImageHeight);
+                    float aPercent = 1.0 - ((aExpandedWidth - (aRectWidth)) / aExpandedWidth);
+                    float aCenterU = aImageStartU + (aImageEndU - aImageStartU) / 2.0;
+                    float aPunchU = (aRangeU * aPercent) / 2.0;
                     aImageStartU = aCenterU - aPunchU;
                     aImageEndU = aCenterU + aPunchU;
                     SetTextureQuad(aImageStartU, aImageStartV, aImageEndU, aImageEndV);
                 }
                 else
                 {
-                    double aExpandedHeight = aImageHeight * (aRectWidth / aImageWidth);
-                    double aPercent = 1.0 - ((aExpandedHeight - (aRectHeight)) / aExpandedHeight);
-                    double aCenterV = aImageStartV + (aImageEndV - aImageStartV) / 2.0;
-                    double aPunchV = (aRangeV * aPercent) / 2.0;
+                    float aExpandedHeight = aImageHeight * (aRectWidth / aImageWidth);
+                    float aPercent = 1.0 - ((aExpandedHeight - (aRectHeight)) / aExpandedHeight);
+                    float aCenterV = aImageStartV + (aImageEndV - aImageStartV) / 2.0;
+                    float aPunchV = (aRangeV * aPercent) / 2.0;
                     aImageStartV = aCenterV - aPunchV;
                     aImageEndV = aCenterV + aPunchV;
                     SetTextureQuad(aImageStartU, aImageStartV, aImageEndU, aImageEndV);
@@ -535,213 +512,6 @@ void FDrawQuad::SetTextureAspectFill(FSprite *pSprite)
         }
     }
 }
-
-
-FDrawQuadRay::FDrawQuadRay()
-{
-    mStartWidth = 8.0f;
-    mEndWidth = 8.0f;
-    
-    mStartPos = FVec2(0.0f, 0.0f);
-    mEndPos = FVec2(5.0f, 0.0f);
-    
-    mDir = FVec2(1.0f, 0.0f);
-    mNormal = FVec2(0.0f, 1.0f);
-    
-    mSprite = 0;
-    
-    mLength = 24.0f;
-    mAngle = 90.0f;
-    
-    mStartWidth = 20.0f;
-    mEndWidth = 12.0f;
-}
-
-FDrawQuadRay::~FDrawQuadRay()
-{
-    
-}
-
-void FDrawQuadRay::Draw(FSprite *pSprite)
-{
-    /*
-     
-     SetColor(1.0f, 0.0f, 0.0f);
-     
-     DrawRect(mStartPos.mX, mStartPos.mY, 8.0f, 8.0f);
-     
-     DrawLine(mStartPos.mX, mStartPos.mY, mEndPos.mX, mEndPos.mY);
-     
-     */
-    
-    FDrawQuad::Draw(pSprite);
-    
-}
-
-
-
-
-void FDrawQuadRay::ComputeCorners()
-{
-    
-    if(mLength > 0.25f)
-    {
-        mDir = AngleToVector(mAngle);
-        mEndPos = mStartPos + (mDir * mLength);
-        
-        
-        mNormal = FVec2(-mDir.mY, mDir.mX);
-        
-        
-        float aStartWidth2 = mStartWidth / 2.0f;
-        float aEndWidth2 = mEndWidth / 2.0f;
-        
-        
-        if(mSprite)SetTextureQuad(mSprite->mTextureRect.GetStartU(), mSprite->mTextureRect.GetStartV(), mSprite->mTextureRect.GetEndU(), mSprite->mTextureRect.GetEndV());
-        
-        
-        
-        float aStartX1 = mStartPos.mX + mNormal.mX * aStartWidth2;
-        float aStartY1 = mStartPos.mY + mNormal.mY * aStartWidth2;
-        
-        float aStartX2 = mStartPos.mX - mNormal.mX * aStartWidth2;
-        float aStartY2 = mStartPos.mY - mNormal.mY * aStartWidth2;
-        
-        
-        float aEndX1 = mEndPos.mX + mNormal.mX * aEndWidth2;
-        float aEndY1 = mEndPos.mY + mNormal.mY * aEndWidth2;
-        
-        float aEndX2 = mEndPos.mX - mNormal.mX * aEndWidth2;
-        float aEndY2 = mEndPos.mY - mNormal.mY * aEndWidth2;
-        
-        
-        
-        aStartX1 += mDir.mX * 20.0f;
-        aStartY1 += mDir.mY * 20.0f;
-        
-        
-        
-        
-        //SetQuad(aStartX1, aStartY1, aEndX1, aEndY1, aStartX2, aStartY2, aEndX2, aEndY2);
-        SetQuad(aEndX1, aEndY1, aEndX2, aEndY2, aStartX1, aStartY1, aStartX2, aStartY2);
-        
-        
-        //mVertex[0].mX = aStartX1;
-        
-        
-        
-    }
-    
-    /*
-     float aDirX = Sin(mAngle);
-     float aDirY =
-     
-     
-     float aDiffX = mEndPos.mX - pPoint.mX;
-     float aDiffY = pCenter.mY - pPoint.mY;
-     
-     float aDist = aDiffX * aDiffX + aDiffY * aDiffY;
-     
-     if(aDist > 0.25f)
-     {
-     
-     aDist=sqrtf(aDist);
-     
-     float aRotation = FaceTarget(aDiffX, aDiffY);
-     aRotation = pDegrees + aRotation;
-     
-     //if(aRotation < -360.0f || aRotation > 360.0f)
-     //{
-     //    aRotation = fmodf(aRotation, 360.0f);
-     //}
-     
-     aResult.mX = pCenter.mX + Sin(180.0f -aRotation) * pScale * aDist;
-     aResult.mY = pCenter.mY + Cos(180.0f -aRotation) * pScale * aDist;
-     
-     }
-     else
-     {
-     aResult = pPoint;
-     
-     aDiffX=0.0f;
-     aDiffY=0.0f;
-     
-     aDist=0.0f;
-     }
-     return aResult;
-     
-     */
-}
-
-void FDrawQuadRay::SetStartPos(float pX, float pY)
-{
-    mStartPos = FVec2(pX, pY);
-    ComputeCorners();
-}
-
-void FDrawQuadRay::SetStartPos(FVec2 pPos)
-{
-    mStartPos = pPos;
-    ComputeCorners();
-}
-
-void FDrawQuadRay::SetEndPos(float pX, float pY)
-{
-    mStartPos = FVec2(pX, pY);
-    ComputeCorners();
-}
-
-void FDrawQuadRay::SetEndPos(FVec2 pPos)
-{
-    mStartPos = pPos;
-    ComputeCorners();
-}
-
-void FDrawQuadRay::SetSprite(FSprite *pSprite)
-{
-    mSprite = pSprite;
-    ComputeCorners();
-}
-
-
-void FDrawQuadRay::SetAngle(float pDegrees)
-{
-    mAngle = pDegrees;
-    ComputeCorners();
-}
-
-void FDrawQuadRay::SetLength(float pLength)
-{
-    mLength = pLength;
-    ComputeCorners();
-}
-
-void FDrawQuadRay::SetWidthStart(float pWidth)
-{
-    mStartWidth = pWidth;
-    ComputeCorners();
-}
-
-void FDrawQuadRay::SetWidthEnd(float pWidth)
-{
-    mEndWidth = pWidth;
-    ComputeCorners();
-}
-
-void FDrawQuadRay::SetWidth(float pStartWidth, float pEndWidth)
-{
-    mStartWidth = pStartWidth;
-    mEndWidth = pEndWidth;
-    ComputeCorners();
-}
-
-void FDrawQuadRay::SetWidth(float pWidth)
-{
-    mStartWidth = pWidth;
-    mEndWidth = pWidth;
-    ComputeCorners();
-}
-
 
 FDrawQuadGrid::FDrawQuadGrid() {
     mXYZ = NULL;
