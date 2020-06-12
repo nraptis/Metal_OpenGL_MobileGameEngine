@@ -101,7 +101,7 @@ class func fallOffDampen(input:CGFloat, falloffStart:CGFloat, resultMax: CGFloat
                 if percentLinear < 0.0 { percentLinear = 0.0 }
                 if percentLinear > 1.0 { percentLinear = 1.0 }
                 //sin [0..1] => [0..pi/2]
-                let factor = CGFloat(sin(Float(percentLinear * (CGFloat.pi * 0.5))))
+                let factor = CGFloat(sinf(Float(percentLinear * (CGFloat.pi * 0.5))))
                 result = falloffStart + factor * (resultMax - falloffStart)
             }
         }
@@ -166,7 +166,7 @@ double intersect(Point pOrigin, Vector pNormal, Point rOrigin, Vector rVector)
  
  // Return the distance to the [first] intersecting point
  
- return v - sqrt(d);
+ return v - sqrtf(d);
 	}
  */
 

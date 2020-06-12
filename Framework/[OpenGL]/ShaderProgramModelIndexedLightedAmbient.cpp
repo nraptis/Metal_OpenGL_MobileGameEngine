@@ -42,7 +42,7 @@ void ShaderProgramModelIndexedLightedAmbient::BindUniform(FUniforms *pUniform) {
         glUniform4f(mSlotAmbient, aUniform->mLight.mRed, aUniform->mLight.mGreen, aUniform->mLight.mBlue,aUniform->mLight.mAmbientIntensity);
         
     } else {
-        Log("Uniform wrong type? [%x]\n", pUniform);
+        Log("Uniform wrong type? [%p]\n", pUniform);
     }
 }
 

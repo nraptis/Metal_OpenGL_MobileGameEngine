@@ -1,12 +1,11 @@
-
 #include "FXML.hpp"
 #include "FFile.hpp"
 #include "FString.hpp"
 #include "core_includes.h"
 
 FXML::FXML() {
-	mRoot=0;
-	mOutput=0;
+	mRoot=NULL;
+	mOutput=NULL;
 	mOutputSize=0;
 	mOutputLength=0;
 }
@@ -17,9 +16,9 @@ FXML::~FXML() {
 
 void FXML::Clear() {
 	if(mRoot)delete mRoot;
-	mRoot=0;
+	mRoot=NULL;
 	delete[]mOutput;
-	mOutput=0;
+	mOutput=NULL;
 	mOutputSize=0;
 	mOutputLength=0;
 }
@@ -92,13 +91,13 @@ void FXML::ExportAppend(char *pText)
 	}
 	//Log("Length -> %d  [%d]\n", mOutputLength, mOutputLength+aStrLen, mOutputSize);
 	memcpy(mOutput+mOutputLength,pText,aStrLen);
-	mOutput[aLen]=0;
+	mOutput[aLen] = NULL;
 	mOutputLength=aLen;
 }
 
 void FXML::Export() {
 	delete[]mOutput;
-	mOutput=0;
+	mOutput=NULL;
 	mOutput=new char[1];
 	mOutput[0]=0;
 	mOutputLength=0;
@@ -156,15 +155,10 @@ void FXML::Export(int depth, FXMLTag *tag) {
 	}
 }
 
-void FXML::Print()
-{
+void FXML::Print() {
 	Export();
-	if(mOutput)
-    {
-        Log((const char*)mOutput);
-        
-        //Log(mOutput);
-        
+	if (mOutput) {
+        Log("%s", mOutput);
     }
 }
 
@@ -237,8 +231,8 @@ void FXML::Parse(char *pData, int pLength) {
 	
 	aStack[0]=0;
 	
-	char *aName=0;
-	char *aValue=0;
+	char *aName=NULL;
+	char *aValue=NULL;
 	
 	int aLength;
 	
@@ -276,7 +270,7 @@ FIND_ROOT_TAG:
 	aSeek++;
 	while(*aSeek&&XML_VARIABLE_BODY(*aSeek))aSeek++;
 	if(*aSeek==0)goto XML_PARSE_ERROR;
-	aLength=aSeek-aHold;
+	aLength = (int)(aSeek-aHold);
 	aName=new char[aLength+1];
 	memcpy(aName,aHold,aLength);
 	aName[aLength]=0;
@@ -285,7 +279,7 @@ FIND_ROOT_TAG:
 	//Create the tag..
 	mRoot=new FXMLTag();
 	mRoot->mName=aName;
-	aName=0;
+	aName=NULL;
 	
 	//Keep on parsing it I guess.. We need to look for parameters...
 FIND_ROOT_PARAMETERS:
@@ -325,8 +319,8 @@ FIND_ROOT_PARAMETERS:
 		aParam->mName=aName;
 		aParam->mValue=aValue;
 		
-		aName=0;
-		aValue=0;
+		aName=NULL;
+		aValue=NULL;
 		
 		*mRoot+=aParam;
 		
@@ -443,7 +437,7 @@ BEGIN_STACK_LOOP:
 			}
 			aStack[aStackCount++]=aTag;
 			
-			aName=0;
+			aName=NULL;
 			
 			
 			
@@ -484,8 +478,8 @@ BEGIN_STACK_LOOP:
 				
 				//if()
 				
-				aName=0;
-				aValue=0;
+				aName=NULL;
+				aValue=NULL;
 				
 				*aTag+=aParam;
 				
@@ -601,7 +595,7 @@ BEGIN_STACK_LOOP:
 		*aCheck--=0;
 	}
 	aParent->mValue=aValue;
-	aValue=0;
+	aValue=NULL;
 	goto BEGIN_STACK_LOOP;
 	
 XML_PARSE_ERROR:
@@ -618,62 +612,6 @@ SUCCESS:
 		//Log("FXML Parse Success :(\n");
 	}
 }
-
-
-FXMLTag *FXML::GetNestedTag1(char *pName1)
-{
-	EnumTagsMatching(mRoot,aSubTag1,pName1)
-	{
-		return aSubTag1;
-	}   
-	return 0;
-}
-
-FXMLTag *FXML::GetNestedTag2(char *pName1, char *pName2)
-{
-	EnumTagsMatching(mRoot,aSubTag1,pName1)
-	{
-		EnumTagsMatching(aSubTag1,aSubTag2,pName2)
-		{
-			return aSubTag2;
-		}
-	}
-	return 0;
-}
-
-FXMLTag *FXML::GetNestedTag3(char *pName1, char *pName2, char *pName3)
-{
-	EnumTagsMatching(mRoot,aSubTag1,pName1)
-	{
-		EnumTagsMatching(aSubTag1,aSubTag2,pName2)
-		{
-			EnumTagsMatching(aSubTag2,aSubTag3,pName3)
-			{
-				return aSubTag3;
-			}
-		}
-	}
-	return 0;
-}
-
-FXMLTag *FXML::GetNestedTag4(char *pName1, char *pName2, char *pName3, char *pName4)
-{
-	EnumTagsMatching(mRoot,aSubTag1,pName1)
-	{
-		EnumTagsMatching(aSubTag1,aSubTag2,pName2)
-		{
-			EnumTagsMatching(aSubTag2,aSubTag3,pName3)
-			{
-				EnumTagsMatching(aSubTag3,aSubTag4,pName4)
-				{
-					return aSubTag4;
-				}
-			}
-		}
-	}   
-	return 0;
-}
-
 
 void FXMLElementList::Clear()
 {

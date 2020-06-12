@@ -34,8 +34,6 @@ static int                                  cArrayBufferTextureCoordsOffset = -1
 static int                                  cArrayBufferNormalsOffset = -1;
 static int                                  cArrayBufferTangentsOffset = -1;
 
-static int                                  gGraphicsThread = -1;
-
 static int                                  cCurrentRenderPass = -1;
 
 static int                                  cBufferIndexUniforms = 2;
@@ -695,7 +693,7 @@ void Graphics::UniformBind(FUniforms *pUniforms) {
     if (cShaderProgram != NULL && pUniforms != NULL) {
         cShaderProgram->BindUniform(pUniforms);
     } else {
-        Log("** Illegally Trying To Bind [%x] [%x]\n", cShaderProgram, pUniforms);
+        Log("** Illegally Trying To Bind [%p] [%p]\n", cShaderProgram, pUniforms);
     }
 }
 
@@ -734,9 +732,6 @@ void Graphics::TextureBind(FTexture *pTexture) {
         TextureBind(pTexture->mBindIndex);
     }
 }
-
-
-
 
 int Graphics::BufferArrayGenerate(int pLength) {
     unsigned int aBindIndex = 0;

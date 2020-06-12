@@ -100,8 +100,8 @@ void FQuad::Rotate(float pDegrees, float pCenterX, float pCenterY) {
                 aY /= aDist;
             }
             aPivot = (pDegrees - atan2f(aX, aY));
-            mX[i] = (sin(aPivot)) * aDist + pCenterX;
-            mY[i] = (-cos(aPivot)) * aDist + pCenterY;
+            mX[i] = (sinf(aPivot)) * aDist + pCenterX;
+            mY[i] = (-cosf(aPivot)) * aDist + pCenterY;
         }
     }
 }

@@ -124,18 +124,6 @@ public:
 	void				ExportAppend(char *pText);
 	inline void			ExportAppend(const char *pText){ExportAppend((char*)pText);}
     
-	FXMLTag				*GetNestedTag1(char *pName1);
-	inline FXMLTag		*GetNestedTag1(FString pName1){return GetNestedTag1(pName1.c());}
-	
-	FXMLTag				*GetNestedTag2(char *pName1, char *pName2);
-	inline FXMLTag		*GetNestedTag2(FString pName1, FString pName2){return GetNestedTag2(pName1.c(),pName2.c());}
-	
-	FXMLTag				*GetNestedTag3(char *pName1, char *pName2, char *pName3);
-	inline FXMLTag		*GetNestedTag3(FString pName1, FString pName2, FString pName3){return GetNestedTag3(pName1.c(),pName2.c(),pName3.c());}
-	
-	FXMLTag				*GetNestedTag4(char *pName1, char *pName2, char *pName3, char *pName4);
-	inline FXMLTag		*GetNestedTag4(FString pName1, FString pName2, FString pName3, FString pName4){return GetNestedTag4(pName1.c(),pName2.c(),pName3.c(),pName4.c());}
-    
 	void				Clear();
 	
 	inline FXMLTag		*GetRoot(){return mRoot;}

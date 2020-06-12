@@ -360,7 +360,7 @@ void FPointList::GenerateCircle(float pRadius, float pMinDist) {
     for (int i=0;i<aPointCount;i++) {
         aPercent = ((float)i) / aFactor;
 		aRotation = aPercent * (PI2);
-        Add(sin(aRotation) * pRadius, -cos(aRotation) * pRadius);
+        Add(sinf(aRotation) * pRadius, -cosf(aRotation) * pRadius);
     }
 }
 

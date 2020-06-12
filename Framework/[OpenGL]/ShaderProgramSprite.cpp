@@ -34,7 +34,7 @@ void ShaderProgramSprite::BindUniform(FUniforms *pUniform) {
     if (pUniform && pUniform->GetType() == UNIFORM_TYPE_BASIC) {
         ShaderProgram::BindUniform(pUniform);
     } else {
-        Log("Uniform wrong type? [%x]\n", pUniform);
+        Log("Uniform wrong type? [%p]\n", pUniform);
     }
 }
 

@@ -10,7 +10,6 @@
 #ifndef PRIMITIVE_MESH_H
 #define PRIMITIVE_MESH_H
 
-
 #include "FString.hpp"
 #include "FIndexList.hpp"
 

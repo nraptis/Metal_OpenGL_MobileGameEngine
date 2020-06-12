@@ -225,7 +225,7 @@ float FVec3DotProduct(FVec3 pVectorLeft, FVec3 pVectorRight)
 
 float FVec3Length(FVec3 pVector)
 {
-    return sqrt(pVector.mX * pVector.mX + pVector.mY * pVector.mY + pVector.mZ * pVector.mZ);
+    return sqrtf(pVector.mX * pVector.mX + pVector.mY * pVector.mY + pVector.mZ * pVector.mZ);
 }
 
 float FVec3Distance(FVec3 pVectorStart, FVec3 pVectorEnd)

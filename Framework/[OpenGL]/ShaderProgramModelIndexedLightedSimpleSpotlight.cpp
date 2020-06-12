@@ -69,7 +69,7 @@ void ShaderProgramModelIndexedLightedSimpleSpotlight::BindUniform(FUniforms *pUn
         glUniform2f(mSlotMaterial, aUniform->mLight.mShininess, aUniform->mLight.mEmissions);
         
     } else {
-        Log("Uniform wrong type? [%x]\n", pUniform);
+        Log("Uniform wrong type? [%p]\n", pUniform);
     }
 }
 

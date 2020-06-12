@@ -456,8 +456,8 @@ void FDrawNodeList::Draw(FSprite *pSprite, bool pStrips) {
     
     bool aUseTexture = false;
     
-    if ((mEnabledTexture == true) && (pSprite != 0)) {
-        if (pSprite->mTexture != 0) {
+    if ((mEnabledTexture == true) && (pSprite != NULL)) {
+        if (pSprite->mTexture != NULL) {
             aUseTexture = true;
         }
     }

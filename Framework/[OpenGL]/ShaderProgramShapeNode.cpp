@@ -30,7 +30,7 @@ void ShaderProgramShapeNode::BindUniform(FUniforms *pUniform) {
         ShaderProgram::BindUniform(pUniform);
         
     } else {
-        Log("Uniform wrong type? [%x]\n", pUniform);
+        Log("Uniform wrong type? [%p]\n", pUniform);
     }
 }
 

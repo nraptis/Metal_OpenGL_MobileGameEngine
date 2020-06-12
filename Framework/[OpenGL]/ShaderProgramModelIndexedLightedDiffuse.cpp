@@ -50,7 +50,7 @@ void ShaderProgramModelIndexedLightedDiffuse::BindUniform(FUniforms *pUniform) {
         glUniform4f(mSlotDiffuse, aUniform->mLight.mDirX, aUniform->mLight.mDirY, aUniform->mLight.mDirZ,aUniform->mLight.mDiffuseIntensity);
         
     } else {
-        Log("Uniform wrong type? [%x]\n", pUniform);
+        Log("Uniform wrong type? [%p]\n", pUniform);
     }
 }
 

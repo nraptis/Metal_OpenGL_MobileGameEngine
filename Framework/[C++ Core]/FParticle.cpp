@@ -543,7 +543,7 @@ void FParticle::Fling(float pDirX, float pDirY, float pPower, float pPunch) {
     float aDirY = pDirY;
     float aLength = aDirX * aDirX + aDirY * aDirY;
     if (aLength > SQRT_EPSILON) {
-        aLength = sqrt(aLength);
+        aLength = sqrtf(aLength);
         aDirX /= aLength;
         aDirY /= aLength;
     } else {

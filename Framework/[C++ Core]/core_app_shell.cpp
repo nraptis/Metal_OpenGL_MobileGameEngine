@@ -288,9 +288,6 @@ void AppShellSetDeviceSize(int pWidth, int pHeight) {
             //TODO: Toggle for crop tool...
             //aApp->BaseSetVirtualFrame(gVirtualDevX, gVirtualDevY, gVirtualDevWidth, gVirtualDevHeight);
             
-            float aAspectRatio = 768.0f / 1024.0f;
-            
-            
             /*
             if (false) {
                 

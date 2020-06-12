@@ -42,7 +42,7 @@ void ShaderProgramSimpleModel::BindUniform(FUniforms *pUniform) {
         
         
     } else {
-        Log("Uniform wrong type? [%x]\n", pUniform);
+        Log("Uniform wrong type? [%p]\n", pUniform);
     }
 }
 

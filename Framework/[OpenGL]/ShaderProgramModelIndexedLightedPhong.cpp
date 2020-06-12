@@ -75,7 +75,7 @@ void ShaderProgramModelIndexedLightedPhong::BindUniform(FUniforms *pUniform) {
         glUniform2f(mSlotSpecular, aUniform->mLight.mShininess, aUniform->mLight.mSpecularIntensity);
         
     } else {
-        Log("Uniform wrong type? [%x]\n", pUniform);
+        Log("Uniform wrong type? [%p]\n", pUniform);
     }
 }
 
