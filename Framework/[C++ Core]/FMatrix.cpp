@@ -233,17 +233,6 @@ void FMatrix::Translate(float pX, float pY, float pZ) {
     }
 }
 
-void FMatrix::SetTranslation(float pX, float pY, float pZ, float pW) {
-    m[3] = pX;
-    m[7] = pY;
-    m[11] = pZ;
-    m[15] = pW;
-}
-
-void FMatrix::ResetTranslation() {
-    SetTranslation(0.0f, 0.0f, 0.0f, 1.0f);
-}
-
 FVec2 FMatrix::ProcessVec2(FVec2 pVec) {
     FVec3 aResult = ProcessVec3(FVec3(pVec.mX, pVec.mY, 0.0f));
     return FVec2(aResult.mX, aResult.mY);

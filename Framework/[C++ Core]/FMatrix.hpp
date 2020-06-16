@@ -33,12 +33,6 @@ public:
     
     void                                SetNormalMatrix(FMatrix &pModelView);
     
-    
-    void                                SetTranslation(float pX, float pY, float pZ, float pW);
-    void                                ResetTranslation();
-    
-    
-    
     void                                Transpose();
     void                                Invert();
     void                                InvertAndTranspose();
