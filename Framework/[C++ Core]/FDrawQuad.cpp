@@ -138,6 +138,20 @@ void FDrawQuad::SetTextureQuad(float pStartU, float pStartV, float pEndU, float 
     mVertex[3].mV = pEndV;
 }
 
+void FDrawQuad::SetTextureCoords(FSprite *pSprite) {
+    if (pSprite != NULL) {
+        float aStartU = pSprite->GetStartU();
+        float aStartV = pSprite->GetStartV();
+        float aEndU = pSprite->GetEndU();
+        float aEndV = pSprite->GetEndV();
+        SetTextureQuad(aStartU, aStartV, aEndU, aEndV);
+    }
+}
+
+void FDrawQuad::SetTextureCoords(FSprite &pSprite) {
+    SetTextureCoords(&pSprite);
+}
+
 void FDrawQuad::Shift(float pX, float pY, float pZ) {
     for(int i=0;i<4;i++) {
         mVertex[i].mX += pX;
@@ -201,16 +215,6 @@ void FDrawQuad::TransformSpriteCorners(float pCenterX, float pCenterY, FSprite *
 void FDrawQuad::RotateAndScale(float pDegrees, float pScale) {
     Rotate(pDegrees);
     Scale(pScale);
-}
-
-void FDrawQuad::SetTextureCoords(FSprite *pSprite) {
-    if (pSprite != NULL) {
-        float aStartU = pSprite->GetStartU();
-        float aStartV = pSprite->GetStartV();
-        float aEndU = pSprite->GetEndU();
-        float aEndV = pSprite->GetEndV();
-        SetTextureQuad(aStartU, aStartV, aEndU, aEndV);
-    }
 }
 
 void FDrawQuad::Rotate(float pDegrees, float pCenterX, float pCenterY) {
