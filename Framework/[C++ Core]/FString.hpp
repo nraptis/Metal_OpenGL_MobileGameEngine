@@ -144,8 +144,8 @@ public:
 	void					        Append(const char *pString);
 	void					        Append(FString &pString);
 	void					        Append(const char *pString, int pCount);
-	void					        Append(char *pString, int pCount){Append((const char *)pString, pCount);}
-	void					        Append(FString &pString, int pCount){Append((const char *)(pString.mData), pCount);}
+	void					        Append(char *pString, int pCount) { Append((const char *)pString, pCount); }
+	void					        Append(FString &pString, int pCount) { Append((const char *)(pString.mData), pCount); }
 	
 	//void					        Ins(const char *pString, int pLength, int pSlot);
 	//void					        Ins(char *pString, int pLength, int pSlot){ Ins((const char *)pString, pLength, pSlot); }

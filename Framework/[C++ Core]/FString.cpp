@@ -198,7 +198,7 @@ void FString::Size(int pSize) {
 		if (mLength > mSize) {
 			mLength = mSize;
 		}
-        for (int i=0; i<mLength; i++) { aNew[i] = mData[i]; }
+        for (int i=0;i<mLength;i++) { aNew[i] = mData[i]; }
 		//for (int i = mLength; i <= mSize; i++) aNew[i] = 0;
         aNew[mLength] = 0;
         
@@ -219,32 +219,18 @@ int	FString::Length(const char *pString) {
 
 void FString::Reset() {
     mLength = 0;
-    if (mData != 0) {
+    if (mData != NULL) {
         mData[0] = 0;
     }
 }
 
 void FString::Set(const char *pString) {
-    
-    /*
-    Free();
-    mLength = Length(pString);
-    mData = new char[mLength+1];
-    for (int i=0;i<mLength;i++) {
-        mData[i] = pString[i];
-    }
-    mData[mLength] = 0;
-    mSize = mLength;
-    */
-    
     mLength = Length(pString);
 	if ((pString != NULL) && (pString != mData)) {
         if (mLength > mSize) {
-            
             mSize = mLength;
             delete [] mData;
             mData = new char[mLength + 1];
-            
             char *aPaste = mData;
             char *aCopy = (char *)pString;
             if (aCopy != NULL) {
@@ -276,8 +262,6 @@ void FString::Set(const char *pString) {
             mData[0] = 0;
         }
     }
-    
-    
 }
 
 void FString::Append(char pChar) {
@@ -313,7 +297,6 @@ void FString::Append(const char *pString, int pCount) {
         mData[mLength] = 0;
 	}
 }
-
 
 void FString::Set(FString &pString) {
 	Set(pString.c());
