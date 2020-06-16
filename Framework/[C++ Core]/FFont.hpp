@@ -81,6 +81,14 @@ public:
     void                            WrapLeft(const char *pText, float pX, float pY, float pAreaWidth, float pLineHeight, float pScale);
     
     
+    int                             WrapLineCount(const char *pText, float pAreaWidth, float pScale);
+    
+    const char                      *WrapGetFirstLine(const char *pText, float pAreaWidth, float pScale);
+    const char                      *WrapGetNextLine(const char *pText, float pAreaWidth, float pScale);
+    
+    int                             mWrapStartIndex;
+    
+    
 
     void                            Center(const char *pText, float pX, float pY);
     void                            Center(const char *pText, float pX, float pY, float pScale);
@@ -92,11 +100,6 @@ public:
     void                            CenterAlt(const char *pText, float pX, float pY, float pScale);
     void                            CenterAlt(FString pText, float pX, float pY) { CenterAlt((const char *)pText.c(), pX, pY); }
     void                            CenterAlt(FString pText, float pX, float pY, float pScale) { CenterAlt((const char *)pText.c(), pX, pY, pScale); }
-    
-    
-
-    static FString                  CharToReadable(char c);
-    static FString                  CharToFileSafe(char c);
     
     int                             CharIndex(char pChar);
     bool                            CharExists(char pChar);
@@ -143,8 +146,6 @@ public:
     
     void                            Load(const char *pDataFile, const char *pImagePrefix, const char *pCharacters);
     
-    
-
     void                            PrintLoaded();
 };
 

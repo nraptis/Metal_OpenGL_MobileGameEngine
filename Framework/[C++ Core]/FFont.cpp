@@ -24,6 +24,7 @@ FFont::FFont() {
     mDataScale = 1.0f;
     mSpriteScale = 1.0f;
     mGlobalSqueeze = 0.0f;
+    mWrapStartIndex = 0;
 }
 
 FFont::~FFont() {
@@ -115,80 +116,96 @@ void FFont::DrawCenteredVertically(const char *pText, float pX, float pY, float 
     Draw(pText, pX, pY - (mPointSize * (mDataScale * pScale * gSpriteDrawScale) * 0.5f), pScale);
 }
 
+int FFont::WrapLineCount(const char *pText, float pAreaWidth, float pScale) {
+    if (WrapGetFirstLine(pText, pAreaWidth, pScale) != NULL) {
+        int aResult = 1;
+        while (WrapGetNextLine(pText, pAreaWidth, pScale) != NULL) {
+            ++aResult;
+        }
+        return aResult;
+    } else {
+        return 0;
+    }
+}
 
-void FFont::WrapLeft(const char *pText, float pX, float pY, float pAreaWidth, float pLineHeight, float pScale) {
+const char *FFont::WrapGetFirstLine(const char *pText, float pAreaWidth, float pScale) {
+    mWrapStartIndex = 0;
+    return WrapGetNextLine(pText, pAreaWidth, pScale);
+}
+
+static FString cWrapBuffer;
+const char *FFont::WrapGetNextLine(const char *pText, float pAreaWidth, float pScale) {
     
-    if (pAreaWidth < 16.0f) { return; }
+    if (pText == NULL) { return NULL; }
+    while (pText[mWrapStartIndex] == ' ') { ++mWrapStartIndex; }
+    if (pText[mWrapStartIndex] == 0) { return NULL; }
     
+    cWrapBuffer.Reset();
+    
+    int aIndex = mWrapStartIndex;
+    bool aDidEncounterSpace = false;
+    
+    float aWidth = 0.0f;
     unsigned char aChar = 0;
-    float aDrawX = pX;
-    float aDrawY = pY;
     int aCharIndex = -1;
     int aCharIndexPrev = -1;
     float aKern = 0.0f;
-    float aScale = (mDataScale * pScale);
-    float aPointSize = mPointSize * mDataScale * pScale * gSpriteDrawScale;
-    float aSpriteScale = mSpriteScale * pScale;
+    float aScale = (pScale * mDataScale);
     
-    int aLength = FString::Length(pText);
-    if (aLength > 0) {
-        
-        int aIndex = 0;
-        
-        while (aIndex < aLength) {
-            
-            int aStartIndex = aIndex;
-            float aWidth = 0.0f;
-            
-            
-            int aCheckIndex = aStartIndex;
-            aCharIndex = -1;
-            aCharIndexPrev = -1;
-            
-            while ((aCheckIndex < aLength) && (aWidth < pAreaWidth)) {
-                aKern = 0.0f;
-                aCharIndexPrev = aCharIndex;
-                aChar = pText[aCheckIndex];
-                aCharIndex = aChar;
-                if (aCharIndexPrev != -1) { aKern = mKern[aCharIndexPrev][aCharIndex]; }
-                //float aSpriteWidth = mCharacterSprite[aCharIndex].mWidth * aSpriteScale;
-                //mCharacterSprite[aCharIndex].Draw(aDrawX + ((mCharacterOffsetX[aCharIndex] + aKern) * aScale) + aSpriteWidth  * 0.5f, aDrawY + aPointSize / 2.0f, aSpriteScale, 0.0f);
-                
-                aWidth += (mCharacterStrideX[aCharIndex] + aKern) * aScale;
-                aCheckIndex += 1;
-            }
-            
-            aCharIndex = -1;
-            aCharIndexPrev = -1;
-            
-            if (aCheckIndex != (aIndex + 1) && (aCheckIndex != aLength)) {
-                //We could fit > 1 character...
-                aCheckIndex--;
-            }
-            
-            
-            
-            while (aIndex < aCheckIndex) {
-                aKern = 0.0f;
-                aCharIndexPrev = aCharIndex;
-                aChar = pText[aIndex];
-                aCharIndex = aChar;
-                if (aCharIndexPrev != -1) { aKern = mKern[aCharIndexPrev][aCharIndex]; }
-                float aSpriteWidth = mCharacterSprite[aCharIndex].mWidth * aSpriteScale;
-                mCharacterSprite[aCharIndex].Draw(aDrawX + ((mCharacterOffsetX[aCharIndex] + aKern) * aScale) + aSpriteWidth  * 0.5f, aDrawY + aPointSize / 2.0f, aSpriteScale, 0.0f);
-                
-                aDrawX += (mCharacterStrideX[aCharIndex] + aKern) * aScale;
-                aIndex += 1;
-            }
-            
-            aWidth = 0.0f;
-            aIndex = aCheckIndex;
-            aDrawY += pLineHeight;
-            aDrawX = pX;
-        }
+    while ((pText[aIndex] != 0) && (aWidth < pAreaWidth)) {
+        aKern = 0.0f;
+        aChar = pText[aIndex];
+        if (aChar == ' ') { aDidEncounterSpace = true; }
+        aCharIndexPrev = aCharIndex;
+        aCharIndex = aChar;
+        if (aCharIndexPrev != -1) { aKern = mKern[aCharIndexPrev][aCharIndex]; }
+        aWidth += ((mCharacterStrideX[aCharIndex] + aKern) * aScale);
+        ++aIndex;
     }
     
-    
+    int aCount = (aIndex - mWrapStartIndex);
+    if (aWidth <= pAreaWidth) {
+        cWrapBuffer.Append(&(pText[mWrapStartIndex]), aCount);
+        mWrapStartIndex = aIndex;
+    } else {
+        //Do we end on a space?
+        if (pText[aIndex] == ' ') {
+            --aIndex;
+            --aCount;
+        } else if (aCount > 1) {
+            --aIndex;
+            --aCount;
+        }
+        
+        //We have only 1 giant word...
+        if (!aDidEncounterSpace) {
+            if (aCount <= 1) {
+                //We have only 1 giant character...
+                cWrapBuffer.Append(pText[mWrapStartIndex]);
+                ++mWrapStartIndex;
+            } else {
+                cWrapBuffer.Append(&(pText[mWrapStartIndex]), aCount);
+                mWrapStartIndex = aIndex;
+            }
+        } else {
+            //We have at least one space between words... Fall back to the last word...
+            while (pText[aIndex] != ' ') { aIndex--; }
+            aCount = (aIndex - mWrapStartIndex);
+            cWrapBuffer.Append(&(pText[mWrapStartIndex]), aCount);
+            mWrapStartIndex = aIndex;
+        }
+    }
+    return cWrapBuffer.c();
+}
+
+void FFont::WrapLeft(const char *pText, float pX, float pY, float pAreaWidth, float pLineHeight, float pScale) {
+    const char *aText = WrapGetFirstLine(pText, pAreaWidth, pScale);
+    float aDrawY = pY;
+    while (aText != NULL) {
+        Draw(aText, pX, aDrawY, pScale);
+        aDrawY += pLineHeight;
+        aText = WrapGetNextLine(pText, pAreaWidth, pScale);
+    }
 }
 
 
@@ -264,17 +281,12 @@ float FFont::LocationOfCursor(int pCursor, const char *pText, float pX, float pY
             aCharIndex = aChar;
             if (aCharIndexPrev != -1) { aKern = mKern[aCharIndexPrev][aCharIndex]; }
             
-            
-            
-            
             aResult += (mCharacterStrideX[aCharIndex] + aKern) * aScale;
-
             
             ++aPtr;
             ++aIndex;
         }
     }
-    
     return aResult;
 }
 
@@ -327,7 +339,6 @@ void FFont::Left(const char *pText, float pX, float pY, float pScale) {
 void FFont::LeftCenter(const char *pText, float pX, float pY, float pScale) {
     Draw(pText, pX, pY - (mPointSize * (mDataScale * pScale) * 0.5f), pScale);
 }
-
 
 float FFont::Width(const char *pText, float pScale) {
     float aResult = 0.0f;
@@ -468,76 +479,6 @@ void FFont::PrintLoaded() {
     }
     if(aLoadedChars > 0)Log("__\n");
     Log("____END_FONT____\n");
-}
-
-
-FString FFont::CharToFileSafe(char c)
-{
-    FString aResult;
-    
-    if((c >= 'a') && (c <= 'z'))
-    {
-        aResult = FString(c);
-    }
-    else if((c >= 'A') && (c <= 'Z'))
-    {
-        aResult = FString(c);
-    }
-    else if((c >= '0') && (c <= '9'))
-    {
-        aResult = FString(c);
-    }
-    else if((c == '$') || (c <= '_') || (c <= '-') || (c <= '+') || (c <= '(') || (c <= ')') || (c <= '[') || (c <= ']') || (c <= '|') || (c <= ','))
-    {
-        aResult = FString(c);
-    }
-    else
-    {
-        unsigned char aChar = c;
-        
-        
-        //int aInt = (int)(((unsigned int)((unsigned char)c)));
-        int aInt = aChar;//(int)(((unsigned int)((unsigned char)c)));
-        
-        
-        aResult = FString(aInt);
-    }
-    
-    return aResult;
-}
-
-FString FFont::CharToReadable(char pChar)
-{
-    
-    FString aResult = FString(pChar);
-    
-    if(pChar == 0x07)aResult = "\a";
-    else if(pChar == 0x08)aResult = "\b";
-    else if(pChar == 0x0C)aResult = "\f";
-    else if(pChar == 0x0A)aResult = "\n";
-    else if(pChar == 0x0D)aResult = "\r";
-    else if(pChar == 0x09)aResult = "\t";
-    else if(pChar == 0x0B)aResult = "\v";
-    else if(pChar == 0x5C)aResult = "\\";
-    else if(pChar == 0x27)aResult = "\'";
-    else if(pChar == 0x22)aResult = "\"";
-    else if(pChar == 0x3F)aResult = "\?";
-    else if(pChar == 0x00)aResult = "\0";
-    else if(pChar == 0x01)aResult = "\1";
-    else if(pChar == 0x02)aResult = "\2";
-    else if(pChar == 0x03)aResult = "\3";
-    else if(pChar == 0x04)aResult = "\4";
-    else if(pChar == 0x05)aResult = "\5";
-    else if(pChar == 0x06)aResult = "\6";
-    else if(pChar == 0x07)aResult = "\7";
-    
-    
-    
-    //else aResult = FString(c);
-    
-    aResult = FString(FString("'") + aResult + FString("'")).c();
-    
-    return aResult;
 }
 
 void FFont::Kill() {
