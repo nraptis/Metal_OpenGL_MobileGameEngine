@@ -17,8 +17,10 @@ public:
     FAchievement();
     ~FAchievement();
     
-    FString                                 mIdentifier;
-    FString                                 mDescription;
+    FString                                 mIdentifier; // Unique identifier for the achievement (should not be displayed to customer).
+    FString                                 mTitle; // The name of the achievement.
+    FString                                 mDescription; // A description of how to earn the achievement.
+    int                                     mPoints; // For example, an achievement might be worth 5 points, 10 points, 25 points, 50 points, or 100 points.
     
     void                                    Load(FJSONNode *pLoadNode);
     FJSONNode                               *Save();
