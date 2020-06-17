@@ -11,9 +11,10 @@
 
 FAchievement::FAchievement() {
     
-    
     mProgress = 0;
     mProgressMax = 1;
+    
+    mPoints = 1;
     
     mComplete = false;
     

@@ -335,84 +335,68 @@ public:
 	//
 	//Get a copy of the FString with a certain case.
 	//
-	FString							    ToUpper(){FString aResult = *this;aResult.Uppercase();return aResult;}
-	FString							    ToLower(){FString aResult = *this;aResult.Lowercase();return aResult;}
+	FString							    ToUpper() { FString aResult = *this;aResult.Uppercase();return aResult; }
+	FString							    ToLower() { FString aResult = *this;aResult.Lowercase();return aResult; }
 
 	void							    Encrypt(char *theKey);
-	void							    Encrypt(const char *theKey){Encrypt((char*)theKey);}
-	virtual void					    Encrypt(FString &theKey){Encrypt(theKey.mData);}
+	void							    Encrypt(const char *theKey) { Encrypt((char*)theKey); }
+	virtual void					    Encrypt(FString &theKey) { Encrypt(theKey.mData); }
 
 	void							    Decrypt(char *theKey);
-	void							    Decrypt(const char *theKey){Decrypt((char*)theKey);}
-	virtual void					    Decrypt(FString &theKey){Decrypt(theKey.mData);}
+	void							    Decrypt(const char *theKey) { Decrypt((char*)theKey); }
+	virtual void					    Decrypt(FString &theKey) { Decrypt(theKey.mData); }
 
 	int                                 Compare(FString &pString);
 	int                                 CompareI(FString &pString);
 
-    inline int                          Compare(char *pString){FString aString(pString);return Compare(aString);}
-	inline int                          CompareI(char *pString){FString aString(pString);return CompareI(aString);}
+    inline int                          Compare(char *pString) { FString aString(pString);return Compare(aString); }
+	inline int                          CompareI(char *pString) { FString aString(pString);return CompareI(aString); }
 
-	inline int                          Compare(const char *pString){FString aString(pString);return Compare(aString);}
-	inline int                          CompareI(const char *pString){FString aString(pString);return CompareI(aString);}
-    
+	inline int                          Compare(const char *pString) { FString aString(pString);return Compare(aString); }
+	inline int                          CompareI(const char *pString) { FString aString(pString);return CompareI(aString); }
     
 	bool                                StartsWith(char *pString);
-	inline bool                         StartsWith(FString &pString){return StartsWith(pString.mData);}
+	inline bool                         StartsWith(FString &pString) { return StartsWith(pString.mData); }
 	
 	bool                                StartsWithI(char *pString);
-	inline bool                         StartsWithI(FString &pString){return StartsWithI(pString.mData);}
+	inline bool                         StartsWithI(FString &pString) { return StartsWithI(pString.mData); }
     
     
     bool                                EndsWith(char *pString);
-	inline bool                         EndsWith(FString &pString){return EndsWith(pString.mData);}
+	inline bool                         EndsWith(FString &pString) { return EndsWith(pString.mData); }
 	
 	bool                                EndsWithI(char *pString);
-	inline bool                         EndsWithI(FString &pString){return EndsWithI(pString.mData);}
+	inline bool                         EndsWithI(FString &pString) { return EndsWithI(pString.mData); }
     
     
-    inline char                         *c() { if (mData == 0) { *this = ""; } return mData; }
+    inline char                         *c() { if (!mData) { *this = ""; } return mData; }
     
     
 
-    inline bool                     operator ==(FString pString){return (CompareI(pString) == 0);}
-	inline bool						operator ==(const char *pString){return (CompareI(pString) == 0);}
-	inline bool						operator ==(char *pString){return (CompareI(pString) == 0);}
+    inline bool                     operator ==(FString pString) { return (CompareI(pString) == 0); }
+	inline bool						operator ==(const char *pString) { return (CompareI(pString) == 0); }
+	inline bool						operator ==(char *pString) { return (CompareI(pString) == 0); }
     
-    void                            operator = (char*pString){ Set((const char *)pString); }
+    void                            operator = (char*pString) { Set((const char *)pString); }
 	void                            operator = (const char *pString) { Set(pString); }
 	void                            operator = (const FString pString) { Set((const char *)(pString.mData)); }
     
-	inline void                     operator += (FString pString){Append(pString);}
-	inline void                     operator += (char*pString){Append(pString);}
-	inline void                     operator += (const char*pString){Append(pString);}
-	void                            operator += (char pChar){Append(pChar);}
+	inline void                     operator += (FString pString) { Append(pString); }
+	inline void                     operator += (char *pString) { Append(pString); }
+	inline void                     operator += (const char *pString) { Append(pString); }
+	void                            operator += (char pChar) { Append(pChar); }
 
     
 	FString                         operator + (FString pString);
 	FString                         operator + (const char *pString);
 	FString                         operator + (char *pString);
 
-	FString                         operator + (char pChar);
-    
-    
-protected:
-    
-    //void                            BaseInitialize();
-    
-    
+	FString                         operator + (char pChar);    
 };
 
-//inline void		operator--(FString &pString, int theDummy){pString.Truncate(pString.mLength-1);}
+inline FString	operator+(char * theChar, FString &pString) { return FString(theChar) + pString; }
+inline FString	operator+(const char * theChar, FString &pString) {return FString(theChar) + pString; }
 
-//inline FString	operator+(FString &pString1, FString &pString2){ return FString(pString1.c()) + pString2; }
-inline FString	operator+(char * theChar, FString &pString){ return FString(theChar) + pString; }
-inline FString	operator+(const char * theChar, FString &pString){return FString(theChar) + pString;}
-//inline FString	operator+(int theInt, FString &pString){return FString(theInt) + pString;}
-//inline FString	operator+(bool theBool, FString &pString){return FString(theBool) + pString;}
-//inline FString	operator+(float pFloat, FString &pString){return FString(pFloat) + pString;}
-//inline FString	operator+(char theChar, FString &pString){return FString(theChar) + pString;}
-
-//inline bool		operator==(char *theChar, FString pString){return pString == theChar;}
 
 #endif
 
