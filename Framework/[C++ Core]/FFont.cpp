@@ -152,7 +152,7 @@ const char *FFont::WrapGetNextLine(const char *pText, float pAreaWidth, float pS
     float aKern = 0.0f;
     float aScale = (pScale * mDataScale);
     
-    while ((pText[aIndex] != 0) && (aWidth < pAreaWidth)) {
+    while ((pText[aIndex] != 0) && (aWidth <= pAreaWidth)) {
         aKern = 0.0f;
         aChar = pText[aIndex];
         if (aChar == ' ') { aDidEncounterSpace = true; }
@@ -168,14 +168,9 @@ const char *FFont::WrapGetNextLine(const char *pText, float pAreaWidth, float pS
         cWrapBuffer.Append(&(pText[mWrapStartIndex]), aCount);
         mWrapStartIndex = aIndex;
     } else {
-        //Do we end on a space?
-        if (pText[aIndex] == ' ') {
-            --aIndex;
-            --aCount;
-        } else if (aCount > 1) {
-            --aIndex;
-            --aCount;
-        }
+        
+        --aIndex;
+        --aCount;
         
         //We have only 1 giant word...
         if (!aDidEncounterSpace) {
