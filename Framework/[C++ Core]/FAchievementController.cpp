@@ -25,39 +25,34 @@ void FAchievementController::Clear() {
     mGroupMap.RemoveAll();
 }
 
-void FAchievementController::AddAchievement(const char *pAchievementIdentifier, const char *pAchievementDescription, int pProgressMax) {
-    
+void FAchievementController::AddAchievement(const char *pAchievementIdentifier, const char *pAchievementTitle, const char *pAchievementDescription, int pPoints, int pProgressMax) {
     FAchievement *aAchievement = (FAchievement *)(mAchievementMap.Get(pAchievementIdentifier));
     if (aAchievement == NULL) {
         aAchievement = new FAchievement();
         mAchievementMap.Add(pAchievementIdentifier, aAchievement);
         mAchievementList.Add(aAchievement);
     }
-    
     aAchievement->mIdentifier = pAchievementIdentifier;
+    aAchievement->mTitle = pAchievementTitle;
     aAchievement->mDescription = pAchievementDescription;
     aAchievement->mProgressMax = pProgressMax;
+    aAchievement->mPoints = pPoints;
 }
 
-void FAchievementController::AddAchievement(const char *pGroupName, const char *pAchievementIdentifier, const char *pAchievementDescription, int pProgressMax) {
-    
+void FAchievementController::AddAchievement(const char *pGroupName, const char *pAchievementIdentifier, const char *pAchievementTitle, const char *pAchievementDescription, int pPoints, int pProgressMax) {
     FAchievementGroup *aGroup = (FAchievementGroup *)(mAchievementMap.Get(pGroupName));
-    
     if (aGroup == NULL) {
         aGroup = new FAchievementGroup();
         aGroup->mName = pGroupName;
         mAchievementMap.Add(pGroupName, aGroup);
         mGroupList.Add(aGroup);
     }
-    
-    AddAchievement(pAchievementIdentifier, pAchievementDescription, pProgressMax);
-    
+    AddAchievement(pAchievementIdentifier, pAchievementTitle, pAchievementDescription, pPoints, pProgressMax);
     FAchievement *aAchievement = GetAchievement(pAchievementIdentifier);
     if (aAchievement == NULL) {
         Log("CRITICAL ERROR: Achievement not found???\n\n");
         return;
     }
-    
     aGroup->Add(aAchievement);
 }
 
@@ -72,9 +67,7 @@ void FAchievementController::Save() {
 }
 
 void FAchievementController::ProgressAchievementObject(FAchievement *pAchievement) {
-    
     if (pAchievement == NULL) { return; }
-    
     if (pAchievement->AddProgress() == true) {
         if (mRecentlyCompletedAchievementMap.Exists(pAchievement) == false) {
             mRecentlyCompletedAchievementList.Add(pAchievement);
@@ -98,12 +91,10 @@ void FAchievementController::ProgressGroup(const char *pGroupName) {
 }
 
 void FAchievementController::ResetAchievement(const char *pAchievementIdentifier) {
-    
     FAchievement *aAchievement = GetAchievement(pAchievementIdentifier);
     if (aAchievement != NULL) {
         aAchievement->Reset();
     }
-    
 }
 
 void FAchievementController::ResetGroup(const char *pGroupName) {

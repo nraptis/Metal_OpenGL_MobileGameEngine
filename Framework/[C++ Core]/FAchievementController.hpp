@@ -13,9 +13,10 @@
 #include "FAchievementGroup.hpp"
 #include "FHashMap.hpp"
 
-//The basic assumption is that the general achievement structure will be
-//set up on app load, and then load will take all the previously existing
-//achievements and synchronize them to the current list...
+//Everything is uniquified based on "AchievementIdentifier"
+//"AchievementTitle" and "AchievementDescription" are not saved, it is expected that
+//the achievement structure is built-up by the program itself. You can re-organize it however
+//you like, as long as you keep the same "AchievementIdentifier"
 
 class FAchievementController {
 public:
@@ -26,8 +27,8 @@ public:
     
     //Build the entire structure using only these two calls...
     //Build the entire structure, then call LOAD...
-    void                                AddAchievement(const char *pAchievementIdentifier, const char *pAchievementDescription, int pProgressMax);
-    void                                AddAchievement(const char *pGroupName, const char *pAchievementIdentifier, const char *pAchievementDescription, int pProgressMax);
+    void                                AddAchievement(const char *pAchievementIdentifier, const char *pAchievementTitle, const char *pAchievementDescription, int pPoints, int pProgressMax);
+    void                                AddAchievement(const char *pGroupName, const char *pAchievementIdentifier, const char *pAchievementTitle, const char *pAchievementDescription, int pPoints, int pProgressMax);
     
     //mDescription
     FAchievement                        *GetAchievement(const char *pAchievementIdentifier);
