@@ -131,8 +131,7 @@
     
     [self musicFadeOutWithDurationTicks:pDurationTicks];
     
-    if(musicPlayer)
-    {
+    if (musicPlayer) {
         [musicPlayer stop];
         musicPlayer.delegate = nil;
         self.musicPlayer = nil;

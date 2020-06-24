@@ -22,10 +22,9 @@ void music_play(const char *pFilePath, bool pLoop) {
     bool aDidFind = false;
     const char *aResourcePath = gRes.GetResourcePathMusic(pFilePath);
     while ((aResourcePath != 0) && (aDidFind == false)) {
-        if(os_fileExists(aResourcePath))aDidFind = true;
-        else aResourcePath = gRes.GetNextResourcePath();
+        if (os_fileExists(aResourcePath)) { aDidFind = true; }
+        else { aResourcePath = gRes.GetNextResourcePath(); }
     }
-    
     if (aDidFind == true) {
         [gMusicPlayer musicPlay: [NSString stringWithUTF8String:aResourcePath] withLoop:pLoop];
     }
@@ -35,8 +34,8 @@ void music_crossfade(const char *pFilePath, int pDurationTicks, bool pLoop) {
     bool aDidFind = false;
     const char *aResourcePath = gRes.GetResourcePathMusic(pFilePath);
     while ((aResourcePath != 0) && (aDidFind == false)) {
-        if(os_fileExists(aResourcePath))aDidFind = true;
-        else aResourcePath = gRes.GetNextResourcePath();
+        if (os_fileExists(aResourcePath)) { aDidFind = true; }
+        else { aResourcePath = gRes.GetNextResourcePath(); }
     }
     if (aDidFind == true) {
         [gMusicPlayer musicCrossFadeWithPath:[NSString stringWithUTF8String:aResourcePath] withDurationTicks:pDurationTicks withLoop:pLoop];

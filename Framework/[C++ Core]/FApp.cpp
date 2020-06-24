@@ -733,13 +733,11 @@ void FApp::BaseExecuteWadReload() {
     
     if ((mIsLoading == false) && (mIsLoadingComplete == false)) {
         //We haven't loaded, we haven't started loading...
-        Log("BaseExecuteWadReload [Not Loading or Loaded, Preventing Further Logic]\n");
         mAssetResolutionConfigurator->Invalidate();
         return;
     }
     
     if (mAssetResolutionConfigurator->ShouldReload() == false) {
-        Log("BaseExecuteWadReload [No Need to Reload]!!!\n");
         return;
     }
     

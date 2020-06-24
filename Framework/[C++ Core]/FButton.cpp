@@ -120,7 +120,7 @@ void FButton::Draw() {
     bool aIsActive = true;
     bool aIsOver = mMouseOver;
     bool aIsDown = false;
-    if (mTouchDownInside && mClickData != 0) {
+    if ((mTouchDownInside == true) && (mClickData != NULL)) {
         aIsDown = true;
     }
 

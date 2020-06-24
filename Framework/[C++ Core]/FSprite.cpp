@@ -167,6 +167,8 @@ void FSprite::Load(char *pFile) {
         //if (gSpriteListEnabled == true) {
         //    gSpriteList.Add(this);
         //}
+    } else {
+        Log("Failed To Load [%s]\n", mFileName.c());
     }
 }
 
