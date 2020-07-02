@@ -329,9 +329,6 @@ public:
 	void							    Uppercase();
 	void							    Lowercase();
 
-
-	void							    CapitolizeFirstLetter(bool pForceLower);
-
 	//
 	//Get a copy of the FString with a certain case.
 	//

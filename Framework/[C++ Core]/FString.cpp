@@ -1574,61 +1574,35 @@ void FString::Replace(char *theOriginal, char *theNew)
     
 }
 
-void FString::Uppercase()
-{
+void FString::Uppercase() {
 	int aFind = Find('a','z');
-	if(aFind != -1)
-	{
+	if (aFind != -1) {
 		char *aChar = &mData[aFind];
 		char *aFinish = &mData[mLength];
-		while(aChar < aFinish)
-		{
-			if(*aChar >= 'a' && *aChar <= 'z')*aChar -= 32;
+		while (aChar < aFinish) {
+            if (*aChar >= 'a' && *aChar <= 'z') {
+                *aChar -= 32;
+            }
 			aChar++;
 		}
 	}
 }
 
-void FString::Lowercase()
-{
+void FString::Lowercase() {
 	int aFind = Find('A','Z');
-	if(aFind != -1)
-	{
-		//PrepForInlineModification();
+	if (aFind != -1) {
 		char *aChar = &mData[aFind];
 		char *aFinish = &mData[mLength];
-		while(aChar < aFinish)
-		{
-			if(*aChar >= 'A' && *aChar <= 'Z')*aChar+=32;
+		while (aChar < aFinish) {
+            if (*aChar >= 'A' && *aChar <= 'Z') {
+                *aChar += 32;
+            }
 			aChar++;
 		}
 	}
 }
 
-void FString::CapitolizeFirstLetter(bool pForceLower)
-{
-	if(mLength > 0)
-	{
-		if(mData[0] >= 'a' && mData[0] <= 'z')
-		{
-			mData[0] -= 32;
-		}
-		if(pForceLower)
-		{
-			for(int i = 1; i < mLength; i++)
-			{
-				if(mData[i] >= 'A' && mData[i] <= 'Z')
-				{
-					mData[i] += 32;
-				}
-			}
-		}
-	}
-}
-
-
-void FString::ParseChar(char *theChar)
-{
+void FString::ParseChar(char *theChar) {
 	Set((const char *)theChar);
 }
 
@@ -1666,7 +1640,7 @@ void FString::ParseInt(int pNumber) {
 
 
 void FString::ParseFloat(float pFloat, int pDecimalCount) {
-    Free();
+    //Free();
     
     bool aSign = false;
 	if (pFloat < 0.0f) {
@@ -1712,7 +1686,6 @@ void FString::ParseFloat(float pFloat, int pDecimalCount) {
     if (aSign) { mLength += 1; }
     //mData = new char[mLength + 1];
     
-    
     if (aSign) {
         cStringNumberChar[0] = '-';
         for (int i=aWholeDigits-1;i>=0;i--) {
@@ -1741,6 +1714,3 @@ void FString::ParseFloat(float pFloat, int pDecimalCount) {
     Set(cStringNumberChar);
 	//mSize = mLength;
 }
-
-
-

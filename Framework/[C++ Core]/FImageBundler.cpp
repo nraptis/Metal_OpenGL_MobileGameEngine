@@ -63,90 +63,136 @@ void FImageBundler::AddImage(const char*pImagePath) {
     
 
     FImage aImage;
-    if (aImage. mWidth == 0) aImage.Load(aPath + FString("_scale_1.png"));
-    if (aImage. mWidth == 0) aImage.Load(aPath + FString("_scale_1.jpg"));
-    if (aImage. mWidth == 0) aImage.Load(aPath + FString("_scale_1.jpeg"));
-    if (aImage. mWidth == 0) aImage.Load(aPath + FString("_scale_1.PNG"));
-    if (aImage. mWidth == 0) aImage.Load(aPath + FString("_scale_1.JPG"));
-    if (aImage. mWidth == 0) aImage.Load(aPath + FString("_scale_1.JPEG"));
-    if (aImage. mWidth == 0) aImage.Load(aPath + FString("_scale_1.png"));
-    if (aImage. mWidth == 0) aImage.Load(aPath + FString("_scale_1.jpg"));
-    if (aImage. mWidth == 0) aImage.Load(aPath + FString("_scale_1.jpeg"));
-    if (aImage. mWidth == 0) aImage.Load(aPath + FString("_scale_1.PNG"));
-    if (aImage. mWidth == 0) aImage.Load(aPath + FString("_scale_1.JPG"));
-    if (aImage. mWidth == 0) aImage.Load(aPath + FString("_scale_1.JPEG"));
+    if (aImage.mWidth == 0) { aImage.Load(aPath + FString("_scale_1.png")); }
+    if (aImage.mWidth == 0) { aImage.Load(aPath + FString("_scale_1.jpg")); }
+    if (aImage.mWidth == 0) { aImage.Load(aPath + FString("_scale_1.jpeg")); }
+    if (aImage.mWidth == 0) { aImage.Load(aPath + FString("_scale_1.PNG")); }
+    if (aImage.mWidth == 0) { aImage.Load(aPath + FString("_scale_1.JPG")); }
+    if (aImage.mWidth == 0) { aImage.Load(aPath + FString("_scale_1.JPEG")); }
+    if (aImage.mWidth == 0) { aImage.Load(aPath + FString("_scale_1.png")); }
+    if (aImage.mWidth == 0) { aImage.Load(aPath + FString("_scale_1.jpg")); }
+    if (aImage.mWidth == 0) { aImage.Load(aPath + FString("_scale_1.jpeg")); }
+    if (aImage.mWidth == 0) { aImage.Load(aPath + FString("_scale_1.PNG")); }
+    if (aImage.mWidth == 0) { aImage.Load(aPath + FString("_scale_1.JPG")); }
+    if (aImage.mWidth == 0) { aImage.Load(aPath + FString("_scale_1.JPEG")); }
 
-    if (aImage. mWidth == 0) aImage.Load(aPath + FString(".png"));
-    if (aImage. mWidth == 0) aImage.Load(aPath + FString(".jpg"));
-    if (aImage. mWidth == 0) aImage.Load(aPath + FString(".jpeg"));
-    if (aImage. mWidth == 0) aImage.Load(aPath + FString(".PNG"));
-    if (aImage. mWidth == 0) aImage.Load(aPath + FString(".JPG"));
-    if (aImage. mWidth == 0) aImage.Load(aPath + FString(".JPEG"));
-    if (aImage. mWidth == 0) aImage.Load(aPath + FString(".png"));
-    if (aImage. mWidth == 0) aImage.Load(aPath + FString(".jpg"));
-    if (aImage. mWidth == 0) aImage.Load(aPath + FString(".jpeg"));
-    if (aImage. mWidth == 0) aImage.Load(aPath + FString(".PNG"));
-    if (aImage. mWidth == 0) aImage.Load(aPath + FString(".JPG"));
-    if (aImage. mWidth == 0) aImage.Load(aPath + FString(".JPEG"));
+    if (aImage.mWidth == 0) { aImage.Load(aPath + FString(".png")); }
+    if (aImage.mWidth == 0) { aImage.Load(aPath + FString(".jpg")); }
+    if (aImage.mWidth == 0) { aImage.Load(aPath + FString(".jpeg")); }
+    if (aImage.mWidth == 0) { aImage.Load(aPath + FString(".PNG")); }
+    if (aImage.mWidth == 0) { aImage.Load(aPath + FString(".JPG")); }
+    if (aImage.mWidth == 0) { aImage.Load(aPath + FString(".JPEG")); }
+    if (aImage.mWidth == 0) { aImage.Load(aPath + FString(".png")); }
+    if (aImage.mWidth == 0) { aImage.Load(aPath + FString(".jpg")); }
+    if (aImage.mWidth == 0) { aImage.Load(aPath + FString(".jpeg")); }
+    if (aImage.mWidth == 0) { aImage.Load(aPath + FString(".PNG")); }
+    if (aImage.mWidth == 0) { aImage.Load(aPath + FString(".JPG")); }
+    if (aImage.mWidth == 0) { aImage.Load(aPath + FString(".JPEG")); }
 
     if (aImage.mWidth == 0) {
         Log("** Image Bundler FAILED [%s] **\n\n", pImagePath);
         return;
     }
 
+    int aMismatchedFontImages = 0;
 
     FImage aDoubleRez;
-    if (aDoubleRez. mWidth == 0) aDoubleRez.Load(aPath + FString("_scale_2.png"));
-    if (aDoubleRez. mWidth == 0) aDoubleRez.Load(aPath + FString("_scale_2.jpg"));
-    if (aDoubleRez. mWidth == 0) aDoubleRez.Load(aPath + FString("_scale_2.jpeg"));
-    if (aDoubleRez. mWidth == 0) aDoubleRez.Load(aPath + FString("_scale_2.PNG"));
-    if (aDoubleRez. mWidth == 0) aDoubleRez.Load(aPath + FString("_scale_2.JPG"));
-    if (aDoubleRez. mWidth == 0) aDoubleRez.Load(aPath + FString("_scale_2.JPEG"));
-    if (aDoubleRez. mWidth == 0) aDoubleRez.Load(aPath + FString("_scale_2.png"));
-    if (aDoubleRez. mWidth == 0) aDoubleRez.Load(aPath + FString("_scale_2.jpg"));
-    if (aDoubleRez. mWidth == 0) aDoubleRez.Load(aPath + FString("_scale_2.jpeg"));
-    if (aDoubleRez. mWidth == 0) aDoubleRez.Load(aPath + FString("_scale_2.PNG"));
-    if (aDoubleRez. mWidth == 0) aDoubleRez.Load(aPath + FString("_scale_2.JPG"));
-    if (aDoubleRez. mWidth == 0) aDoubleRez.Load(aPath + FString("_scale_2.JPEG"));
+    if (aDoubleRez.mWidth == 0) { aDoubleRez.Load(aPath + FString("_scale_2.png")); }
+    if (aDoubleRez.mWidth == 0) { aDoubleRez.Load(aPath + FString("_scale_2.jpg")); }
+    if (aDoubleRez.mWidth == 0) { aDoubleRez.Load(aPath + FString("_scale_2.jpeg")); }
+    if (aDoubleRez.mWidth == 0) { aDoubleRez.Load(aPath + FString("_scale_2.PNG")); }
+    if (aDoubleRez.mWidth == 0) { aDoubleRez.Load(aPath + FString("_scale_2.JPG")); }
+    if (aDoubleRez.mWidth == 0) { aDoubleRez.Load(aPath + FString("_scale_2.JPEG")); }
+    if (aDoubleRez.mWidth == 0) { aDoubleRez.Load(aPath + FString("_scale_2.png")); }
+    if (aDoubleRez.mWidth == 0) { aDoubleRez.Load(aPath + FString("_scale_2.jpg")); }
+    if (aDoubleRez.mWidth == 0) { aDoubleRez.Load(aPath + FString("_scale_2.jpeg")); }
+    if (aDoubleRez.mWidth == 0) { aDoubleRez.Load(aPath + FString("_scale_2.PNG")); }
+    if (aDoubleRez.mWidth == 0) { aDoubleRez.Load(aPath + FString("_scale_2.JPG")); }
+    if (aDoubleRez.mWidth == 0) { aDoubleRez.Load(aPath + FString("_scale_2.JPEG")); }
     if (aDoubleRez.mWidth > 0) {
-        if(aDoubleRez.mWidth != (aImage.mWidth * 2))Log("***\nWIDTH MISMATCH (%s) Low[%d] Hi[%d]\n***\n", aPath.c(), aImage.mWidth, aDoubleRez.mWidth);
-        if(aDoubleRez.mHeight != (aImage.mHeight * 2))Log("***\nHEIGHT MISMATCH (%s) Low[%d] Hi[%d]\n***\n", aPath.c(), aImage.mHeight, aDoubleRez.mHeight);
+        if (aDoubleRez.mWidth != (aImage.mWidth * 2)) {
+            
+            if (aPath.FindI("font") == -1) {
+                Log("***\nWIDTH MISMATCH @2x (%s) Low[%d] Hi[%d]\n***\n", aPath.c(), aImage.mWidth, aDoubleRez.mWidth);
+            } else {
+                ++aMismatchedFontImages;
+            }
+        }
+        if (aDoubleRez.mHeight != (aImage.mHeight * 2)) {
+            
+            if (aPath.FindI("font") == -1) {
+                Log("***\nHEIGHT MISMATCH @2x (%s) Low[%d] Hi[%d]\n***\n", aPath.c(), aImage.mHeight, aDoubleRez.mHeight);
+            } else {
+                ++aMismatchedFontImages;
+            }
+        }
     }
 
     FImage aTripleRez;
-    if (aTripleRez. mWidth == 0) aTripleRez.Load(aPath + FString("_scale_3.png"));
-    if (aTripleRez. mWidth == 0) aTripleRez.Load(aPath + FString("_scale_3.jpg"));
-    if (aTripleRez. mWidth == 0) aTripleRez.Load(aPath + FString("_scale_3.jpeg"));
-    if (aTripleRez. mWidth == 0) aTripleRez.Load(aPath + FString("_scale_3.PNG"));
-    if (aTripleRez. mWidth == 0) aTripleRez.Load(aPath + FString("_scale_3.JPG"));
-    if (aTripleRez. mWidth == 0) aTripleRez.Load(aPath + FString("_scale_3.JPEG"));
-    if (aTripleRez. mWidth == 0) aTripleRez.Load(aPath + FString("_scale_3.png"));
-    if (aTripleRez. mWidth == 0) aTripleRez.Load(aPath + FString("_scale_3.jpg"));
-    if (aTripleRez. mWidth == 0) aTripleRez.Load(aPath + FString("_scale_3.jpeg"));
-    if (aTripleRez. mWidth == 0) aTripleRez.Load(aPath + FString("_scale_3.PNG"));
-    if (aTripleRez. mWidth == 0) aTripleRez.Load(aPath + FString("_scale_3.JPG"));
-    if (aTripleRez. mWidth == 0) aTripleRez.Load(aPath + FString("_scale_3.JPEG"));
+    if (aTripleRez.mWidth == 0) { aTripleRez.Load(aPath + FString("_scale_3.png")); }
+    if (aTripleRez.mWidth == 0) { aTripleRez.Load(aPath + FString("_scale_3.jpg")); }
+    if (aTripleRez.mWidth == 0) { aTripleRez.Load(aPath + FString("_scale_3.jpeg")); }
+    if (aTripleRez.mWidth == 0) { aTripleRez.Load(aPath + FString("_scale_3.PNG")); }
+    if (aTripleRez.mWidth == 0) { aTripleRez.Load(aPath + FString("_scale_3.JPG")); }
+    if (aTripleRez.mWidth == 0) { aTripleRez.Load(aPath + FString("_scale_3.JPEG")); }
+    if (aTripleRez.mWidth == 0) { aTripleRez.Load(aPath + FString("_scale_3.png")); }
+    if (aTripleRez.mWidth == 0) { aTripleRez.Load(aPath + FString("_scale_3.jpg")); }
+    if (aTripleRez.mWidth == 0) { aTripleRez.Load(aPath + FString("_scale_3.jpeg")); }
+    if (aTripleRez.mWidth == 0) { aTripleRez.Load(aPath + FString("_scale_3.PNG")); }
+    if (aTripleRez.mWidth == 0) { aTripleRez.Load(aPath + FString("_scale_3.JPG")); }
+    if (aTripleRez.mWidth == 0) { aTripleRez.Load(aPath + FString("_scale_3.JPEG")); }
     if (aTripleRez.mWidth > 0) {
-        if(aTripleRez.mWidth != (aImage.mWidth * 3))Log("***\nWIDTH MISMATCH (%s) Low[%d] Hi[%d]\n***\n", aPath.c(), aImage.mWidth, aTripleRez.mWidth);
-        if(aTripleRez.mHeight != (aImage.mHeight * 3))Log("***\nHEIGHT MISMATCH (%s) Low[%d] Hi[%d]\n***\n", aPath.c(), aImage.mHeight, aTripleRez.mHeight);
+        if(aTripleRez.mWidth != (aImage.mWidth * 3)) {
+            
+            if (aPath.FindI("font") == -1) {
+                Log("***\nWIDTH MISMATCH @3x (%s) Low[%d] Hi[%d]\n***\n", aPath.c(), aImage.mWidth, aTripleRez.mWidth);
+            } else {
+                ++aMismatchedFontImages;
+            }
+        }
+        if(aTripleRez.mHeight != (aImage.mHeight * 3)) {
+            
+            if (aPath.FindI("font") == -1) {
+                Log("***\nHEIGHT MISMATCH @3x (%s) Low[%d] Hi[%d]\n***\n", aPath.c(), aImage.mHeight, aTripleRez.mHeight);
+            } else {
+                ++aMismatchedFontImages;
+            }
+        }
     }
 
     FImage aQuadrupleRez;
-    if (aQuadrupleRez. mWidth == 0) aQuadrupleRez.Load(aPath + FString("_scale_4.png"));
-    if (aQuadrupleRez. mWidth == 0) aQuadrupleRez.Load(aPath + FString("_scale_4.jpg"));
-    if (aQuadrupleRez. mWidth == 0) aQuadrupleRez.Load(aPath + FString("_scale_4.jpeg"));
-    if (aQuadrupleRez. mWidth == 0) aQuadrupleRez.Load(aPath + FString("_scale_4.PNG"));
-    if (aQuadrupleRez. mWidth == 0) aQuadrupleRez.Load(aPath + FString("_scale_4.JPG"));
-    if (aQuadrupleRez. mWidth == 0) aQuadrupleRez.Load(aPath + FString("_scale_4.JPEG"));
-    if (aQuadrupleRez. mWidth == 0) aQuadrupleRez.Load(aPath + FString("_scale_4.png"));
-    if (aQuadrupleRez. mWidth == 0) aQuadrupleRez.Load(aPath + FString("_scale_4.jpg"));
-    if (aQuadrupleRez. mWidth == 0) aQuadrupleRez.Load(aPath + FString("_scale_4.jpeg"));
-    if (aQuadrupleRez. mWidth == 0) aQuadrupleRez.Load(aPath + FString("_scale_4.PNG"));
-    if (aQuadrupleRez. mWidth == 0) aQuadrupleRez.Load(aPath + FString("_scale_4.JPG"));
-    if (aQuadrupleRez. mWidth == 0) aQuadrupleRez.Load(aPath + FString("_scale_4.JPEG"));
+    if (aQuadrupleRez.mWidth == 0) { aQuadrupleRez.Load(aPath + FString("_scale_4.png")); }
+    if (aQuadrupleRez.mWidth == 0) { aQuadrupleRez.Load(aPath + FString("_scale_4.jpg")); }
+    if (aQuadrupleRez.mWidth == 0) { aQuadrupleRez.Load(aPath + FString("_scale_4.jpeg")); }
+    if (aQuadrupleRez.mWidth == 0) { aQuadrupleRez.Load(aPath + FString("_scale_4.PNG")); }
+    if (aQuadrupleRez.mWidth == 0) { aQuadrupleRez.Load(aPath + FString("_scale_4.JPG")); }
+    if (aQuadrupleRez.mWidth == 0) { aQuadrupleRez.Load(aPath + FString("_scale_4.JPEG")); }
+    if (aQuadrupleRez.mWidth == 0) { aQuadrupleRez.Load(aPath + FString("_scale_4.png")); }
+    if (aQuadrupleRez.mWidth == 0) { aQuadrupleRez.Load(aPath + FString("_scale_4.jpg")); }
+    if (aQuadrupleRez.mWidth == 0) { aQuadrupleRez.Load(aPath + FString("_scale_4.jpeg")); }
+    if (aQuadrupleRez.mWidth == 0) { aQuadrupleRez.Load(aPath + FString("_scale_4.PNG")); }
+    if (aQuadrupleRez.mWidth == 0) { aQuadrupleRez.Load(aPath + FString("_scale_4.JPG")); }
+    if (aQuadrupleRez.mWidth == 0) { aQuadrupleRez.Load(aPath + FString("_scale_4.JPEG")); }
+    
     if (aQuadrupleRez.mWidth > 0) {
-        if(aQuadrupleRez.mWidth != (aImage.mWidth * 4))Log("***\nWIDTH MISMATCH (%s) Low[%d] Ultra[%d]\n***\n", aPath.c(), aImage.mWidth, aQuadrupleRez.mWidth);
-        if(aQuadrupleRez.mHeight != (aImage.mHeight * 4))Log("***\nHEIGHT MISMATCH (%s) Low[%d] Ultra[%d]\n***\n", aPath.c(), aImage.mHeight, aQuadrupleRez.mHeight);
+        if(aQuadrupleRez.mWidth != (aImage.mWidth * 4)) {
+            if (aPath.FindI("font") == -1) {
+                Log("***\nWIDTH MISMATCH @4x (%s) Low[%d] Ultra[%d]\n***\n", aPath.c(), aImage.mWidth, aQuadrupleRez.mWidth);
+            } else {
+                ++aMismatchedFontImages;
+            }
+        }
+        if(aQuadrupleRez.mHeight != (aImage.mHeight * 4)) {
+            if (aPath.FindI("font") == -1) {
+                Log("***\nHEIGHT MISMATCH @4x (%s) Low[%d] Ultra[%d]\n***\n", aPath.c(), aImage.mHeight, aQuadrupleRez.mHeight);
+            } else {
+                ++aMismatchedFontImages;
+            }
+        }
+    }
+    
+    if (aMismatchedFontImages > 0) {
+        //Log("***\nHEIGHT MISMATCH {{ FONT }} Total: %d\n***\n", aMismatchedFontImages);
     }
     
     

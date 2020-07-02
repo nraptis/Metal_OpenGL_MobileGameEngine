@@ -32,7 +32,7 @@ float gSafeAreaInsetLeft = 0.0f;
 float gOSVersion = 1.0f;
 
 float gSoundVolume = 1.0f;
-float gMusicVolume = 1.0f;
+float gMusicVolume = 0.0f;
 
 bool gSoundEnabled = true;
 bool gMusicEnabled = true;
@@ -327,8 +327,7 @@ void AppShellSetDeviceSize(int pWidth, int pHeight) {
     //TODO: Remove Kludge
     //
     //AppShellSetSafeAreaInsets(24.0f, 5.0f, 90.0f, 5.0f);
-    AppShellSetSafeAreaInsets(0.0f, 0.0f, 0.0f, 0.0f);
-    
+    //AppShellSetSafeAreaInsets(0.0f, 0.0f, 0.0f, 0.0f);
     //
     //
 }
