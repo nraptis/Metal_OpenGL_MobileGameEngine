@@ -113,6 +113,7 @@ void FPointList::Set(int pIndex, float pX, float pY) {
     }
 }
 
+/*
 int FPointList::Remove(int pIndex) {
     int aResult = pIndex;
     
@@ -125,25 +126,25 @@ int FPointList::Remove(int pIndex) {
     }
     
     if (mCount > 0) {
-        if(aResult < 0)aResult = (mCount - 1);
-        else if(aResult >= mCount)aResult = 0;
+        if (aResult < 0) {
+            aResult = (mCount - 1);
+        }
+        else if(aResult >= mCount) {
+            aResult = 0;
+        }
     }
-    
     return aResult;
-    
-    /*
-     if(pIndex < 0 || pIndex >= mCount)return;
-     
-     for(int i=(pIndex+1);i<mCount;i++)
-     {
-     mX[i - 1] = mX[i];
-     mY[i - 1] = mY[i];
-     }
-     //mX[mCount]=0.0f;
-     //mY[mCount]=0.0f;
-     
-     mCount--;
-     */
+}
+*/
+
+void FPointList::Remove(int pIndex) {
+    if ((pIndex >= 0) && (pIndex < mCount)) {
+        for (int i=(pIndex+1);i<mCount;i++) {
+            mX[i - 1] = mX[i];
+            mY[i - 1] = mY[i];
+        }
+        mCount--;
+    }
 }
 
 void FPointList::Size(int pSize) {
@@ -311,9 +312,23 @@ void FPointList::Reverse() {
     }
 }
 
+void FPointList::Shuffle() {
+    float aHoldX = 0.0f;
+    float aHoldY = 0.0f;
+    int aRand = 0;
+    for (int i=0;i<mCount;i++) {
+        aHoldX = mX[i];
+        aHoldY = mY[i];
+        aRand = gRand.Get(mCount);
+        mX[i] = mX[aRand];
+        mY[i] = mY[aRand];
+        mX[aRand] = aHoldX;
+        mY[aRand] = aHoldY;
+    }
+}
+
 void FPointList::RotateRight90() {
 	float aHold = 0.0f;
-
 	for (int i = 0; i < mCount; i++) {
 		aHold = mX[i];
 		mX[i] = (-mY[i]);
@@ -332,8 +347,6 @@ void FPointList::FlipV() {
 		mY[i] = -(mY[i]);
 	}
 }
-
-
 
 void FPointList::GenerateRect(float pX, float pY, float pWidth, float pHeight) {
     if (mSize < 4)Size(4);

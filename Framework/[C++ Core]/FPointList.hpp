@@ -31,7 +31,9 @@ public:
     void                    Add(FPointList *pList);
     void                    Add(float pX, float pY);
     void                    Set(int pIndex, float pX, float pY);
-    int                     Remove(int pIndex);
+    //int                     Remove(int pIndex);
+    void                    Remove(int pIndex);
+    
     
     float                   GetX(int pIndex);
     float                   GetY(int pIndex);
@@ -41,6 +43,8 @@ public:
     
 
     void                    Reverse();
+    void                    Shuffle();
+    
 	void					RotateRight90();
 	void					FlipH();
 	void					FlipV();
