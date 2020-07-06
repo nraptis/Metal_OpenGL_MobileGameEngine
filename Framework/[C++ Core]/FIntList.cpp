@@ -7,6 +7,7 @@
 //
 
 #include "FIntList.hpp"
+#include "core_includes.h"
 
 FIntList::FIntList() {
     mCount = 0;
@@ -22,7 +23,7 @@ void FIntList::Clear() {
     delete[] mData;
     mCount = 0;
     mSize = 0;
-    mData = 0;
+    mData = NULL;
 }
 
 void FIntList::Add(int pIndex) {
@@ -93,6 +94,45 @@ void FIntList::Load(FFile *pFile) {
     }
 }
 
+int FIntList::FetchClosest(int pIndex) {
+    int aIndex = pIndex;
+    if (aIndex >= mCount) {
+        aIndex = mCount - 1;
+    }
+    if (aIndex <= 0) {
+        aIndex = 0;
+    }
+    return Fetch(aIndex);
+}
+
+int FIntList::Fetch(int pIndex) {
+    if ((pIndex >= 0) && (pIndex < mCount)) {
+        return mData[pIndex];
+    }
+    return 0;
+}
+
+int FIntList::FetchRandom() {
+    int aResult = 0;
+    if (mCount > 0) {
+        aResult = mData[gRand.Get(mCount)];
+    }
+    return aResult;
+}
+
+int FIntList::FetchCircular(int pIndex) {
+    if (mCount > 0) {
+        if (pIndex < 0 || pIndex >= mCount) {
+            pIndex = pIndex % mCount;
+            if (pIndex < 0) {
+                pIndex += mCount;
+            }
+        }
+        return mData[pIndex];
+    }
+    return 0;
+}
+
 void FIntList::Reverse() {
     if (mCount > 1) {
         int aStartIndex = 0;
@@ -128,3 +168,15 @@ int FIntList::PopLast() {
     }
     return aResult;
 }
+
+void FIntList::Shuffle() {
+    int aHold = 0;
+    int aRand = 0;
+    for (int i=0;i<mCount;i++) {
+        aHold = mData[i];
+        aRand = gRand.Get(mCount);
+        mData[i] = mData[aRand];
+        mData[aRand] = aHold;
+    }
+}
+

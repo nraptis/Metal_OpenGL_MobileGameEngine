@@ -37,6 +37,15 @@ public:
     int                     Get(int pIndex);
     
     void                    Reverse();
+    void                    Shuffle();
+    
+    int                     FetchClosest(int pIndex);
+    int                     Fetch(int pIndex);
+    int                     FetchCircular(int pIndex);
+    inline int              operator [](int pIndex) { return Fetch(pIndex); }
+    int                     FetchRandom();
+    
+    
     
     void                    Size(int pSize);
     
