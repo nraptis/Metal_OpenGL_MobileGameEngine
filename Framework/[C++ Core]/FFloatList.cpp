@@ -15,25 +15,19 @@ FFloatList::FFloatList() {
     mData = 0;
 }
 
-FFloatList::~FFloatList()
-{
+FFloatList::~FFloatList() {
     Clear();
 }
 
-void FFloatList::Clear()
-{
+void FFloatList::Clear() {
     delete[] mData;
-    
     mCount = 0;
     mSize = 0;
-    
-    mData = 0;
+    mData = NULL;
 }
 
-void FFloatList::Add(float pFloat)
-{
-    if(mCount >= mSize)
-    {
+void FFloatList::Add(float pFloat) {
+    if (mCount >= mSize) {
         Size(mCount + (mCount / 2) + 1);
     }
     
@@ -98,74 +92,62 @@ void FFloatList::Size(int pSize) {
     }
 }
 
-void FFloatList::Save(FFile *pFile)
-{
-    if(pFile)
-    {
+void FFloatList::Save(FFile *pFile) {
+    if (pFile != NULL) {
         pFile->WriteInt(mCount);
-        
-        for(int i = 0; i<mCount; i++)
-        {
+        for (int i=0;i<mCount;i++) {
             pFile->WriteFloat(mData[i]);
         }
     }
 }
 
-void FFloatList::Load(FFile *pFile)
-{
+void FFloatList::Load(FFile *pFile) {
     Clear();
-    
-    if(pFile)
-    {
+    if (pFile != NULL) {
         int aCount = pFile->ReadInt();
         Size(aCount);
-        for(int i = 0; i<aCount; i++)
-        {
+        for (int i=0;i<aCount;i++) {
             mData[i] = pFile->ReadFloat();
         }
         mCount = aCount;
     }
 }
 
-void FFloatList::Reverse()
-{
-    if(mCount > 1)
-    {
+void FFloatList::Reverse() {
+    if (mCount > 1) {
         int aStartIndex = 0;
         int aEndIndex = (mCount - 1);
-        
         float aHold = 0;
-        
-        while (aStartIndex < aEndIndex)
-        {
+        while (aStartIndex < aEndIndex) {
             aHold = mData[aEndIndex];
-            
             mData[aEndIndex] = mData[aStartIndex];
-            
             mData[aStartIndex] = aHold;
-            
             aStartIndex++;
             aEndIndex--;
         }
     }
 }
 
-void FFloatList::Clone(FFloatList *pPointList)
-{
-    if(pPointList)
-    {
-        if(pPointList->mCount > mSize)
-        {
+void FFloatList::Clone(FFloatList *pPointList) {
+    if (pPointList != NULL) {
+        if (pPointList->mCount > mSize) {
             Size(pPointList->mCount);
         }
-        
         Reset();
-        
         int aCount = pPointList->mCount;
-        
-        for(int i = 0; i<aCount; i++)
-        {
+        for (int i=0;i<aCount;i++) {
             Add(pPointList->mData[i]);
         }
+    }
+}
+
+void FFloatList::Shuffle() {
+    float aHold = 0;
+    int aRand = 0;
+    for (int i=0;i<mCount;i++) {
+        aHold = mData[i];
+        aRand = gRand.Get(mCount);
+        mData[i] = mData[aRand];
+        mData[aRand] = aHold;
     }
 }

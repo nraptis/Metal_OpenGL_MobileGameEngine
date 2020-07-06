@@ -44,6 +44,8 @@ public:
     
     void                    Save(FFile *pFile);
     void                    Load(FFile *pFile);
+    
+    void                    Shuffle();
 };
 
 
