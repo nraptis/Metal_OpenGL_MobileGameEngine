@@ -130,14 +130,29 @@ void FList::Remove(void *pItem) {
 }
 
 void *FList::FetchClosest(int pIndex) {
-    if (pIndex <= 0) pIndex = 0;
-    if (pIndex >= mCount) pIndex = mCount - 1;
-    return Fetch(pIndex);
+    int aIndex = pIndex;
+    if (aIndex >= mCount) {
+        aIndex = mCount - 1;
+    }
+    if (aIndex <= 0) {
+        aIndex = 0;
+    }
+    return Fetch(aIndex);
 }
 
 void *FList::Fetch(int pIndex) {
-    if (pIndex >= 0 && pIndex < mCount) return mData[pIndex];
+    if ((pIndex >= 0) && (pIndex < mCount)) {
+        return mData[pIndex];
+    }
     return NULL;
+}
+
+void *FList::FetchRandom() {
+    void *aResult = NULL;
+    if (mCount > 0) {
+        aResult = mData[gRand.Get(mCount)];
+    }
+    return aResult;
 }
 
 void *FList::FetchCircular(int pIndex) {
@@ -364,80 +379,58 @@ void FList::MoveToFirst(void *pItem)
 	}
 }
 
-void FList::MoveToLast(void *pItem)
-{
-	void **aSeek=mData;
-	void **aShelf=mData+mCount;
-	while(aSeek<aShelf)
-	{
-		if(*aSeek==pItem)break;
+void FList::MoveToLast(void *pItem) {
+	void **aSeek = mData;
+	void **aShelf = mData + mCount;
+	while (aSeek < aShelf) {
+        if(*aSeek == pItem) { break; }
 		aSeek++;
 	}
-	if(aSeek<aShelf)
-	{
+	if (aSeek < aShelf) {
 		aShelf--;
-		while(aSeek<aShelf)
-		{
-			*aSeek=*(aSeek+1);
+		while (aSeek < aShelf) {
+			*aSeek = *(aSeek+1);
 			aSeek++;
 		}
-		*aShelf=pItem;
+		*aShelf = pItem;
 	}
 }
 
-void FList::Swap(void *pItem1, void *pItem2)
-{
-	void **aSeek1=mData;
-	void **aSeek2=mData;
-	void **aShelf=mData+mCount;
-	while(aSeek1<aShelf)
-	{
-		if(*aSeek1==pItem1)break;
+void FList::Swap(void *pItem1, void *pItem2) {
+	void **aSeek1 = mData;
+	void **aSeek2 = mData;
+	void **aShelf = mData + mCount;
+	while (aSeek1<aShelf) {
+        if (*aSeek1 == pItem1) { break; }
 		aSeek1++;
 	}
-	while(aSeek2<aShelf)
-	{
-		if(*aSeek2==pItem2)break;
+	while (aSeek2 < aShelf) {
+        if (*aSeek2 == pItem2) { break; }
 		aSeek2++;
 	}
-	if(aSeek1<aShelf&&aSeek2<aShelf)
-	{
-		*aSeek1=pItem2;
-		*aSeek2=pItem1;
+	if ((aSeek1 < aShelf) && (aSeek2 < aShelf)) {
+		*aSeek1 = pItem2;
+		*aSeek2 = pItem1;
 	}
 }
 
-void *FList::FetchRandom()
-{
-	void *aResult = 0;
-	if(mCount>0)aResult=mData[gRand.Get(mCount)];
-	return aResult;
-}
-
-void FList::Shuffle()
-{
-	void *aHold;
-	int aRand;
-	for(int i = 0;i<mCount;i++)
-	{
-		aHold=mData[i];
-		aRand=gRand.Get(mCount);
-		mData[i]=mData[aRand];
-		mData[aRand]=aHold;
+void FList::Shuffle() {
+	void *aHold = NULL;
+	int aRand = 0;
+	for (int i=0;i<mCount;i++) {
+		aHold = mData[i];
+		aRand = gRand.Get(mCount);
+		mData[i] = mData[aRand];
+		mData[aRand] = aHold;
 	}
 }
 
-void FList::RotateFrontToBack()
-{
-    if(mCount > 1)
-    {
+void FList::RotateFrontToBack() {
+    if (mCount > 1) {
         void *aHold = mData[0];
-        
-        for(int i=1;i<mCount;i++)
-        {
+        for (int i=1;i<mCount;i++) {
             mData[i - 1] = mData[i];
         }
-        
         mData[mCount - 1] = aHold;
     }
 }

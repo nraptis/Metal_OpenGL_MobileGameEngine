@@ -69,11 +69,9 @@ public:
 	void					Print();
     
     void                    *FetchClosest(int pIndex);
-	
 	void                    *Fetch(int pIndex);
     void                    *FetchCircular(int pIndex);
-	inline void				*operator[](int pIndex){return Fetch(pIndex);}
-	
+	inline void				*operator [](int pIndex) { return Fetch(pIndex); }
 	void					*FetchRandom();
 	
 	inline void				*Last() { return mCount>0 ? mData[mCount-1] : 0; }
