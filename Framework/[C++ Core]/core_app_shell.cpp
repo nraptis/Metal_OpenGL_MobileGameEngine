@@ -32,7 +32,7 @@ float gSafeAreaInsetLeft = 0.0f;
 float gOSVersion = 1.0f;
 
 float gSoundVolume = 1.0f;
-float gMusicVolume = 0.0f;
+float gMusicVolume = 1.0f;
 
 bool gSoundEnabled = true;
 bool gMusicEnabled = true;
