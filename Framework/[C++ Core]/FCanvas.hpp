@@ -236,15 +236,15 @@ public:
     static void                                 ConvertPoint(float &pX, float &pY, FCanvas *pFromCanvas, FCanvas &pToCanvas) { ConvertPoint(pX, pY, pFromCanvas, &pToCanvas); }
     static void                                 ConvertPoint(float &pX, float &pY, FCanvas &pFromCanvas, FCanvas *pToCanvas) { ConvertPoint(pX, pY, &pFromCanvas, pToCanvas); }
     
-    static FVec2                               Convert(float pX, float pY, FCanvas *pFromCanvas, FCanvas *pToCanvas);
-    static FVec2                               Convert(float pX, float pY, FCanvas &pFromCanvas, FCanvas &pToCanvas) { return Convert(pX, pY, &pFromCanvas, &pToCanvas); }
-    static FVec2                               Convert(float pX, float pY, FCanvas *pFromCanvas, FCanvas &pToCanvas) { return Convert(pX, pY, pFromCanvas, &pToCanvas); }
-    static FVec2                               Convert(float pX, float pY, FCanvas &pFromCanvas, FCanvas *pToCanvas) { return Convert(pX, pY, &pFromCanvas, pToCanvas); }
+    static FVec2                                Convert(float pX, float pY, FCanvas *pFromCanvas, FCanvas *pToCanvas);
+    static FVec2                                Convert(float pX, float pY, FCanvas &pFromCanvas, FCanvas &pToCanvas) { return Convert(pX, pY, &pFromCanvas, &pToCanvas); }
+    static FVec2                                Convert(float pX, float pY, FCanvas *pFromCanvas, FCanvas &pToCanvas) { return Convert(pX, pY, pFromCanvas, &pToCanvas); }
+    static FVec2                                Convert(float pX, float pY, FCanvas &pFromCanvas, FCanvas *pToCanvas) { return Convert(pX, pY, &pFromCanvas, pToCanvas); }
     
-    static FVec2                               Convert(FVec2 pPos, FCanvas *pFromCanvas, FCanvas *pToCanvas) { return Convert(pPos.mX, pPos.mY, pFromCanvas, pToCanvas); }
-    static FVec2                               Convert(FVec2 pPos, FCanvas &pFromCanvas, FCanvas &pToCanvas) { return Convert(pPos, &pFromCanvas, &pToCanvas); }
-    static FVec2                               Convert(FVec2 pPos, FCanvas *pFromCanvas, FCanvas &pToCanvas) { return Convert(pPos.mX, pPos.mY, pFromCanvas, &pToCanvas); }
-    static FVec2                               Convert(FVec2 pPos, FCanvas &pFromCanvas, FCanvas *pToCanvas) { return Convert(pPos.mX, pPos.mY, &pFromCanvas, pToCanvas); }
+    static FVec2                                Convert(FVec2 pPos, FCanvas *pFromCanvas, FCanvas *pToCanvas) { return Convert(pPos.mX, pPos.mY, pFromCanvas, pToCanvas); }
+    static FVec2                                Convert(FVec2 pPos, FCanvas &pFromCanvas, FCanvas &pToCanvas) { return Convert(pPos, &pFromCanvas, &pToCanvas); }
+    static FVec2                                Convert(FVec2 pPos, FCanvas *pFromCanvas, FCanvas &pToCanvas) { return Convert(pPos.mX, pPos.mY, pFromCanvas, &pToCanvas); }
+    static FVec2                                Convert(FVec2 pPos, FCanvas &pFromCanvas, FCanvas *pToCanvas) { return Convert(pPos.mX, pPos.mY, &pFromCanvas, pToCanvas); }
     
     static float                                ConvertScale(float pScale, FCanvas *pFromCanvas, FCanvas *pToCanvas);
     static float                                ConvertScale(float pScale, FCanvas &pFromCanvas, FCanvas &pToCanvas) { return ConvertScale(pScale, &pFromCanvas, &pToCanvas); }
