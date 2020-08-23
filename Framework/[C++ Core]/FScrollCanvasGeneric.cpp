@@ -208,12 +208,13 @@ void FScrollCanvasGeneric::BaseTouchUp(float pX, float pY, float pOriginalX, flo
             aReleaseConsiderCount += 1;
         }
     }
+    
     if (aReleaseConsiderCount > 0) {
         aReleaseConsiderCount++;
         aReleaseSpeedX /= ((float)aReleaseConsiderCount);
         aReleaseSpeedY /= ((float)aReleaseConsiderCount);
     }
-    PanMove(pX, pY);
+    
     PanRelease(pX, pY, aReleaseSpeedX, aReleaseSpeedY);
 }
 
@@ -237,11 +238,8 @@ void FScrollCanvasGeneric::PanRelease(float pX, float pY, float pSpeedX, float p
 void FScrollCanvasGeneric::SetContentSize(float pWidth, float pHeight) {
     mContentWidth = pWidth;
     mContentHeight = pHeight;
-    
     if (mContentWidth < mWidth) { mContentWidth = mWidth; }
     if (mContentHeight < mHeight) { mContentHeight = mHeight; }
-    
-    
 }
 
 bool FScrollCanvasGeneric::IsOutOfBoundsX(float pScrollX) {
@@ -262,7 +260,6 @@ void FScrollCanvasGeneric::OutOfBoundsSnapToEdgeX() {
     if (mContentOffsetX > 0.0f) {
         SnapAnimationX(0.0f);
     } else {
-        
         float aTargetX = (mWidth - mContentWidth);
         if (aTargetX > 0.0f) { aTargetX = 0.0f; }
         SnapAnimationX(aTargetX);

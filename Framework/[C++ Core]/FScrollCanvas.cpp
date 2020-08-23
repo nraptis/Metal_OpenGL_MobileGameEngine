@@ -156,7 +156,9 @@ void FScrollCanvas::PanRelease(float pX, float pY, float pSpeedX, float pSpeedY)
         if (IsOutOfBoundsX(mContentOffsetX)) {
             OutOfBoundsSnapToEdgeX();
         } else {
-            DecayAnimationX(pSpeedX, false);
+            if (fabsf(pSpeedX) > 0.05f) {
+                DecayAnimationX(pSpeedX, false);
+            }
         }
     }
     
@@ -164,7 +166,9 @@ void FScrollCanvas::PanRelease(float pX, float pY, float pSpeedX, float pSpeedY)
         if (IsOutOfBoundsY(mContentOffsetY)) {
             OutOfBoundsSnapToEdgeY();
         } else {
-            DecayAnimationY(pSpeedY, false);
+            if (fabsf(pSpeedY) > 0.05f) {
+                DecayAnimationY(pSpeedY, false);
+            }
         }
     }
 }
