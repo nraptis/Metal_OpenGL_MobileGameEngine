@@ -36,6 +36,17 @@ public:
     FSprite                                 *mSprite;
     int                                     mSpriteIndex;
     
+    void                                    *mSelectedTouch;
+    float                                   mSelectedStartX;
+    float                                   mSelectedStartY;
+    float                                   mSelectedTouchStartX;
+    float                                   mSelectedTouchStartY;
+    int                                     mSelectedTouchIndex;
+    
+    
+    
+    float                                   mScale;
+    
     int                                     mMode;
     int                                     mSelectedPoint;
     

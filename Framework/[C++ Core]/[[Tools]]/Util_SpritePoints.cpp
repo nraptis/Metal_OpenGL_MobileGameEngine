@@ -23,8 +23,19 @@ Util_SpritePoints::Util_SpritePoints() {
     mCenterX = gDeviceWidth2;
     mCenterY = gDeviceHeight2;
     
+    mScale = 4.0f;
+    
     mMode = 0;
     mSelectedPoint = -1;
+    
+    mSelectedTouch = NULL;
+    
+    mSelectedTouchIndex = -1;
+    
+    mSelectedStartX = 0.0f;
+    mSelectedStartY = 0.0f;
+    mSelectedTouchStartX = 0.0f;
+    mSelectedTouchStartY = 0.0f;
     
 }
 
@@ -50,7 +61,7 @@ void Util_SpritePoints::Draw() {
         
         Graphics::PipelineStateSetSpriteAdditiveBlending();
         Graphics::SetColor();
-        mSprite->Center(mCenterX, mCenterY);
+        mSprite->Draw(mCenterX, mCenterY, mScale, 0.0f);
         
         
     }
@@ -68,25 +79,38 @@ void Util_SpritePoints::Draw() {
         
         Graphics::SetColor(0.0f, 0.0f, 0.0f);
         Graphics::DrawPoint(aX, aY, 2.0f);
+        
     }
-    
-    
-    
-    
 }
 
 void Util_SpritePoints::TouchDown(float pX, float pY, void *pData) {
+    
+    mSelectedTouch = pData;
+    
+    mSelectedStartX = pX;
+    mSelectedStartY = pY;
+    mSelectedTouchStartX = pX;
+    mSelectedTouchStartY = pY;
+    mSelectedTouchIndex = mPointList.mCount;
     
     mPointList.Add(pX, pY);
     Print();
 }
 
 void Util_SpritePoints::TouchMove(float pX, float pY, void *pData) {
-    
+    if (pData == mSelectedTouch) {
+        if ((mSelectedTouchIndex >= 0) && (mSelectedTouchIndex < mPointList.mCount)) {
+            float aX = mSelectedStartX - (mSelectedTouchStartX - pX);
+            float aY = mSelectedStartY - (mSelectedTouchStartY - pY);
+            mPointList.Set(mSelectedTouchIndex, aX, aY);
+        }
+    }
 }
 
 void Util_SpritePoints::TouchUp(float pX, float pY, void *pData) {
-    
+    if (pData == mSelectedTouch) {
+        mSelectedTouch = NULL;
+    }
 }
 
 void Util_SpritePoints::SetSprite(FSprite *pSprite) {
@@ -120,8 +144,8 @@ void Util_SpritePoints::Print() {
     
     if (mSprite != NULL) {
         
-        float aWidth = mSprite->mWidth;
-        float aHeight = mSprite->mHeight;
+        float aWidth = mSprite->mWidth * mScale;
+        float aHeight = mSprite->mHeight * mScale;
         
         if ((aWidth > 4.0f) && (aHeight > 4.0f)) {
             
@@ -134,7 +158,7 @@ void Util_SpritePoints::Print() {
                 float aDiffX = aX - mCenterX;
                 float aDiffY = aY - mCenterY;
                 
-                printf("Diff[%d] = (%.2ff, %.2ff);\n", i, aDiffX, aDiffY);
+                //printf("Diff[%d] = (%.2ff, %.2ff);\n", i, aDiffX, aDiffY);
                 
                 
             }
@@ -147,14 +171,15 @@ void Util_SpritePoints::Print() {
                 float aDiffX = aX - mCenterX;
                 float aDiffY = aY - mCenterY;
                 
-                float aPercentX = aDiffX / (aWidth / 2.0f);
-                float aPercentY = aDiffY / (aHeight / 2.0f);
+                float aPercentX = aDiffX / (aWidth);
+                float aPercentY = aDiffY / (aHeight);
                 
                 
                 
                 
-                printf("Perc[%d] = (%.4ff, %.4ff);\n", i, aPercentX, aPercentY);
+                //printf("Perc[%d] = (%.4ff, %.4ff);\n", i, aPercentX, aPercentY);
                 
+                printf("mTwinklePointList.Add(%.4ff, %.4ff);\n", i, aPercentX, aPercentY);
                 
             }
             
