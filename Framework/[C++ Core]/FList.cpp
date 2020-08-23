@@ -158,7 +158,7 @@ void *FList::FetchRandom() {
 void *FList::FetchCircular(int pIndex) {
     if (mCount > 0) {
         if (pIndex < 0 || pIndex >= mCount) {
-            pIndex = pIndex % mCount;
+            pIndex = (pIndex % mCount);
             if (pIndex < 0) {
                 pIndex += mCount;
             }
@@ -173,7 +173,7 @@ void *FList::PopFirst() {
     if (mCount > 0) {
         aResult = mData[0];
         for (int i=1;i<mCount;i++) {
-            mData[i-1]=mData[i];
+            mData[i - 1] = mData[i];
         }
         mCount--;
     }
@@ -190,17 +190,17 @@ void *FList::PopLast() {
 }
 
 void FList::RemoveFirst(void *pItem) {
-	void **aSeek=mData;
-	void **aShelf=mData+mCount;
-	while (aSeek<aShelf) {
-		if(*aSeek==pItem)break;
+	void **aSeek = mData;
+	void **aShelf = mData + mCount;
+	while (aSeek < aShelf) {
+        if (*aSeek == pItem) { break; }
 		aSeek++;
 	}
-	if (aSeek<aShelf) {
-		void **aCopy=aSeek;
+	if (aSeek < aShelf) {
+		void **aCopy = aSeek;
 		aSeek++;
-		while (aSeek<aShelf) {
-			*aCopy=*aSeek;
+		while (aSeek < aShelf) {
+			*aCopy = *aSeek;
 			aCopy++;
 			aSeek++;
 		}
@@ -264,38 +264,39 @@ void FList::RotateObjectDown(void *pItem) {
     }
 }
 
-
 int FList::Find(void *pItem) {
-	void **aSeek=mData;
-	void **aShelf=mData+mCount;
-	while (aSeek<aShelf) {
-		if (*aSeek == pItem) break;
+	void **aSeek = mData;
+	void **aShelf = mData + mCount;
+	while (aSeek < aShelf) {
+        if (*aSeek == pItem) { break; }
 		aSeek++;
 	}
-	int aResult=-1;
-	if (aSeek<aShelf) aResult = (int)(aSeek-mData);
+	int aResult = -1;
+    if (aSeek < aShelf) {
+        aResult = (int)(aSeek - mData);
+    }
 	return aResult;
 }
 
 bool FList::Exists(void *pItem) {
-	void **aSeek=mData;
-	void **aShelf=mData+mCount;
-	while (aSeek<aShelf) {
-		if(*aSeek==pItem)break;
+	void **aSeek = mData;
+	void **aShelf = mData + mCount;
+	while (aSeek < aShelf) {
+        if (*aSeek == pItem) { break; }
 		aSeek++;
 	}
-	return aSeek<aShelf;
+	return (aSeek < aShelf);
 }
 
 void FList::Reverse() {
 	if (mCount > 0) {
-		void **aTop=mData+(mCount-1);
-		void **aBottom=mData;
+		void **aTop = mData + (mCount - 1);
+		void **aBottom = mData;
 		void *aHold;
-		while (aTop>aBottom) {
-			aHold=*aTop;
-			*aTop=*aBottom;
-			*aBottom=aHold;
+		while (aTop > aBottom) {
+			aHold = *aTop;
+			*aTop = *aBottom;
+			*aBottom = aHold;
 			aTop--;
 			aBottom++;
 		}
@@ -303,27 +304,26 @@ void FList::Reverse() {
 }
 
 void FList::RemoveLast(void *pItem) {
-	if (mCount == 0) return;
-	void **aSeek=mData+(mCount-1);
-	void **aShelf=mData;
-	while (aSeek>=aShelf) {
-		if(*aSeek==pItem)break;
+    if (mCount == 0) { return; }
+	void **aSeek = mData + (mCount - 1);
+	void **aShelf = mData;
+	while (aSeek >= aShelf) {
+		if(*aSeek == pItem)break;
 		aSeek--;
 	}
-	while (aSeek<aShelf&&*aSeek!=pItem)aSeek++;
-	if (aSeek>=aShelf) {
-		void **aCopy=aSeek;
-		aShelf=mData+mCount;
+    while ((aSeek < aShelf) && (*aSeek != pItem)) { aSeek++; }
+	if (aSeek >= aShelf) {
+		void **aCopy = aSeek;
+		aShelf = mData + mCount;
 		aSeek++;
-		while (aSeek<aShelf) {
-			*aCopy=*aSeek;
+		while (aSeek < aShelf) {
+			*aCopy = *aSeek;
 			aCopy++;
 			aSeek++;
 		}
 		mCount--;
 	}
 }
-
 
 void FList::RemoveAllBefore(int pIndex) {
     if (pIndex >= (mCount - 1)) {
