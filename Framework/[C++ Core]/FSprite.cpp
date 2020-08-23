@@ -1115,6 +1115,16 @@ void FSprite::DrawScaled(float pX, float pY, float pScaleX, float pScaleY, float
     Graphics::MatrixModelViewSet(cSpriteMatrixHold);
 }
 
+void FSprite::DrawRotated(float pX, float pY, float pRotation) {
+    Graphics::MatrixModelViewGet(&cSpriteMatrixHold);
+    cSpriteMatrixModelView.Set(cSpriteMatrixHold);
+    cSpriteMatrixModelView.Translate(pX, pY);
+    cSpriteMatrixModelView.Rotate(pRotation);
+    Graphics::MatrixModelViewSet(cSpriteMatrixModelView);
+    Draw();
+    Graphics::MatrixModelViewSet(cSpriteMatrixHold);
+}
+
 void FSprite::DrawRepeatingH(float pX, float pY, float pLength) {
     if ((mTexture != NULL) && (mBufferPositions != NULL) && (mBufferTextureCoords != NULL) && (pLength > 0.0f)) {
         float aWidth = (mTextureRect.GetEndX() - mTextureRect.GetStartX());
@@ -1181,10 +1191,6 @@ void FSprite::DrawRepeatingV(float pX, float pY, float pHeight) {
             }
         }
     }
-}
-
-void FSprite::DrawRotated(float pX, float pY, float pRotation) {
-    Draw(pX, pY, 1.0f, pRotation);
 }
 
 void FSprite::PrintQuadData() {

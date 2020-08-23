@@ -85,6 +85,9 @@ public:
     
     void                                    DrawScaled(float pX, float pY, float pScaleX, float pScaleY, float pRotation);
     
+    void                                    DrawRotated(float pX, float pY, float pRotation);
+    //inline void                             DrawRotated(FVec2 pPosition, float pRotation) { DrawRotated(pPosition.mX,pPosition.mY, pRotation); }
+    
     //inline void                             DrawScaled(FVec2 pPosition, float pScale) { DrawScaled(pPosition.mX,pPosition.mY, pScale); }
     //inline void                             DrawScaled(FVec2 pPosition, float pScaleX, float pScaleY){DrawScaled(pPosition.mX,pPosition.mY, pScaleX, pScaleY);}
     
@@ -92,8 +95,7 @@ public:
     void                                    DrawRepeatingV(float pX, float pY, float pHeight);
     
     
-    void                                    DrawRotated(float pX, float pY, float pRotation);
-    inline void                             DrawRotated(FVec2 pPosition, float pRotation) { DrawRotated(pPosition.mX,pPosition.mY, pRotation); }
+    
 
     void                                    DrawAngleRange(float pX, float pY, float pScale, float pRotation, float pAngleStart, float pAngleEnd);
 
@@ -122,7 +124,8 @@ public:
 	
 	
 	void                                    Center(float pX, float pY);
-	void                                    Center(FVec2 pPosition) { Center(pPosition.mX, pPosition.mY); }
+	//void                                    Center(FVec2 pPosition) { Center(pPosition.mX, pPosition.mY); }
+    
     
     void                                    DrawShiftedCorners(float pX, float pY, float pScale, float pRotationDegrees, FVec2 pShiftUL, FVec2 pShiftUR, FVec2 pShiftDL, FVec2 pShiftDR);
 
@@ -155,15 +158,15 @@ public:
     float                                   ScaleFitV(float pHeight, float pOffset);
     
     
-    inline float                            GetStartU(){return mTextureRect.GetStartU();}
-    inline float                            GetStartV(){return mTextureRect.GetStartV();}
-    inline float                            GetEndU(){return mTextureRect.GetEndU();}
-    inline float                            GetEndV(){return mTextureRect.GetEndV();}
+    inline float                            GetStartU() { return mTextureRect.GetStartU(); }
+    inline float                            GetStartV() { return mTextureRect.GetStartV(); }
+    inline float                            GetEndU() { return mTextureRect.GetEndU(); }
+    inline float                            GetEndV() { return mTextureRect.GetEndV(); }
     
-    inline float                            GetStartX(){return mTextureRect.GetStartX();}
-    inline float                            GetStartY(){return mTextureRect.GetStartY();}
-    inline float                            GetEndX(){return mTextureRect.GetEndX();}
-    inline float                            GetEndY(){return mTextureRect.GetEndY();}
+    inline float                            GetStartX() { return mTextureRect.GetStartX(); }
+    inline float                            GetStartY() { return mTextureRect.GetStartY(); }
+    inline float                            GetEndX() { return mTextureRect.GetEndX(); }
+    inline float                            GetEndY() { return mTextureRect.GetEndY(); }
 
     bool                                    mAddToSpriteList;
 };
