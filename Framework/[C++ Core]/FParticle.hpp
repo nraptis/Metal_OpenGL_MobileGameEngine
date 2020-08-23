@@ -123,8 +123,8 @@ public:
     void                                        SetRRN(float pRotationSpeed, float pRotationAccel);
     
     
-    void                                        Fling(float pDirX, float pDirY, float pPower, float pPunch);
-    void                                        Fling(float pDirectionAngle, float pPower, float pPunch);
+    void                                        Fling(float pDirX, float pDirY, float pPunch, float pPower);
+    void                                        Fling(float pDirectionAngle, float pPunch, float pPower);
     
     
     float                                       mX;

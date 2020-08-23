@@ -52,8 +52,8 @@ void FParticle::BaseInitialize()
     mY = 0.0f;
     
     mFrame = 0.0f;
-    mFrameSpeed = 1.0f;
-    mFrameMax = 1.0f;
+    mFrameSpeed = 0.5f;
+    mFrameMax = 0.0f;
     mFrameLoop = false;
     
     mXSpeed = 0.0f;
@@ -151,11 +151,17 @@ void FParticle::Update()
             if (mTimerAlive >= mDelayScaleSpeedTime) { mScale += mDelayScaleSpeed; }
         }
         
-        if (mAlpha <= 0.0f) { Kill(); }
-        if (mScale <= 0.0f) { Kill(); }
-        if (mTimerAlive >= mTimeKill) { Kill(); }
+        if (mAlpha <= 0.0f) {
+            Kill();
+        }
+        if (mScale <= 0.0f) {
+            Kill();
+        }
+        if (mTimerAlive >= mTimeKill) {
+            Kill();
+        }
         
-        if ((mSpriteSequence != NULL) && (mFrameMax > 0.0f)) {
+        if (mFrameMax > 0.5f) {
             mFrame += mFrameSpeed;
             if (mFrame > mFrameMax) {
                 if (mFrameLoop) {
@@ -538,7 +544,7 @@ void FParticle::SetDelayScaleSpeed(int pTime, float pScaleSpeed) {
     mDelayScaleSpeed = pScaleSpeed;
 }
 
-void FParticle::Fling(float pDirX, float pDirY, float pPower, float pPunch) {
+void FParticle::Fling(float pDirX, float pDirY, float pPunch, float pPower) {
     float aDirX = pDirX;
     float aDirY = pDirY;
     float aLength = aDirX * aDirX + aDirY * aDirY;
@@ -559,7 +565,7 @@ void FParticle::Fling(float pDirX, float pDirY, float pPower, float pPunch) {
     SetSpeed(aDirX * pPower, aDirY * pPower);
 }
 
-void FParticle::Fling(float pDirectionAngle, float pPower, float pPunch) {
+void FParticle::Fling(float pDirectionAngle, float pPunch, float pPower) {
     
     float aDirX = Sin(pDirectionAngle);
     float aDirY = -Cos(pDirectionAngle);
