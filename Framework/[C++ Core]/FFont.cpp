@@ -22,7 +22,7 @@ FFont::FFont() {
         }
     }
     mDataScale = 1.0f;
-    mSpriteScale = 1.0f;
+    //mSpriteScale = 1.0f;
     mGlobalSqueeze = 0.0f;
     mWrapStartIndex = 0;
 }
@@ -68,7 +68,6 @@ void FFont::Unload() {
         }
     }
     mDataScale = 1.0f;
-    mSpriteScale = 1.0f;
     mGlobalSqueeze = 0.0f;
 }
 
@@ -85,7 +84,7 @@ void FFont::Draw(const char *pText, float pX, float pY, float pScale) {
     float aKern = 0.0f;
     float aScale = (mDataScale * pScale);
     float aPointSize = mPointSize * mDataScale * pScale * gSpriteDrawScale;
-    float aSpriteScale = mSpriteScale * pScale;
+    float aSpriteScale = pScale;
     if (pText) {
         unsigned char *aPtr = (unsigned char *)pText;
         while (*aPtr) {
@@ -114,6 +113,25 @@ void FFont::DrawCenteredVertically(const char *pText, float pX, float pY) {
 
 void FFont::DrawCenteredVertically(const char *pText, float pX, float pY, float pScale) {
     Draw(pText, pX, pY - (mPointSize * (mDataScale * pScale * gSpriteDrawScale) * 0.5f), pScale);
+}
+
+void FFont::DrawPlottedCenteredVertically(const char *pText, float pX, float pY, float *pPlotX) {
+    unsigned char aChar = 0;
+    int aCharIndex = -1;
+    if (pText) {
+        unsigned char *aPtr = (unsigned char *)pText;
+        int aIndex = 0;
+        while (*aPtr) {
+            
+            aChar = *aPtr;
+            aCharIndex = aChar;
+            
+            mCharacterSprite[aCharIndex].Center(pX + pPlotX[aIndex], pY);
+            
+            aPtr++;
+            aIndex++;
+        }
+    }
 }
 
 int FFont::WrapLineCount(const char *pText, float pAreaWidth, float pScale) {
@@ -412,7 +430,7 @@ void FFont::SetStride(int pCharIndex, float pOffsetX, float pStride) {
 }
 
 
-float FFont::PlotWidth(char *pText, float *pArray) {
+float FFont::PlotX(char *pText, float *pArray) {
     unsigned char aChar = 0;
     float aX = 0.0f;
     int aCharIndex = -1;
@@ -437,8 +455,8 @@ float FFont::PlotWidth(char *pText, float *pArray) {
     return aX;
 }
 
-float FFont::PlotWidthCentered(char *pText, float *pArray) {
-    float aWidth = PlotWidth(pText, pArray);
+float FFont::PlotXCentered(char *pText, float *pArray) {
+    float aWidth = PlotX(pText, pArray);
     if (pText) {
         float aWidth2 = aWidth / 2.0f;
         int aIndex = 0;
@@ -463,7 +481,7 @@ void FFont::PrintLoaded() {
     Log("_______FONT_____\n");
     Log("Name: %s\n", mPrefix.c());
     Log("Count: %d\n", aLoadedChars);
-    Log("Size: %d  DataScale: %.2f  SpriteScale: %.2f\n", ((int)mPointSize), mDataScale, mSpriteScale);
+    Log("Size: %d  DataScale: %.2f \n", ((int)mPointSize), mDataScale);
     if(aLoadedChars > 0)Log("__\n");
 
     for (int i=0;i<256;i++) {

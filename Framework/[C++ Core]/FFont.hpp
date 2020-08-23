@@ -28,7 +28,7 @@ public:
     float                           mPointSize;
 
     float                           mDataScale;
-    float                           mSpriteScale;
+    //float                           mSpriteScale;
     float                           mGlobalSqueeze;
 
     void                            SetSpaceWidth(float pSpaceWidth);
@@ -52,6 +52,9 @@ public:
 
     void                            Draw(const char *pText, float pX, float pY);
     void                            Draw(FString pText, float pX, float pY) { Draw((const char *)pText.c(), pX, pY); }
+    
+    void                            DrawPlottedCenteredVertically(const char *pText, float pX, float pY, float *pPlotX);
+    void                            DrawPlottedCenteredVertically(FString pText, float pX, float pY, float *pPlotX) { DrawPlottedCenteredVertically((const char *)pText.c(), pX, pY, pPlotX); }
 
     void                            Draw(const char *pText, float pX, float pY, float pScale);
     void                            Draw(FString pText, float pX, float pY, float pScale) { Draw((const char *)pText.c(), pX, pY, pScale); }
@@ -104,21 +107,21 @@ public:
     int                             CharIndex(char pChar);
     bool                            CharExists(char pChar);
     
-    float                           PointSize(){return (mPointSize * mDataScale);}
+    float                           PointSize() { return (mPointSize * mDataScale); }
     
     float                           Width(const char *pText, float pScale);
     float                           Width(const char *pText);
     
-    float                           ScaleForWidth(const char *pText, float pLabelWidth, float pLabelPadding=0.0);
-    float                           ScaleForWidth(FString pText, float pLabelWidth, float pLabelPadding=0.0) { return ScaleForWidth((const char *)pText.c(), pLabelWidth, pLabelPadding); }
+    float                           ScaleForWidth(const char *pText, float pLabelWidth, float pLabelPadding = 0.0);
+    float                           ScaleForWidth(FString pText, float pLabelWidth, float pLabelPadding = 0.0) { return ScaleForWidth((const char *)pText.c(), pLabelWidth, pLabelPadding); }
 
 
     void                            ApplyScrunch(float pScrunch);
     void                            ApplyExpand(float pExpand);
     void                            ApplyOffsetX(float pOffset);
 
-    float                           PlotWidth(char *pText, float *pArray);
-    float                           PlotWidthCentered(char *pText, float *pArray);
+    float                           PlotX(char *pText, float *pArray);
+    float                           PlotXCentered(char *pText, float *pArray);
     
     void                            LoadDeprecated(char *pFilePrefix, char *pCharacters);
     inline void                     LoadDeprecated(const char *pFilePrefix, char *pCharacters) { LoadDeprecated((char *)pFilePrefix, (char *)pCharacters); }
@@ -127,8 +130,6 @@ public:
     
     void                            Unload();
     
-
-    //NOTE: Do not use padding radix, this will unevenly space glyphs.
     static void                     BitmapDataBatch(const char *pDataPath, const char *pImagePath,
                                                     const char *pFilePrefixCharImages, const char *pDataFile,
                                                     int pPaddingCrop, int pPaddingGlyph, const char *pRemoveCharacters=0);
