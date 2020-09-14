@@ -169,6 +169,7 @@ void FSlider::SetThumb(float pX, float pY, float pWidth, float pHeight) {
 }
 
 void FSlider::Draw() {
+    Graphics::PipelineStateSetShape2DAlphaBlending();
     Graphics::SetColor(0.75f, 0.75f, 0.75f, 1.0f);
     Graphics::OutlineRect(mThumbX, mThumbY, mThumbWidth, mThumbHeight, 8.0f);
     Graphics::SetColor(0.5f, 0.5f, 0.5f, 1.0f);
