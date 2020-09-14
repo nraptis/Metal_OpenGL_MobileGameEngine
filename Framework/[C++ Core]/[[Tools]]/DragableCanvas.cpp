@@ -319,7 +319,6 @@ void DragableCanvas::UpdateCornerDrag(float pX, float pY, void *pData) {
 
 void DragableCanvas::ResetCorners() {
     
-    
     mResizeCornerX[0] = mX;
     mResizeCornerY[0] = mY;
     mResizeCornerX[1] = mX + mWidth;
@@ -330,10 +329,9 @@ void DragableCanvas::ResetCorners() {
     mResizeCornerY[3] = mY + mHeight;
     
     if (mParent) {
-    for (int i=0;i<4;i++) {
-        mResizeCornerX[i] += mParent->mTransformAbsolute.mCornerX[0];
-        mResizeCornerY[i] += mParent->mTransformAbsolute.mCornerY[0];
+        for (int i=0;i<4;i++) {
+            mResizeCornerX[i] += mParent->mTransformAbsolute.mCornerX[0];
+            mResizeCornerY[i] += mParent->mTransformAbsolute.mCornerY[0];
+        }
     }
-    }
-    
 }
