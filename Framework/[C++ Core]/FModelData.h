@@ -81,13 +81,6 @@ public:
     
     void                    Scale(float pScale);
     
-    void                    ShiftX(float pShiftAmount);
-    void                    ShiftY(float pShiftAmount);
-    void                    ShiftZ(float pShiftAmount);
-    
-    void                    ShiftCentroid();
-    
-    
     void                    FlipXY();
     void                    FlipYZ();
     void                    FlipZX();
@@ -116,9 +109,6 @@ public:
     
     int                     mNormalCount;
     int                     mNormalSize;
-    
-    virtual void            Print();
-    virtual void            PrintOverview();
     
     virtual void            Free();
 };
@@ -165,8 +155,6 @@ public:
     FModelDataIndexed           *Clone();
     
     void                        Clone(FModelDataIndexed *pTarget);
-    
-    void                        PrintCode();
     
     GFX_MODEL_INDEX_TYPE        *mIndex;
     int                         mIndexCount;

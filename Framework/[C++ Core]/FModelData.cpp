@@ -14,102 +14,103 @@
 bool gModelDiscardNormals = false;
 bool gModelDiscardUVW = false;
 
-FModelData::FModelData()
-{
+FModelData::FModelData() {
     mTexture = 0;
-    mXYZ=0;mUVW=0;mNormal=0;
-    mXYZCount=0;mXYZSize=0;
-    mUVWCount=0;mUVWSize=0;
-    mNormalCount=0;mNormalSize=0;
+    mXYZ = NULL;
+    mUVW = NULL;
+    mNormal = NULL;
+    mXYZCount = 0;
+    mXYZSize = 0;
+    mUVWCount = 0;
+    mUVWSize = 0;
+    mNormalCount = 0;
+    mNormalSize = 0;
 }
 
-FModelData::~FModelData()
-{
+FModelData::~FModelData() {
     SetTexture(0);
     Free();
 }
 
-void FModelData::Free()
-{
+void FModelData::Free() {
     DiscardXYZ();
     DiscardUVW();
     DiscardNormal();
 }
 
-void FModelData::DiscardXYZ()
-{
-    delete[]mXYZ;
-    mXYZ=0;
-    mXYZCount=0;
-    mXYZSize=0;
+void FModelData::DiscardXYZ() {
+    delete [] mXYZ;
+    mXYZ = NULL;
+    mXYZCount = 0;
+    mXYZSize = 0;
 }
 
-void FModelData::DiscardUVW()
-{
-    delete[]mUVW;
-    mUVW=0;
-    mUVWCount=0;
-    mUVWSize=0;
+void FModelData::DiscardUVW() {
+    delete [] mUVW;
+    mUVW = NULL;
+    mUVWCount = 0;
+    mUVWSize = 0;
 }
 
-void FModelData::DiscardNormal()
-{
-    delete[]mNormal;
-    mNormal=0;
-    mNormalCount=0;
-    mNormalSize=0;
+void FModelData::DiscardNormal() {
+    delete [] mNormal;
+    mNormal = NULL;
+    mNormalCount = 0;
+    mNormalSize = 0;
 }
 
-float *FModelData::ResizeTriple(float *pData, int pCount, int pSize)
-{
+float *FModelData::ResizeTriple(float *pData, int pCount, int pSize) {
     int aDataSize = (pSize * 3);
     int aDataCount = (pCount * 3);
     
     float *aNew = new float[aDataSize+1];
-    for(int i=0;i<aDataCount;i++)
-    {
+    for (int i=0;i<aDataCount;i++) {
         aNew[i] = pData[i];
     }
-    for(int i=aDataCount;i<aDataSize;i++)
-    {
-        aNew[i] = 0;
+    
+    for (int i=aDataCount;i<aDataSize;i++) {
+        aNew[i] = 0.0f;
     }
-    delete[]pData;
+    
+    delete [] pData;
     
     return aNew;
 }
 
-void FModelData::SetTriple(unsigned int pIndex, float *pArray, float pValue1, float pValue2, float pValue3)
-{
+void FModelData::SetTriple(unsigned int pIndex, float *pArray, float pValue1, float pValue2, float pValue3) {
     unsigned int aIndex = pIndex * 3;
-    pArray[aIndex]=pValue1;
-    pArray[aIndex+1]=pValue2;
-    pArray[aIndex+2]=pValue3;
+    pArray[aIndex] = pValue1;
+    pArray[aIndex + 1] = pValue2;
+    pArray[aIndex + 2] = pValue3;
 }
 
-void FModelData::AddXYZ(float pX, float pY, float pZ)
-{
-    if(mXYZCount >= mXYZSize)SizeXYZ(mXYZCount + mXYZCount / 2 + 1);
+void FModelData::AddXYZ(float pX, float pY, float pZ) {
+    if (mXYZCount >= mXYZSize) {
+        SizeXYZ(mXYZCount + mXYZCount / 2 + 1);
+    }
     SetTriple(mXYZCount, mXYZ, pX, pY, pZ);
     mXYZCount++;
 }
 
-void FModelData::SizeXYZ(int pSize)
-{
-    if(pSize != 0)mXYZ = ResizeTriple(mXYZ, mXYZCount, pSize);
+void FModelData::SizeXYZ(int pSize) {
+    if (pSize != 0) {
+        mXYZ = ResizeTriple(mXYZ, mXYZCount, pSize);
+    }
     mXYZSize = pSize;
 }
 
-void FModelData::AddUVW(float pU, float pV, float pW)
-{
-    if(mUVWCount >= mUVWSize)SizeUVW(mUVWCount + mUVWCount / 2 + 1);
+void FModelData::AddUVW(float pU, float pV, float pW) {
+    if (mUVWCount >= mUVWSize) {
+        SizeUVW(mUVWCount + mUVWCount / 2 + 1);
+    }
     SetTriple(mUVWCount, mUVW, pU, pV, pW);
     mUVWCount++;
 }
 
-void FModelData::SizeUVW(int pSize)
-{
-    if(pSize != 0)mUVW = ResizeTriple(mUVW, mUVWCount, pSize);
+void FModelData::SizeUVW(int pSize) {
+    if (pSize != 0) {
+        mUVW = ResizeTriple(mUVW, mUVWCount, pSize);
+    }
     mUVWSize = pSize;
 }
 
@@ -120,79 +121,54 @@ void FModelData::AddNormal(float pNormX, float pNormY, float pNormZ)
     mNormalCount++;
 }
 
-void FModelData::SizeNormal(int pSize)
-{
-    if(pSize != 0)mNormal = ResizeTriple(mNormal, mNormalCount, pSize);
+void FModelData::SizeNormal(int pSize) {
+    if (pSize != 0) {
+        mNormal = ResizeTriple(mNormal, mNormalCount, pSize);
+    }
     mNormalSize = pSize;
 }
 
-float FModelData::GetX(int pIndex)
-{
-    //if(pIndex>=0 && pIndex<mXYZCount)
-    return mXYZ[pIndex*3];
-    //Log("Error Fetching X [%d / %d]\n", pIndex, mXYZCount);
-    //return 0;
+float FModelData::GetX(int pIndex) {
+    return mXYZ[pIndex * 3];
 }
 
-float FModelData::GetY(int pIndex)
-{
-    //if(pIndex>=0 && pIndex<mXYZCount)
-    return mXYZ[pIndex*3+1];
-    //return 0;
+float FModelData::GetY(int pIndex) {
+    return mXYZ[pIndex * 3 + 1];
 }
 
-float FModelData::GetZ(int pIndex)
-{
-    //if(pIndex>=0 && pIndex<mXYZCount)
-    return mXYZ[pIndex*3+2];
-    //return 0;
+float FModelData::GetZ(int pIndex) {
+    return mXYZ[pIndex * 3 + 2];
 }
 
-
-float FModelData::GetU(int pIndex)
-{
-    //if(pIndex>=0 && pIndex<mUVWCount)
-    return mUVW[pIndex*3];
-    //return 0;
+float FModelData::GetU(int pIndex) {
+    return mUVW[pIndex * 3];
 }
 
-float FModelData::GetV(int pIndex)
-{
-    //if(pIndex>=0 && pIndex<mUVWCount)
-    return mUVW[pIndex*3+1];
-    //return 0;
+float FModelData::GetV(int pIndex) {
+    return mUVW[pIndex * 3 + 1];
 }
 
-float FModelData::GetW(int pIndex)
-{
-    //if(pIndex>=0 && pIndex<mUVWCount)
-    return mUVW[pIndex*3+2];
-    //return 0;
+float FModelData::GetW(int pIndex) {
+    return mUVW[pIndex * 3 + 2];
 }
 
-float FModelData::GetNormX(int pIndex)
-{
-    //if(pIndex>=0 && pIndex<mNormalCount)
-    return mNormal[pIndex*3];
-    //return 0;
+float FModelData::GetNormX(int pIndex) {
+    return mNormal[pIndex * 3];
 }
 
-float FModelData::GetNormY(int pIndex)
-{
-    //if(pIndex>=0 && pIndex<mNormalCount)
-    return mNormal[pIndex*3+1];
-    //return 0;
+float FModelData::GetNormY(int pIndex) {
+    return mNormal[pIndex * 3 + 1];
 }
 
 float FModelData::GetNormZ(int pIndex) {
-    //if(pIndex>=0 && pIndex<mNormalCount)
-    return mNormal[pIndex*3+2];
-    //return 0;
+    return mNormal[pIndex * 3 + 2];
 }
 
 void FModelData::InvertU() {
     int aCount = mUVWCount * 3;
-    for(int i=0;i<aCount;i+=3)mUVW[i]=(1-mUVW[i]);
+    for (int i=0;i<aCount;i+=3) {
+        mUVW[i] = (1.0f - mUVW[i]);
+    }
 }
 
 void FModelData::InvertV() {
@@ -202,152 +178,97 @@ void FModelData::InvertV() {
 
 void FModelData::InvertW() {
     int aCount = mUVWCount * 3;
-    for(int i=2;i<aCount;i+=3)mUVW[i]=(1-mUVW[i]);
+    for (int i=2;i<aCount;i+=3) {
+        mUVW[i]=(1.0f - mUVW[i]);
+    }
 }
 
 void FModelData::FlipXY() {
-    float aHold=0;
+    float aHold = 0.0f;
     int aCount = mXYZCount * 3;
     for (int i=0;i<aCount;i+=3) {
-        aHold=mXYZ[i];
-        mXYZ[i]=mXYZ[i+1];
-        mXYZ[i+1]=aHold;
+        aHold = mXYZ[i];
+        mXYZ[i] = mXYZ[i + 1];
+        mXYZ[i + 1] = aHold;
     }
     aCount = mNormalCount * 3;
     for (int i=0;i<aCount;i+=3) {
         aHold = mNormal[i];
-        mNormal[i] = mNormal[i+1];
-        mNormal[i+1] = aHold;
+        mNormal[i] = mNormal[i + 1];
+        mNormal[i + 1] = aHold;
     }
 }
 
 void FModelData::FlipYZ() {
-    float aHold = 0;
+    float aHold = 0.0f;
     int aCount = mXYZCount * 3;
     for (int i=0;i<aCount;i+=3) {
         aHold = mXYZ[i+1];
-        mXYZ[i+1] = mXYZ[i+2];
-        mXYZ[i+2] = aHold;
+        mXYZ[i + 1] = mXYZ[i + 2];
+        mXYZ[i + 2] = aHold;
     }
     aCount = mNormalCount * 3;
     for (int i=0;i<aCount;i+=3) {
         aHold = mNormal[i];
-        mNormal[i] = -mNormal[i+2];
-        mNormal[i+2] = aHold;
+        mNormal[i] = -mNormal[i + 2];
+        mNormal[i + 2] = aHold;
     }
 }
 
 void FModelData::FlipZX() {
-    float aHold=0;
+    float aHold = 0.0f;
     int aCount = mXYZCount * 3;
     for (int i=0;i<aCount;i+=3) {
-        aHold=mXYZ[i];
-        mXYZ[i]=mXYZ[i+2];
-        mXYZ[i+2]=aHold;
+        aHold = mXYZ[i];
+        mXYZ[i] = mXYZ[i + 2];
+        mXYZ[i + 2] = aHold;
     }
     
     aCount = mNormalCount * 3;
-    for(int i=0;i<aCount;i+=3)
-    {
+    for (int i=0;i<aCount;i+=3) {
         aHold= mNormal[i];
-        mNormal[i]=mNormal[i+2];
-        mNormal[i+2]=aHold;
+        mNormal[i] = mNormal[i + 2];
+        mNormal[i + 2] = aHold;
     }
 }
 
 
-void FModelData::NegateX()
-{
+void FModelData::NegateX() {
     int aCount = mXYZCount * 3;
-    for(int i=0;i<aCount;i+=3)
-    {
+    for(int i=0;i<aCount;i+=3) {
         mXYZ[i] = (-mXYZ[i]);
     }
 }
 
-void FModelData::NegateY()
-{
+void FModelData::NegateY() {
     int aCount = mXYZCount * 3;
-    for(int i=1;i<aCount;i+=3)
-    {
+    for (int i=1;i<aCount;i+=3) {
         mXYZ[i] = (-mXYZ[i]);
     }
 }
 
-void FModelData::NegateZ()
-{
+void FModelData::NegateZ() {
     int aCount = mXYZCount * 3;
-    for(int i=2;i<aCount;i+=3)
-    {
+    for (int i=2;i<aCount;i+=3) {
         mXYZ[i] = (-mXYZ[i]);
     }
 }
 
-void FModelData::ShiftX(float pShiftAmount)
-{
+void FModelData::Scale(float pScale) {
     int aCount = mXYZCount * 3;
-    for(int i=0;i<aCount;i+=3)
-    {
-        mXYZ[i] += pShiftAmount;
-    }
-}
-
-void FModelData::ShiftY(float pShiftAmount)
-{
-    int aCount = mXYZCount * 3;
-    for(int i=1;i<aCount;i+=3)
-    {
-        mXYZ[i] += pShiftAmount;
-    }
-}
-
-void FModelData::ShiftZ(float pShiftAmount)
-{
-    int aCount = mXYZCount * 3;
-    for(int i=2;i<aCount;i+=3)
-    {
-        mXYZ[i] += pShiftAmount;
-    }
-}
-
-void FModelData::ShiftCentroid()
-{
-    float aCentroidX = 0.0f;
-    float aCentroidY = 0.0f;
-    float aCentroidZ = 0.0f;
-    
-    GetCentroid(aCentroidX, aCentroidY, aCentroidZ);
-    
-    ShiftX(-aCentroidX);
-    ShiftY(-aCentroidX);
-    ShiftZ(-aCentroidX);
-}
-
-void FModelData::Scale(float pScale)
-{
-    int aCount = mXYZCount * 3;
-    for(int i=0;i<aCount;i++)
-    {
+    for (int i=0;i<aCount;i++) {
         mXYZ[i] *= pScale;
     }
-    
 }
 
-void FModelData::SetTexture(FTexture *pTexture)
-{
+void FModelData::SetTexture(FTexture *pTexture) {
     SET_TEXTURE_BODY;
 }
 
-void FModelData::SetSprite(FSprite *pSprite, bool pFixUVW)
-{
-    if(pSprite)
-    {
+void FModelData::SetSprite(FSprite *pSprite, bool pFixUVW) {
+    if (pSprite != NULL) {
         SetTexture(pSprite->mTexture);
-        
-        if(pFixUVW)
-        {
-            
-            
+        if (pFixUVW == true) {
             float aStartU = pSprite->mTextureRect.GetStartU();
             float aStartV = pSprite->mTextureRect.GetStartV();
              
@@ -361,11 +282,13 @@ void FModelData::SetSprite(FSprite *pSprite, bool pFixUVW)
 
 
 void FModelData::FitUVW(float pStartU, float pEndU, float pStartV, float pEndV) {
-    if ((pStartU == 0) && (pStartV == 0) && (pEndU == 1) && (pEndV == 1)) {
+    if ((pStartU == 0.0f) && (pStartV == 0.0f) && (pEndU == 1.0f) && (pEndV == 1.0f)) {
         return;
     }
     
-    if (mUVWCount <= 0) return;
+    if (mUVWCount <= 0) {
+        return;
+    }
     
     float aSpanU = pEndU - pStartU;
     float aSpanV = pEndV - pStartV;
@@ -376,77 +299,72 @@ void FModelData::FitUVW(float pStartU, float pEndU, float pStartV, float pEndV) 
         aIndex = i * 3;
         
         aU = mUVW[aIndex];
-        aV = mUVW[aIndex+1];
+        aV = mUVW[aIndex + 1];
         
         aU = (pStartU + aSpanU * aU);
         aV = (pStartV + aSpanV * aV);
         
         mUVW[aIndex] = aU;
-        mUVW[aIndex+1] = aV;
+        mUVW[aIndex + 1] = aV;
     }
 }
 
 
 void FModelData::CopyXYZ(float *pXYZ, int pCount) {
-    delete[]mXYZ;
-    mXYZCount=0;
-    mXYZSize=0;
-    if((pXYZ!=0) && (pCount>0))
-    {
+    delete [] mXYZ;
+    mXYZCount = 0;
+    mXYZSize = 0;
+    if ((pXYZ != NULL) && (pCount > 0)) {
         SizeXYZ(pCount);
         int aCount3 = (pCount * 3);
         mXYZ = new float[aCount3];
-        for(int i=0;i<aCount3;i++)mXYZ[i] = pXYZ[i];
+        for(int i=0;i<aCount3;i++) {
+            mXYZ[i] = pXYZ[i];
+        }
         mXYZCount = pCount;
     }
 }
 
 void FModelData::CopyUVW(float *pUVW, int pCount)
 {
-    delete[]mUVW;
-    mUVWCount=0;
-    mUVWSize=0;
-    if((pUVW!=0) && (pCount>0))
-    {
+    delete [] mUVW;
+    mUVWCount = 0;
+    mUVWSize = 0;
+    if((pUVW != NULL) && (pCount > 0)) {
         SizeUVW(pCount);
         int aCount3 = (pCount * 3);
         mUVW = new float[aCount3];
-        for(int i=0;i<aCount3;i++)mUVW[i] = pUVW[i];
+        for (int i=0;i<aCount3;i++) {
+            mUVW[i] = pUVW[i];
+        }
         mUVWCount = pCount;
     }
 }
 
-void FModelData::CopyNorm(float *pNorm, int pCount)
-{
-    delete[]mNormal;
-    mNormalCount=0;
-    mNormalSize=0;
-    if((pNorm!=0) && (pCount>0))
-    {
+void FModelData::CopyNorm(float *pNorm, int pCount) {
+    delete [] mNormal;
+    mNormalCount = 0;
+    mNormalSize = 0;
+    if ((pNorm != NULL) && (pCount > 0)) {
         SizeNormal(pCount);
         int aCount3 = (pCount * 3);
         mNormal = new float[aCount3];
-        for(int i=0;i<aCount3;i++)mNormal[i] = pNorm[i];
+        for (int i=0;i<aCount3;i++) {
+            mNormal[i] = pNorm[i];
+        }
         mNormalCount = pCount;
     }
 }
 
-FModelData *FModelData::Clone()
-{
-    FModelData *aClone=new FModelData();
+FModelData *FModelData::Clone() {
+    FModelData *aClone = new FModelData();
     aClone->CopyXYZ(mXYZ, mXYZCount);
     aClone->CopyUVW(mUVW, mUVWCount);
     aClone->CopyNorm(mNormal, mNormalCount);
     return aClone;
 }
 
-void FModelData::Print()
-{
-    
-}
-
-void FModelData::Save(const char *pFile)
-{
+void FModelData::Save(const char *pFile) {
     FFile aFile;
     Save(&aFile);
     aFile.Save(pFile);
@@ -514,51 +432,59 @@ void FModelData::LoadData(const char *pFile)
 void FModelData::LoadOBJ(FFile *pFile) {
     Free();
     
-    if(pFile == 0)return;
-    if(pFile->mLength <= 0)return;
+    if (pFile == NULL) {
+        return;
+    }
     
-    //FModelData *aResult = new FModelData();
+    if (pFile->mLength <= 0) {
+        return;
+    }
     
     FModelDataIndexed *aTemp = new FModelDataIndexed();
     
-    //int aPreviousIndexStart = 0;
-    int aError=0;
+    int aError = 0;
     
-    float aX, aY, aZ,
-    aU, aV, aW,
-    aNX, aNY, aNZ;
+    float aX = 0.0f;
+    float aY = 0.0f;
+    float aZ = 0.0f;
+    float aU = 0.0f;
+    float aV = 0.0f;
+    float aW = 0.0f;
+    float aNX = 0.0f;
+    float aNY = 0.0f;
+    float aNZ = 0.0f;
     
     int aXYZIndex = 0;
     int aUVWIndex = 0;
     int aNormalIndex = 0;
     
-	char *aData=(char*)pFile->mData;
-	int aLength=pFile->mLength;
+	char *aData = (char*)pFile->mData;
+	int aLength = pFile->mLength;
 	
-	char *aEnd=&aData[aLength];
-	char *aLineStart=aData;
-	char *aLineEnd=aData;
+	char *aEnd = &aData[aLength];
+	char *aLineStart = aData;
+	char *aLineEnd = aData;
     
-    int aLineLength;
-    int aWriteIndex;
-    int aNumberCount;
+    int aLineLength = 0;
+    int aWriteIndex = 0;
+    int aNumberCount = 0;
     
-    char *aSeek;
+    char *aSeek = NULL;
     char aNumberString[128];
     float aFloat[32];
     int aFace[4][3];
-    int aFaceIndex;
-    int aFaceCol;
+    int aFaceIndex = 0;
+    int aFaceCol = 0;
     
     bool aContinue;
-    int aLine=1;
+    int aLine = 1;
     
-	while((aLineStart<aEnd)&&(aError==0)) {
-		while((aLineStart < aEnd) && (*aLineStart <= 32)) {
+	while ((aLineStart < aEnd) && (aError == 0)) {
+		while ((aLineStart < aEnd) && (*aLineStart <= 32)) {
 			aLineStart++;
 		}
         
-		aLineEnd=aLineStart;
+		aLineEnd = aLineStart;
         
 		while ((aLineEnd < aEnd) && (*aLineEnd >= 32)) {
 			aLineEnd++;
@@ -566,170 +492,113 @@ void FModelData::LoadOBJ(FFile *pFile) {
         
 		if ((aLineEnd > aLineStart) && (aError == 0)) {
             aLineLength = (int)(aLineEnd - aLineStart);
-            if(aLineLength > 1)
-            {
-                if(aLineStart[0] == 'g')
-                {
-                    /*
-                    if(pList != 0)
-                    {
-                        if(aTemp->mIndexCount != aPreviousIndexStart)
-                        {
-                            FModelData *aModel = new FModelData();
-                            
-                            for(int i=aPreviousIndexStart;i<aTemp->mIndexCount;i+=3)
-                            {
-                                aXYZIndex = aTemp->mIndex[i];
-                                aUVWIndex = aTemp->mIndex[i+1];
-                                aNormalIndex = aTemp->mIndex[i+2];
-                                
-                                aX = aTemp->GetX(aXYZIndex);
-                                aY = aTemp->GetY(aXYZIndex);
-                                aZ = aTemp->GetZ(aXYZIndex);
-                                
-                                aU = aTemp->GetU(aUVWIndex);
-                                aV = aTemp->GetV(aUVWIndex);
-                                aW = aTemp->GetW(aUVWIndex);
-                                
-                                aNX = aTemp->GetNormX(aNormalIndex);
-                                aNY = aTemp->GetNormY(aNormalIndex);
-                                aNZ = aTemp->GetNormZ(aNormalIndex);
-                                
-                                aModel->AddXYZ(aX, aY, aZ);
-                                aModel->AddUVW(aU, aV, aW);
-                                aModel->AddNormal(aNX, aNY, aNZ);
-                            }
-                            
-                            aModel->InvertV();
-                            pList->Add(aModel);
-                            aPreviousIndexStart = aTemp->mIndexCount;
-                        }
-                    }
-                    */
+            if (aLineLength > 1) {
+                if (aLineStart[0] == 'g') {
+                    
                 }
             }
             
-            if(aLineLength > 5)
-            {
-                if(aLineStart[0] == 'v')
-                {
-                    aNumberCount=0;
-                    aSeek=aLineStart;
-                    while((aNumberCount < 3) && (aSeek < aLineEnd))
-                    {
-                        while(aSeek < aLineEnd)
-                        {
-                            if((*aSeek >= '0' && *aSeek <= '9') || (*aSeek == '.'))
-                            {
-                                aWriteIndex=0;
-                                if(aSeek > aLineStart)
-                                {
-                                    if(*(aSeek-1)=='-')
-                                    {
+            if (aLineLength > 5) {
+                if (aLineStart[0] == 'v') {
+                    aNumberCount = 0;
+                    aSeek = aLineStart;
+                    while ((aNumberCount < 3) && (aSeek < aLineEnd)) {
+                        while (aSeek < aLineEnd) {
+                            if ((*aSeek >= '0' && *aSeek <= '9') || (*aSeek == '.')) {
+                                aWriteIndex = 0;
+                                if (aSeek > aLineStart) {
+                                    if (*(aSeek-1) == '-') {
                                         aNumberString[aWriteIndex++]='-';
                                     }
                                 }
-                                while(((*aSeek >= '0' && *aSeek <= '9') || (*aSeek == '.')) && (aSeek < aEnd))
-                                {
-                                    aNumberString[aWriteIndex++]=*aSeek;
+                                while (((*aSeek >= '0' && *aSeek <= '9') || (*aSeek == '.')) && (aSeek < aEnd)) {
+                                    aNumberString[aWriteIndex++] = *aSeek;
                                     aSeek++;
                                 }
-                                aNumberString[aWriteIndex]=0;
+                                aNumberString[aWriteIndex] = 0;
                                 aFloat[aNumberCount] = atof(aNumberString);
                                 aNumberCount++;
                                 break;
-                            }
-                            else
-                            {
+                            } else {
                                 aSeek++;
                             }
                         }
                     }
                     
-                    if(aLineStart[1] <= ' ')
-                    {
-                        if(aNumberCount < 3)aError=2;
-                        else aTemp->AddXYZ(aFloat[0], aFloat[1], aFloat[2]);
+                    if (aLineStart[1] <= ' ') {
+                        if (aNumberCount < 3) {
+                            aError = 2;
+                        } else {
+                            aTemp->AddXYZ(aFloat[0], aFloat[1], aFloat[2]);
+                        }
                     }
                     
-                    if(aLineStart[1] == 't')
-                    {
-                        if(aNumberCount < 2)aError=3;
-                        else if(aNumberCount == 2)aTemp->AddUVW(aFloat[0], aFloat[1], 0);
-                        else aTemp->AddUVW(aFloat[0], aFloat[1], aFloat[2]);
+                    if (aLineStart[1] == 't') {
+                        if (aNumberCount < 2) {
+                            aError = 3;
+                        } else if(aNumberCount == 2) {
+                            aTemp->AddUVW(aFloat[0], aFloat[1], 0);
+                        } else {
+                            aTemp->AddUVW(aFloat[0], aFloat[1], aFloat[2]);
+                        }
                     }
                     
-                    if(aLineStart[1] == 'n')
-                    {
-                        if(aNumberCount < 3)aError=4;
-                        else aTemp->AddNormal(aFloat[0], aFloat[1], aFloat[2]);
+                    if (aLineStart[1] == 'n') {
+                        if (aNumberCount < 3) {
+                            aError = 4;
+                        } else {
+                            aTemp->AddNormal(aFloat[0], aFloat[1], aFloat[2]);
+                        }
                     }
                 }
                 
-                if(aLineStart[0] == 'f' && aLineStart[1] <= ' ')
-                {
-                    
-                    for(int i=0;i<4;i++)
-                    {
-                        for(int n=0;n<3;n++)
-                        {
+                if (aLineStart[0] == 'f' && aLineStart[1] <= ' ') {
+                    for (int i=0;i<4;i++) {
+                        for (int n=0;n<3;n++) {
                             aFace[i][n]=-1;
                         }
                     }
                     
-                    aFaceCol=0;
-                    aFaceIndex=0;
-                    aContinue=false;
-                    aSeek=aLineStart;
+                    aFaceCol = 0;
+                    aFaceIndex = 0;
+                    aContinue = false;
+                    aSeek = aLineStart;
                     
-                    while((aSeek < aLineEnd) && (aError == 0))
-                    {
-                        if(aFaceCol > 4)
-                        {
-                            aError=9;
+                    while ((aSeek < aLineEnd) && (aError == 0)) {
+                        if (aFaceCol > 4) {
+                            aError = 9;
                             break;
-                        }
-                        else if(*aSeek >= '0' && *aSeek <= '9')
-                        {
-                            if(aFaceIndex > 3)
-                            {
-                                aError=10;
+                        } else if(*aSeek >= '0' && *aSeek <= '9') {
+                            if (aFaceIndex > 3) {
+                                aError = 10;
                             }
                             
-                            aWriteIndex=0;
+                            aWriteIndex = 0;
                             
-                            while(*aSeek >= '0' && *aSeek <= '9')
-                            {
-                                aNumberString[aWriteIndex++]=*aSeek;
+                            while (*aSeek >= '0' && *aSeek <= '9') {
+                                aNumberString[aWriteIndex++] = *aSeek;
                                 aSeek++;
                             }
                             
                             aNumberString[aWriteIndex]=0;
                             aFace[aFaceCol][aFaceIndex]=(atoi(aNumberString) - 1);
                             
-                            if(*aSeek=='/')
-                            {
-                                if(*(aSeek+1)=='/')
-                                {
+                            if (*aSeek=='/') {
+                                if (*(aSeek+1)=='/') {
                                     aSeek++;
                                     aFaceIndex++;
                                 }
                                 aFaceIndex++;
-                            }
-                            else
-                            {
-                                aFaceIndex=0;
+                            } else {
+                                aFaceIndex = 0;
                                 aFaceCol++;
                             }
-                        }
-                        else
-                        {
+                        } else {
                             aSeek++;
                         }
                     }
                     
-                    if(aFaceCol == 3)
-                    {
+                    if (aFaceCol == 3) {
                         aTemp->AddIndex(aFace[0][0]);
                         aTemp->AddIndex(aFace[0][1]);
                         aTemp->AddIndex(aFace[0][2]);
@@ -750,49 +619,8 @@ void FModelData::LoadOBJ(FFile *pFile) {
 		aLineStart = aLineEnd + 1;
 	}
     
-    /*
-    if(pList != 0)
-    {
-        if(aTemp->mIndexCount != aPreviousIndexStart)
-        {
-            FModelData *aModel = new FModelData();
-            
-            for(int i=aPreviousIndexStart;i<aTemp->mIndexCount;i+=3)
-            {
-                aXYZIndex = aTemp->mIndex[i];
-                aUVWIndex = aTemp->mIndex[i+1];
-                aNormalIndex = aTemp->mIndex[i+2];
-                
-                aX = aTemp->GetX(aXYZIndex);
-                aY = aTemp->GetY(aXYZIndex);
-                aZ = aTemp->GetZ(aXYZIndex);
-                
-                aU = aTemp->GetU(aUVWIndex);
-                aV = aTemp->GetV(aUVWIndex);
-                aW = aTemp->GetW(aUVWIndex);
-                
-                aNX = aTemp->GetNormX(aNormalIndex);
-                aNY = aTemp->GetNormY(aNormalIndex);
-                aNZ = aTemp->GetNormZ(aNormalIndex);
-                
-                aModel->AddXYZ(aX, aY, aZ);
-                aModel->AddUVW(aU, aV, aW);
-                aModel->AddNormal(aNX, aNY, aNZ);
-            }
-            
-            aModel->InvertV();
-            
-            pList->Add(aModel);
-            
-            aPreviousIndexStart = aTemp->mIndexCount;
-            
-        }
-    }
-    */
-    
     int aIndexCount = aTemp->mIndexCount;
-    for(int i=0;i<aIndexCount;i+=3)
-    {
+    for (int i=0;i<aIndexCount;i+=3) {
         aXYZIndex = aTemp->mIndex[i];
         aUVWIndex = aTemp->mIndex[i+1];
         aNormalIndex = aTemp->mIndex[i+2];
@@ -814,68 +642,56 @@ void FModelData::LoadOBJ(FFile *pFile) {
         AddNormal(aNX, aNY, aNZ);
     }
     delete aTemp;
+    aTemp = NULL;
     
-    if(gModelDiscardNormals)DiscardNormal();
-    if(gModelDiscardUVW)DiscardUVW();
+    if (gModelDiscardNormals == true) {
+        DiscardNormal();
+    }
+    if (gModelDiscardUVW == true) {
+        DiscardUVW();
+    }
     
-    //TODO: Why was this? Is this right?
-    //TODO: Now why is this?
     InvertV();
-    
 }
 
-void FModelData::LoadOBJ(const char *pFile)
-{
+void FModelData::LoadOBJ(const char *pFile) {
     FFile aFile;
     aFile.Load(pFile);
     LoadOBJ(&aFile);
 }
 
-void FModelData::SetImage(FImage *pImage)
-{
-    if(pImage)
-    {
+void FModelData::SetImage(FImage *pImage) {
+    if (pImage) {
         SetTexture(pImage->GetTexture());
-    }
-    else
-    {
+    } else {
         SetTexture(0);
     }
 }
 
-void FModelData::SetImage(const char *pImagePath)
-{
+void FModelData::SetImage(const char *pImagePath) {
     FImage aImage;
     aImage.Load(pImagePath);
     SetImage(&aImage);
 }
 
-void FModelData::GetCentroid(float &pCentroidX, float &pCentroidY, float &pCentroidZ)
-{
-    pCentroidX=0.0f;
-    pCentroidY=0.0f;
-    pCentroidZ=0.0f;
+void FModelData::GetCentroid(float &pCentroidX, float &pCentroidY, float &pCentroidZ) {
+    pCentroidX = 0.0f;
+    pCentroidY = 0.0f;
+    pCentroidZ = 0.0f;
     
     int aCap = mXYZCount * 3;
     
-    for(int i=0;i<aCap;)
-    {
+    for (int i=0;i<aCap;) {
         pCentroidX += mXYZ[i++];
         pCentroidY += mXYZ[i++];
         pCentroidZ += mXYZ[i++];
     }
     
-    if(mXYZCount > 1)
-    {
+    if (mXYZCount > 1) {
         pCentroidX /= (float)mXYZCount;
         pCentroidY /= (float)mXYZCount;
         pCentroidZ /= (float)mXYZCount;
     }
-}
-
-void FModelData::PrintOverview()
-{
-    Log("FModelDataOverview: XYZ(%d/%d) UVW(%d/%d) NORM(%d/%d)\n", mXYZCount, mXYZSize, mUVWCount, mUVWSize, mNormalCount, mNormalSize);
 }
 
 void FModelData::Draw() {
@@ -905,15 +721,17 @@ FModelDataIndexed::~FModelDataIndexed() {
 void FModelDataIndexed::Free() {
     FModelData::Free();
     
-    delete[]mIndex;
-    mIndex=0;
-    mIndexCount=0;
-    mIndexSize=0;
+    delete [] mIndex;
+    mIndex = NULL;
+    mIndexCount = 0;
+    mIndexSize = 0;
 }
 
 void FModelDataIndexed::AddIndex(GFX_MODEL_INDEX_TYPE pIndex) {
-    if(mIndexCount >= mIndexSize)SizeIndex(mIndexCount + (mIndexCount / 2) + 1);
-    mIndex[mIndexCount]=pIndex;
+    if (mIndexCount >= mIndexSize) {
+        SizeIndex(mIndexCount + (mIndexCount / 2) + 1);
+    }
+    mIndex[mIndexCount] = pIndex;
     mIndexCount++;
 }
 
@@ -922,8 +740,8 @@ void FModelDataIndexed::SizeIndex(int pSize) {
     
     GFX_MODEL_INDEX_TYPE *aNew = new GFX_MODEL_INDEX_TYPE[mIndexSize + 1];
     
-    for(int i=0;i<mIndexCount;i++)aNew[i] = mIndex[i];
-    for(int i=mIndexCount;i<mIndexSize;i++)aNew[i] = 0;
+    for (int i=0;i<mIndexCount;i++) { aNew[i] = mIndex[i]; }
+    for (int i=mIndexCount;i<mIndexSize;i++) { aNew[i] = 0; }
     
     delete [] mIndex;
     mIndex = aNew;
@@ -941,29 +759,26 @@ void FModelDataIndexed::CopyIndex(GFX_MODEL_INDEX_TYPE *pIndex, int pCount) {
     
     SizeIndex(pCount);
     for (int i=0;i<pCount;i++) {
-        mIndex[i]=pIndex[i];
+        mIndex[i] = pIndex[i];
     }
-    mIndexCount=pCount;
+    mIndexCount = pCount;
 }
 
-void FModelDataIndexed::GetCentroid(float &pCentroidX, float &pCentroidY, float &pCentroidZ)
-{
-    pCentroidX=0.0f;
-    pCentroidY=0.0f;
-    pCentroidZ=0.0f;
+void FModelDataIndexed::GetCentroid(float &pCentroidX, float &pCentroidY, float &pCentroidZ) {
+    pCentroidX = 0.0f;
+    pCentroidY = 0.0f;
+    pCentroidZ = 0.0f;
     
     int aIndex;
     
-    for(int i=0;i<mIndexCount;i++)
-    {            
+    for (int i=0;i<mIndexCount;i++) {
         aIndex = mIndex[i] * 3;
         pCentroidX += mXYZ[aIndex + 0];
         pCentroidY += mXYZ[aIndex + 1];
         pCentroidZ += mXYZ[aIndex + 2];
     }
     
-    if(mIndexCount > 1)
-    {
+    if (mIndexCount > 1) {
         pCentroidX /= (float)mIndexCount;
         pCentroidY /= (float)mIndexCount;
         pCentroidZ /= (float)mIndexCount;
@@ -972,18 +787,14 @@ void FModelDataIndexed::GetCentroid(float &pCentroidX, float &pCentroidY, float 
 
 
 
-FModelData *FModelDataIndexed::GetData()
-{
+FModelData *FModelDataIndexed::GetData() {
     FModelData *aResult = new FModelData();
     
-    if(mIndexCount > 0)
-    {
+    if (mIndexCount > 0) {
         int aIndex;
         
-        if(mXYZCount)
-        {
-            for(int i=0;i<mIndexCount;i++)
-            {            
+        if (mXYZCount > 0) {
+            for (int i=0;i<mIndexCount;i++) {
                 aIndex = mIndex[i] * 3;
                 float aX = mXYZ[aIndex + 0];
                 float aY = mXYZ[aIndex + 1];
@@ -992,10 +803,8 @@ FModelData *FModelDataIndexed::GetData()
             }
         }
         
-        if(mUVWCount)
-        {
-            for(int i=0;i<mIndexCount;i++)
-            {            
+        if (mUVWCount > 0) {
+            for (int i=0;i<mIndexCount;i++) {
                 aIndex = mIndex[i] * 3;
                 float aU = mUVW[aIndex + 0];
                 float aV = mUVW[aIndex + 1];
@@ -1004,10 +813,8 @@ FModelData *FModelDataIndexed::GetData()
             }
         }
         
-        if(mNormalCount)
-        {
-            for(int i=0;i<mIndexCount;i++)
-            {            
+        if (mNormalCount > 0) {
+            for (int i=0;i<mIndexCount;i++) {
                 aIndex = mIndex[i] * 3;
                 float aNormX = mNormal[aIndex + 0];
                 float aNormY = mNormal[aIndex + 1];
@@ -1016,14 +823,10 @@ FModelData *FModelDataIndexed::GetData()
             }
         }
         
-    }
-    else
-    {
+    } else {
         aResult->CopyXYZ(mXYZ, mXYZCount);
         aResult->CopyXYZ(mUVW, mUVWCount);
         aResult->CopyXYZ(mNormal, mNormalCount);
-        
-        
     }
     
     return aResult;
@@ -1047,11 +850,9 @@ FModelDataIndexed *FModelDataIndexed::Clone() {
     return aClone;
 }
 
-void FModelDataIndexed::Clone(FModelDataIndexed *pTarget)
-{
+void FModelDataIndexed::Clone(FModelDataIndexed *pTarget) {
     Free();
-    if(pTarget)
-    {
+    if (pTarget != NULL) {
         CopyXYZ(pTarget->mXYZ, pTarget->mXYZCount);
         CopyUVW(pTarget->mUVW, pTarget->mUVWCount);
         CopyNorm(pTarget->mNormal, pTarget->mNormalCount);
@@ -1061,30 +862,30 @@ void FModelDataIndexed::Clone(FModelDataIndexed *pTarget)
 
 
 
-void FModelDataIndexed::Save(const char *pFile)
-{
+void FModelDataIndexed::Save(const char *pFile) {
     FFile aFile;
     Save(&aFile);
     aFile.Save(pFile);
 }
 
-void FModelDataIndexed::Save(FFile *pFile)
-{
-    if(!pFile)return;
+void FModelDataIndexed::Save(FFile *pFile) {
+    if (pFile == NULL) {
+        return;
+    }
     
     FModelData::Save(pFile);
     
     pFile->WriteInt(mIndexCount);
     
-    for(int i=0;i<mIndexCount;i++)
-    {
+    for (int i=0;i<mIndexCount;i++) {
         pFile->WriteShort(mIndex[i]);
     }
 }
 
-void FModelDataIndexed::LoadData(FFile *pFile)
-{
-    if(!pFile)return;
+void FModelDataIndexed::LoadData(FFile *pFile) {
+    if (pFile == NULL) {
+        return;
+    }
     
     FModelData::LoadData(pFile);
     
@@ -1092,96 +893,23 @@ void FModelDataIndexed::LoadData(FFile *pFile)
 
     DiscardIndices();
     
-    if(aIndexCount > 0)
-    {
+    if (aIndexCount > 0) {
         SizeIndex(aIndexCount);
-        
         mIndexCount = aIndexCount;
-        
-        for(int i=0;i<mIndexCount;i++)
-        {
+        for (int i=0;i<mIndexCount;i++) {
             mIndex[i] = pFile->ReadShort();
         }
     }
 }
 
-void FModelDataIndexed::LoadData(const char *pFile)
-{
+void FModelDataIndexed::LoadData(const char *pFile) {
     FFile aFile;
     aFile.Load(pFile);
     LoadData(&aFile);
 }
 
 
-
-void FModelDataIndexed::PrintCode()
-{
-    //float aXYZ[5] = {5.0f, 1.25f, 0.5f, 0.5f, 1.0f};
-    
-    int aCount;
-    
-    aCount = mXYZCount * 3;
-    Log("static float aXYZ[%d]={", aCount);
-    for(int i=0;i<aCount;i++)
-    {
-        Log("%.1f", mXYZ[i]);
-        if(i != (aCount - 1))
-        {
-            Log(",");
-        }
-        else
-        {
-            Log("};\n");
-        }
-    }
-    
-    aCount = mUVWCount * 3;
-    Log("static float aUVW[%d]={", aCount);
-    for(int i=0;i<aCount;i++)
-    {
-        Log("%.2f", mUVW[i]);
-        if(i != (aCount - 1))
-        {
-            Log(",");
-        }
-        else
-        {
-            Log("};\n");
-        }
-    }
-    
-    aCount = mNormalCount * 3;
-    Log("static float aNormal[%d]={", aCount);
-    for(int i=0;i<aCount;i++)
-    {
-        Log("%f", mNormal[i]);
-        if(i != (aCount - 1))
-        {
-            Log(",");
-        }
-        else
-        {
-            Log("};\n");
-        }
-    }
-    
-    Log("static unsigned short aIndex[%d]={", mIndexCount);
-    for(int i=0;i<mIndexCount;i++)
-    {
-        Log("%d", mIndex[i]);
-        if(i != (mIndexCount - 1))
-        {
-            Log(",");
-        }
-        else
-        {
-            Log("};\n");
-        }
-    }
-}
-
-void FModelDataIndexed::Load(const char *pFile)
-{
+void FModelDataIndexed::Load(const char *pFile) {
     
     FString aBasePath = pFile;
     aBasePath.RemoveExtension();
@@ -1190,34 +918,22 @@ void FModelDataIndexed::Load(const char *pFile)
     
     LoadData(aPath.c());
     
-    if(mXYZCount <= 0)
-    {
+    if (mXYZCount <= 0) {
         aPath = aBasePath + FString(".3DI");
         LoadData(aPath.c());
     }
     
-    if(mXYZCount <= 0)
-    {
+    if (mXYZCount <= 0) {
         aPath = aBasePath + FString(".obj");
         LoadOBJ(aPath.c());
     }
     
-    if(mXYZCount <= 0)
-    {
+    if (mXYZCount <= 0) {
         aPath = aBasePath + FString(".OBJ");
         LoadOBJ(aPath.c());
     }
     
 }
-
-/*
-void FModelDataIndexed::Load(const char *pFileStart, int pIndex, const char *pFileEnd)
-{
-    FString aPath = FString(pFileStart) + FString(pIndex) + FString(pFileEnd);
-    Load(aPath.c());
-}
-*/
-
 
 void FModelDataIndexed::LoadOBJ(FFile *pFile) {
     Free();
@@ -1241,10 +957,6 @@ void FModelDataIndexed::Draw() {
 void FModelDataIndexed::Draw(FTexture *pTexture) {
     Graphics::DrawModelIndexed(mXYZ, mXYZCount, mUVW, mUVWCount, mNormal, mNormalCount, mIndex, mIndexCount, pTexture);
 }
-
-
-
-
 
 FModelDataOptimizer::FModelDataOptimizer() {
     mUVW = 0;
