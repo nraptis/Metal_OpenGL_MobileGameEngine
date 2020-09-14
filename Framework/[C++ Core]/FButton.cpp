@@ -50,7 +50,9 @@ void FButton::AddUnderlay(FSprite *pSpriteUp, FSprite *pSpriteOver, FSprite *pSp
 }
 
 void FButton::SetUp(FSprite *pSpriteUp, FSprite *pSpriteOver, FSprite *pSpriteDown, float pX, float pY) {
-    if(mButtonLayer == 0)mButtonLayer = new FButtonLayer();
+    if (mButtonLayer == NULL) {
+        mButtonLayer = new FButtonLayer();
+    }
     mButtonLayer->SetUp(pSpriteUp, pSpriteOver, pSpriteDown);
     
     float aWidth = mWidth;
