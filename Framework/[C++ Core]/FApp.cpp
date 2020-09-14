@@ -853,10 +853,8 @@ void FApp::FrameController() {
         if (os_updates_in_background()) {
             os_sleep(200);
         } else {
-            
             SystemProcess();
             os_sleep(20);
-            
             return;
         }
     }
