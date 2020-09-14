@@ -60,6 +60,8 @@ void AppShellFrame();
 //void AppShellLoad();
 //void AppShellLoadComplete();
 
+void AppShellSetAdBannerWidth(float pWidth);
+void AppShellSetAdBannerHeight(float pHeight);
 
 //This will possibly be called asynchronously from the draw loop?
 //void AppShellUpdate();

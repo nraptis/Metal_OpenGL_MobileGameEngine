@@ -496,11 +496,21 @@ void AppShellKeyUp(int pKey) {
 }
 
 void AppShellSetAdBannerWidth(float pWidth) {
-    
+    if (pWidth != gAdBannerWidth) {
+        gAdBannerWidth = pWidth;
+        if (gAppBase) {
+            gAppBase->BaseSetVirtualFrame(gVirtualDevX, gVirtualDevY, gVirtualDevWidth, gVirtualDevHeight);
+        }
+    }
 }
 
 void AppShellSetAdBannerHeight(float pHeight) {
-    
+    if (pHeight != gAdBannerHeight) {
+        gAdBannerHeight = pHeight;
+        if (gAppBase) {
+            gAppBase->BaseSetVirtualFrame(gVirtualDevX, gVirtualDevY, gVirtualDevWidth, gVirtualDevHeight);
+        }
+    }
 }
 
 void AppShellExit() {
