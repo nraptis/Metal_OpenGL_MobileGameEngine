@@ -70,6 +70,9 @@ public:
     float                                           mOvershootCorrectionSpeed;
     float                                           mOvershootAntiDirectionMultiply;
     
+    bool                                            IsDragging();
+    bool                                            IsScrolling();
+    
 private:
     
     virtual void                                    PanBegin(float pX, float pY);
@@ -82,25 +85,18 @@ private:
     bool                                            IsOutOfBoundsY(float pScrollY);
     
     
-    
     void                                            OutOfBoundsSnapToEdgeX();
     void                                            OutOfBoundsSnapToEdgeY();
-    
     
     //Assumption: The values passed in are already out of bounds...
     float                                           GetDampenedX(float pScrollX);
     float                                           GetDampenedY(float pScrollY);
-    
-    
-    
-    
     
     bool                                            mAnimatingX;
     bool                                            mAnimatingY;
     
     int                                             mAnimationTypeX;
     int                                             mAnimationTypeY;
-    
     
     float                                           GetDecayStopPosition(float pStart, float pVelocity);
     float                                           GetDecayStopPosition(float pStart, float pVelocity, float pAccel, float pSubtract);
@@ -117,7 +113,6 @@ private:
     void                                            RestAnimationX(float pTargetPos, float pVelocity);
     void                                            RestAnimationY(float pTargetPos, float pVelocity);
     
-    
     void                                            UpdateSnapAnimationX();
     void                                            UpdateSnapAnimationY();
     
@@ -130,7 +125,6 @@ private:
     void                                            UpdateRestAnimationX();
     void                                            UpdateRestAnimationY();
     
-    
     float                                           mAnimationSnapTargetX;
     float                                           mAnimationSnapTargetY;
     
@@ -139,8 +133,6 @@ private:
     float                                           mAnimationDecayVelocityY;
     bool                                            mAnimationDecayHandedOffY;
     float                                           mAnimationDecayVelocityDampeningFactor;
-    
-    
     
     int                                             mAnimationDecelerateTickX;
     int                                             mAnimationDecelerateTimeX;

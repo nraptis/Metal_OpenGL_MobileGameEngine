@@ -308,13 +308,25 @@ float FScrollCanvasGeneric::GetOutOfBoundsDampenedDrag(float pAmount) {
         aResult = aDampenedMax;
     } else {
         float aPercent = (pAmount / aActualMax);
-        float aRads = (3.1415926535897932384626433832795028841968f / 2.0f) * aPercent;
+        float aRads = (PI_2) * aPercent;
         aResult = sinf(aRads) * aDampenedMax;
     }
     if (aNegative == true) {
         aResult = (-aResult);
     }
     return aResult;
+}
+
+bool FScrollCanvasGeneric::IsDragging() {
+    if (mTouch.mData != NULL) { return true; }
+    return false;
+}
+
+bool FScrollCanvasGeneric::IsScrolling() {
+    if (mAnimatingX == true) { return true; }
+    if (mAnimatingY == true) { return true; }
+    if (mTouch.mData != NULL) { return true; }
+    return false;
 }
 
 void FScrollCanvasGeneric::AnimationComplete() {
