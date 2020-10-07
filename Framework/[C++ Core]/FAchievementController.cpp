@@ -61,11 +61,6 @@ FAchievement *FAchievementController::GetAchievement(const char *pAchievementIde
     return aAchievement;
 }
 
-void FAchievementController::Save() {
-    FString aPath = gDirDocuments + "achievement_data.json";
-    Save(((const char *)aPath.c()));
-}
-
 void FAchievementController::ProgressAchievementObject(FAchievement *pAchievement) {
     if (pAchievement == NULL) { return; }
     if (pAchievement->AddProgress() == true) {
@@ -106,18 +101,31 @@ void FAchievementController::ResetGroup(const char *pGroupName) {
     }
 }
 
+
+void FAchievementController::Save() {
+    FString aPath = gDirDocuments + "achievement_data.json";
+    Save(((const char *)aPath.c()));
+}
+
 void FAchievementController::Save(const char *pFile) {
-    
     FJSON aJSON;
-    
     FJSONNode *aRoot = new FJSONNode();
     aRoot->mNodeType = JSON_NODE_TYPE_DICTIONARY;
-    
+    Save(aRoot, "achievement_data");
     aJSON.mRoot = aRoot;
+    aJSON.Save(pFile);
+}
+
+void FAchievementController::Save(FJSONNode *pNode, const char *pTagName) {
+    if (pNode == NULL) { return; }
+    
+    FJSONNode *aAchiementDataNode = new FJSONNode();
+    aAchiementDataNode->mNodeType = JSON_NODE_TYPE_DICTIONARY;
+    pNode->AddDictionary(pTagName, aAchiementDataNode);
     
     FJSONNode *aAchiementListNode = new FJSONNode();
     aAchiementListNode->mNodeType = JSON_NODE_TYPE_DICTIONARY;
-    aRoot->AddDictionary("achievement_list", aAchiementListNode);
+    aAchiementDataNode->AddDictionary("list", aAchiementListNode);
     
     EnumList(FAchievement, aAchievement, mAchievementList) {
         aAchiementListNode->AddDictionary(aAchievement->mIdentifier.c(), aAchievement->Save());
@@ -126,14 +134,12 @@ void FAchievementController::Save(const char *pFile) {
     if (mRecentlyCompletedAchievementList.mCount > 0) {
         FJSONNode *aRecentlyCompletedListNode = new FJSONNode();
         aRecentlyCompletedListNode->mNodeType = JSON_NODE_TYPE_ARRAY;
-        aRoot->AddDictionary("recently_completed", aRecentlyCompletedListNode);
+        aAchiementDataNode->AddDictionary("recently_completed", aRecentlyCompletedListNode);
         
         EnumList(FAchievement, aAchievement, mRecentlyCompletedAchievementList) {
             aRecentlyCompletedListNode->ArrayAddString(aAchievement->mIdentifier.c());
         }
     }
-    
-    aJSON.Save(pFile);
 }
 
 void FAchievementController::Load() {
@@ -151,8 +157,26 @@ void FAchievementController::Load(const char *pFile) {
         return;
     }
     
-    FJSONNode *aAchiementListNode = aRoot->GetDictionary("achievement_list");
+    Load(aRoot, "achievement_data");
+}
+
+void FAchievementController::Load(FJSONNode *pNode, const char *pTagName) {
     
+    if (pNode == NULL) { return; }
+    
+    
+    
+    
+    FJSONNode *aAchiementDataNode = pNode->GetDictionary(pTagName);
+    
+    if (aAchiementDataNode == NULL) {
+        printf("Missing Achiement Data...\n");
+        return;
+    }
+    
+    
+    
+    FJSONNode *aAchiementListNode = aAchiementDataNode->GetDictionary("list");
     if (aAchiementListNode != NULL) {
         
         FStringMap *aInfo = aAchiementListNode->mInfo;
@@ -175,7 +199,7 @@ void FAchievementController::Load(const char *pFile) {
         }
     }
     
-    FJSONNode *aRecentlyCompletedListNode = aRoot->GetArray("recently_completed");
+    FJSONNode *aRecentlyCompletedListNode = aAchiementDataNode->GetArray("recently_completed");
     if (aRecentlyCompletedListNode != NULL) {
         EnumJSONArray(aRecentlyCompletedListNode, aRecentlyCompletedNode) {
             FAchievement *aAchievement = GetAchievement(aRecentlyCompletedNode->mValue);
@@ -188,4 +212,3 @@ void FAchievementController::Load(const char *pFile) {
         }
     }
 }
-

@@ -18,6 +18,7 @@
 //the achievement structure is built-up by the program itself. You can re-organize it however
 //you like, as long as you keep the same "AchievementIdentifier"
 
+class FJSONNode;
 class FAchievementController {
 public:
     FAchievementController();
@@ -46,9 +47,11 @@ public:
     
     void                                Save();
     void                                Save(const char *pFile);
+    void                                Save(FJSONNode *pNode, const char *pTagName);
     
     void                                Load();
     void                                Load(const char *pFile);
+    void                                Load(FJSONNode *pNode, const char *pTagName);
     
     
     
