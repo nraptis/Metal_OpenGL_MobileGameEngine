@@ -314,7 +314,6 @@ void FApp::BaseDraw() {
     
     Graphics::MatrixProjectionSet(aOrtho);
     Graphics::MatrixModelViewReset();
-    DrawOver();
     
     
     /*

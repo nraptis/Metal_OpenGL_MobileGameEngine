@@ -39,7 +39,6 @@ public:
     virtual void                                Update() { }
     virtual void                                Draw() { }
     virtual void                                DrawLoading() { }
-    virtual void                                DrawOver() { }
     
     virtual void                                Prerender() { }
     virtual void                                Postrender() { }
@@ -61,6 +60,15 @@ public:
     
     virtual void                                MemoryWarning(bool pSevere) { }
     virtual void                                SetImageFileScale(int pScale) { }
+    
+    
+    virtual void                                CloudPostSuccess() { }
+    virtual void                                CloudPostFailure() { }
+    
+    virtual void                                CloudReadSuccess(FString pData) { }
+    virtual void                                CloudReadFailure() { }
+    
+    
     
     //This is called one time to spawn a resolution configurator. Based on your game, you will need to decide how you want to handle scaling...
     virtual                                     FAssetResolutionConfigurator *GetAssetResolutionConfigurator();
