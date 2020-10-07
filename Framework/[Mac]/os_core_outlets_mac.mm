@@ -2,6 +2,7 @@
 
 #include <Cocoa/Cocoa.h>
 #include <Foundation/Foundation.h>
+#import <CloudKit/CloudKit.h>
 
 #include "os_core_outlets.h"
 #include "core_includes.h"
@@ -507,11 +508,11 @@ void os_exportPNGImage(unsigned int *pData, const char *pFilePath, int pWidth, i
         for(int i=0;i<pWidth;i++)aCharData[i] = (unsigned char *)(&(pData[i * pHeight]));
         
         NSBitmapImageRep *aBitmapRep =
-        [[NSBitmapImageRep alloc] initWithBitmapDataPlanes:aCharData pixelsWide:pWidth pixelsHigh:pHeight
-                                             bitsPerSample:8 samplesPerPixel:4 hasAlpha:YES isPlanar:NO
-                                            colorSpaceName:NSDeviceRGBColorSpace bytesPerRow:(pWidth * 4) bitsPerPixel:32];
-        NSData *aData = [aBitmapRep representationUsingType:NSPNGFileType properties:nil];
-        [aData writeToFile:[[NSString alloc] initWithUTF8String:(aPath.c())] atomically:YES];
+        [[NSBitmapImageRep alloc] initWithBitmapDataPlanes: aCharData pixelsWide: pWidth pixelsHigh: pHeight
+                                             bitsPerSample: 8 samplesPerPixel: 4 hasAlpha: YES isPlanar: NO
+                                            colorSpaceName: NSDeviceRGBColorSpace bytesPerRow:(pWidth * 4) bitsPerPixel:32];
+        NSData *aData = [aBitmapRep representationUsingType: NSPNGFileType properties:nil]; // NSBitmapImageFileTypePNG
+        [aData writeToFile: [[NSString alloc] initWithUTF8String:(aPath.c())] atomically:YES];
         delete [] aCharData;
     }
 }
@@ -664,3 +665,12 @@ bool os_is_alt_key_down() {
     return false;
 }
 */
+
+void os_cloudPost(const char *pRecordName, const char *pIdentifier, const char *pFieldName, FString pData) {
+    
+}
+
+
+void os_cloudRead(const char *pRecordName, const char *pIdentifier, const char *pFieldName) {
+    
+}

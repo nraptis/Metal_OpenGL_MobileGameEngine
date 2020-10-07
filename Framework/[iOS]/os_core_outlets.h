@@ -53,5 +53,8 @@ void os_getFilesInDirectoryRecursive(const char *pFilePath, FList *pList);
 
 void os_getAllResources(const char *pFilePath, FList *pList);
 
+void os_cloudPost(const char *pRecordName, const char *pIdentifier, const char *pFieldName, FString pData);
+void os_cloudRead(const char *pRecordName, const char *pIdentifier, const char *pFieldName);
+
 
 #endif // JNIAPI_H

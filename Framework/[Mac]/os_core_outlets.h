@@ -49,5 +49,7 @@ void os_exportPNGImage(unsigned int *pData, const char *pFilePath, int pWidth, i
 void os_exportJPEGImage(unsigned int *pData, const char *pFilePath, int pWidth, int pHeight, float pQuality);
 void os_exportToPhotoLibrary(unsigned int *pData, int pWidth, int pHeight);
 
+void os_cloudPost(const char *pRecordName, const char *pIdentifier, const char *pFieldName, FString pData);
+void os_cloudRead(const char *pRecordName, const char *pIdentifier, const char *pFieldName);
 
 #endif

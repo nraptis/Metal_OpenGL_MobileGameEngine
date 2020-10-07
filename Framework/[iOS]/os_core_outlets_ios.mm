@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CloudKit/CloudKit.h>
 
 #include "RecursiveLockWrapper.h"
 #include "RootViewController.h"
@@ -28,6 +29,7 @@
 #include <dirent.h>
 #include <chrono>
 
+#include "FApp.hpp"
 
 #include <pthread.h>
 #include <sys/utsname.h>
@@ -389,17 +391,14 @@ void os_getFilesInDirectory(const char *pFilePath, FList *pList)
     
 }
 
-void os_getFilesInDirectoryRecursive(const char *pFilePath, FList *pList)
-{
-    if(pList)
-    {
+void os_getFilesInDirectoryRecursive(const char *pFilePath, FList *pList) {
+    if (pList != NULL) {
     DIR *dp;
     
     struct dirent *ep;
     
     dp = opendir ("./");
     char sf[1024];
-    
     if(dp != NULL)
     {
         ep = readdir(dp);
@@ -460,9 +459,160 @@ void os_getFilesInDirectoryRecursive(const char *pFilePath, FList *pList)
     }
 }
 
-void os_getAllResources(const char *pFilePath, FList *pList)
-{
+void os_getAllResources(const char *pFilePath, FList *pList) {
     
 }
 
+void os_cloudPost(const char *pRecordName, const char *pIdentifier, const char *pFieldName, FString pData) {
+    
+    NSArray *aDocumentURLList = [[NSFileManager defaultManager] URLsForDirectory: NSDocumentDirectory inDomains: NSUserDomainMask];
+    
+    if ([aDocumentURLList count] <= 0) {
+        if (gAppBase != NULL) {
+            gAppBase->CloudPostFailure();
+        }
+        return;
+    }
+    
+    NSURL *aFileUrl = aDocumentURLList[0];
+    aFileUrl = [aFileUrl URLByAppendingPathComponent: @"ckasset.dat"];
+    if (aFileUrl == NULL) {
+        if (gAppBase != NULL) {
+            gAppBase->CloudPostFailure();
+        }
+        return;
+    }
+    
+    NSData *aData = [[NSData alloc] initWithBytes: pData.c() length: pData.mLength];
+    [aData writeToURL: aFileUrl atomically: true];
+    
+    CKRecordID *aRecordID = [[CKRecordID alloc] initWithRecordName: [NSString stringWithUTF8String: pIdentifier]];
+    CKRecord *aRecord = [[CKRecord alloc] initWithRecordType: [NSString stringWithUTF8String: pRecordName] recordID: aRecordID];
+    
+    CKAsset *aAsset = [[CKAsset alloc] initWithFileURL: aFileUrl];
+    [aRecord setValue: aAsset forKey: [NSString stringWithUTF8String: pFieldName]];
+    
+    CKContainer *aContainer = [CKContainer defaultContainer];
+    CKDatabase *aDatabase = [aContainer publicCloudDatabase];
+    
+    [aDatabase saveRecord: aRecord completionHandler: ^(CKRecord *record, NSError *saveError) {
+        if (saveError != NULL) {
+            NSLog(@"CK Save Error 1: %@\n", [saveError localizedDescription]);
+            
+            CKModifyRecordsOperation *aModifyRecordsOperation = [[CKModifyRecordsOperation alloc] initWithRecordsToSave: @[aRecord] recordIDsToDelete: nil];
+            aModifyRecordsOperation.savePolicy = CKRecordSaveAllKeys;
+            aModifyRecordsOperation.qualityOfService = NSQualityOfServiceUserInitiated;
+            aModifyRecordsOperation.modifyRecordsCompletionBlock = ^(NSArray * savedRecords, NSArray * deletedRecords, NSError * modifyError) {
+                if (modifyError != NULL) {
+                    NSLog(@"CK Modify Error 1: %@\n", [modifyError localizedDescription]);
+                    if (gAppBase != NULL) {
+                        gAppBase->CloudPostFailure();
+                    }
+                    return;
+                }
+                       
+                NSLog(@"CK MODIFY No Error... %@", aRecord);
+                       
+                if (gAppBase != NULL) {
+                    gAppBase->CloudPostSuccess();
+                }
+            };
+            [aDatabase addOperation: aModifyRecordsOperation];
+            return;
+        }
+        
+        NSLog(@"CK Save No Error... %@", record);
+        
+        if (gAppBase != NULL) {
+            gAppBase->CloudPostSuccess();
+        }
+    }];
+}
 
+void os_cloudRead(const char *pRecordName, const char *pIdentifier, const char *pFieldName) {
+    
+    //CKRecordID *aRecordID = [[CKRecordID alloc] initWithRecordName: [NSString stringWithUTF8String: pIdentifier]];
+    
+    CKContainer *aContainer = [CKContainer defaultContainer];
+    CKDatabase *aDatabase = [aContainer publicCloudDatabase];
+    
+    NSLog(@"Cloud Read Name:%@ | ID:%@ | %@\n", [NSString stringWithUTF8String: pRecordName], [NSString stringWithUTF8String: pIdentifier], [NSString stringWithUTF8String: pFieldName]);
+    
+    NSPredicate *aPredicate = [NSPredicate predicateWithValue: YES];
+    
+    CKQuery *aQuery = [[CKQuery alloc] initWithRecordType: [NSString stringWithUTF8String: pRecordName] predicate: aPredicate];
+    
+    CKQueryOperation *aQueryOperation = [[CKQueryOperation alloc] initWithQuery: aQuery];
+    aQueryOperation.resultsLimit = 1;
+
+    NSMutableArray *aRecordArray = [[NSMutableArray alloc] init];
+    aQueryOperation.recordFetchedBlock = ^(CKRecord *results) {
+        [aRecordArray addObject: results.recordID];
+        NSLog(@"Record Fetch, Yay = %@\n", results.recordID);
+    };
+    
+    aQueryOperation.queryCompletionBlock = ^(CKQueryCursor *cursor, NSError *queryError) {
+        if (queryError != NULL) {
+
+            NSLog(@"Cloud Download \"aQueryOperation\" Error: %@", [queryError localizedDescription]);
+            if (gAppBase != NULL) {
+                gAppBase->CloudReadFailure();
+            }
+            return;
+        }
+        
+        CKFetchRecordsOperation *aFetchOperation = [[CKFetchRecordsOperation alloc] initWithRecordIDs: aRecordArray];
+        aFetchOperation.fetchRecordsCompletionBlock = ^(NSDictionary *recordsByRecordID, NSError *fetchError) {
+            
+            if (fetchError != NULL) {
+                NSLog(@"Cloud Download \"aFetchOperation\" Error: %@", [fetchError localizedDescription]);
+                if (gAppBase != NULL) { gAppBase->CloudReadFailure(); }
+                return;
+            }
+            
+            NSArray *aValueArray = [recordsByRecordID allValues];
+            if (aValueArray.count <= 0) {
+                NSLog(@"Cloud Download \"Zero Results\" Error\n");
+                if (gAppBase != NULL) { gAppBase->CloudReadFailure(); }
+                return;
+            }
+            
+            CKRecord *aRecord = (CKRecord *)(aValueArray[0]);
+            
+            CKAsset *aAsset = [aRecord valueForKey: [NSString stringWithUTF8String: pFieldName]];
+            if (aAsset == NULL) {
+                NSLog(@"Cloud Download \"Missing Asset\" Error\n");
+                if (gAppBase != NULL) { gAppBase->CloudReadFailure(); }
+                return;
+            }
+            
+            NSLog(@"aAsset = %@\n", aAsset);
+            
+            NSURL *aFileURL = aAsset.fileURL;
+            if (aFileURL == NULL) {
+                NSLog(@"Cloud Download \"Asset URL\" Error\n");
+                if (gAppBase != NULL) { gAppBase->CloudReadFailure(); }
+                return;
+            }
+            
+            NSError *aDataStringError = NULL;
+            NSString *aDataString = [NSString stringWithContentsOfURL: aFileURL encoding: NSUTF8StringEncoding error: &aDataStringError];
+            
+            if (aDataStringError != NULL) {
+                NSLog(@"Cloud Download \"aDataStringError\" Error: %@\n", [aDataStringError localizedDescription]);
+                if (gAppBase != NULL) { gAppBase->CloudReadFailure(); }
+                return;
+            }
+            
+            FString aResult = [aDataString UTF8String];
+            
+            NSLog(@"Cloud Data = %s\n", aResult.c());
+            
+            if (gAppBase != NULL) {
+                gAppBase->CloudReadSuccess(aResult);
+            }
+        };
+        [aDatabase addOperation: aFetchOperation];
+    };
+    [aDatabase addOperation: aQueryOperation];
+}
