@@ -12,7 +12,7 @@
 FButton::FButton() {
     mName = "Button";
 
-    mClickData = 0;
+    mClickData = NULL;
 
     mDrawManual = false;
 
@@ -28,7 +28,7 @@ FButton::~FButton() {
     FreeList(FButtonLayer, mButtonLayersUnder);
     FreeList(FButtonLayer, mButtonLayersOver);
     delete mButtonLayer;
-    mButtonLayer = 0;
+    mButtonLayer = NULL;
 }
 
 void FButton::AddOverlay(FSprite *pSpriteUp, FSprite *pSpriteOver, FSprite *pSpriteDown) {
@@ -140,7 +140,7 @@ void FButton::Draw() {
 }
 
 void FButton::TouchDown(float pX, float pY, void *pData) {
-    if (mClickData == 0) {
+    if (mClickData == NULL) {
         mClickData = pData;
     }
 
@@ -159,18 +159,18 @@ void FButton::TouchMove(float pX, float pY, void *pData) {
 
 void FButton::TouchUp(float pX, float pY, void *pData) {
     if (mClickData == pData) {
-        if (pX >= 0 && pY >= 0 && pX <= mWidth && pY <= mHeight) {
+        if ((pX >= 0) && (pY >= 0) && (pX <= mWidth) && (pY <= mHeight)) {
             if (mTriggerOnUp) {
                 gNotify.Post(this, "button_click");
             }
             gNotify.Post(this, "button_up");
         }
-        mClickData = 0;
+        mClickData = NULL;
     }
 }
 
 void FButton::TouchFlush() {
-    mClickData = 0;
+    mClickData = NULL;
 }
 
 FButtonLayer::FButtonLayer() {
