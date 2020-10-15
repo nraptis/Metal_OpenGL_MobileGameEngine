@@ -668,9 +668,35 @@ bool os_is_alt_key_down() {
 
 void os_cloudPost(const char *pRecordName, const char *pIdentifier, const char *pFieldName, FString pData) {
     
+    //Simulated cloud post, fails or succeeds...
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        if (gRand.GetBool()) {
+            if (gAppBase != NULL) {
+                gAppBase->CloudPostSuccess();
+            }
+        } else {
+            if (gAppBase != NULL) {
+                gAppBase->CloudPostFailure();
+            }
+        }
+    });
 }
-
 
 void os_cloudRead(const char *pRecordName, const char *pIdentifier, const char *pFieldName) {
     
+    //Simulated cloud read, fails or succeeds...
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        if (gRand.GetBool()) {
+            if (gAppBase != NULL) {
+                FString aResult = "{\"junk\" = true}";
+                gAppBase->CloudReadSuccess(aResult);
+            }
+        } else {
+            if (gAppBase != NULL) {
+                gAppBase->CloudReadFailure();
+            }
+        }
+    });
 }
