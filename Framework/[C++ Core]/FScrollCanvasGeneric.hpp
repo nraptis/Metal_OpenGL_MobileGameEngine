@@ -73,13 +73,18 @@ public:
     bool                                            IsDragging();
     bool                                            IsScrolling();
     
+    float                                           mPanDiffX;
+    float                                           mPanDiffY;
+    
+    FTrackedTouch                                   mTouch;
+    
 private:
     
     virtual void                                    PanBegin(float pX, float pY);
     virtual void                                    PanMove(float pX, float pY);
     virtual void                                    PanRelease(float pX, float pY, float pSpeedX, float pSpeedY);
     
-    FTrackedTouch                                   mTouch;
+    
     
     bool                                            IsOutOfBoundsX(float pScrollX);
     bool                                            IsOutOfBoundsY(float pScrollY);
@@ -194,8 +199,7 @@ private:
     float                                           mPanX;
     float                                           mPanY;
     
-    float                                           mPanDiffX;
-    float                                           mPanDiffY;
+    
     
     
 };
