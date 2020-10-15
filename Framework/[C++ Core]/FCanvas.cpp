@@ -698,7 +698,7 @@ void FCanvas::BaseMouseWheel(int pDirection) {
 FCanvas *FCanvas::BaseTouchDown(float pX, float pY, float pOriginalX, float pOriginalY, void *pData, bool pOutsideParent, bool &pConsumed) {
     FCanvas *aResult = 0;
     FCanvas *aCollider = 0;
-    if (mKill == 0 && mEnabled == true) {
+    if ((mKill == 0) && (mEnabled == true)) {
         bool aContainsPoint = false;
         if ((pConsumed == true) && (mRecievesConsumedTouches == false)) {
             aContainsPoint = false;
@@ -852,7 +852,7 @@ void FCanvas::BaseTouchUp(float pX, float pY, float pOriginalX, float pOriginalY
             mTouchDownInside = aAnyTouchesInside;
         }
 
-        if(aTouchIndex >= 0) {
+        if (aTouchIndex >= 0) {
             mTouchX = pX;
             mTouchY = pY;
             mTransformAbsolute.Transform(mTouchX, mTouchY, mWidth, mHeight);
