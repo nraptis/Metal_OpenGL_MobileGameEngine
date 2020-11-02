@@ -10,8 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
 
-@interface OSMusicPlayer : NSObject <AVAudioPlayerDelegate>
-{
+@interface OSMusicPlayer : NSObject <AVAudioPlayerDelegate> {
     AVAudioPlayer                           *musicPlayer;
     AVAudioPlayer                           *musicPlayerFading;
     
@@ -50,7 +49,6 @@
 
 - (void)musicPause;
 - (void)musicResume;
-
 
 - (BOOL)musicIsPlaying;
 
