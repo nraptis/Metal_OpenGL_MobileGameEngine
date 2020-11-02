@@ -700,3 +700,38 @@ void os_cloudRead(const char *pRecordName, const char *pIdentifier, const char *
         }
     });
 }
+
+void os_purchaseItem(const char *pIdentifier, const char *pSecret) {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        
+        int aType = gRand.Get(3);
+        
+        if (aType == 0) {
+            if (gAppBase != NULL) {
+                gAppBase->PurchaseSuccess(pIdentifier);
+            }
+        } else if (aType == 1) {
+            if (gAppBase != NULL) {
+                gAppBase->PurchaseDeferred(pIdentifier);
+            }
+        } else {
+            if (gAppBase != NULL) {
+                gAppBase->PurchaseFailure(pIdentifier);
+            }
+        }
+    });
+}
+
+void os_purchaseRestore(const char *pSecret) {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        if (gRand.GetBool()) {
+            if (gAppBase != NULL) {
+                gAppBase->PurchaseRestoreSuccess("sample_identifier");
+            }
+        } else {
+            if (gAppBase != NULL) {
+                gAppBase->PurchaseRestoreFailure("sample_identifier");
+            }
+        }
+    });
+}

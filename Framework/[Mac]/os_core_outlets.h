@@ -52,4 +52,7 @@ void os_exportToPhotoLibrary(unsigned int *pData, int pWidth, int pHeight);
 void os_cloudPost(const char *pRecordName, const char *pIdentifier, const char *pFieldName, FString pData);
 void os_cloudRead(const char *pRecordName, const char *pIdentifier, const char *pFieldName);
 
+void os_purchaseItem(const char *pIdentifier, const char *pSecret);
+void os_purchaseRestore(const char *pSecret);
+
 #endif
