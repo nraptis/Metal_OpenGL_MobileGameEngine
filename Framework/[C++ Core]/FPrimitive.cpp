@@ -227,10 +227,9 @@ void FDrawNodeList::Reset() {
     mCountNodes = 0;
 }
 
-void FDrawNodeList::Clear()
-{
+void FDrawNodeList::Clear() {
     delete [] mData;
-    mData = 0;
+    mData = NULL;
     
     mNodeSize = 0;
     mCountNodes = 0;
@@ -373,7 +372,7 @@ void FDrawNodeList::Set(int pIndex, float pX, float pY, float pZ, float pU, floa
         mData[pIndex].mY = pY;
         mData[pIndex].mZ = pZ;
         
-        mData[pIndex].mU = pW;
+        mData[pIndex].mU = pU;
         mData[pIndex].mV = pV;
         mData[pIndex].mW = pW;
         
