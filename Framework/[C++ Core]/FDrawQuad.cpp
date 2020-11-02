@@ -298,10 +298,8 @@ void FDrawQuad::ColorSwap(int pIndex1, int pIndex2) {
     }
 }
 
-void FDrawQuad::ColorDarkenAll(float pPercent)
-{
-    for(int i=0;i<4;i++)
-    {
+void FDrawQuad::ColorDarkenAll(float pPercent) {
+    for (int i=0;i<4;i++) {
         float aPercent = (1.0f - pPercent);
         mVertex[i].mR *= aPercent;
         mVertex[i].mG *= aPercent;
@@ -310,10 +308,8 @@ void FDrawQuad::ColorDarkenAll(float pPercent)
     }
 }
 
-void FDrawQuad::ColorLightenAll(float pPercent)
-{
-    for(int i=0;i<4;i++)
-    {
+void FDrawQuad::ColorLightenAll(float pPercent) {
+    for(int i=0;i<4;i++) {
         mVertex[i].mR = mVertex[i].mR + (1.0f - mVertex[i].mR) * pPercent;
         mVertex[i].mG = mVertex[i].mG + (1.0f - mVertex[i].mG) * pPercent;
         mVertex[i].mB = mVertex[i].mB + (1.0f - mVertex[i].mB) * pPercent;
@@ -321,13 +317,8 @@ void FDrawQuad::ColorLightenAll(float pPercent)
     }
 }
 
-
-
-
-void FDrawQuad::ResetColor(float pAlpha)
-{
-    for(int i=0;i<4;i++)
-    {
+void FDrawQuad::ResetColor(float pAlpha) {
+    for (int i=0;i<4;i++) {
         mVertex[i].mR = 1.0f;
         mVertex[i].mG = 1.0f;
         mVertex[i].mB = 1.0f;
@@ -335,10 +326,8 @@ void FDrawQuad::ResetColor(float pAlpha)
     }
 }
 
-void FDrawQuad::ResetColor(float pRed, float pGreen, float pBlue, float pAlpha)
-{
-    for(int i=0;i<4;i++)
-    {
+void FDrawQuad::ResetColor(float pRed, float pGreen, float pBlue, float pAlpha) {
+    for (int i=0;i<4;i++) {
         mVertex[i].mR = pRed;
         mVertex[i].mG = pGreen;
         mVertex[i].mB = pBlue;
@@ -346,20 +335,16 @@ void FDrawQuad::ResetColor(float pRed, float pGreen, float pBlue, float pAlpha)
     }
 }
 
-void FDrawQuad::SetHexRGB(int pCorner, unsigned int pHexColor)
-{
-    if((pCorner >= 0) && (pCorner < 4))
-    {
+void FDrawQuad::SetHexRGB(int pCorner, unsigned int pHexColor) {
+    if ((pCorner >= 0) && (pCorner < 4)) {
         mVertex[pCorner].mR = ((float)((((unsigned int)(pHexColor))>>16)&0xFF)) / (255.0f);
         mVertex[pCorner].mG = ((float)((((unsigned int)(pHexColor))>>8)&0xFF)) / (255.0f);
         mVertex[pCorner].mB = ((float)(((unsigned int)(pHexColor))&0xFF)) / (255.0f);
     }
 }
 
-void FDrawQuad::SetHexRGBA(int pCorner, unsigned int pHexColor)
-{
-    if((pCorner >= 0) && (pCorner < 4))
-    {
+void FDrawQuad::SetHexRGBA(int pCorner, unsigned int pHexColor) {
+    if ((pCorner >= 0) && (pCorner < 4)) {
         mVertex[pCorner].mR = ((float)((((unsigned int)(pHexColor))>>16)&0xFF)) / (255.0f);
         mVertex[pCorner].mG = ((float)((((unsigned int)(pHexColor))>>8)&0xFF)) / (255.0f);
         mVertex[pCorner].mB = ((float)(((unsigned int)(pHexColor))&0xFF)) / (255.0f);
@@ -367,29 +352,24 @@ void FDrawQuad::SetHexRGBA(int pCorner, unsigned int pHexColor)
     }
 }
 
-void FDrawQuad::SetHexRGB(unsigned int pHexColor)
-{
+void FDrawQuad::SetHexRGB(unsigned int pHexColor) {
     float aR = ((float)((((unsigned int)(pHexColor))>>16)&0xFF)) / (255.0f);
     float aG = ((float)((((unsigned int)(pHexColor))>>8)&0xFF)) / (255.0f);
     float aB = ((float)(((unsigned int)(pHexColor))&0xFF)) / (255.0f);
-    
-    for(int i=0;i<4;i++)
-    {
+    for (int i=0;i<4;i++) {
         mVertex[i].mR = aR;
         mVertex[i].mG = aG;
         mVertex[i].mB = aB;
     }
 }
 
-void FDrawQuad::SetHexRGBA(unsigned int pHexColor)
-{
+void FDrawQuad::SetHexRGBA(unsigned int pHexColor) {
     float aR = ((float)((((unsigned int)(pHexColor))>>16)&0xFF)) / (255.0f);
     float aG = ((float)((((unsigned int)(pHexColor))>>8)&0xFF)) / (255.0f);
     float aB = ((float)(((unsigned int)(pHexColor))&0xFF)) / (255.0f);
     float aA = ((float)((((unsigned int)(pHexColor))>>24)&0xFF)) / (255.0f);
     
-    for(int i=0;i<4;i++)
-    {
+    for (int i=0;i<4;i++) {
         mVertex[i].mR = aR;
         mVertex[i].mG = aG;
         mVertex[i].mB = aB;
@@ -397,10 +377,8 @@ void FDrawQuad::SetHexRGBA(unsigned int pHexColor)
     }
 }
 
-void FDrawQuad::ColorMultiply(float pRed, float pGreen, float pBlue, float pAlpha)
-{
-    for(int i=0;i<4;i++)
-    {
+void FDrawQuad::ColorMultiply(float pRed, float pGreen, float pBlue, float pAlpha) {
+    for (int i=0;i<4;i++) {
         mVertex[i].mR *= pRed;
         mVertex[i].mG *= pGreen;
         mVertex[i].mB *= pBlue;
@@ -408,35 +386,27 @@ void FDrawQuad::ColorMultiply(float pRed, float pGreen, float pBlue, float pAlph
     }
 }
 
-void FDrawQuad::ColorMultiplyAlpha(float pAlpha)
-{
-    for(int i=0;i<4;i++)
-    {
+void FDrawQuad::ColorMultiplyAlpha(float pAlpha) {
+    for (int i=0;i<4;i++) {
         mVertex[i].mA *= pAlpha;
     }
 }
 
-bool FDrawQuad::ContainsPoint(float pX, float pY)
-{
+bool FDrawQuad::ContainsPoint(float pX, float pY) {
     bool aResult = false;
-    
-    
-    for(int aStart=0,aEnd=3;aStart<4;aEnd=aStart++)
-    {
+    for (int aStart=0,aEnd=3;aStart<4;aEnd=aStart++) {
         if((((mVertex[aStart].mY <= pY) && (pY < mVertex[aEnd].mY))||
             ((mVertex[aEnd].mY <= pY) && (pY < mVertex[aStart].mY)))&&
            (pX < (mVertex[aEnd].mX - mVertex[aStart].mX) * (pY - mVertex[aStart].mY)
-            / (mVertex[aEnd].mY - mVertex[aStart].mY) + mVertex[aStart].mX))
-        {
+            / (mVertex[aEnd].mY - mVertex[aStart].mY) + mVertex[aStart].mX)) {
             aResult = !aResult;
         }
     }
-    
     return aResult;
 }
 
 void FDrawQuad::SetTextureAspectFit(FSprite *pSprite) {
-    if(pSprite) {
+    if (pSprite != NULL) {
         float aRectWidth = (mVertex[3].mX - mVertex[0].mX);
         float aRectHeight = (mVertex[3].mY - mVertex[0].mY);
         float aImageWidth = pSprite->mWidth;
@@ -449,19 +419,14 @@ void FDrawQuad::SetTextureAspectFit(FSprite *pSprite) {
         float aRangeV = (aImageEndV - aImageStartV);
         float aSizeEpsilon = 0.5f;
         SetTextureQuad(aImageStartU, aImageStartV, aImageEndU, aImageEndV);
-        if((aRectWidth >= aSizeEpsilon) && (aRectHeight >= aSizeEpsilon) && (aImageWidth >= aSizeEpsilon) && (aImageHeight >= aSizeEpsilon))
-        {
+        if ((aRectWidth >= aSizeEpsilon) && (aRectHeight >= aSizeEpsilon) && (aImageWidth >= aSizeEpsilon) && (aImageHeight >= aSizeEpsilon)) {
             float aTextureEpsilon = 0.01f;
-            if((aRangeU > aTextureEpsilon) && (aRangeV > aTextureEpsilon))
-            {
-                if((aRectWidth / aRectHeight) > (aImageWidth / aImageHeight))
-                {
+            if ((aRangeU > aTextureEpsilon) && (aRangeV > aTextureEpsilon)) {
+                if ((aRectWidth / aRectHeight) > (aImageWidth / aImageHeight)) {
                     float aNewWidth = aImageWidth * (aRectHeight / aImageHeight);
                     float aCenterX = mVertex[0].mX + aRectWidth / 2.0f;
                     SetRect(aCenterX - aNewWidth / 2.0f, mVertex[0].mY, aNewWidth, aRectHeight);
-                }
-                else
-                {
+                } else {
                     float aNewHeight = aImageHeight * (aRectWidth / aImageWidth);
                     float aCenterY = mVertex[0].mY + aRectHeight / 2.0f;
                     SetRect(mVertex[0].mX, aCenterY - aNewHeight / 2.0f, aRectWidth, aNewHeight);
@@ -471,10 +436,8 @@ void FDrawQuad::SetTextureAspectFit(FSprite *pSprite) {
     }
 }
 
-void FDrawQuad::SetTextureAspectFill(FSprite *pSprite)
-{
-    if(pSprite)
-    {
+void FDrawQuad::SetTextureAspectFill(FSprite *pSprite) {
+    if (pSprite != NULL) {
         float aRectWidth = (mVertex[3].mX - mVertex[0].mX);
         float aRectHeight = (mVertex[3].mY - mVertex[0].mY);
         float aImageWidth = pSprite->mWidth;
@@ -487,13 +450,10 @@ void FDrawQuad::SetTextureAspectFill(FSprite *pSprite)
         float aRangeV = (aImageEndV - aImageStartV);
         float aSizeEpsilon = 0.5f;
         SetTextureQuad(aImageStartU, aImageStartV, aImageEndU, aImageEndV);
-        if((aRectWidth >= aSizeEpsilon) && (aRectHeight >= aSizeEpsilon) && (aImageWidth >= aSizeEpsilon) && (aImageHeight >= aSizeEpsilon))
-        {
+        if ((aRectWidth >= aSizeEpsilon) && (aRectHeight >= aSizeEpsilon) && (aImageWidth >= aSizeEpsilon) && (aImageHeight >= aSizeEpsilon)) {
             float aTextureEpsilon = 0.01f;
-            if((aRangeU > aTextureEpsilon) && (aRangeV > aTextureEpsilon))
-            {
-                if((aRectWidth / aRectHeight) < (aImageWidth / aImageHeight))
-                {
+            if ((aRangeU > aTextureEpsilon) && (aRangeV > aTextureEpsilon)) {
+                if ((aRectWidth / aRectHeight) < (aImageWidth / aImageHeight)) {
                     float aExpandedWidth = aImageWidth * (aRectHeight / aImageHeight);
                     float aPercent = 1.0 - ((aExpandedWidth - (aRectWidth)) / aExpandedWidth);
                     float aCenterU = aImageStartU + (aImageEndU - aImageStartU) / 2.0;
@@ -501,9 +461,7 @@ void FDrawQuad::SetTextureAspectFill(FSprite *pSprite)
                     aImageStartU = aCenterU - aPunchU;
                     aImageEndU = aCenterU + aPunchU;
                     SetTextureQuad(aImageStartU, aImageStartV, aImageEndU, aImageEndV);
-                }
-                else
-                {
+                } else {
                     float aExpandedHeight = aImageHeight * (aRectWidth / aImageWidth);
                     float aPercent = 1.0 - ((aExpandedHeight - (aRectHeight)) / aExpandedHeight);
                     float aCenterV = aImageStartV + (aImageEndV - aImageStartV) / 2.0;
