@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <CloudKit/CloudKit.h>
 
+#include "OSStoreManager.h"
+
 #include "RecursiveLockWrapper.h"
 #include "RootViewController.h"
 
@@ -38,6 +40,9 @@
 #import <mach/mach_host.h>
 #import <mach/mach_time.h>
 
+
+OSStoreManager *gStoreManager = NULL;
+
 using namespace std;
 
 //pthread_mutex_t gThreadMutex = PTHREAD_MUTEX_INITIALIZER;
@@ -45,6 +50,7 @@ FList gThreadLockList;
 
 void os_initialize_outlets() {
     gThreadLockList.Size(128);
+    gStoreManager = [[OSStoreManager alloc] init];
 }
 
 int os_getAssetScale() {
@@ -386,52 +392,37 @@ void os_getTestDirectory(FString *pString)
     }
 }
 
-void os_getFilesInDirectory(const char *pFilePath, FList *pList)
-{
+void os_getFilesInDirectory(const char *pFilePath, FList *pList) {
     
 }
 
 void os_getFilesInDirectoryRecursive(const char *pFilePath, FList *pList) {
     if (pList != NULL) {
-    DIR *dp;
-    
-    struct dirent *ep;
-    
-    dp = opendir ("./");
-    char sf[1024];
-    if(dp != NULL)
-    {
-        ep = readdir(dp);
-        if(ep)
-        {
-            //aLoops1++;
-            //Log("LOOPS1 = %d\n", aLoops1);
-            
-            //{
-                
+        DIR *dp;
+        struct dirent *ep;
+        dp = opendir ("./");
+        char sf[1024];
+        if (dp != NULL) {
+            ep = readdir(dp);
+            if (ep != NULL) {
                 char *n;
                 DIR *dirp;
                 struct dirent *direntp;
                 
                 dirp = opendir(pFilePath);
                 
-                if(dirp != NULL)
-                {
-                    //aLoops2 = 0;
-                    for(;;)
-                    {
+                if (dirp != NULL) {
+                    for (;;) {
                         //aLoops2++;
                         //Log("\tLOOPS2 = %d\n", aLoops2);
                         direntp = readdir( dirp );
                         
-                        if(direntp == NULL)
-                        {
+                        if (direntp == NULL) {
                             break;
                         }
                         
-                        n=direntp->d_name;
-                        if (strcmp(n,".")!=0 && strcmp(n,"..")!=0)
-                        {
+                        n = direntp->d_name;
+                        if ((strcmp(n,".") != 0) && (strcmp(n,"..") != 0)) {
                             strcpy(sf, pFilePath);
                             strcat(sf,n);
                             
@@ -450,12 +441,7 @@ void os_getFilesInDirectoryRecursive(const char *pFilePath, FList *pList) {
                     
                 }
             }
-            
-            //puts (ep->d_name);
-        //}
-        
-        //(void)closedir(dp);
-    }
+        }
     }
 }
 
@@ -615,4 +601,12 @@ void os_cloudRead(const char *pRecordName, const char *pIdentifier, const char *
         [aDatabase addOperation: aFetchOperation];
     };
     [aDatabase addOperation: aQueryOperation];
+}
+
+void os_purchaseItem(const char *pIdentifier, const char *pSecret) {
+    [gStoreManager purchaseProduct: [NSString stringWithUTF8String: pIdentifier]];
+}
+
+void os_purchaseRestore(const char *pSecret) {
+    [gStoreManager restorePurchases];
 }

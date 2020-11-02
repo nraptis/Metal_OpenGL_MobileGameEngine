@@ -9,6 +9,7 @@
 #import "AppDelegateBase.h"
 #import "core_app_shell.hpp"
 #import <AVFoundation/AVFoundation.h>
+#import "OSStoreManager.h"
 
 
 //Needed for metal:

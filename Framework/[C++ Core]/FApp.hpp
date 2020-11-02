@@ -68,6 +68,13 @@ public:
     virtual void                                CloudReadSuccess(FString pData) { }
     virtual void                                CloudReadFailure() { }
     
+    virtual void                                PurchaseSuccess(FString pIdentifier) { }
+    virtual void                                PurchaseDeferred(FString pIdentifier) { }
+    virtual void                                PurchaseFailure(FString pIdentifier) { }
+    
+    
+    virtual void                                PurchaseRestoreSuccess(FString pIdentifier) { }
+    virtual void                                PurchaseRestoreFailure(FString pIdentifier) { }
     
     
     //This is called one time to spawn a resolution configurator. Based on your game, you will need to decide how you want to handle scaling...

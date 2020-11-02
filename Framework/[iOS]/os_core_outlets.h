@@ -56,5 +56,7 @@ void os_getAllResources(const char *pFilePath, FList *pList);
 void os_cloudPost(const char *pRecordName, const char *pIdentifier, const char *pFieldName, FString pData);
 void os_cloudRead(const char *pRecordName, const char *pIdentifier, const char *pFieldName);
 
+void os_purchaseItem(const char *pIdentifier, const char *pSecret);
+void os_purchaseRestore(const char *pSecret);
 
-#endif // JNIAPI_H
+#endif
